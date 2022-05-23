@@ -1,27 +1,31 @@
-import { PrismaClient } from '@prisma/client'
-import { allPokemon } from './pokemon'
+const { PrismaClient } = require('@prisma/client')
+const { allPokemon } = require('./data')
 
 const prisma = new PrismaClient();
  
-async function main() {
-  await prisma.users.create({
-      data: {
-          name: 'Rātā Marley Rose'
-      }
-  })
+const main = async () => {
+  try {
+      // this deletes models before seeding & resets autoincrement ID to 1
+      await prisma.$queryRaw`TRUNCATE TABLE "User" RESTART IDENTITY CASCADE`
+      await prisma.$queryRaw`TRUNCATE TABLE "Pokemon" RESTART IDENTITY CASCADE`
 
-  await prisma.pokemon.createMany({
-      data: allPokemon
-  })
+      // this seeds User and Pokemon models
+      await prisma.user.create({
+        data: {
+            name: 'Rātā Marley Rose'
+        }
+      })
+      await prisma.pokemon.createMany({
+        data: allPokemon
+      })
+  } catch (e) {
+      console.error(e)
+      process.exit(1)
+  } finally {
+      await prisma.$disconnect()
+  }
 }
 
 main()
-  .catch((e) => {
-      console.error(e)
-      process.exit(1)
-  })
-  .finally (async () => {
-      await prisma.$disconnect()
-  })
 
 

@@ -2,13 +2,13 @@
   "name": "pokepaedia",
   "version": "0.1.0",
   "private": true,
+  "main": "index.js",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
-  },
-  "prisma": {
+    "lint": "next lint",
+    "type": "module",
     "seed": "node prisma/seed.js"
   },
   "dependencies": {

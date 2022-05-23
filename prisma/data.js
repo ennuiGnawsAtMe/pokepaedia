@@ -1,4 +1,4 @@
-export const allPokemon = [
+const allPokemon = [
     {name:"Bulbasaur"},
     {name:"Ivysaur"},
     {name:"Venusaur"},
@@ -898,3 +898,5 @@ export const allPokemon = [
     {name:"Spectrier"},
     {name:"Calyrex"}
 ]
+
+module.exports = { allPokemon }
