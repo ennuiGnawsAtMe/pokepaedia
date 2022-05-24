@@ -1,14 +1,8 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import useSWR from 'swr'
 import styles from '../styles/RandomPokemon.module.css'
 
-const fetcher = (url) => fetch(url).then((res) => res.json())
-
 const RandomPokemon = (props) => {
-   const { data, error } = useSWR(COMMENTS_URL, fetcher)
-   if (error) return <div>Something went wrong...</div>
-   if (!data) return <div>Loading...</div>
   return (
     <>
       <Head>
@@ -16,7 +10,7 @@ const RandomPokemon = (props) => {
         <meta name="description" content="An Encyclopaedia of Pokemon" />
         <link rel="icon" href="/images/favicon.ico" />
       </Head>
-      <main className={styles.container}>
+      <main className={styles.container} onClick={props.clickHandler} style={{cursor:"pointer"}}>
             <div className={styles.imageContainer}>
                 <Image 
                     src={props.image}
@@ -29,7 +23,7 @@ const RandomPokemon = (props) => {
           <div className={styles.details}>
             <h1>{props.name}</h1>
             <p>{props.blurb}</p>
-            <button>&gt;&gt;&gt; Next</button>
+            <button style={{cursor:"pointer"}}>&gt;&gt;&gt; Next</button>
           </div>
        </main>
     </>

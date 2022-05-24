@@ -1,21 +1,28 @@
 import Head from 'next/head'
+import { useState } from 'react'
+import Loading from '../components/Loading'
 import RandomPokemon from '../components/RandomPokemon'
-import { getRandomPokemon, capitalise } from '../lib/controllers'
+import { getRandomPokemon } from '../lib/controllers'
 
 export const getServerSideProps = async() => {
   const pokemons = await getRandomPokemon()
   return {
-    props: {
-      pokemon: {
-        name: capitalise(pokemons.name),
-        blurb: pokemons.blurbEng,
-        image: pokemons.image
-      }
-    }
+    props: { pokemon: pokemons }
   }
 }
 
  const Home = ({ pokemon }) => {
+  const [latestPokemon, setLatestPokemon] = useState(pokemon)
+
+  const fetchPokemon = async() => {
+    try {
+      const newPokemon = await getRandomPokemon()
+      setLatestPokemon(newPokemon)
+    } catch (e) {
+      console.error(e)
+    }
+  }
+
   return (
     <>
       <Head>
@@ -24,7 +31,7 @@ export const getServerSideProps = async() => {
         <link rel="icon" href="/images/favicon.ico" />
       </Head>
       <main>
-        <RandomPokemon {...pokemon}/>
+        <RandomPokemon {...latestPokemon} clickHandler={fetchPokemon} />
       </main>
     </>
   )
