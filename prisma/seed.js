@@ -3,6 +3,7 @@ const { allPokemon } = require('./data')
 
 const prisma = new PrismaClient();
  
+// seed can be run anytime on npm run seed
 const main = async () => {
   try {
       // this deletes models before seeding & resets autoincrement ID to 1

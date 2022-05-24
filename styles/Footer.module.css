@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  justify-content: center;
+  background-color: #47a8bd;
+  margin: 0px;
+  margin-top: 10px;
+  bottom: 0;
+  width: 100vw;
+  border-top: solid 3px black;
+  text-align: center;
+  height: 5vh;
+  align-items: center;
+  color: white;
+}

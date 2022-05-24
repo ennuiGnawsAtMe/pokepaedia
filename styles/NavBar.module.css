@@ -1,0 +1,101 @@
+/* NAVBAR STYLES */
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 95vw;
+  max-width: 1280px;
+}
+
+.logo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.title {
+  padding-right: 4rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.title h1 {
+  font-size: 2.2rem;
+  text-align: left;
+  margin: 0;
+}
+
+.title h3 {
+  font-family: "Open Sans", sans-serif;
+  text-align: left;
+  padding-top: 5px;
+  font-weight: 100;
+  margin: 0;
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 10px 0px;
+}
+
+/* FANCY NAV BUTTONS */
+.button56 {
+  align-items: center;
+  background-color: #47a8bd;
+  border: 2px solid #111;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  height: 30px;
+  justify-content: center;
+  line-height: 24px;
+  max-width: 100%;
+  padding: 0 20px;
+  margin: 0px 7px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button56:after {
+  background-color: #111;
+  border-radius: 8px;
+  content: "";
+  display: block;
+  height: 30px;
+  left: 0;
+  width: 100%;
+  position: absolute;
+  top: -2px;
+  transform: translate(8px, 8px);
+  transition: transform 0.2s ease-out;
+  z-index: -1;
+}
+
+.button56:hover:after {
+  transform: translate(0, 0);
+}
+
+.button56:active {
+  background-color: orange;
+  outline: 0;
+}
+
+.button56:hover {
+  background-color: orange;
+  color: black;
+  outline: 0;
+}
