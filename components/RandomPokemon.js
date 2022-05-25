@@ -5,12 +5,7 @@ import styles from '../styles/RandomPokemon.module.css'
 const RandomPokemon = (props) => {
   return (
     <>
-      <Head>
-        <title>PokéPaedia | A Pokémon Encyclopaedia</title>
-        <meta name="description" content="An Encyclopaedia of Pokemon" />
-        <link rel="icon" href="/images/favicon.ico" />
-      </Head>
-      <main className={styles.container} onClick={props.clickHandler} style={{cursor:"pointer"}}>
+      <div className={styles.container} onClick={props.clickHandler} style={{cursor:"pointer"}}>
             <div className={styles.imageContainer}>
                 <Image 
                     src={props.image}
@@ -25,7 +20,7 @@ const RandomPokemon = (props) => {
             <p>{props.blurb}</p>
             <button style={{cursor:"pointer"}}>&gt;&gt;&gt; Next</button>
           </div>
-       </main>
+       </div>
     </>
   )
 }

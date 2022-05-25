@@ -1,6 +1,6 @@
 .container {
-  display: flex;
-  justify-content: center;
+  position: absolute;
+  min-height: 5vh;
   background-color: #47a8bd;
   margin: 0px;
   margin-top: 10px;
@@ -8,7 +8,6 @@
   width: 100vw;
   border-top: solid 3px black;
   text-align: center;
-  height: 5vh;
   align-items: center;
   color: white;
 }

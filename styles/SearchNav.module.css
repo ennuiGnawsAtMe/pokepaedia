@@ -1,0 +1,45 @@
+.container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 95vw;
+  max-width: 1280px;
+}
+/* 
+.learn-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px;
+  padding: 5px;
+}
+
+.learn-nav h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 1.5rem;
+  margin: 0px;
+} */
+
+.searchBy {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding: 5px;
+}
+
+.searchBy button {
+  font-size: 1rem;
+  background-color: white;
+  border: none;
+  padding: 0 0 10px 10px;
+  margin: 0px;
+  font-family: "Playfair Display", serif;
+  cursor: pointer;
+}
+
+.searchBy button:hover {
+  transform: translateY(-3px);
+  transition: transform 0.2s ease-out;
+  color: orange;
+}
