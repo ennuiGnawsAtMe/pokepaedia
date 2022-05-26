@@ -1,5 +1,5 @@
 .container {
-  position: absolute;
+  position: fixed;
   min-height: 5vh;
   background-color: #47a8bd;
   margin: 0px;

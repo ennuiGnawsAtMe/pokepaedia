@@ -30,8 +30,9 @@
 }
 
 .imageContainer {
-  max-width: 35vw;
-  width: 100%;
+  max-width: 500px;
+  max-height: 500px;
+  width: 35vw;
   height: 100%;
   position: relative;
 }

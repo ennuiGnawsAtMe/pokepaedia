@@ -3,6 +3,8 @@ import { useState } from 'react'
 import Loading from '../components/Loading'
 import RandomPokemon from '../components/RandomPokemon'
 import { getRandomPokemon } from '../lib/controllers'
+import styles from '../styles/Page.module.css'
+
 
 export const getServerSideProps = async() => {
   const pokemons = await getRandomPokemon()

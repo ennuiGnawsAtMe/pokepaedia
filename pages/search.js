@@ -1,7 +1,8 @@
 import Head from 'next/head'
 import prisma from '../lib/prisma'
 import SearchNav from '../components/SearchNav'
-import styles from '../styles/Home.module.css'
+import styles from '../styles/Page.module.css'
+import SearchList from '../components/SearchList'
 
 export const getStaticProps = async() => {
   const pokemonNames = await prisma.pokemon.findMany({
@@ -22,6 +23,7 @@ export const getStaticProps = async() => {
           </Head>
           <main>
             <SearchNav names={pokemonNames}/>
+            <SearchList />
           </main>
           </>
   )

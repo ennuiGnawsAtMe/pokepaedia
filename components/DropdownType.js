@@ -1,6 +1,6 @@
 import Select from 'react-select'
 
-const Dropdown = () => {
+const DropdownType = () => {
 
 const typeOptions = [
   {value: 'normal', label: 'Normal'},
@@ -34,4 +34,4 @@ return (
 )
 }
 
-export default Dropdown
+export default DropdownType
