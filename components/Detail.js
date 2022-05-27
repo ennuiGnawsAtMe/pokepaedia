@@ -1,12 +1,13 @@
 import { useEffect } from 'react'
+
 import Image from 'next/image'
-import { fetchOnePokemonByName } from '../lib/controllers'
 
 const Detail = () => {
+  
 
-  useEffect(() => {
-    dispatch(fetchOnePokemonByName(id))
-  }, [])
+  useEffect = () => {
+
+  }
 
   return (
     <div className='detail-container'>

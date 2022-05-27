@@ -1,18 +1,32 @@
 import Head from 'next/head'
-import Image from 'next/image'
-import { useRouter } from 'next/router'
+import prisma from '../lib/prisma'
 import Detail from '../components/Detail'
+import Image from 'next/image'
 import styles from '../styles/Page.module.css'
+import { getOnePokemonAsync } from '../lib/controllers'
 
-const router = useRouter()
-const { pid } = router.query
+export const getStaticPaths = async () => {
+  const pokemonNames = await prisma.pokemon.findMany({
+    select: { name: true }
+  })
 
-const getStaticProps = async () => {}
+  const paths = pokemonNames.map(pokeName => ({
+    params: { pokemon: pokeName.name.toLowerCase()}
+  }))
 
-const getStaticPaths = async () => {}
+  console.log(paths)
 
+  return { paths, fallback: true }
+}
 
- const Details = () => {
+export const getStaticProps = async ({ params }) => {
+      const newPokemon = await getOnePokemonAsync(params.pokemon)
+
+      return { props: { newPokemon }}
+  }
+
+ const PokemonDetail = ({ newPokemon }) => {
+   console.log(newPokemon)
   return (
     <div className={styles.container}>
       <Head>
@@ -21,10 +35,17 @@ const getStaticPaths = async () => {}
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <Detail />
+        {/* <Detail /> */}
+        <Image
+          src={newPokemon.image}
+          width={200}
+          height={200}
+          />
+        <h1>{newPokemon.name}</h1>
+        <p>{newPokemon.blurb}</p>
       </main>
     </div>
   )
 }
 
-export default Details
+export default PokemonDetail
