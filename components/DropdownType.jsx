@@ -1,6 +1,12 @@
 import Select from 'react-select'
+import { getPokemonByType } from '../lib/api'
+import { getPokemonAsync, cleanNamesForSpecies, filterNoImage } from '../lib/controllers'
 
-const DropdownType = () => {
+const DropdownType = ({ setSelection }) => {
+
+  // useEffect(() => {
+  //   setSelection([])
+  // }, [])
 
 const typeOptions = [
   {value: 'normal', label: 'Normal'},
@@ -23,12 +29,24 @@ const typeOptions = [
   {value: 'fairy', label: 'Fairy'},
 ]
 
+const changeHandler = async (type) => {
+    try {
+      const byTypeArr = await getPokemonByType(type)
+      const filteredArr = filterNoImage(byTypeArr)
+      const allByType = await getPokemonAsync(filteredArr)
+      setSelection(allByType.slice(0).reverse())
+    } catch (e) {
+      console.error(e)
+    }
+}
+
 return (
   <div>
     <Select
           placeholder={`Search Pokemon by Type`}
           options={typeOptions}
           instanceId="type-value-select"
+          onChange={e => changeHandler(e.value)}
         />
   </div>
 )

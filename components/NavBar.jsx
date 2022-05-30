@@ -1,8 +1,10 @@
 import styles from '../styles/NavBar.module.css'
 import Image from 'next/image'
 import Link from 'next/link'
-
+import { useRouter } from 'next/router'
 const NavBar = () => {
+    const router = useRouter();
+
 
   return (
        <header className ={styles.container}>
@@ -25,11 +27,15 @@ const NavBar = () => {
              </a>
           </Link>
             <nav className={styles.nav}>
-                <Link href="/search">
-                  <a>
-                    <button className={styles.button56} >SEARCH</button>
-                  </a>
-                </Link>
+              {router.pathname === '/[pokemon]' && 
+                 <div className={styles.btnContainer}>
+                    <button onClick={() => router.back()}>&larr; back to list</button>
+                 </div>}
+              <Link href="/search">
+                <a>
+                  <button className={styles.button56}>SEARCH</button>
+                </a>
+              </Link>
             </nav>
        </header>
   )

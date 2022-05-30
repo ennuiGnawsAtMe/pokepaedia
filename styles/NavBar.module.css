@@ -90,12 +90,30 @@
 }
 
 .button56:active {
-  background-color: orange;
+  background-color: #ea9c78;
   outline: 0;
 }
 
 .button56:hover {
-  background-color: orange;
+  background-color: #ea9c78;
   color: black;
   outline: 0;
+}
+
+.btnContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+}
+
+.btnContainer button {
+  background-color: transparent;
+  border: none;
+  transition: transform 0.2s ease-out;
+}
+
+.btnContainer button:hover {
+  transform: translateY(-3px);
+  color: #ea9c78;
 }

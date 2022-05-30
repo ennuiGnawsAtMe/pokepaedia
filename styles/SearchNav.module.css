@@ -21,10 +21,15 @@
   margin: 0px;
   font-family: "Playfair Display", serif;
   cursor: pointer;
+  transition: transform 0.2s ease-out;
 }
 
 .searchBy button:hover {
   transform: translateY(-3px);
-  transition: transform 0.2s ease-out;
-  color: orange;
+  color: #ea9c78;
+}
+
+.searchBy button:focus {
+  transform: translateY(-3px);
+  color: #ea9c78;
 }

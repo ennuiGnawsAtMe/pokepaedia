@@ -1,11 +1,9 @@
-import React, { useState, useContext } from 'react'
+import { useEffect } from 'react'
 import Select from 'react-select'
 import { getPokemonAsync } from '../lib/controllers'
-import { pokemonContext } from '../pages/_app'
 import styles from '../styles/DropdownName.module.css'
 
-const DropdownName = ({ names }) => {
-  const {pokemon, setPokemon} = useContext(pokemonContext)
+const DropdownName = ({ names, setSelection}) => {
 
   const getNames = () => {
     const options = names.map(poke => {
@@ -27,10 +25,13 @@ const getMultiPokeArray = (arr) => {
 const changeHandler = async (selection) => {
     const namesArr = getMultiPokeArray(selection)
     const pokemons = await getPokemonAsync(namesArr)
-    setPokemon(pokemons)
+    setSelection(pokemons)
 }
-    
 
+// useEffect(() => {
+//     setSelection([])
+//   }, [])
+    
 return (
   <div className={styles.container}>
     <Select

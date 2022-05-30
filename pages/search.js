@@ -1,19 +1,22 @@
 import Head from 'next/head'
+import { useState } from 'react'
 import prisma from '../lib/prisma'
 import SearchNav from '../components/SearchNav'
-import styles from '../styles/Page.module.css'
 import SearchList from '../components/SearchList'
 
 export const getStaticProps = async() => {
   const pokemonNames = await prisma.pokemon.findMany({
     select: { name: true }
   })
+
   return {
     props : { pokemonNames }
   }
 }
 
  const Search = ({ pokemonNames }) => {
+   const [selection, setSelection] = useState([])
+
   return (
         <>
           <Head>
@@ -22,8 +25,8 @@ export const getStaticProps = async() => {
             <link rel="icon" href="/favicon.ico" />
           </Head>
           <main>
-            <SearchNav names={pokemonNames}/>
-            <SearchList />
+            <SearchNav names={pokemonNames} selection={selection} setSelection={setSelection}/>
+            <SearchList selection={selection}/>
           </main>
           </>
   )
