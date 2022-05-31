@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { useState } from 'react'
-import RandomPokemon from '../components/RandomPokemon'
+import RandomPokemon from '../components/RandomPokemon.jsx'
 import { getRandomPokemon } from '../lib/controllers'
 
 
