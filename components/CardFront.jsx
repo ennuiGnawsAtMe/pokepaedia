@@ -16,7 +16,7 @@ const CardFront = (props) => {
         </div>
       </div>
         <div className={styles.imageContainer}>
-          <Link href={`/${poke.name.toLowerCase()}`}>
+          <Link href={`/search/${poke.name.toLowerCase()}`}>
               <a>
                 <Image 
                 src={poke.image} 
@@ -29,7 +29,7 @@ const CardFront = (props) => {
         </div>
           <div className={styles.nameContainer}>
           <h2>
-              <Link href={`/${poke.name.toLowerCase()}`}><a>
+              <Link href={`/search/${poke.name.toLowerCase()}`}><a>
                   {poke.name}
                   </a></Link>
                   </h2>

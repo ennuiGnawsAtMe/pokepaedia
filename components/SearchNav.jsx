@@ -12,9 +12,9 @@ const SearchNav = ({ names, selection, setSelection }) => {
             {selection.length && <p>Total Pokes: {selection.length}</p>}
             <button onClick={() => setSearchBy('Name')}>&gt;&gt;By Name</button>
             <button onClick={() => setSearchBy('Type')}>&gt;&gt;By type</button>
-            <button>&gt;&gt;By Rating</button>
+            {/* <button>&gt;&gt;By Rating</button>
             <button>&gt;&gt;By Habitat</button>
-            <button>&gt;&gt;By Colour</button>
+            <button>&gt;&gt;By Colour</button> */}
           </div>
           {searchBy === 'Name' 
             ? <DropdownName names={names} setSelection={setSelection} /> 

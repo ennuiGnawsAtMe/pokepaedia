@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import Select from 'react-select'
 import { getPokemonAsync } from '../lib/controllers'
+import data from '../data/data.json'
 import styles from '../styles/DropdownName.module.css'
 
 const DropdownName = ({ names, setSelection}) => {
@@ -28,9 +29,7 @@ const changeHandler = async (selection) => {
     setSelection(pokemons)
 }
 
-// useEffect(() => {
-//     setSelection([])
-//   }, [])
+
     
 return (
   <div className={styles.container}>
