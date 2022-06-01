@@ -1,11 +1,19 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import axios from 'axios'
 import styles from '../styles/RandomPokemon.module.css'
 
 const RandomPokemon = (props) => {
+
+  const clickHandler = async () => {
+    const res = await axios
+        .get(`/api/getRandomPokemon`)
+        props.setState(res.data)
+  }
+
   return (
     <>
-      <div className={styles.container} onClick={props.clickHandler} style={{cursor:"pointer"}}>
+      <div className={styles.container} onClick={clickHandler} style={{cursor:"pointer"}}>
             <div className={styles.imageContainer}>
                 <Image 
                     src={props.image}
