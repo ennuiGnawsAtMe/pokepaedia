@@ -1,8 +1,11 @@
 import Head from 'next/head'
-import { useState } from 'react'
-import RandomPokemon from '../components/RandomPokemon'
+import { useState, useEffect } from 'react'
+import RandomPokemon from '../components/RandomPokemon.jsx'
 import { getRandomPokemon } from '../lib/controllers'
+import { getPokemonAsync } from '../lib/controllers'
+import data from '../data/data.json'
 
+const allPokedex = data.pokemon.map(poke => poke.pokedex)
 
 export const getServerSideProps = async() => {
   const pokemons = await getRandomPokemon()
@@ -22,6 +25,26 @@ export const getServerSideProps = async() => {
       console.error(e)
     }
   }
+
+  const func = async (pokedexArray) => {
+    console.log(pokedexArray)
+    // const names = nameArray.map(poke => {
+    //   if (poke.name === "Mr. Mime") {
+    //     return "mr-mime"
+    //   } else if (poke.name === "Mime Jr.") {
+    //     return "mime-jr"
+    //   } else {
+    //     return poke.name.toLowerCase()
+    //   }
+    // })
+
+    const pokemons = await getPokemonAsync(pokedexArray)
+    console.log(pokemons)
+  }
+
+  useEffect(() => {
+    func(allPokedex)
+  }, [])
 
   return (
     <>

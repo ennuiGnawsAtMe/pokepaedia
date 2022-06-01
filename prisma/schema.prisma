@@ -10,15 +10,39 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id      Int       @id @default(autoincrement())
-  name    String
-  Pokemon Pokemon[]
+model Pokemon {
+  pokedex        Int       @id @unique
+  name           String    @unique
+  image          String
+  evolutionURL   String?
+  happiness      Int?
+  evolvesFrom    String?
+  blurb          String?
+  shape          String?
+  habitat        String?
+  colour         String?
+  height         Int?
+  weight         Int?
+  experience     Int?
+  hp             Int?
+  attack         Int?
+  defence        Int?
+  specialAttack  Int?
+  specialDefence Int?
+  speed          Int?
+  type           Type[]
+  ability        Ability[]
 }
 
-model Pokemon {
-  id      Int    @id @default(autoincrement())
-  name    String @unique
-  owner   User?  @relation(fields: [ownerId], references: [id])
-  ownerId Int?
+model Type {
+  id      Int       @id @unique @default(autoincrement())
+  type    String
+  pokemon Pokemon[]
+}
+
+model Ability {
+  id      Int       @id @unique @default(autoincrement())
+  ability String
+  url     String
+  Pokemon Pokemon[]
 }

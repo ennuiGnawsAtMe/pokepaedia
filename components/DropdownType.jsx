@@ -2,13 +2,7 @@ import Select from 'react-select'
 import { getPokemonByType } from '../lib/api'
 import { getPokemonAsync, cleanNamesForSpecies, filterNoImage } from '../lib/controllers'
 
-const DropdownType = ({ setSelection }) => {
-
-  // useEffect(() => {
-  //   setSelection([])
-  // }, [])
-
-const typeOptions = [
+export const typeOptions = [
   {value: 'normal', label: 'Normal'},
   {value: 'fire', label: 'Fire'},
   {value: 'water', label: 'Water'},
@@ -28,6 +22,8 @@ const typeOptions = [
   {value: 'steel', label: 'Steel'},
   {value: 'fairy', label: 'Fairy'},
 ]
+
+const DropdownType = ({ setSelection }) => {
 
 const changeHandler = async (type) => {
     try {

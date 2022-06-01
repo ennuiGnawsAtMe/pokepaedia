@@ -27,7 +27,7 @@ const NavBar = () => {
              </a>
           </Link>
             <nav className={styles.nav}>
-              {router.pathname === '/[pokemon]' && 
+              {router.pathname === '/search/[pokemon]' && 
                  <div className={styles.btnContainer}>
                     <button onClick={() => router.back()}>&larr; back to list</button>
                  </div>}
