@@ -1,9 +1,10 @@
 import { useEffect } from 'react'
 import Select from 'react-select'
 import { getPokemonAsync } from '../lib/controllers'
-import data from '../data/data.json'
 import styles from '../styles/DropdownName.module.css'
 
+
+// COMPONENT
 const DropdownName = ({ names, setSelection}) => {
 
   const getNames = () => {
