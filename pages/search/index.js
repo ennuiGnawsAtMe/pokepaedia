@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { useState } from 'react'
-import prisma from '../../lib/prisma'
+// import prisma from '../../lib/prisma'
 import SearchNav from '../../components/SearchNav'
 import SearchList from '../../components/SearchList'
 import { filterNoImage,  getPokemonAsync } from '../../lib/controllers'
@@ -26,29 +26,31 @@ const typeOptions = [
   'fairy',
 ]
 
-export const getStaticProps = async() => {
-  // let pokemonTypes = []
-    // for (let i = 0; i < 1; i++) {
-      // const typeArr = await getPokemonByType('fire')
-      // console.log(typeArr)
-      // const filteredArr = filterNoImage(typeArr)
-      // const allByType = await getPokemonAsync(typeArr)
-      // pokemonTypes.push([
-      //   { type: i, pokemon: allByType}
-      // ])
-    // } 
-    const pokemonNames = await prisma.pokemon.findMany({
-    select: { name: true }
-    })
-    return {
-    props : { pokemonNames }
-  }
+// export const getStaticProps = async() => {
+//   // let pokemonTypes = []
+//     // for (let i = 0; i < 1; i++) {
+//       // const typeArr = await getPokemonByType('fire')
+//       // console.log(typeArr)
+//       // const filteredArr = filterNoImage(typeArr)
+//       // const allByType = await getPokemonAsync(typeArr)
+//       // pokemonTypes.push([
+//       //   { type: i, pokemon: allByType}
+//       // ])
+//     // } 
+//     const pokemonNames = await prisma.pokemon.findMany({
+//       include: {
+//         type: true,
+//         ability: true,
+//       },
+// })
+//     return {
+//     props : { pokemonNames }
+//   }
 
-}
+// }
 
- const Search = ({ pokemonNames }) => {
+ const Search = () => {
    const [selection, setSelection] = useState([])
-  //  console.log(pokemonTypes)
 
   return (
         <>
@@ -58,7 +60,7 @@ export const getStaticProps = async() => {
             <link rel="icon" href="/favicon.ico" />
           </Head>
           <main>
-            <SearchNav names={pokemonNames} selection={selection} setSelection={setSelection}/>
+            <SearchNav selection={selection} setSelection={setSelection}/>
             <SearchList selection={selection}/>
           </main>
           </>
