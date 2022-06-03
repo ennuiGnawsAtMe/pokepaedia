@@ -37,6 +37,7 @@ model Pokemon {
 model Type {
   id      Int       @id @unique @default(autoincrement())
   type    String
+  url     String
   pokemon Pokemon[]
 }
 

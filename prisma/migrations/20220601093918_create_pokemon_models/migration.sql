@@ -27,6 +27,7 @@ CREATE TABLE "Pokemon" (
 CREATE TABLE "Type" (
     "id" SERIAL NOT NULL,
     "type" TEXT NOT NULL,
+    "url" TEXT NOT NULL,
 
     CONSTRAINT "Type_pkey" PRIMARY KEY ("id")
 );
@@ -59,10 +60,10 @@ CREATE UNIQUE INDEX "Pokemon_pokedex_key" ON "Pokemon"("pokedex");
 CREATE UNIQUE INDEX "Pokemon_name_key" ON "Pokemon"("name");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Type_type_key" ON "Type"("type");
+CREATE UNIQUE INDEX "Type_id_key" ON "Type"("id");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "Ability_ability_key" ON "Ability"("ability");
+CREATE UNIQUE INDEX "Ability_id_key" ON "Ability"("id");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "_PokemonToType_AB_unique" ON "_PokemonToType"("A", "B");
