@@ -1,56 +1,24 @@
 import Head from 'next/head'
 import { useState } from 'react'
-// import prisma from '../../lib/prisma'
+import prisma from '../../lib/prisma'
 import SearchNav from '../../components/SearchNav'
 import SearchList from '../../components/SearchList'
-import { filterNoImage,  getPokemonAsync } from '../../lib/controllers'
-import { getPokemonByType } from '../../lib/api'
 
-const typeOptions = [
-  'normal',
-  'fire', 
-  'water',
-  'grass',
-  'electric',
-  'ice',
-  'fighting',
-  'poison',
-  'ground',
-  'psychic',
-  'bug',
-  'rock', 
-  'ghost',
-  'dark', 
-  'dragon',
-  'steel',
-  'fairy',
-]
+export const getStaticProps = async() => {
+    const allPokemon = await prisma.pokemon.findMany({
+      include: {
+        type: true,
+        ability: true,
+      },
+})
+    return {
+    props : { allPokemon }
+  }
 
-// export const getStaticProps = async() => {
-//   // let pokemonTypes = []
-//     // for (let i = 0; i < 1; i++) {
-//       // const typeArr = await getPokemonByType('fire')
-//       // console.log(typeArr)
-//       // const filteredArr = filterNoImage(typeArr)
-//       // const allByType = await getPokemonAsync(typeArr)
-//       // pokemonTypes.push([
-//       //   { type: i, pokemon: allByType}
-//       // ])
-//     // } 
-//     const pokemonNames = await prisma.pokemon.findMany({
-//       include: {
-//         type: true,
-//         ability: true,
-//       },
-// })
-//     return {
-//     props : { pokemonNames }
-//   }
+}
 
-// }
-
- const Search = () => {
-   const [selection, setSelection] = useState([])
+ const Search = ({ allPokemon }) => {
+   const [selection, setSelection] = useState(allPokemon)
 
   return (
         <>
@@ -60,8 +28,8 @@ const typeOptions = [
             <link rel="icon" href="/favicon.ico" />
           </Head>
           <main>
-            <SearchNav selection={selection} setSelection={setSelection}/>
-            <SearchList selection={selection}/>
+            <SearchNav allPokemon={allPokemon} selection={selection} setSelection={setSelection}/>
+            {selection && <SearchList selection={selection} />}
           </main>
           </>
   )

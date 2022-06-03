@@ -1,7 +1,6 @@
 import Head from 'next/head'
-import { useState } from 'react'
 import RandomPokemon from '../components/RandomPokemon.jsx'
-import { getRandomId  } from '../lib/controllers'
+import { getRandomId  } from '../lib/utils'
 import prisma from '../lib/prisma.js'
 
 export const getStaticProps = async () => {
@@ -20,7 +19,6 @@ export const getStaticProps = async () => {
   }
 
  const Home = ({ pokemon }) => {
-  const [latestPokemon, setLatestPokemon] = useState(pokemon)
 
   return (
     <>
@@ -30,7 +28,7 @@ export const getStaticProps = async () => {
         <link rel="icon" href="/images/favicon.ico" />
       </Head>
       <main>
-        <RandomPokemon {...latestPokemon} setState={setLatestPokemon}/>
+        <RandomPokemon initialPokemon={pokemon} />
       </main>
     </>
   )

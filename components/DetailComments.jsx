@@ -4,7 +4,7 @@ const DetailComments = ({ pokemon }) => {
 
   return (
     <div className={styles.container}>
-      <p>comments</p>
+      <p>{pokemon.name} comments</p>
     </div>
         )}
 

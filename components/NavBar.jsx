@@ -2,9 +2,9 @@ import styles from '../styles/NavBar.module.css'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+
 const NavBar = () => {
     const router = useRouter();
-
 
   return (
        <header className ={styles.container}>

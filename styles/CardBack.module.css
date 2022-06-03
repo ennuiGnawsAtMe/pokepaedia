@@ -5,7 +5,7 @@
   padding: 0px 10px;
   border: solid 5px #47a8bd;
   height: 390px;
-  width: 250px;
+  width: 280px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: transform 500ms;
   border-radius: 10px;
@@ -150,6 +150,10 @@
   text-align: right;
   font-family: "Playfair Display", serif;
   font-size: 0.8rem;
+}
+
+.footer button:hover {
+  color: #ea9c78;
 }
 
 .trainerDetails {

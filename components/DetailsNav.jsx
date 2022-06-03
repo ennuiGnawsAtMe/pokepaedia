@@ -4,8 +4,6 @@ const DetailsNav = ({ component, setComponent }) => {
 
     const clickHandler = (str) => {
         setComponent(str)
-        console.log(component)
-
     }
 
   return (

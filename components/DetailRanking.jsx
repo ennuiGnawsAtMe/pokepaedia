@@ -4,7 +4,7 @@ const DetailRanking = ({ pokemon }) => {
 
   return (
     <div className={styles.container}>
-      <p>ranking</p>
+      <p>{pokemon.name} ranking</p>
     </div>
         )}
 
