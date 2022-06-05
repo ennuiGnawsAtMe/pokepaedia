@@ -15,7 +15,7 @@ const CardFront = ({ pokemon, colour, flip }) => {
         </div>
       </div>
         <div className={styles.imageContainer}>
-          <Link href={`/search/${pokemon.name.toLowerCase()}`}>
+          <Link href={`/${pokemon.name.toLowerCase()}`}>
               <a>
                 <Image 
                 src={pokemon.image} 
@@ -28,7 +28,7 @@ const CardFront = ({ pokemon, colour, flip }) => {
         </div>
           <div className={styles.nameContainer}>
           <h2>
-              <Link href={`/search/${pokemon.name.toLowerCase()}`}><a>
+              <Link href={`/${pokemon.name.toLowerCase()}`}><a>
                   {pokemon.name}
                   </a></Link>
                   </h2>

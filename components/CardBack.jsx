@@ -7,14 +7,14 @@ const CardBack = ({ pokemon, colour, flip}) => {
   return (
     <div style={{border:`solid 5px ${colour}`}} className={styles.container}>
       <div className={styles.topDetail}>
-        {pokemon.evolvesFrom?.name ? <h3>EVOLUTION</h3> : <h3>BASIC</h3>}
+        {pokemon.evolvesFrom ? <h3>EVOLUTION</h3> : <h3>BASIC</h3>}
         <div className={styles.imageText}>
         <h4>Pokédex:</h4><h3>{pokemon.pokedex}</h3>
         <h4>hp:</h4><h3>{pokemon.hp}</h3>
         </div>
       </div>
         <div className={styles.imageContainer}>
-          <Link href={`/search/${pokemon.name.toLowerCase()}`}>
+          <Link href={`/${pokemon.name.toLowerCase()}`}>
               <a>
               <Image 
               src={pokemon.image}
@@ -27,7 +27,7 @@ const CardBack = ({ pokemon, colour, flip}) => {
         </div>
           <div className={styles.nameContainer}>
           <h2>
-              <Link href={`/search/${pokemon.name.toLowerCase()}`}><a>
+              <Link href={`/${pokemon.name.toLowerCase()}`}><a>
                   {pokemon.name}
                   </a></Link>
                   </h2>

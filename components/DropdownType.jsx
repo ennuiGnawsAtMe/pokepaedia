@@ -1,48 +1,31 @@
+import { useEffect, useState } from 'react'
 import Select from 'react-select'
-import { getPokemonByType } from '../lib/api'
-import { getPokemonAsync, filterNoImage } from '../lib/utils'
-
-export const typeOptions = [
-  {value: 'normal', label: 'Normal'},
-  {value: 'fire', label: 'Fire'},
-  {value: 'water', label: 'Water'},
-  {value: 'grass', label: 'Grass'},
-  {value: 'electric', label: 'Electric'},
-  {value: 'ice', label: 'Ice'},
-  {value: 'fighting', label: 'Fighting'},
-  {value: 'poison', label: 'Poison'},
-  {value: 'ground', label: 'Ground'},
-  {value: 'flying', label: 'Flying'},
-  {value: 'psychic', label: 'Psychic'},
-  {value: 'bug', label: 'Bug'},
-  {value: 'rock', label: 'Rock'},
-  {value: 'ghost', label: 'Ghost'},
-  {value: 'dark', label: 'Dark'},
-  {value: 'dragon', label: 'Dragon'},
-  {value: 'steel', label: 'Steel'},
-  {value: 'fairy', label: 'Fairy'},
-]
+import styles from '../styles/DropdownType.module.css'
+import { getTypeOptions } from '../lib/utils'
+import { TYPEID } from '../prisma/utils'
 
 const DropdownType = ({ allPokemon, setSelection }) => {
+  const [options, setOptions] = useState({})
 
-const changeHandler = async (type) => {
-    try {
-      const byTypeArr = await getPokemonByType(type)
-      const filteredArr = filterNoImage(byTypeArr)
-      const allByType = await getPokemonAsync(filteredArr)
-      setSelection(allByType.slice(0).reverse())
-    } catch (e) {
-      console.error(e)
-    }
+useEffect(() => {
+  setOptions(getTypeOptions(TYPEID))
+}, []);
+
+const changeHandler = (typeID) => {
+  const newSelection = []
+    allPokemon.forEach(poke => {
+      poke.type.forEach(element => element.id == typeID && newSelection.push(poke))
+    })
+  setSelection(newSelection)
 }
 
 return (
-  <div>
+  <div className={styles.container}>
     <Select
           placeholder={`Search Pokemon by Type`}
-          options={typeOptions}
+          options={options}
           instanceId="type-value-select"
-          onChange={e => changeHandler(e.value)}
+          onChange={event => changeHandler(event.value)}
         />
   </div>
 )

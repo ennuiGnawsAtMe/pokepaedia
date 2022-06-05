@@ -1,5 +1,7 @@
 import Select from 'react-select'
 import styles from '../styles/DropdownName.module.css'
+import { useState } from 'react'
+
 
 const DropdownName = ({ allPokemon, setSelection}) => {
 
@@ -10,14 +12,8 @@ const DropdownName = ({ allPokemon, setSelection}) => {
     }
   })
 
-// const getMultiPokeArray = (arr) => {
-//   const multiPokeArray = arr.map(e => e.value)
-//   return multiPokeArray
-// }
-
-const changeHandler = async (selection) => {
+const changeHandler = (selection) => {
     const pokedexList = selection.map(element => element.value)
-    console.log(pokedexList)
     const newSelection = []
     for (let i = 0; i < pokedexList.length; i++) {
       newSelection.push(allPokemon.find(({ pokedex }) => pokedex === pokedexList[i]))

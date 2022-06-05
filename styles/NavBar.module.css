@@ -3,8 +3,13 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 95vw;
-  max-width: 1280px;
+  max-width: 1920px;
+  margin: auto;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: white;
+  padding: 0 2.5vw 2vh 2.5vw;
 }
 
 .logo {
@@ -16,11 +21,12 @@
 }
 
 .title {
-  padding-right: 4rem;
+  padding-right: 1vw;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  width: 30vw;
 }
 
 .title h1 {
@@ -37,82 +43,53 @@
   margin: 0;
 }
 
+.navDropdown {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
 .nav {
   display: flex;
-  flex-direction: row;
   justify-content: flex-end;
-  align-items: center;
-  margin: 10px 0px;
 }
 
-/* FANCY NAV BUTTONS */
-.button56 {
-  align-items: center;
-  background-color: #47a8bd;
-  border: 2px solid #111;
-  border-radius: 8px;
-  box-sizing: border-box;
-  color: white;
+.nav li {
+  display: inline-block;
+  font-size: 1em;
+  list-style-type: none;
+  padding-left: 0.5vw;
+  font-family: "Playfair Display", serif;
   cursor: pointer;
-  display: flex;
-  height: 30px;
-  justify-content: center;
-  line-height: 24px;
-  max-width: 100%;
-  padding: 0 20px;
-  margin: 0px 7px;
-  position: relative;
-  text-align: center;
-  text-decoration: none;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
+  transition: transform 0.2s ease;
 }
 
-.button56:after {
-  background-color: #111;
-  border-radius: 8px;
-  content: "";
-  display: block;
-  height: 30px;
-  left: 0;
-  width: 100%;
-  position: absolute;
-  top: -2px;
-  transform: translate(8px, 8px);
-  transition: transform 0.2s ease-out;
-  z-index: -1;
-}
-
-.button56:hover:after {
-  transform: translate(0, 0);
-}
-
-.button56:active {
-  background-color: #ea9c78;
-  outline: 0;
-}
-
-.button56:hover {
-  background-color: #ea9c78;
-  color: black;
-  outline: 0;
-}
-
-.btnContainer {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: right;
-}
-
-.btnContainer button {
-  background-color: transparent;
-  border: none;
-  transition: transform 0.2s ease-out;
-}
-
-.btnContainer button:hover {
+.nav li:hover {
   transform: translateY(-3px);
+}
+
+.nav a:hover {
   color: #ea9c78;
+}
+
+.active a {
+  color: #ea9c78;
+}
+
+.login {
+  padding: 10px 15px;
+  margin-left: 15px;
+  background-color: #47a8bd;
+  color: white;
+  font-family: "Open Sans", sans-serif;
+  border: none;
+}
+
+.login:hover {
+  background-color: #327685;
+}
+
+.login:active {
+  background-color: orange;
+  transform: translate(3px, 3px);
 }

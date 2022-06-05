@@ -2,6 +2,7 @@ import Head from 'next/head'
 import RandomPokemon from '../components/RandomPokemon.jsx'
 import { getRandomId  } from '../lib/utils'
 import prisma from '../lib/prisma.js'
+import NavBar from '../components/NavBar.jsx'
 
 export const getStaticProps = async () => {
   const randomInt = getRandomId()
@@ -28,6 +29,7 @@ export const getStaticProps = async () => {
         <link rel="icon" href="/images/favicon.ico" />
       </Head>
       <main>
+        <NavBar />
         <RandomPokemon initialPokemon={pokemon} />
       </main>
     </>
