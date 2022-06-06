@@ -5,21 +5,35 @@ import prisma from '../lib/prisma.js'
 import NavBar from '../components/NavBar.jsx'
 
 export const getStaticProps = async () => {
-  const randomInt = getRandomId()
-    const pokemon = await prisma.pokemon.findUnique({
-      where: {
-        pokedex: randomInt,
+    const randomInt = getRandomId()
+    const allPokemon = await prisma.pokemon.findMany({
+      select: {
+        name: true,
+        image: true,
+        blurb: true,
+        pokedex: true
       },
-        select: { 
-          name: true, 
-          image: true, 
-          blurb: true 
-        }
-      })
-      return { props: { pokemon } }
-  }
+    })
 
- const Home = ({ pokemon }) => {
+    const initialPokemon = await prisma.pokemon.findUnique({
+      where: {
+        pokedex: randomInt
+      },
+      select: {
+        name: true,
+        image: true,
+        blurb: true,
+        pokedex: true
+      },
+    })
+
+  
+    return {
+    props : { initialPokemon, allPokemon }
+  }
+}
+
+ const Home = ({ initialPokemon, allPokemon }) => {
 
   return (
     <>
@@ -30,7 +44,7 @@ export const getStaticProps = async () => {
       </Head>
       <main>
         <NavBar />
-        <RandomPokemon initialPokemon={pokemon} />
+        <RandomPokemon initialPokemon={initialPokemon} allPokemon={allPokemon}/>
       </main>
     </>
   )

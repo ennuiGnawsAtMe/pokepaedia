@@ -27,7 +27,7 @@ export const getStaticProps = async () => {
 }
 
 const Category = ({ allPokemon }) => {
-  const [selection, setSelection] = useState(allPokemon)
+  const [selection, setSelection] = useState([])
 
   return (
         <>

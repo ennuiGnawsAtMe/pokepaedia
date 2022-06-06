@@ -1,15 +1,15 @@
 import Image from 'next/image'
-import axios from 'axios'
 import { useState } from 'react'
+import { getRandomId } from '../lib/utils'
 import styles from '../styles/RandomPokemon.module.css'
 
-const RandomPokemon = (props) => {
-  const [pokemon, setPokemon] = useState(props.initialPokemon)
+const RandomPokemon = ({ initialPokemon, allPokemon }) => {
+  const [pokemon, setPokemon] = useState(initialPokemon)
 
-  const clickHandler = async () => {
-    const res = await axios
-        .get(`/api/getRandomPokemon`)
-        setPokemon(res.data)
+  const clickHandler = () => {
+        const randomInt = getRandomId()
+        const randomPokemon = allPokemon.filter(poke => poke.pokedex === randomInt)
+        setPokemon(randomPokemon[0])
   }
 
   return (
