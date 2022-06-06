@@ -21,6 +21,7 @@ const RandomPokemon = (props) => {
                 alt={pokemon.name}
                 layout="fill" 
                 objectFit='contain'
+                priority
             />
         </div>
         <div className={styles.details}>

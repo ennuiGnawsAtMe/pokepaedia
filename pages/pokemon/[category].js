@@ -7,10 +7,8 @@ import NavBar from '../../components/NavBar'
 export const getStaticPaths = async () => {
   return {
     paths: [
-      { params: { category: 'all' } },
       { params: { category: 'by-name' } },
       { params: { category: 'by-type' } },
-      { params: { category: 'by-rating' } },
       { params: { category: 'by-colour' } },
       { params: { category: 'by-habitat' } },
     ], fallback: false }
@@ -31,10 +29,6 @@ export const getStaticProps = async () => {
 const Category = ({ allPokemon }) => {
   const [selection, setSelection] = useState(allPokemon)
 
-  const handleState = (state) => {
-    setSelection(state)
-  }
-
   return (
         <>
           <Head>
@@ -43,7 +37,7 @@ const Category = ({ allPokemon }) => {
             <link rel="icon" href="/favicon.ico" />
           </Head>
           <main>
-            <NavBar allPokemon={allPokemon} setSelection={handleState} />
+            <NavBar allPokemon={allPokemon} setSelection={setSelection} />
             <SearchList selection={selection} />
           </main>
         </>

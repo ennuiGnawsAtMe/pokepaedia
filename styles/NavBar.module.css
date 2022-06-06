@@ -12,21 +12,13 @@
   padding: 0 2.5vw 2vh 2.5vw;
 }
 
-.logo {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 2vh 1vw 2vh 0;
-}
-
 .title {
   padding-right: 1vw;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  width: 30vw;
+  width: 40vw;
 }
 
 .title h1 {
@@ -43,10 +35,19 @@
   margin: 0;
 }
 
+.logo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2vh 1vw 2vh 0;
+}
+
 .navDropdown {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  width: 100%;
 }
 
 .nav {
