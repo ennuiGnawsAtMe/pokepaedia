@@ -37,7 +37,6 @@ const NavBar = ({ allPokemon, setSelection }) => {
                         alt="PokéPaedia"
                         width={120}
                         height={120}
-                        priority
                     />
                 </span>
                 <div className={styles.titleText}>
