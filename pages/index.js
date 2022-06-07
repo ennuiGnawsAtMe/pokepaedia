@@ -12,6 +12,9 @@ export const getStaticProps = async () => {
 
  const Home = ({ allPokemon }) => {
 
+  const newJson = data.pokemon.map(poke => ({...poke, image: `/images/pokemon/${poke.name.toLowerCase()}.png`}))
+  console.log(newJson)
+
     return (
       <>
         <Head>
@@ -20,8 +23,8 @@ export const getStaticProps = async () => {
           <link rel="icon" href="/images/favicon.ico" />
         </Head>
         <main>
-          <NavBar allPokemon={allPokemon}/>
-          <RandomPokemon allPokemon={allPokemon}/>
+          <NavBar allPokemon={newJson}/>
+          <RandomPokemon allPokemon={newJson}/>
         </main>
       </>
     )
