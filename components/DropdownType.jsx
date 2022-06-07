@@ -2,19 +2,19 @@ import { useEffect, useState } from 'react'
 import Select from 'react-select'
 import styles from '../styles/DropdownType.module.css'
 import { getTypeOptions } from '../lib/utils'
-import { TYPEID } from '../prisma/utils'
+import { types } from '../lib/utils'
 
 const DropdownType = ({ allPokemon, setSelection }) => {
   const [options, setOptions] = useState({})
 
 useEffect(() => {
-  setOptions(getTypeOptions(TYPEID))
+  setOptions(getTypeOptions(types))
 }, []);
 
-const changeHandler = (typeID) => {
+const changeHandler = (typeName) => {
   const newSelection = []
     allPokemon.forEach(poke => {
-      poke.type.forEach(element => element.id == typeID && newSelection.push(poke))
+      poke.type.forEach(element => element.type == typeName && newSelection.push(poke))
     })
   setSelection(newSelection)
 }

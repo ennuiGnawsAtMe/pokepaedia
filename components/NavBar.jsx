@@ -6,12 +6,13 @@ import DropdownName from './DropdownName'
 import DropdownType from './DropdownType'
 import DropdownHabitat from './DropdownHabitat'
 import DropdownColour from './DropdownColour'
+import { getRandomPoke } from '../lib/utils'
 
 
 const NavBar = ({ allPokemon, setSelection }) => {
   const router = useRouter()
   const { category } = router.query
-
+  const { name } = getRandomPoke(allPokemon)
 
   const dropdowns = {
     'all': null,
@@ -32,10 +33,11 @@ const NavBar = ({ allPokemon, setSelection }) => {
               <div className={styles.title}>
                 <span className={styles.logo}>
                     <Image 
-                        src="https://img.pokemondb.net/artwork/large/ivysaur.jpg"
+                        src={`/images/pokemon/${name.toLowerCase()}.png`}
                         alt="PokéPaedia"
                         width={120}
-                        height={100}
+                        height={120}
+                        priority
                     />
                 </span>
                 <div className={styles.titleText}>

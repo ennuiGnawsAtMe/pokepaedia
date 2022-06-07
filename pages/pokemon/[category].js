@@ -33,8 +33,8 @@ const Category = ({ allPokemon }) => {
             <link rel="icon" href="/favicon.ico" />
           </Head>
           <main>
-            <NavBar allPokemon={allPokemon} setSelection={setSelection} />
-            <SearchList selection={selection} />
+            <NavBar allPokemon={allPokemon} selection={selection} setSelection={setSelection} />
+            <SearchList allPokemon={allPokemon} selection={selection} setSelection={setSelection} />
           </main>
         </>
   )

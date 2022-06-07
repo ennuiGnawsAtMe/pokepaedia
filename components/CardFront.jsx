@@ -36,9 +36,9 @@ const CardFront = ({ pokemon, colour, flip }) => {
         <div className={styles.details}>
         <div className={styles.detailsTop}>
             <span><h4>Attack</h4><h3>{pokemon.attack}</h3></span>
-            <span><h4>Defence</h4><h3>{pokemon.defence}</h3></span>
+            <span><h4>Defence</h4><h3>{pokemon.defense}</h3></span>
             <span><h4>Sp Attack</h4><h3>{pokemon.specialAttack}</h3></span>
-            <span><h4>Sp Defence</h4><h3>{pokemon.specialDefence}</h3></span>
+            <span><h4>Sp Defence</h4><h3>{pokemon.specialDefense}</h3></span>
         </div>
         <div className={styles.detailsMiddle}>
             <span><h4>Height</h4><h3>{pokemon.height}ft</h3></span>

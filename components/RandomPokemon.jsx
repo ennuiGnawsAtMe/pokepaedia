@@ -3,8 +3,8 @@ import { useState } from 'react'
 import { getRandomPoke } from '../lib/utils'
 import styles from '../styles/RandomPokemon.module.css'
 
-const RandomPokemon = ({ allPokemon }) => {
-  const [pokemon, setPokemon] = useState(allPokemon[0])
+const RandomPokemon = ({ allPokemon, initialPokemon }) => {
+  const [pokemon, setPokemon] = useState(initialPokemon)
 
   const clickHandler = () => {
         setPokemon(getRandomPoke(allPokemon))
@@ -14,7 +14,7 @@ const RandomPokemon = ({ allPokemon }) => {
       <div className={styles.container} onClick={clickHandler} style={{cursor:"pointer"}}>
         <div className={styles.imageContainer}>
             <Image 
-                src={pokemon.image}
+                src={`/images/pokemon/${pokemon.name.toLowerCase()}.png`}
                 alt={pokemon.name}
                 layout="fill" 
                 objectFit='contain'
