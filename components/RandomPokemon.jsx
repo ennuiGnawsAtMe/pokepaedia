@@ -15,7 +15,7 @@ const RandomPokemon = ({ allPokemon }) => {
       <div className={styles.container} onClick={clickHandler} style={{cursor:"pointer"}}>
         <div className={styles.imageContainer}>
             <Image 
-                src={`/images/pokemon/${pokemon.name.toLowerCase()}.png`}
+                src={pokemon.image}
                 alt={pokemon.name}
                 layout="fill" 
                 objectFit='contain'

@@ -1,13 +1,10 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import RandomPokemon from '../components/RandomPokemon.jsx'
-import { getRandomPoke } from '../lib/utils'
 import NavBar from '../components/NavBar.jsx'
 import data from '../data/all.json'
 
 export const getStaticProps = async () => {
     const allPokemon = data.pokemon
-    // const randomPokemon = getRandomPoke(allPokemon)
     return {
       props : { allPokemon }
     }

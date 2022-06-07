@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { useState } from 'react'
+import { useState, useReducer } from 'react'
 import SearchList from '../../components/SearchList'
 import NavBar from '../../components/NavBar'
 import data from '../../data/all.json'
