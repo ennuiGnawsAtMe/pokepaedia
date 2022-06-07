@@ -1,8 +1,8 @@
 import Head from 'next/head'
 import { useState } from 'react'
-import prisma from '../../lib/prisma'
 import SearchList from '../../components/SearchList'
 import NavBar from '../../components/NavBar'
+import data from '../../data/all.json'
 
 export const getStaticPaths = async () => {
   return {
@@ -12,18 +12,14 @@ export const getStaticPaths = async () => {
       { params: { category: 'by-colour' } },
       { params: { category: 'by-habitat' } },
     ], fallback: false }
-  }
+}
 
 export const getStaticProps = async () => {
-    const allPokemon = await prisma.pokemon.findMany({
-      include: {
-        type: true,
-        ability: true,
-      },
-})
+    const allPokemon = data.pokemon
+
     return {
-    props : { allPokemon }
-  }
+      props : { allPokemon }
+    }
 }
 
 const Category = ({ allPokemon }) => {

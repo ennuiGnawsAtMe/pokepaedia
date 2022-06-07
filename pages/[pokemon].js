@@ -1,18 +1,14 @@
 import Head from 'next/head'
-import prisma from '../lib/prisma'
 import Detail from '../components/Detail'
 import { capitalise } from '../lib/utils'
+import data from '../data/all.json'
 
 export const getStaticPaths = async () => {
-  const pokemonNames = await prisma.pokemon.findMany({
-    select: { 
-      name: true 
-    }
-  })
+  const pokemonNames = data.pokemon.map(poke => poke.name)
 
-  const paths = pokemonNames.map(pokeName => ({
+  const paths = pokemonNames.map(poke => ({
     params: { 
-      pokemon: pokeName.name.toLowerCase()
+      pokemon: poke.toLowerCase()
     }
   }))
 
@@ -20,19 +16,12 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps = async ({ params }) => {
-    const onePokemon = await prisma.pokemon.findUnique({
-      where: {
-        name: capitalise(params.pokemon)
-      },
-      include: {
-        type: true,
-        ability: true,
-      },
-})
+    const onePokemon = data.pokemon.find(poke => poke.name === capitalise(params.pokemon))
+
     return {
-    props : { onePokemon }
-  }
-      }
+      props : { onePokemon }
+    }
+}
 
  const PokemonDetail = ({ onePokemon }) => {
 

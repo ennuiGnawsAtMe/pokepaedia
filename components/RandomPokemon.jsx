@@ -1,19 +1,16 @@
 import Image from 'next/image'
 import { useState } from 'react'
-import { getRandomId } from '../lib/utils'
+import { getRandomPoke } from '../lib/utils'
 import styles from '../styles/RandomPokemon.module.css'
 
-const RandomPokemon = ({ initialPokemon, allPokemon }) => {
-  const [pokemon, setPokemon] = useState(initialPokemon)
+const RandomPokemon = ({ allPokemon }) => {
+  const [pokemon, setPokemon] = useState(allPokemon[0])
 
   const clickHandler = () => {
-        const randomInt = getRandomId()
-        const randomPokemon = allPokemon.filter(poke => poke.pokedex === randomInt)
-        setPokemon(randomPokemon[0])
+        setPokemon(getRandomPoke(allPokemon))
   }
 
   return (
-    <>
       <div className={styles.container} onClick={clickHandler} style={{cursor:"pointer"}}>
         <div className={styles.imageContainer}>
             <Image 
@@ -30,7 +27,6 @@ const RandomPokemon = ({ initialPokemon, allPokemon }) => {
           <button style={{cursor:"pointer"}}>&gt;&gt;&gt; Next</button>
         </div>
       </div>
-    </>
   )
 }
 
