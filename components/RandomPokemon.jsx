@@ -3,8 +3,8 @@ import { useState } from 'react'
 import { getRandomPoke } from '../lib/utils'
 import styles from '../styles/RandomPokemon.module.css'
 
-const RandomPokemon = ({ allPokemon, initialPokemon }) => {
-  const [pokemon, setPokemon] = useState(initialPokemon)
+const RandomPokemon = ({ allPokemon }) => {
+  const [pokemon, setPokemon] = useState(allPokemon[0])
 
   const clickHandler = () => {
         setPokemon(getRandomPoke(allPokemon))
@@ -18,6 +18,7 @@ const RandomPokemon = ({ allPokemon, initialPokemon }) => {
                 alt={pokemon.name}
                 layout="fill" 
                 objectFit='contain'
+                loading="eager"
             />
         </div>
         <div className={styles.details}>

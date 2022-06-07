@@ -4,15 +4,15 @@ import { getRandomPoke } from '../lib/utils'
 import NavBar from '../components/NavBar.jsx'
 import data from '../data/all.json'
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
     const allPokemon = data.pokemon
-    const randomPokemon = getRandomPoke(allPokemon)
+    // const randomPokemon = getRandomPoke(allPokemon)
     return {
-      props : { initialPokemon: randomPokemon, allPokemon }
+      props : { allPokemon }
     }
 }
 
- const Home = ({ initialPokemon, allPokemon }) => {
+ const Home = ({ allPokemon }) => {
 
     return (
       <>
@@ -23,7 +23,7 @@ export const getServerSideProps = async () => {
         </Head>
         <main>
           <NavBar allPokemon={allPokemon}/>
-          <RandomPokemon initialPokemon={initialPokemon} allPokemon={allPokemon}/>
+          <RandomPokemon allPokemon={allPokemon}/>
         </main>
       </>
     )
