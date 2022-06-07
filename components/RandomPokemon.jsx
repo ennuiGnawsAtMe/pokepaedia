@@ -7,7 +7,8 @@ const RandomPokemon = ({ allPokemon }) => {
   const [pokemon, setPokemon] = useState(allPokemon[0])
 
   const clickHandler = () => {
-        setPokemon(getRandomPoke(allPokemon))
+    const random = getRandomPoke(allPokemon)
+    setPokemon(random)
   }
 
   return (
