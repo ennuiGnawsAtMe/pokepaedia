@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Image from 'next/image'
 import RandomPokemon from '../components/RandomPokemon.jsx'
 import { getRandomPoke } from '../lib/utils'
 import NavBar from '../components/NavBar.jsx'
@@ -24,6 +25,13 @@ export const getStaticProps = async () => {
         <main>
           <NavBar allPokemon={allPokemon}/>
           <RandomPokemon allPokemon={allPokemon}/>
+          <Image 
+                src={`/images/pokemon/pikachu.png`}
+                alt="pikachu"
+                height={200}
+                width={200} 
+                loading="eager"
+            />
         </main>
       </>
     )
