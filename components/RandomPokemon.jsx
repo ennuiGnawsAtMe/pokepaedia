@@ -9,8 +9,6 @@ const RandomPokemon = () => {
   const [allPokemon, setAllPokemon] = useContext(allPokemonContext)
   const [pokemon, setPokemon] = useState(allPokemon[0])
 
-  console.log(pokemon)
-
   const clickHandler = () => {
     setPokemon(getRandomPoke(allPokemon))
   }
@@ -19,10 +17,10 @@ const RandomPokemon = () => {
       <div className={styles.container} onClick={clickHandler} style={{cursor:"pointer"}}>
         <div className={styles.imageContainer}>
             <Image 
-                src={pokemon.imageLocal}
+                src={pokemon.image}
                 alt={pokemon.name}
-                width={475}
-                height={475}
+                layout='fill'
+                objectFit='contain'
                 priority
             />
         </div>

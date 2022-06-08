@@ -32,7 +32,7 @@ export const getStaticProps = async () => {
           <link rel="icon" href="/images/favicon.ico" />
         </Head>
         <main>
-          <RandomPokemon allPokemon={allPokemon}/>
+          <RandomPokemon />
         </main>
       </>
     )
