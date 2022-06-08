@@ -1,26 +1,28 @@
 import Head from 'next/head'
 import { useContext, useEffect } from 'react'
 import RandomPokemon from '../components/RandomPokemon.jsx'
-import NavBar from '../components/NavBar.jsx'
 import data from '../data/all.json'
 import { getRandomPoke } from '../lib/utils.js'
 import logoContext from '../context/logoContext'
-
+import allPokemonContext from '../context/allPokemonContext.js'
 
 export const getStaticProps = async () => {
-    const allPokemon = data.pokemon
+    const allPokemonData = data.pokemon
+
     return {
-      props : { allPokemon }
+      props : { allPokemonData }
     }
 }
 
- const Home = ({ allPokemon }) => {
-   const [logo, setLogo] = useContext(logoContext)
+ const Home = ({ allPokemonData }) => {
+    const [logo, setLogo] = useContext(logoContext)
+    const [allPokemon, setAllPokemon] = useContext(allPokemonContext)
 
-  useEffect(() => {
-    const { image } = getRandomPoke(allPokemon)
-    setLogo(image)
-  }, [])
+    useEffect(() => {
+      const { imageLocal } = getRandomPoke(allPokemon)
+      setLogo(imageLocal)
+      setAllPokemon(allPokemonData)
+    }, [])
 
     return (
       <>
@@ -30,7 +32,6 @@ export const getStaticProps = async () => {
           <link rel="icon" href="/images/favicon.ico" />
         </Head>
         <main>
-          <NavBar allPokemon={allPokemon}/>
           <RandomPokemon allPokemon={allPokemon}/>
         </main>
       </>

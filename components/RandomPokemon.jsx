@@ -1,24 +1,28 @@
 import Image from 'next/image'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+import allPokemonContext from '../context/allPokemonContext'
 import { getRandomPoke } from '../lib/utils'
 import styles from '../styles/RandomPokemon.module.css'
+import pokemonImages from '../data/imgDictionary'
 
-const RandomPokemon = ({ allPokemon }) => {
+const RandomPokemon = () => {
+  const [allPokemon, setAllPokemon] = useContext(allPokemonContext)
   const [pokemon, setPokemon] = useState(allPokemon[0])
 
+  console.log(pokemon)
+
   const clickHandler = () => {
-    const random = getRandomPoke(allPokemon)
-    setPokemon(random)
+    setPokemon(getRandomPoke(allPokemon))
   }
 
   return (
       <div className={styles.container} onClick={clickHandler} style={{cursor:"pointer"}}>
         <div className={styles.imageContainer}>
             <Image 
-                src={pokemon.image}
+                src={pokemon.imageLocal}
                 alt={pokemon.name}
-                layout="fill" 
-                objectFit='contain'
+                width={475}
+                height={475}
                 priority
             />
         </div>

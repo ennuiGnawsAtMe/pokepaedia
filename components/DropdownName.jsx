@@ -1,7 +1,10 @@
 import Select from 'react-select'
+import { useContext, useState } from 'react'
 import styles from '../styles/DropdownName.module.css'
+import allPokemonContext from '../context/allPokemonContext'
 
-const DropdownName = ({ allPokemon, setSelection}) => {
+const DropdownName = () => {
+  const [allPokemon, setAllPokemon] = useContext(allPokemonContext)
 
     const options = allPokemon.map(poke => {
       return {

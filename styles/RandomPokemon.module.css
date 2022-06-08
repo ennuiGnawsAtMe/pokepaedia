@@ -38,4 +38,6 @@
   width: 35vw;
   height: 100%;
   position: relative;
+  align-items: center;
+  display: flex;
 }

@@ -1,37 +1,25 @@
 import styles from '../styles/NavBar.module.css'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
 import DropdownName from './DropdownName'
-import { useContext, useEffect } from 'react'
+import { useContext, useState } from 'react'
 import DropdownType from './DropdownType'
 import DropdownHabitat from './DropdownHabitat'
 import DropdownColour from './DropdownColour'
-import { getRandomPoke } from '../lib/utils'
 import logoContext from '../context/logoContext'
+import allPokemonContext from '../context/allPokemonContext'
 
-
-const NavBar = ({ allPokemon, setSelection }) => {
+const NavBar = () => {
+  const [dropdown, setDropdown] = useState('name')
   const [logo, setLogo] = useContext(logoContext)
-  const router = useRouter()
-  const { category } = router.query
+  const [allPokemon, setAllPokemon] = useContext(allPokemonContext)
 
-  const dropdowns = {
-    'all': null,
-    'by-name': <DropdownName allPokemon={allPokemon} setSelection={setSelection}/>,
-    'by-type': <DropdownType allPokemon={allPokemon} setSelection={setSelection}/>,
-    'by-habitat': <DropdownHabitat allPokemon={allPokemon} setSelection={setSelection}/>,
-    'by-colour': <DropdownColour allPokemon={allPokemon} setSelection={setSelection}/>,
+  const DROPDOWN_COMPONENTS = {
+    'name': <DropdownName />,
+    'type': <DropdownType />,
+    'habitat': <DropdownHabitat />,
+    'colour': <DropdownColour />,
   }
-
-  const clickHandler = (selection) => {
-    setSelection(selection)
-  }
-
-  useEffect(() => {
-    const { image } = getRandomPoke(allPokemon)
-    setLogo(image)
-  }, [])
 
   return (
        <header className ={styles.container}>
@@ -42,9 +30,10 @@ const NavBar = ({ allPokemon, setSelection }) => {
                     {logo !== '' && 
                     <Image 
                         src={logo}
-                        alt='jack'
-                        width={200}
-                        height={200}
+                        alt='The Pokemon Encyclopaedia'
+                        quality={100}
+                        height={120}
+                        width={120}
                         priority
                     />
                     }
@@ -59,25 +48,25 @@ const NavBar = ({ allPokemon, setSelection }) => {
           <div className={styles.navDropdown}>
             <nav className={styles.nav}>
               <ul>
-                <li className={router.asPath == "/pokemon/by-name" ? styles.active : undefined} >
-                  <Link href={"/pokemon/by-name"}>&gt;&gt;By Name</Link>
+                <li className={dropdown === "name" ? styles.active : undefined} >
+                  &gt;&gt;By Name
                 </li>
-                <li className={router.asPath == "/pokemon/by-type" ? styles.active : undefined} >
-                  <Link href={"/pokemon/by-type"}>&gt;&gt;By Type</Link>
+                <li className={dropdown === "type" ? styles.active : undefined} >
+                  &gt;&gt;By Type
                 </li>
-                <li className={router.asPath == "/pokemon/by-habitat" ? styles.active : undefined} >
-                  <Link href={"/pokemon/by-habitat"}>&gt;&gt;By Habitat</Link>
+                <li className={dropdown === "habitat" ? styles.active : undefined} >
+                  &gt;&gt;By Habitat
                 </li>
-                <li className={router.asPath == "/pokemon/by-colour" ? styles.active : undefined} >
-                  <Link href={"/pokemon/by-colour"}>&gt;&gt;By Colour</Link>
+                <li className={dropdown === "colour" ? styles.active : undefined} >
+                  &gt;&gt;By Colour
                 </li>
-                {/* <li className={router.asPath == "/pokemon/by-rating" ? styles.active : undefined} >
+                {/* <li className={dropdown === "/pokemon/by-rating" ? styles.active : undefined} >
                   <Link href={"/pokemon/by-rating"}>&gt;&gt;By Rating</Link>
                 </li> */}
                 <button className={styles.login}>LOGIN</button>
               </ul>
             </nav>
-              {dropdowns[category]}
+              {DROPDOWN_COMPONENTS[dropdown]}
             </div>
        </header>
   )
