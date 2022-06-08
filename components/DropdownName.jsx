@@ -2,9 +2,12 @@ import Select from 'react-select'
 import { useContext, useState } from 'react'
 import styles from '../styles/DropdownName.module.css'
 import allPokemonContext from '../context/allPokemonContext'
+import pokemonCardsContext from '../context/pokemonCardsContext'
+
 
 const DropdownName = () => {
   const [allPokemon, setAllPokemon] = useContext(allPokemonContext)
+  const [pokemonCards, setPokemonCards] = useContext(pokemonCardsContext)
 
     const options = allPokemon.map(poke => {
       return {
@@ -19,7 +22,7 @@ const DropdownName = () => {
         for (let i = 0; i < pokedexList.length; i++) {
           newSelection.push(allPokemon.find(({ pokedex }) => pokedex === pokedexList[i]))
         }
-        setSelection(newSelection.slice(0).reverse())
+        setPokemonCards(newSelection.slice(0).reverse())
     }
 
     return (

@@ -1,9 +1,14 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import Select from 'react-select'
 import { getHabitatOptions } from '../lib/utils'
 import styles from '../styles/DropdownHabitat.module.css'
+import allPokemonContext from '../context/allPokemonContext'
+import pokemonCardsContext from '../context/pokemonCardsContext'
 
-const DropdownHabitat = ({ allPokemon, setSelection }) => {
+
+const DropdownHabitat = () => {
+    const [allPokemon, setAllPokemon] = useContext(allPokemonContext)
+    const [pokemonCards, setPokemonCards] = useContext(pokemonCardsContext)
   const [options, setOptions] = useState({})
 
 useEffect(() => {
@@ -12,7 +17,7 @@ useEffect(() => {
 
 const changeHandler = (habitatID) => {
   const newSelection = allPokemon.filter(({ habitat }) => habitat == habitatID)
-  setSelection(newSelection)
+  setPokemonCards(newSelection)
 }
 
 return (

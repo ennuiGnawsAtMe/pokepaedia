@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import allPokemonContext from '../context/allPokemonContext'
 import { getRandomPoke } from '../lib/utils'
 import styles from '../styles/RandomPokemon.module.css'
@@ -11,6 +11,10 @@ const RandomPokemon = () => {
   const clickHandler = () => {
     setPokemon(getRandomPoke(allPokemon))
   }
+
+  useEffect(() => {
+    setPokemon(getRandomPoke(allPokemon))
+  }, [])
 
   return (
       <div className={styles.container} onClick={clickHandler} style={{cursor:"pointer"}}>

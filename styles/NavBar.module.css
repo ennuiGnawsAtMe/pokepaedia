@@ -67,13 +67,10 @@
 
 .nav li:hover {
   transform: translateY(-3px);
-}
-
-.nav a:hover {
   color: #ea9c78;
 }
 
-.active a {
+.active {
   color: #ea9c78;
 }
 

@@ -1,10 +1,15 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import Select from 'react-select'
 import styles from '../styles/DropdownType.module.css'
 import { getTypeOptions } from '../lib/utils'
 import { types } from '../lib/utils'
+import allPokemonContext from '../context/allPokemonContext'
+import pokemonCardsContext from '../context/pokemonCardsContext'
 
-const DropdownType = ({ allPokemon, setSelection }) => {
+
+const DropdownType = () => {
+    const [allPokemon, setAllPokemon] = useContext(allPokemonContext)
+    const [pokemonCards, setPokemonCards] = useContext(pokemonCardsContext)
   const [options, setOptions] = useState({})
 
 useEffect(() => {
@@ -16,7 +21,7 @@ const changeHandler = (typeName) => {
     allPokemon.forEach(poke => {
       poke.type.forEach(element => element.type == typeName && newSelection.push(poke))
     })
-  setSelection(newSelection)
+  setPokemonCards(newSelection)
 }
 
 return (
