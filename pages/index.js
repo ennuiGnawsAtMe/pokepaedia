@@ -1,7 +1,11 @@
 import Head from 'next/head'
+import { useContext, useEffect } from 'react'
 import RandomPokemon from '../components/RandomPokemon.jsx'
 import NavBar from '../components/NavBar.jsx'
 import data from '../data/all.json'
+import { getRandomPoke } from '../lib/utils.js'
+import logoContext from '../context/logoContext'
+
 
 export const getStaticProps = async () => {
     const allPokemon = data.pokemon
@@ -11,9 +15,12 @@ export const getStaticProps = async () => {
 }
 
  const Home = ({ allPokemon }) => {
+   const [logo, setLogo] = useContext(logoContext)
 
-  const newJson = data.pokemon.map(poke => ({...poke, image: `/images/pokemon/${poke.name.toLowerCase()}.png`}))
-  console.log(newJson)
+  useEffect(() => {
+    const { image } = getRandomPoke(allPokemon)
+    setLogo(image)
+  }, [])
 
     return (
       <>
@@ -23,8 +30,8 @@ export const getStaticProps = async () => {
           <link rel="icon" href="/images/favicon.ico" />
         </Head>
         <main>
-          <NavBar allPokemon={newJson}/>
-          <RandomPokemon allPokemon={newJson}/>
+          <NavBar allPokemon={allPokemon}/>
+          <RandomPokemon allPokemon={allPokemon}/>
         </main>
       </>
     )

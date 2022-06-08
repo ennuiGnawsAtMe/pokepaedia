@@ -3,16 +3,18 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import DropdownName from './DropdownName'
+import { useContext, useEffect } from 'react'
 import DropdownType from './DropdownType'
 import DropdownHabitat from './DropdownHabitat'
 import DropdownColour from './DropdownColour'
 import { getRandomPoke } from '../lib/utils'
+import logoContext from '../context/logoContext'
 
 
 const NavBar = ({ allPokemon, setSelection }) => {
+  const [logo, setLogo] = useContext(logoContext)
   const router = useRouter()
   const { category } = router.query
-  const { name } = getRandomPoke(allPokemon)
 
   const dropdowns = {
     'all': null,
@@ -26,18 +28,26 @@ const NavBar = ({ allPokemon, setSelection }) => {
     setSelection(selection)
   }
 
+  useEffect(() => {
+    const { image } = getRandomPoke(allPokemon)
+    setLogo(image)
+  }, [])
+
   return (
        <header className ={styles.container}>
           <Link href="/">
               <a>
               <div className={styles.title}>
                 <span className={styles.logo}>
+                    {logo !== '' && 
                     <Image 
-                        src={`/images/pokemon/${name.toLowerCase()}.png`}
-                        alt="PokéPaedia"
-                        width={120}
-                        height={120}
+                        src={logo}
+                        alt='jack'
+                        width={200}
+                        height={200}
+                        priority
                     />
+                    }
                 </span>
                 <div className={styles.titleText}>
                 <h1>PokéPaedia</h1>

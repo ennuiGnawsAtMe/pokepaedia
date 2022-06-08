@@ -47,7 +47,7 @@ const CardFront = ({ pokemon, colour, flip }) => {
             <span><h4>Experience</h4><h3>{pokemon.experience}yrs</h3></span>
         </div>
         <div className={styles.types}>
-          {pokemon.type.map(type => <Types key={type.id} type={type.type}/>)}
+          {pokemon.type.map(type => <Types key={type.url} type={type.type}/>)}
           </div>
           </div> 
           <div className={styles.footer}>

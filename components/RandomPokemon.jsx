@@ -19,7 +19,7 @@ const RandomPokemon = ({ allPokemon }) => {
                 alt={pokemon.name}
                 layout="fill" 
                 objectFit='contain'
-                loading="eager"
+                priority
             />
         </div>
         <div className={styles.details}>
