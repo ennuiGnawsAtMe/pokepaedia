@@ -3,7 +3,6 @@ import { useState, useContext } from 'react'
 import allPokemonContext from '../context/allPokemonContext'
 import { getRandomPoke } from '../lib/utils'
 import styles from '../styles/RandomPokemon.module.css'
-import pokemonImages from '../data/imgDictionary'
 
 const RandomPokemon = () => {
   const [allPokemon, setAllPokemon] = useContext(allPokemonContext)

@@ -6,12 +6,11 @@ import { useContext, useState } from 'react'
 import DropdownType from './DropdownType'
 import DropdownHabitat from './DropdownHabitat'
 import DropdownColour from './DropdownColour'
-import logoContext from '../context/logoContext'
+import pokemonImages from '../data/imgDictionary'
 import allPokemonContext from '../context/allPokemonContext'
 
 const NavBar = () => {
   const [dropdown, setDropdown] = useState('name')
-  const [logo, setLogo] = useContext(logoContext)
   const [allPokemon, setAllPokemon] = useContext(allPokemonContext)
 
   const DROPDOWN_COMPONENTS = {
@@ -27,16 +26,14 @@ const NavBar = () => {
               <a>
               <div className={styles.title}>
                 <span className={styles.logo}>
-                    {logo !== '' && 
                     <Image 
-                        src={logo}
+                        src={pokemonImages.pikachu}
                         alt='The Pokemon Encyclopaedia'
                         quality={100}
                         height={120}
                         width={120}
                         priority
                     />
-                    }
                 </span>
                 <div className={styles.titleText}>
                 <h1>PokéPaedia</h1>

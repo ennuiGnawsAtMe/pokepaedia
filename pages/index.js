@@ -5,6 +5,9 @@ import data from '../data/all.json'
 import { getRandomPoke } from '../lib/utils.js'
 import logoContext from '../context/logoContext'
 import allPokemonContext from '../context/allPokemonContext.js'
+import pokemonCardsContext from '../context/pokemonCardsContext.js'
+import SearchList from '../components/SearchList.jsx'
+import pokemonImages from '../data/imgDictionary'
 
 export const getStaticProps = async () => {
     const allPokemonData = data.pokemon
@@ -17,10 +20,11 @@ export const getStaticProps = async () => {
  const Home = ({ allPokemonData }) => {
     const [logo, setLogo] = useContext(logoContext)
     const [allPokemon, setAllPokemon] = useContext(allPokemonContext)
+    const [pokemonCards, setPokemonCards] = useContext(pokemonCardsContext)
 
     useEffect(() => {
       const { imageLocal } = getRandomPoke(allPokemon)
-      setLogo(imageLocal)
+      setLogo(pokemonImages.pikachu)
       setAllPokemon(allPokemonData)
     }, [])
 
@@ -32,7 +36,9 @@ export const getStaticProps = async () => {
           <link rel="icon" href="/images/favicon.ico" />
         </Head>
         <main>
-          <RandomPokemon />
+          {pokemonCards.length === 0 
+          ? <RandomPokemon />
+          : <SearchList />}
         </main>
       </>
     )
