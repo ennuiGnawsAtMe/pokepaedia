@@ -1,0 +1,185 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px 10px;
+  border: solid 5px #47a8bd;
+  height: 400px;
+  width: 280px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: transform 500ms;
+  border-radius: 10px;
+  margin: 5px;
+}
+
+.container:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.topDetails {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  min-height: 8%;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.topDetails h3 {
+  font-size: 0.7em;
+  font-family: "Open Sans", sans-serif;
+  margin: 3px 5px;
+  padding: 3px 5px;
+  align-items: center;
+}
+
+.nameContainer {
+  display: flex;
+  justify-content: space-around;
+  justify-items: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  padding: 2px 10px 5px 10px;
+  min-height: 8%;
+}
+
+.nameContainer h2 {
+  font-size: 1.4rem;
+  font-family: "Playfair Display", serif;
+  margin: 0px;
+}
+
+.imageContainer {
+  min-height: 130px;
+  height: 100%;
+  width: 100%;
+  margin: 15px;
+  position: relative;
+}
+
+.imageText h4 {
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.5rem;
+  margin: 0px;
+}
+
+.imageText h3 {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1rem;
+  margin: 0px;
+}
+
+.imageText {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.types {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 10px;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 5px 10px;
+  text-align: center;
+}
+
+.detailsTop {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.detailsTop h4 {
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.5rem;
+  padding: 3px;
+  margin: 0px;
+  border-bottom: solid 1px black;
+}
+
+.detailsTop h3 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 200;
+  font-size: 1rem;
+  margin: 0px;
+}
+
+.detailsMiddle {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.detailsMiddle h4 {
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.5rem;
+  padding: 3px;
+  margin: 0px;
+  border-bottom: solid 1px black;
+}
+
+.detailsMiddle h3 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 200;
+  font-size: 0.8rem;
+  margin: 0px;
+}
+
+.trainerDetails {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.trainerDetails h4 {
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.5rem;
+  margin: 0px;
+  font-weight: 400;
+}
+
+.trainerDetails h3 {
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.8rem;
+  margin: 0px;
+  padding: 5px;
+  font-weight: 400;
+}
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 0 20px;
+  width: 260px;
+}
+
+.footer button {
+  background-color: transparent;
+  border: 0px;
+  text-align: right;
+  font-family: "Open Sans", sans-serif;
+  font-size: 11px;
+  padding: 5px 0;
+}
+
+.footer button:hover {
+  text-decoration: underline;
+}

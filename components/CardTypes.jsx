@@ -1,12 +1,14 @@
 import Link from 'next/link' 
 import Image from 'next/image'
-import styles from '../styles/CardFront.module.css'
+import { useEffect } from 'react'
+import styles from '../styles/CardTypes.module.css'
 import Types from './Types'
 
-const CardFront = ({ pokemon, colour, flip }) => {
+const CardTypes = ({ pokemon, colour, flip }) => {
+    const { backgroundColor, color } = colour
 
   return (
-    <div style={{border:`solid 5px ${colour}`, cursor:`pointer`}} className={styles.container} onClick={flip}>
+    <div style={{border:`solid 5px ${backgroundColor}`}} className={styles.container} >
       <div className={styles.topDetails}>
         {pokemon.evolvesFrom ? <h3>EVOLUTION</h3> : <h3>BASIC</h3>}
         <div className={styles.imageText}>
@@ -15,23 +17,16 @@ const CardFront = ({ pokemon, colour, flip }) => {
         </div>
       </div>
         <div className={styles.imageContainer}>
-          {/* <Link href={`/${pokemon.name.toLowerCase()}`}>
-              <a> */}
-                <Image 
-                src={pokemon.image} 
-                alt={pokemon.name}
-                layout="fill" 
-                objectFit='contain'
-                />
-              {/* </a>
-          </Link> */}
+          <Image 
+          src={pokemon.image} 
+          alt={pokemon.name}
+          layout="fill" 
+          objectFit='contain'
+          onClick={flip}
+          />
         </div>
           <div className={styles.nameContainer}>
-          <h2>
-              {/* <Link href={`/${pokemon.name.toLowerCase()}`}><a> */}
-                  {pokemon.name}
-                  {/* </a></Link> */}
-                  </h2>
+            <h2>{pokemon.name}</h2>
           </div>
         <div className={styles.details}>
         <div className={styles.detailsTop}>
@@ -50,11 +45,14 @@ const CardFront = ({ pokemon, colour, flip }) => {
           {pokemon.type.map(type => <Types key={type.url} type={type.type}/>)}
           </div>
           </div> 
-          <div style={{backgroundColor:`${colour}`}} className={styles.footer}>
-           <button>&gt;&gt; CLICK TO FLIP!</button>
-           </div>
+          <div style={{backgroundColor:`${backgroundColor}`}} className={styles.footer}>
+           <button style={{color:`${color}`, cursor:`pointer`}} >Flip Card!</button>
+           <Link href={`/${pokemon.name.toLowerCase()}`}>
+             <button style={{color:`${color}`, cursor:`pointer`}}>Pokémon Details</button>
+           </Link>
+          </div>
       </div>
   )
   }
 
-export default CardFront
+export default CardTypes

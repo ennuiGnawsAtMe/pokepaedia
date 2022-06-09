@@ -29,46 +29,47 @@ const NavBar = () => {
 
   return (
        <header className ={styles.container}>
-          <Link href="/">
-              <a>
               <div className={styles.title}>
-                <span className={styles.logo}>
-                    <Image 
+                <span className={styles.logo} >
+                    <Link href="/"><a>
+                      <Image 
                         src={pokemonImages.pichu}
                         alt='The Pokemon Encyclopaedia'
                         quality={100}
                         height={120}
                         width={120}
                         priority
-                    />
+                        onClick={() => clickHandler('name')}
+                      />
+                    </a></Link>
                 </span>
                 <div className={styles.titleText}>
                 <h1>PokéPaedia</h1>
                 <h3>An Encyclopaedia of Pokémon</h3>
                 </div>
              </div>
-             </a>
-          </Link>
           <div className={styles.navDropdown}>
             <nav className={styles.nav}>
-              <ul>
-                <li className={dropdown === "name" ? styles.active : undefined} onClick={() => clickHandler('name')}>
-                  &gt;&gt;By Name
-                </li>
-                <li className={dropdown === "type" ? styles.active : undefined} onClick={() => clickHandler('type')}>
-                  &gt;&gt;By Type
-                </li>
-                <li className={dropdown === "habitat" ? styles.active : undefined} onClick={() => clickHandler('habitat')}>
-                  &gt;&gt;By Habitat
-                </li>
-                <li className={dropdown === "colour" ? styles.active : undefined} onClick={() => clickHandler('colour')}>
-                  &gt;&gt;By Colour
-                </li>
-                {/* <li className={dropdown === "/pokemon/by-rating" ? styles.active : undefined} >
-                  <Link href={"/pokemon/by-rating"}>&gt;&gt;By Rating</Link>
-                </li> */}
-                <button className={styles.login}>LOGIN</button>
-              </ul>
+              <Link href="/">
+                <ul>
+                  <li className={dropdown === "name" ? styles.active : undefined} onClick={() => clickHandler('name')}>
+                    &gt;&gt;By Name
+                  </li>
+                  <li className={dropdown === "type" ? styles.active : undefined} onClick={() => clickHandler('type')}>
+                    &gt;&gt;By Type
+                  </li>
+                  <li className={dropdown === "habitat" ? styles.active : undefined} onClick={() => clickHandler('habitat')}>
+                    &gt;&gt;By Habitat
+                  </li>
+                  <li className={dropdown === "colour" ? styles.active : undefined} onClick={() => clickHandler('colour')}>
+                    &gt;&gt;By Colour
+                  </li>
+                  {/* <li className={dropdown === "/pokemon/by-rating" ? styles.active : undefined} >
+                    <Link href={"/pokemon/by-rating"}>&gt;&gt;By Rating</Link>
+                  </li> */}
+                  {/* <button className={styles.login}>LOGIN</button> */}
+                </ul>
+              </Link>
             </nav>
               {DROPDOWN_COMPONENTS[dropdown]}
             </div>
