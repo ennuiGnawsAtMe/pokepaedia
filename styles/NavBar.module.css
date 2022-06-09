@@ -91,3 +91,14 @@
   background-color: orange;
   transform: translate(3px, 3px);
 }
+
+.dropdownContainer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.dropdownContainer h3 {
+  font-size: 21px;
+  padding: 0;
+  margin: 5px 0;
+}

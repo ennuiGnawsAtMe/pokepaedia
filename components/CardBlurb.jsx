@@ -14,7 +14,7 @@ const CardBlurb = ({ pokemon, colour, flip }) => {
         <h4>hp:</h4><h3>{pokemon.hp}</h3>
         </div>
       </div>
-        <div className={styles.imageContainer}>
+        <div className={styles.imageContainer} style={{cursor:`pointer`}}>
           <Image 
           src={pokemon.image} 
           alt={pokemon.name}
@@ -32,10 +32,11 @@ const CardBlurb = ({ pokemon, colour, flip }) => {
         </div>
           </div> 
           <div style={{backgroundColor:`${backgroundColor}`}} className={styles.footer}>
-           <button style={{color:`${color}`, cursor:`pointer`}} >Flip Card!</button>
-           <Link href={`/${pokemon.name.toLowerCase()}`}>
-             <button style={{color:`${color}`, cursor:`pointer`}}>Pokémon Details</button>
-           </Link>
+           <button style={{color:`${color}`, cursor:`pointer`}} onClick={flip}>Flip Card!</button>
+           <button style={{color:`${color}`, cursor:`pointer`}}>
+             <Link href={`/${pokemon.name.toLowerCase()}`}><a>Pokémon Details</a></Link>
+           </button>
+           
           </div>
       </div>
   )
