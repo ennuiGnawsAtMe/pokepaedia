@@ -1,6 +1,7 @@
 import styles from '../styles/NavBar.module.css'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import DropdownName from './DropdownName'
 import { useContext, useState } from 'react'
 import DropdownType from './DropdownType'
@@ -11,9 +12,13 @@ import allPokemonContext from '../context/allPokemonContext'
 import pokemonCardsContext from '../context/pokemonCardsContext'
 
 const NavBar = () => {
+  const router = useRouter()
+  const { pokemon } = router.query
   const [dropdown, setDropdown] = useState('name')
   const [allPokemon, setAllPokemon] = useContext(allPokemonContext)
   const [pokemonCards, setPokemonCards] = useContext(pokemonCardsContext)
+
+  console.log(pokemon)
 
   const DROPDOWN_COMPONENTS = {
     'name': <DropdownName />,
@@ -36,8 +41,8 @@ const NavBar = () => {
                         src={pokemonImages.pichu}
                         alt='The Pokemon Encyclopaedia'
                         quality={100}
-                        height={120}
-                        width={120}
+                        height={80}
+                        width={80}
                         priority
                         onClick={() => clickHandler('name')}
                       />
@@ -64,6 +69,15 @@ const NavBar = () => {
                   <li className={dropdown === "colour" ? styles.active : undefined} onClick={() => clickHandler('colour')}>
                     &gt;&gt;By Colour
                   </li>
+                  <li className={dropdown === "shape" ? styles.active : undefined} >
+                    &gt;&gt;By Shape
+                  </li>
+                  <li className={dropdown === "evolution" ? styles.active : undefined} >
+                    &gt;&gt;By Evolution
+                  </li>
+                  <li className={dropdown === "ability" ? styles.active : undefined} >
+                    &gt;&gt;By Ability
+                  </li>
                   {/* <li className={dropdown === "/pokemon/by-rating" ? styles.active : undefined} >
                     <Link href={"/pokemon/by-rating"}>&gt;&gt;By Rating</Link>
                   </li> */}
@@ -71,8 +85,10 @@ const NavBar = () => {
                 </ul>
               </Link>
             </nav>
-              {DROPDOWN_COMPONENTS[dropdown]}
+            <div className={styles.dropdownContainer}>
+              {!pokemon ? DROPDOWN_COMPONENTS[dropdown] : <h3>&larr; back to list</h3>}
             </div>
+         </div>
        </header>
   )
   }
