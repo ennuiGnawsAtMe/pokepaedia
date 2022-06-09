@@ -20,6 +20,7 @@ export const getStaticProps = async () => {
 
     useEffect(() => {
       setAllPokemon(allPokemonData)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (

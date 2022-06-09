@@ -11,12 +11,15 @@ const RandomPokemon = () => {
   const [isLoading, setIsLoading] = useState(true)
 
   const clickHandler = () => {
+    setIsLoading(true)
     setPokemon(getRandomPoke(allPokemon))
+    setIsLoading(false)
   }
 
   useEffect(() => {
     setPokemon(getRandomPoke(allPokemon))
-    setIsLoading(false)
+    // setIsLoading(false)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
