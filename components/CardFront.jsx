@@ -6,7 +6,7 @@ import Types from './Types'
 const CardFront = ({ pokemon, colour, flip }) => {
 
   return (
-    <div style={{border:`solid 5px ${colour}`}} className={styles.container}>
+    <div style={{border:`solid 5px ${colour}`, cursor:`pointer`}} className={styles.container} onClick={flip}>
       <div className={styles.topDetails}>
         {pokemon.evolvesFrom ? <h3>EVOLUTION</h3> : <h3>BASIC</h3>}
         <div className={styles.imageText}>
@@ -15,22 +15,22 @@ const CardFront = ({ pokemon, colour, flip }) => {
         </div>
       </div>
         <div className={styles.imageContainer}>
-          <Link href={`/${pokemon.name.toLowerCase()}`}>
-              <a>
+          {/* <Link href={`/${pokemon.name.toLowerCase()}`}>
+              <a> */}
                 <Image 
                 src={pokemon.image} 
                 alt={pokemon.name}
                 layout="fill" 
                 objectFit='contain'
                 />
-              </a>
-          </Link>
+              {/* </a>
+          </Link> */}
         </div>
           <div className={styles.nameContainer}>
           <h2>
-              <Link href={`/${pokemon.name.toLowerCase()}`}><a>
+              {/* <Link href={`/${pokemon.name.toLowerCase()}`}><a> */}
                   {pokemon.name}
-                  </a></Link>
+                  {/* </a></Link> */}
                   </h2>
           </div>
         <div className={styles.details}>
@@ -50,11 +50,8 @@ const CardFront = ({ pokemon, colour, flip }) => {
           {pokemon.type.map(type => <Types key={type.url} type={type.type}/>)}
           </div>
           </div> 
-          <div className={styles.footer}>
-          <div className={styles.trainerDetails}>
-           <h4>Ranking</h4><h3>#</h3>
-           </div>
-           <button onClick={flip} style={{cursor:"pointer"}}>&gt;&gt; Flip</button>
+          <div style={{backgroundColor:`${colour}`}} className={styles.footer}>
+           <button>&gt;&gt; CLICK TO FLIP!</button>
            </div>
       </div>
   )

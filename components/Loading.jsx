@@ -1,8 +1,18 @@
+import Image from "next/image"
+import loadingGif from '../public/images/loading.gif'
+import styles from '../styles/Loading.module.css'
+
 const Loading = () => {
   return (
-    <div> 
-    {/* <img className="loading-gif" src="/images/animated-circle.gif" /> */}
-    <h4>Fetching Pokemon!</h4>
+    <div className={styles.container}> 
+    
+    <Image
+      src={loadingGif}
+      alt="We are catching the Pokemon for you!"
+      width={200}
+      height={200}
+    />
+    <h1>Fetching a Pokémon!</h1>
     </div> 
   )
 }

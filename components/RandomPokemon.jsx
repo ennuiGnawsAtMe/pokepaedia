@@ -3,10 +3,12 @@ import { useState, useContext, useEffect } from 'react'
 import allPokemonContext from '../context/allPokemonContext'
 import { getRandomPoke } from '../lib/utils'
 import styles from '../styles/RandomPokemon.module.css'
+import Loading from './Loading'
 
 const RandomPokemon = () => {
   const [allPokemon, setAllPokemon] = useContext(allPokemonContext)
-  const [pokemon, setPokemon] = useState(allPokemon[0])
+  const [pokemon, setPokemon] = useState({})
+  const [isLoading, setIsLoading] = useState(true)
 
   const clickHandler = () => {
     setPokemon(getRandomPoke(allPokemon))
@@ -14,10 +16,13 @@ const RandomPokemon = () => {
 
   useEffect(() => {
     setPokemon(getRandomPoke(allPokemon))
+    setIsLoading(false)
   }, [])
 
   return (
-      <div className={styles.container} onClick={clickHandler} style={{cursor:"pointer"}}>
+    <>
+    {!isLoading 
+      ? <div className={styles.container} onClick={clickHandler} style={{cursor:"pointer"}}>
         <div className={styles.imageContainer}>
             <Image 
                 src={pokemon.image}
@@ -33,6 +38,9 @@ const RandomPokemon = () => {
           <button style={{cursor:"pointer"}}>&gt;&gt;&gt; Next</button>
         </div>
       </div>
+      : <Loading />
+    }
+    </>
   )
 }
 

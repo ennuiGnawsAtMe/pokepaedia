@@ -34,7 +34,7 @@ const NavBar = () => {
               <div className={styles.title}>
                 <span className={styles.logo}>
                     <Image 
-                        src={pokemonImages.pikachu}
+                        src={pokemonImages.pichu}
                         alt='The Pokemon Encyclopaedia'
                         quality={100}
                         height={120}
