@@ -41,8 +41,8 @@ const NavBar = () => {
                         src={pokemonImages.pichu}
                         alt='The Pokemon Encyclopaedia'
                         quality={100}
-                        height={120}
-                        width={120}
+                        height={80}
+                        width={80}
                         priority
                         onClick={() => clickHandler('name')}
                       />
@@ -68,6 +68,15 @@ const NavBar = () => {
                   </li>
                   <li className={dropdown === "colour" ? styles.active : undefined} onClick={() => clickHandler('colour')}>
                     &gt;&gt;By Colour
+                  </li>
+                  <li className={dropdown === "shape" ? styles.active : undefined} >
+                    &gt;&gt;By Shape
+                  </li>
+                  <li className={dropdown === "evolution" ? styles.active : undefined} >
+                    &gt;&gt;By Evolution
+                  </li>
+                  <li className={dropdown === "ability" ? styles.active : undefined} >
+                    &gt;&gt;By Ability
                   </li>
                   {/* <li className={dropdown === "/pokemon/by-rating" ? styles.active : undefined} >
                     <Link href={"/pokemon/by-rating"}>&gt;&gt;By Rating</Link>

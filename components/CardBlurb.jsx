@@ -36,7 +36,6 @@ const CardBlurb = ({ pokemon, colour, flip }) => {
            <button style={{color:`${color}`, cursor:`pointer`}}>
              <Link href={`/${pokemon.name.toLowerCase()}`}><a>Pokémon Details</a></Link>
            </button>
-           
           </div>
       </div>
   )
