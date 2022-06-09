@@ -18,7 +18,7 @@ const RandomPokemon = () => {
 
   useEffect(() => {
     setPokemon(getRandomPoke(allPokemon))
-    // setIsLoading(false)
+    setIsLoading(false)
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -26,21 +26,21 @@ const RandomPokemon = () => {
     <>
     {!isLoading 
       ? <div className={styles.container} onClick={clickHandler} style={{cursor:"pointer"}}>
-        <div className={styles.imageContainer}>
-            <Image 
-                src={pokemon.image}
-                alt={pokemon.name}
-                layout='fill'
-                objectFit='contain'
-                priority
-            />
+          <div className={styles.imageContainer}>
+              <Image 
+                  src={pokemon.image}
+                  alt={pokemon.name}
+                  layout='fill'
+                  objectFit='contain'
+                  priority
+              />
+          </div>
+          <div className={styles.details}>
+            <h1>{pokemon.name}</h1>
+            <p>{pokemon.blurb}</p>
+            <button style={{cursor:"pointer"}}>&gt;&gt;&gt; Next</button>
+          </div>
         </div>
-        <div className={styles.details}>
-          <h1>{pokemon.name}</h1>
-          <p>{pokemon.blurb}</p>
-          <button style={{cursor:"pointer"}}>&gt;&gt;&gt; Next</button>
-        </div>
-      </div>
       : <Loading />
     }
     </>
