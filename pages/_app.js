@@ -7,7 +7,6 @@ import data from '../data/all.json'
 
 
 function MyApp({ Component, pageProps }) {
-  const [logo, setLogo] = useState('')
   const [allPokemon, setAllPokemon] = useState(data.pokemon)
   const [pokemonCards, setPokemonCards] = useState([])
 
