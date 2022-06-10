@@ -4,7 +4,10 @@ const nextConfig = {
   reactStrictMode: true,
   images: {
     domains: ["img.pokemondb.net"]
-}
+  },
+  experimental: {
+    scrollRestoration: true,
+  }
 }
 
 module.exports = nextConfig

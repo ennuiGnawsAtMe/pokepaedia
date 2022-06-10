@@ -9,8 +9,11 @@
   top: 0;
   z-index: 1;
   background-color: white;
-  /* box-shadow: 0px 0px 12px 0px #888888; */
-  padding: 0 2.5vw 2vh 2.5vw;
+  padding: 2vh 2.5vw 2vh 2.5vw;
+}
+
+.dropShadow {
+  box-shadow: 0px 0px 12px 0px #888888;
 }
 
 .title {
@@ -41,13 +44,12 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 2vh 1vw 2vh 0;
 }
 
 .navDropdown {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: space-between;
   width: 100%;
 }
 

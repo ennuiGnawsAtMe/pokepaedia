@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import DropdownName from './DropdownName'
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import DropdownType from './DropdownType'
 import DropdownHabitat from './DropdownHabitat'
 import DropdownColour from './DropdownColour'
@@ -14,11 +14,10 @@ import pokemonCardsContext from '../context/pokemonCardsContext'
 const NavBar = () => {
   const router = useRouter()
   const { pokemon } = router.query
+  const [dropshadow, setDropshadow] = useState(false)
   const [dropdown, setDropdown] = useState('name')
   const [allPokemon, setAllPokemon] = useContext(allPokemonContext)
   const [pokemonCards, setPokemonCards] = useContext(pokemonCardsContext)
-
-  console.log(pokemon)
 
   const DROPDOWN_COMPONENTS = {
     'name': <DropdownName />,
@@ -27,13 +26,30 @@ const NavBar = () => {
     'colour': <DropdownColour />,
   }
 
+  const goToTop = () => {
+    window.scrollTo({
+        top: 0,
+    })
+  }
+
   const clickHandler = (dropdown) => {
     setDropdown(dropdown)
     setPokemonCards([])
   }
 
+  useEffect(() => {
+    goToTop()
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 20) {
+            setDropshadow(true);
+        } else {
+            setDropshadow(false);
+        }
+    })
+  }, [pokemonCards])
+
   return (
-       <header className ={styles.container}>
+       <header className={`${styles.container} ${dropshadow && styles.dropShadow}`}>
               <div className={styles.title}>
                 <span className={styles.logo} >
                     <Link href="/"><a>
@@ -41,8 +57,8 @@ const NavBar = () => {
                         src={pokemonImages.pichu}
                         alt='The Pokemon Encyclopaedia'
                         quality={100}
-                        height={80}
-                        width={80}
+                        height={100}
+                        width={100}
                         priority
                         onClick={() => clickHandler('name')}
                       />
@@ -86,7 +102,7 @@ const NavBar = () => {
               </Link>
             </nav>
             <div className={styles.dropdownContainer}>
-              {!pokemon ? DROPDOWN_COMPONENTS[dropdown] : <h3>&larr; back to list</h3>}
+              {!pokemon ? DROPDOWN_COMPONENTS[dropdown] : <h3 style={{cursor:`pointer`}} onClick={() => router.back()}>&larr; back to list</h3>}
             </div>
          </div>
        </header>

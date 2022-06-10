@@ -4,10 +4,12 @@ import allPokemonContext from '../context/allPokemonContext'
 import { getRandomPoke } from '../lib/utils'
 import styles from '../styles/RandomPokemon.module.css'
 import Loading from './Loading'
+import pokemonCardsContext from '../context/pokemonCardsContext'
 
 const RandomPokemon = () => {
   const [allPokemon, setAllPokemon] = useContext(allPokemonContext)
   const [pokemon, setPokemon] = useState({})
+  const [pokemonCards, setPokemonCards] = useContext(pokemonCardsContext)
   const [isLoading, setIsLoading] = useState(true)
 
   const clickHandler = () => {
@@ -20,7 +22,7 @@ const RandomPokemon = () => {
     setPokemon(getRandomPoke(allPokemon))
     setIsLoading(false)
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [pokemonCards])
 
   return (
     <>
