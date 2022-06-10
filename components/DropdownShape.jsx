@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from 'react'
 import Select from 'react-select'
-import { getHabitatOptions } from '../lib/utils'
+import { getShapeOptions } from '../lib/utils'
 import styles from '../styles/DropdownHabitat.module.css'
 import allPokemonContext from '../context/allPokemonContext'
 import pokemonCardsContext from '../context/pokemonCardsContext'
@@ -12,20 +12,20 @@ const DropdownShape = () => {
   const [options, setOptions] = useState({})
 
 useEffect(() => {
-  setOptions(getHabitatOptions(allPokemon))
+  setOptions(getShapeOptions(allPokemon))
 }, []);
 
-const changeHandler = (habitatID) => {
-  const newSelection = allPokemon.filter(({ habitat }) => habitat == habitatID)
+const changeHandler = (shapeName) => {
+  const newSelection = allPokemon.filter(({ shape }) => shape == shapeName)
   setPokemonCards(newSelection)
 }
 
 return (
   <div className={styles.container}>
     <Select
-          placeholder={`Search Pokemon by Habitat`}
+          placeholder={`Search Pokemon by Shape`}
           options={options}
-          instanceId="habitat-value-select"
+          instanceId="shape-value-select"
           onChange={event => changeHandler(event.value)}
         />
   </div>

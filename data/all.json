@@ -35827,7 +35827,7 @@
     },
     {
         "pokedex": 778,
-        "name": "Mimikyu-disguised",
+        "name": "Mimikyu",
         "height": 2,
         "weight": 7,
         "experience": 167,
@@ -35859,7 +35859,7 @@
         "habitat": "Unknown",
         "shape": "squiggle",
         "blurb": "Its actual appearance is unknown. A scholar\nwho saw what was under its rag was\noverwhelmed by terror and died from the shock.",
-        "image": "https://img.pokemondb.net/artwork/large/mimikyu-disguised.jpg",
+        "image": "https://img.pokemondb.net/artwork/large/mimikyu.jpg",
         "imageLocal": {
             "src": "/_next/static/media/mimikyu-disguised.26cb0991.png",
             "height": 475,

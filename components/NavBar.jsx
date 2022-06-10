@@ -4,8 +4,10 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import DropdownName from './DropdownName'
 import { useContext, useEffect, useState } from 'react'
+import { goToTop } from '../lib/utils'
 import DropdownType from './DropdownType'
 import DropdownHabitat from './DropdownHabitat'
+import DropdownShape from './DropdownShape'
 import DropdownColour from './DropdownColour'
 import pokemonImages from '../data/imgDictionary'
 import allPokemonContext from '../context/allPokemonContext'
@@ -24,12 +26,7 @@ const NavBar = () => {
     'type': <DropdownType />,
     'habitat': <DropdownHabitat />,
     'colour': <DropdownColour />,
-  }
-
-  const goToTop = () => {
-    window.scrollTo({
-        top: 0,
-    })
+    'shape': <DropdownShape />,
   }
 
   const clickHandler = (dropdown) => {
@@ -85,7 +82,7 @@ const NavBar = () => {
                   <li className={dropdown === "colour" ? styles.active : undefined} onClick={() => clickHandler('colour')}>
                     &gt;&gt;By Colour
                   </li>
-                  <li className={dropdown === "shape" ? styles.active : undefined} >
+                  <li className={dropdown === "shape" ? styles.active : undefined} onClick={() => clickHandler('shape')}>
                     &gt;&gt;By Shape
                   </li>
                   <li className={dropdown === "evolution" ? styles.active : undefined} >
