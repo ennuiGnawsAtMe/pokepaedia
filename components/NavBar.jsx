@@ -73,25 +73,25 @@ const NavBar = () => {
               <Link href="/">
                 <ul>
                   <li className={dropdown === "name" ? styles.active : undefined} onClick={() => clickHandler('name')}>
-                    &gt;&gt;By Name
+                    &gt;&gt;Name
                   </li>
                   <li className={dropdown === "type" ? styles.active : undefined} onClick={() => clickHandler('type')}>
-                    &gt;&gt;By Type
+                    &gt;&gt;Type
                   </li>
                   <li className={dropdown === "habitat" ? styles.active : undefined} onClick={() => clickHandler('habitat')}>
-                    &gt;&gt;By Habitat
+                    &gt;&gt;Habitat
                   </li>
                   <li className={dropdown === "colour" ? styles.active : undefined} onClick={() => clickHandler('colour')}>
-                    &gt;&gt;By Colour
+                    &gt;&gt;Colour
                   </li>
                   <li className={dropdown === "shape" ? styles.active : undefined} onClick={() => clickHandler('shape')}>
-                    &gt;&gt;By Shape
+                    &gt;&gt;Shape
                   </li>
                   <li className={dropdown === "evolution" ? styles.active : undefined} >
-                    &gt;&gt;By Evolution
+                    &gt;&gt;Evolution
                   </li>
                   <li className={dropdown === "ability" ? styles.active : undefined} onClick={() => clickHandler('ability')}>
-                    &gt;&gt;By Ability
+                    &gt;&gt;Ability
                   </li>
                   {/* <li className={dropdown === "/pokemon/by-rating" ? styles.active : undefined} >
                     <Link href={"/pokemon/by-rating"}>&gt;&gt;By Rating</Link>

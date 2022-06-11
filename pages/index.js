@@ -6,6 +6,7 @@ import allPokemonContext from '../context/allPokemonContext.js'
 import pokemonCardsContext from '../context/pokemonCardsContext.js'
 import SearchList from '../components/SearchList.jsx'
 import { getAbilityOptions } from '../lib/utils.js'
+import axios from 'axios'
 
 export const getStaticProps = async () => {
     const allPokemonData = data.pokemon

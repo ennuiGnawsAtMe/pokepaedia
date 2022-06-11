@@ -1,5 +1,6 @@
 import Link from 'next/link' 
 import Image from 'next/image'
+import ReactStars from 'react-rating-stars-component'
 import styles from '../styles/CardBlurb.module.css'
 
 const CardBlurb = ({ pokemon, colour, flip }) => {
@@ -26,9 +27,16 @@ const CardBlurb = ({ pokemon, colour, flip }) => {
           <div className={styles.nameContainer}>
             <h2>{pokemon.name}</h2>
           </div>
+          <ReactStars
+              size={20}
+              value={0}
+              onChange={(newValue) => {
+                console.log(`You gave ${pokemon.name} ${newValue} stars!`);
+              }}
+              />
         <div className={styles.details}>
         <div className={styles.detailsTop}>
-            <p>{pokemon.blurb}</p>
+            <p>{pokemon.blurb}</p> 
         </div>
           </div> 
           <div style={{backgroundColor:`${backgroundColor}`}} className={styles.footer}>
