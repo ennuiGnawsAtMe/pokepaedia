@@ -12,7 +12,7 @@ const Loading = () => {
       width={200}
       height={200}
     />
-    <h1>Fetching a Pokémon!</h1>
+    <h1>Fetching Pokémon!</h1>
     </div> 
   )
 }

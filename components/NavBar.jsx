@@ -8,6 +8,7 @@ import { goToTop } from '../lib/utils'
 import DropdownType from './DropdownType'
 import DropdownHabitat from './DropdownHabitat'
 import DropdownShape from './DropdownShape'
+import DropdownAbility from './DropdownAbility'
 import DropdownColour from './DropdownColour'
 import pokemonImages from '../data/imgDictionary'
 import allPokemonContext from '../context/allPokemonContext'
@@ -27,6 +28,7 @@ const NavBar = () => {
     'habitat': <DropdownHabitat />,
     'colour': <DropdownColour />,
     'shape': <DropdownShape />,
+    'ability': <DropdownAbility />,
   }
 
   const clickHandler = (dropdown) => {
@@ -88,7 +90,7 @@ const NavBar = () => {
                   <li className={dropdown === "evolution" ? styles.active : undefined} >
                     &gt;&gt;By Evolution
                   </li>
-                  <li className={dropdown === "ability" ? styles.active : undefined} >
+                  <li className={dropdown === "ability" ? styles.active : undefined} onClick={() => clickHandler('ability')}>
                     &gt;&gt;By Ability
                   </li>
                   {/* <li className={dropdown === "/pokemon/by-rating" ? styles.active : undefined} >
