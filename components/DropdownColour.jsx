@@ -24,7 +24,7 @@ return (
   <div className={styles.container}>
     <Select
           placeholder={`Search Pokemon by Colour`}
-          maxMenuHeight={600}
+          maxMenuHeight={400}
           options={options}
           instanceId="colour-value-select"
           onChange={event => changeHandler(event.value)}

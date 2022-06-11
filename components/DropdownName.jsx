@@ -29,7 +29,7 @@ const DropdownName = () => {
       <div className={styles.container}>
         <Select
               isMulti
-              maxMenuHeight={600}
+              maxMenuHeight={400}
               placeholder={`Search Pokemon by Name`}
               options={options}
               instanceId="name-value-select"

@@ -13,6 +13,7 @@ import DropdownColour from './DropdownColour'
 import pokemonImages from '../data/imgDictionary'
 import allPokemonContext from '../context/allPokemonContext'
 import pokemonCardsContext from '../context/pokemonCardsContext'
+import DropdownStatus from './DropdownStatus'
 
 const NavBar = () => {
   const router = useRouter()
@@ -29,6 +30,7 @@ const NavBar = () => {
     'colour': <DropdownColour />,
     'shape': <DropdownShape />,
     'ability': <DropdownAbility />,
+    'status': <DropdownStatus />
   }
 
   const clickHandler = (dropdown) => {
@@ -87,8 +89,8 @@ const NavBar = () => {
                   <li className={dropdown === "shape" ? styles.active : undefined} onClick={() => clickHandler('shape')}>
                     &gt;&gt;Shape
                   </li>
-                  <li className={dropdown === "evolution" ? styles.active : undefined} >
-                    &gt;&gt;Evolution
+                  <li className={dropdown === "evolution" ? styles.active : undefined} onClick={() => clickHandler('status')}>
+                    &gt;&gt;Status
                   </li>
                   <li className={dropdown === "ability" ? styles.active : undefined} onClick={() => clickHandler('ability')}>
                     &gt;&gt;Ability
