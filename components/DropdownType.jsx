@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from 'react'
 import Select from 'react-select'
-import styles from '../styles/DropdownType.module.css'
+import styles from '../styles/Dropdown.module.css'
 import { getTypeOptions } from '../lib/utils'
 import { types } from '../lib/utils'
 import allPokemonContext from '../context/allPokemonContext'

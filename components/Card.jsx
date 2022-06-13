@@ -30,10 +30,6 @@ const Card = ({ pokemon }) => {
     }
   }
 
-  useEffect(() => {
-        console.log(isFlipped)
-  }, [isFlipped])
-
   const getComponent = ({
       blurb: <CardBlurb pokemon={pokemon} flip={clickHandler} colour={CARD_COLOURS[pokemon.colour]} />,
       types: <CardTypes pokemon={pokemon} flip={clickHandler} colour={CARD_COLOURS[pokemon.colour]} />,

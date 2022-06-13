@@ -1,7 +1,7 @@
 import { useEffect, useState, useContext } from 'react'
 import Select from 'react-select'
 import { getShapeOptions } from '../lib/utils'
-import styles from '../styles/DropdownHabitat.module.css'
+import styles from '../styles/Dropdown.module.css'
 import allPokemonContext from '../context/allPokemonContext'
 import pokemonCardsContext from '../context/pokemonCardsContext'
 

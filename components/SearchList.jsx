@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
 import Card from './Card'
 import styles from '../styles/SearchList.module.css'
 import pokemonCardsContext from '../context/pokemonCardsContext'

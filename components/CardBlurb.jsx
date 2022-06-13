@@ -1,10 +1,26 @@
 import Link from 'next/link' 
 import Image from 'next/image'
+import axios from 'axios'
 import ReactStars from 'react-rating-stars-component'
 import styles from '../styles/CardBlurb.module.css'
 
 const CardBlurb = ({ pokemon, colour, flip }) => {
     const { backgroundColor, color } = colour
+
+    const changeHandler = async (newRating) => {
+      const payload = {
+        pokedex: pokemon.pokedex,
+        userId: 1,
+        rating: newRating
+      }
+      try {
+        // const test = await axios.get(`https://pokeapi.co/api/v2/pokemon-species/1/`)
+        const res = await axios.get('http://localhost:3000/api/test')
+        console.log(res.data)
+      } catch (error) {
+        console.error(error)
+      }
+    }
 
   return (
     <div style={{border:`solid 5px ${backgroundColor}`}} className={styles.container} >
@@ -30,9 +46,7 @@ const CardBlurb = ({ pokemon, colour, flip }) => {
           <ReactStars
               size={20}
               value={0}
-              onChange={(newValue) => {
-                console.log(`You gave ${pokemon.name} ${newValue} stars!`);
-              }}
+              onChange={newValue => changeHandler(newValue)}
               />
         <div className={styles.details}>
         <div className={styles.detailsTop}>

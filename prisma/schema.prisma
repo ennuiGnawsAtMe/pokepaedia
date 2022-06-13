@@ -11,39 +11,37 @@ datasource db {
 }
 
 model Pokemon {
-  pokedex        Int       @id @unique
-  name           String    @unique
-  image          String
-  evolutionURL   String?
-  happiness      Int?
-  evolvesFrom    String?
-  blurb          String?
-  shape          String?
-  habitat        String?
-  colour         String?
-  height         Int?
-  weight         Int?
-  experience     Int?
-  hp             Int?
-  attack         Int?
-  defence        Int?
-  specialAttack  Int?
-  specialDefence Int?
-  speed          Int?
-  type           Type[]
-  ability        Ability[]
+  pokedex       Int       @id @unique
+  name          String
+  ratings       Rating[]
+  ratingOverall Int?      @map("rating_overall")
+  comments      Comment[]
 }
 
-model Type {
-  id      Int       @id @unique @default(autoincrement())
-  type    String
-  url     String
-  pokemon Pokemon[]
+model User {
+  id           Int       @id @unique @default(autoincrement())
+  name         String
+  email        String?
+  passwordHash String?   @map("password_hash")
+  comments     Comment[]
+  ratings      Rating[]
 }
 
-model Ability {
-  id      Int       @id @unique @default(autoincrement())
-  ability String
-  url     String
-  Pokemon Pokemon[]
+model Rating {
+  id      Int     @id @unique @default(autoincrement())
+  rating  Int
+  pokemon Pokemon @relation(fields: [pokedex], references: [pokedex])
+  pokedex Int
+  user    User    @relation(fields: [userId], references: [id])
+  userId  Int
+}
+
+model Comment {
+  id        Int      @id @unique @default(autoincrement())
+  comment   String
+  createdAt DateTime @default(now()) @map("created_at")
+  pokemon   Pokemon  @relation(fields: [pokedex], references: [pokedex])
+  pokedex   Int
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int
 }

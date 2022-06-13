@@ -1,6 +1,6 @@
 import Select from 'react-select'
 import { useContext, useState } from 'react'
-import styles from '../styles/DropdownName.module.css'
+import styles from '../styles/Dropdown.module.css'
 import allPokemonContext from '../context/allPokemonContext'
 import pokemonCardsContext from '../context/pokemonCardsContext'
 
