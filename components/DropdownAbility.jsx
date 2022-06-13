@@ -12,7 +12,6 @@ const DropdownAbility = () => {
     const [options, setOptions] = useState({})
 
 useEffect(() => {
-    console.log(allPokemon)
   setOptions(getAbilityOptions(allPokemon))
 }, []);
 
