@@ -14,9 +14,7 @@ const CardBlurb = ({ pokemon, colour, flip }) => {
         rating: newRating
       }
       try {
-        // const test = await axios.get(`https://pokeapi.co/api/v2/pokemon-species/1/`)
-        const res = await axios.get('http://localhost:3000/api/test')
-        console.log(res.data)
+        const res = await axios.post('/api/ratings', payload)
       } catch (error) {
         console.error(error)
       }

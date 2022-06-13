@@ -1,8 +1,8 @@
 import prisma from '../../lib/prisma'
 
-export default handler = async (req, res) => {
-    console.log(req.body)
+const handler = async (req, res) => {
     const { rating, pokedex, userId } = req.body
+    
     const newRating = await prisma.rating.create({
         data: {
             rating,
@@ -13,3 +13,5 @@ export default handler = async (req, res) => {
     console.log(newRating)
     return res.status(200).json(newRating)
 }
+
+export default handler
