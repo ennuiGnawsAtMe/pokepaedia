@@ -2,7 +2,7 @@
 CREATE TABLE "Pokemon" (
     "pokedex" INTEGER NOT NULL,
     "name" TEXT NOT NULL,
-    "rating_overall" INTEGER,
+    "rating_overall" DOUBLE PRECISION,
 
     CONSTRAINT "Pokemon_pkey" PRIMARY KEY ("pokedex")
 );

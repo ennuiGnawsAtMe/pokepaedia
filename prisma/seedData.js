@@ -3,7 +3,7 @@ const getPokemonSeed = (data) => {
   { 
     pokedex: poke.pokedex, 
     name: poke.name,
-    ratingOverall: 5
+    ratingOverall: 0
   }
 ))
 return pokemonSeed

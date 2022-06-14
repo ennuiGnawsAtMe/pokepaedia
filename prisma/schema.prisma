@@ -14,7 +14,7 @@ model Pokemon {
   pokedex       Int       @id @unique
   name          String
   ratings       Rating[]
-  ratingOverall Decimal?  @map("rating_overall")
+  ratingOverall Float?    @map("rating_overall")
   comments      Comment[]
 }
 

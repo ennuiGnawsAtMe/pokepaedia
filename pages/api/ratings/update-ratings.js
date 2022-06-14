@@ -1,4 +1,4 @@
-import prisma from '../../lib/prisma'
+import prisma from '../../../lib/prisma'
 
 const handler = async (req, res) => {
     const { rating, pokedex, userId } = req.body
@@ -20,19 +20,27 @@ const handler = async (req, res) => {
         }
     })
     
-    const avg = allRatings.reduce((acc, curr) => acc + curr.rating, 0) / allRatings.length
+    const avg = allRatings.reduce((total, current) => total + current.rating, 0) / allRatings.length
     const average = Number(avg.toFixed(1))
     
-    const updatePokemonRating = await prisma.pokemon.update({
+    const updatePokemon = await prisma.pokemon.update({
         where: {
             pokedex: pokedex,
         },
         data: {
             ratingOverall: average,
         },
+        select: {
+            pokedex: true,
+            name: true,
+            ratingOverall: true,
+            ratings: true,
+            comments: true,
+        }
     })
 
-    return res.status(200).json("working!")
+    console.log(`You gave ${updatePokemon.name} ${rating} stars! ${updatePokemon.name}'s average rating is now ${updatePokemon.ratingOverall} from ${allRatings.length} ratings!`)
+    return res.status(200).json(updatePokemon)
 }
 
 export default handler

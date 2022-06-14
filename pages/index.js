@@ -7,19 +7,19 @@ import pokemonCardsContext from '../context/pokemonCardsContext.js'
 import SearchList from '../components/SearchList.jsx'
 
 export const getStaticProps = async () => {
-    const allPokemonData = data.pokemon
-
+    const pokemonFromJson = data.pokemon
+    
     return {
-      props : { allPokemonData }
+      props : { pokemonFromJson }
     }
 }
 
- const Home = ({ allPokemonData }) => {
+ const Home = ({ pokemonFromJson }) => {
     const [allPokemon, setAllPokemon] = useContext(allPokemonContext)
     const [pokemonCards, setPokemonCards] = useContext(pokemonCardsContext)
 
     useEffect(() => {
-      setAllPokemon(allPokemonData)
+      setAllPokemon(pokemonFromJson)
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
