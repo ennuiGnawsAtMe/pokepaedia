@@ -1,6 +1,4 @@
 import { useState } from 'react'
-import useSWR from 'swr'
-import axios from 'axios'
 import CardStats from './CardStats'
 import CardBlurb from './CardBlurb'
 import CardTypes from './CardTypes'
@@ -21,7 +19,7 @@ import styles from '../styles/Card.module.css'
 
 const Card = ({ pokemon }) => {
   const [isFlipped, setIsFlipped] = useState('blurb')
-
+  
   const clickHandler = () => {
     if (isFlipped == 'blurb') {
       setIsFlipped('types')
