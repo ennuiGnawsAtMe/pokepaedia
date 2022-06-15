@@ -1,13 +1,11 @@
 import Image from 'next/image'
 import { useState, useContext, useEffect } from 'react'
-import allPokemonContext from '../context/allPokemonContext'
 import { getRandomPoke } from '../lib/utils'
 import styles from '../styles/RandomPokemon.module.css'
 import Loading from './Loading'
 import pokemonCardsContext from '../context/pokemonCardsContext'
 
 const RandomPokemon = ({ allPokemon }) => {
-  // const [allPokemon, setAllPokemon] = useContext(allPokemonContext)
   const [pokemon, setPokemon] = useState({})
   const [pokemonCards, setPokemonCards] = useContext(pokemonCardsContext)
   const [isLoading, setIsLoading] = useState(true)

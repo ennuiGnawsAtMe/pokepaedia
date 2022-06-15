@@ -25,7 +25,7 @@ const Card = ({ pokemon }) => {
   const [isFlipped, setIsFlipped] = useState('blurb')
   const { pokemonDb, isLoading, isError } = useAllPokemon()
 
-  const { pokedex, hp, image, name, blurb, colour } = pokemon
+  const { pokedex, hp, image, name, blurb, colour, happiness, ability, shape, habitat, attack, defense, specialAttack, speed, weight, specialDefense, height, experience, type } = pokemon
   const { backgroundColor, color } = CARD_COLOURS[colour]
 
   const pokemonRatings = pokemonDb.find(poke => poke.pokedex === pokedex)
@@ -44,8 +44,8 @@ const Card = ({ pokemon }) => {
 
   const getComponent = ({
       blurb: <CardBlurb blurb={blurb} pokedex={pokedex} />,
-      types: <CardTypes pokemon={pokemon} />,
-      stats: <CardStats pokemon={pokemon} />
+      types: <CardTypes type={type} attack={attack} defense={defense} specialAttack={specialAttack} speed={speed} weight={weight} specialDefense={specialDefense} height={height} experience={experience} />,
+      stats: <CardStats happiness={happiness} shape={shape} habitat={habitat} ability={ability} />
   })
 
   return (

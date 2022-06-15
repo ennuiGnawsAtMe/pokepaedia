@@ -1,5 +1,5 @@
 import axios from 'axios'
-import useSWR, { useSWRConfig } from 'swr'
+import { useSWRConfig } from 'swr'
 import ReactStars from 'react-rating-stars-component'
 import styles from '../styles/CardBlurb.module.css'
 
