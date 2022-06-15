@@ -1,4 +1,8 @@
 import { useState } from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
+import { useAllPokemon } from '../lib/utils'
+import ReactStars from 'react-rating-stars-component'
 import CardStats from './CardStats'
 import CardBlurb from './CardBlurb'
 import CardTypes from './CardTypes'
@@ -19,8 +23,16 @@ import styles from '../styles/Card.module.css'
 
 const Card = ({ pokemon }) => {
   const [isFlipped, setIsFlipped] = useState('blurb')
+  const { pokemonDb, isLoading, isError } = useAllPokemon()
+
+  const { pokedex, hp, image, name, blurb, colour } = pokemon
+  const { backgroundColor, color } = CARD_COLOURS[colour]
+
+  const pokemonRatings = pokemonDb.find(poke => poke.pokedex === pokedex)
+  const { ratingOverall, ratings, comments } = pokemonRatings
   
-  const clickHandler = () => {
+  
+  const flipHandler = () => {
     if (isFlipped == 'blurb') {
       setIsFlipped('types')
     } else if (isFlipped == 'types') {
@@ -31,14 +43,41 @@ const Card = ({ pokemon }) => {
   }
 
   const getComponent = ({
-      blurb: <CardBlurb pokemon={pokemon} flip={clickHandler} colour={CARD_COLOURS[pokemon.colour]} />,
-      types: <CardTypes pokemon={pokemon} flip={clickHandler} colour={CARD_COLOURS[pokemon.colour]} />,
-      stats: <CardStats pokemon={pokemon} flip={clickHandler} colour={CARD_COLOURS[pokemon.colour]} />
+      blurb: <CardBlurb blurb={blurb} pokedex={pokedex} />,
+      types: <CardTypes pokemon={pokemon} />,
+      stats: <CardStats pokemon={pokemon} />
   })
 
   return (
-    <div className={styles.container}>
+    <div style={{border:`solid 5px ${backgroundColor}`}} className={styles.container} >
+      <div className={styles.topDetails}>
+        <ReactStars key={ratingOverall} size={10} value={ratingOverall} edit={false} isHalf={true} />
+        <p>{ratingOverall}</p>
+        <p>{ratings.length}</p>
+        <div className={styles.imageText}>
+          <h4>Pokédex:</h4><h3>{pokedex}</h3>
+          <h4>hp:</h4><h3>{hp}</h3>
+        </div>
+      </div>
+      <div className={styles.imageContainer} style={{cursor:`pointer`}}>
+        <Image 
+          src={image} 
+          alt={name}
+          layout="fill" 
+          objectFit='contain'
+          onClick={flipHandler}
+        />
+      </div>
+      <div className={styles.nameContainer}>
+          <h2>{name}</h2>
+      </div>
       {getComponent[isFlipped]}
+      <div style={{backgroundColor:`${backgroundColor}`}} className={styles.footer}>
+          <button style={{color:`${color}`, cursor:`pointer`}} onClick={flipHandler}>Flip Card!</button>
+          <button style={{color:`${color}`, cursor:`pointer`}}>
+            <Link href={`/${name.toLowerCase()}`}><a>Pokémon Details</a></Link>
+          </button>
+      </div>
     </div>
   )
   }

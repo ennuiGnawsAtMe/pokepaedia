@@ -6,8 +6,8 @@ import styles from '../styles/RandomPokemon.module.css'
 import Loading from './Loading'
 import pokemonCardsContext from '../context/pokemonCardsContext'
 
-const RandomPokemon = () => {
-  const [allPokemon, setAllPokemon] = useContext(allPokemonContext)
+const RandomPokemon = ({ allPokemon }) => {
+  // const [allPokemon, setAllPokemon] = useContext(allPokemonContext)
   const [pokemon, setPokemon] = useState({})
   const [pokemonCards, setPokemonCards] = useContext(pokemonCardsContext)
   const [isLoading, setIsLoading] = useState(true)

@@ -1,12 +1,19 @@
+const generateRandomFloatInRange = (min, max, places) => {
+  const value = (Math.random() * (max - min + 1)) + min
+  const number = parseFloat(value).toFixed(places)
+  return Number(number)
+}
+
 const getPokemonSeed = (data) => {
-  const pokemonSeed = data.pokemon.map(poke => (
-  { 
-    pokedex: poke.pokedex, 
-    name: poke.name,
-    ratingOverall: 0
-  }
-))
-return pokemonSeed
+  const pokemonSeed = data.pokemon.map(poke => {
+    let randomRating = generateRandomFloatInRange(1, 4, 1)
+    return { 
+        pokedex: poke.pokedex, 
+        name: poke.name,
+        ratingOverall: randomRating
+    }
+  })
+  return pokemonSeed
 }
 
 const users = [

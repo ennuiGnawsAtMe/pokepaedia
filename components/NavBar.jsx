@@ -2,35 +2,34 @@ import styles from '../styles/NavBar.module.css'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import DropdownName from './DropdownName'
 import { useContext, useEffect, useState } from 'react'
 import { goToTop } from '../lib/utils'
-import DropdownType from './DropdownType'
-import DropdownHabitat from './DropdownHabitat'
-import DropdownShape from './DropdownShape'
-import DropdownAbility from './DropdownAbility'
-import DropdownColour from './DropdownColour'
 import pokemonImages from '../data/imgDictionary'
-import allPokemonContext from '../context/allPokemonContext'
 import pokemonCardsContext from '../context/pokemonCardsContext'
-import DropdownStatus from './DropdownStatus'
+import NameSelect from './NameSelect'
+import TypeSelect from './TypeSelect'
+import AbilitySelect from './AbilitySelect'
+import ColourSelect from './ColourSelect'
+import HabitatSelect from './HabitatSelect'
+import StatusSelect from './StatusSelect'
+import ShapeSelect from './ShapeSelect'
 
-const NavBar = () => {
-  const router = useRouter()
-  const { pokemon } = router.query
+
+const NavBar = ({ options, allPokemon }) => {
   const [dropshadow, setDropshadow] = useState(false)
   const [dropdown, setDropdown] = useState('name')
-  const [allPokemon, setAllPokemon] = useContext(allPokemonContext)
   const [pokemonCards, setPokemonCards] = useContext(pokemonCardsContext)
+  const router = useRouter()
+  const { pokemon } = router.query
 
   const DROPDOWN_COMPONENTS = {
-    'name': <DropdownName />,
-    'type': <DropdownType />,
-    'habitat': <DropdownHabitat />,
-    'colour': <DropdownColour />,
-    'shape': <DropdownShape />,
-    'ability': <DropdownAbility />,
-    'status': <DropdownStatus />
+    'name': <NameSelect options={options.nameOptions} allPokemon={allPokemon}/>,
+    'type': <TypeSelect options={options.typeOptions} allPokemon={allPokemon}/>,
+    'habitat': <HabitatSelect options={options.habitatOptions} allPokemon={allPokemon}/>,
+    'colour': <ColourSelect options={options.colourOptions} allPokemon={allPokemon}/>,
+    'shape': <ShapeSelect options={options.shapeOptions} allPokemon={allPokemon}/>,
+    'ability': <AbilitySelect options={options.abilityOptions} allPokemon={allPokemon}/>,
+    'status': <StatusSelect options={options.statusOptions} allPokemon={allPokemon}/>
   }
 
   const clickHandler = (dropdown) => {
@@ -95,10 +94,6 @@ const NavBar = () => {
                   <li className={dropdown === "ability" ? styles.active : undefined} onClick={() => clickHandler('ability')}>
                     &gt;&gt;Ability
                   </li>
-                  {/* <li className={dropdown === "/pokemon/by-rating" ? styles.active : undefined} >
-                    <Link href={"/pokemon/by-rating"}>&gt;&gt;By Rating</Link>
-                  </li> */}
-                  {/* <button className={styles.login}>LOGIN</button> */}
                 </ul>
               </Link>
             </nav>
