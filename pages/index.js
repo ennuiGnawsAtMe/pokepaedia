@@ -38,9 +38,9 @@ export const getStaticProps = async () => {
           <link rel="icon" href="/images/favicon.ico" />
         </Head>
         <main>
-         {pokemonDb && <NavBar options={options} allPokemon={pokemonJson} />}
-          {pokemonCards.length === 0 && pokemonDb ? <RandomPokemon allPokemon={pokemonJson} /> : pokemonDb && <SearchList />}
-          {pokemonDb && <Footer />}
+         {!isLoading && !isError && <NavBar options={options} allPokemon={pokemonJson} />}
+          {pokemonCards.length === 0 && !isLoading && !isError ? <RandomPokemon allPokemon={pokemonJson} /> : !isLoading && !isError && <SearchList />}
+          {!isLoading && !isError && <Footer />}
         </main>
       </>
 
