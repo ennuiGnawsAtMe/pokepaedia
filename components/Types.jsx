@@ -51,7 +51,6 @@ const Types = (props) => {
             border-radius: 5px;
             color: white;
             width: 100px;
-            padding: 5px;
             text-align: center;
             }
             p {

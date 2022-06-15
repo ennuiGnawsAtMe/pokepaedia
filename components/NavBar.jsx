@@ -1,7 +1,6 @@
 import styles from '../styles/NavBar.module.css'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
 import { useContext, useEffect, useState } from 'react'
 import { goToTop } from '../lib/utils'
 import pokemonImages from '../data/imgDictionary'
@@ -19,8 +18,6 @@ const NavBar = ({ options, allPokemon }) => {
   const [dropshadow, setDropshadow] = useState(false)
   const [dropdown, setDropdown] = useState('name')
   const [pokemonCards, setPokemonCards] = useContext(pokemonCardsContext)
-  const router = useRouter()
-  const { pokemon } = router.query
 
   const DROPDOWN_COMPONENTS = {
     'name': <NameSelect options={options.nameOptions} allPokemon={allPokemon}/>,
@@ -98,7 +95,7 @@ const NavBar = ({ options, allPokemon }) => {
               </Link>
             </nav>
             <div className={styles.dropdownContainer}>
-              {!pokemon ? DROPDOWN_COMPONENTS[dropdown] : <h3 style={{cursor:`pointer`}} onClick={() => router.back()}>&larr; back to list</h3>}
+               {DROPDOWN_COMPONENTS[dropdown]}
             </div>
          </div>
        </header>
