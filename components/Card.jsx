@@ -51,10 +51,10 @@ const Card = ({ pokemon }) => {
   return (
     <div style={{border:`solid 5px ${backgroundColor}`}} className={styles.container} >
       <div className={styles.topDetails}>
-        <ReactStars key={ratingOverall} size={10} value={ratingOverall} edit={false} isHalf={true} />
-        <p>{ratingOverall}</p>
-        <p>{ratings.length}</p>
+          <ReactStars key={ratingOverall} size={10} value={ratingOverall} edit={false} isHalf={true} />
         <div className={styles.imageText}>
+          <h4>Stars:</h4><h3>{ratingOverall}</h3>
+          <h4>Ratings:</h4><h3>{ratings.length}</h3>
           <h4>Pokédex:</h4><h3>{pokedex}</h3>
           <h4>hp:</h4><h3>{hp}</h3>
         </div>
@@ -73,14 +73,25 @@ const Card = ({ pokemon }) => {
       </div>
       {getComponent[isFlipped]}
       <div style={{backgroundColor:`${backgroundColor}`}} className={styles.footer}>
-          <button style={{color:`${color}`, cursor:`pointer`}} onClick={flipHandler}>Flip Card!</button>
-          <button style={{color:`${color}`, cursor:`pointer`}}>
-            <Link href={`/${name.toLowerCase()}`}><a>Pokémon Details</a></Link>
-          </button>
+        <ul>
+          <li style={{color:`${color}`, cursor:`pointer`}} onClick={flipHandler}>
+            &gt;Flip Card
+          </li>
+          <li style={{color:`${color}`, cursor:`pointer`}} >
+            <Link href={`/${name.toLowerCase()}`}>
+              <a>&gt;Pokémon Details</a>
+            </Link>
+          </li>
+           <li style={{color:`${color}`, cursor:`pointer`}} onClick={flipHandler}>
+            &gt;Leave Comment
+          </li>
+        </ul>
       </div>
     </div>
   )
   }
+
+  
 
 export default Card
   
