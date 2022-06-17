@@ -1,8 +1,6 @@
 import { useState } from 'react'
 import Image from 'next/image'
-import Link from 'next/link'
 import { useAllPokemon } from '../lib/utils'
-import ReactStars from 'react-rating-stars-component'
 import CardStats from './CardStats'
 import CardBlurb from './CardBlurb'
 import CardTypes from './CardTypes'
