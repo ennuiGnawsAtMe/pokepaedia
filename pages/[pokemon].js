@@ -2,6 +2,8 @@ import Head from 'next/head'
 import Detail from '../components/Detail'
 import { capitalise } from '../lib/utils'
 import data from '../data/all.json'
+import Footer from '../components/Footer'
+import NavBar from '../components/NavBar'
 
 export const getStaticPaths = async () => {
   const pokemonNames = data.pokemon.map(poke => poke.name)
@@ -33,7 +35,9 @@ export const getStaticProps = async ({ params }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
+        <NavBar options={"backToList"}/>
         <Detail pokemon={onePokemon}/>
+        <Footer />
       </main>
     </>
   )

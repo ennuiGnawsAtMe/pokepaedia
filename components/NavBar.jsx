@@ -1,6 +1,7 @@
 import styles from '../styles/NavBar.module.css'
 import Image from 'next/image'
 import Link from 'next/link'
+import Router, { useRouter } from 'next/router'
 import { useContext, useEffect, useState } from 'react'
 import { goToTop } from '../lib/utils'
 import pokemonImages from '../data/imgDictionary'
@@ -18,6 +19,8 @@ const NavBar = ({ options, allPokemon }) => {
   const [dropshadow, setDropshadow] = useState(false)
   const [dropdown, setDropdown] = useState('name')
   const [pokemonCards, setPokemonCards] = useContext(pokemonCardsContext)
+  const router = useRouter()
+  const { pokemon } = router.query
 
   const DROPDOWN_COMPONENTS = {
     'name': <NameSelect options={options.nameOptions} allPokemon={allPokemon}/>,
@@ -26,7 +29,7 @@ const NavBar = ({ options, allPokemon }) => {
     'colour': <ColourSelect options={options.colourOptions} allPokemon={allPokemon}/>,
     'shape': <ShapeSelect options={options.shapeOptions} allPokemon={allPokemon}/>,
     'ability': <AbilitySelect options={options.abilityOptions} allPokemon={allPokemon}/>,
-    'status': <StatusSelect options={options.statusOptions} allPokemon={allPokemon}/>
+    'status': <StatusSelect options={options.statusOptions} allPokemon={allPokemon}/>,
   }
 
   const clickHandler = (dropdown) => {
@@ -37,7 +40,7 @@ const NavBar = ({ options, allPokemon }) => {
   useEffect(() => {
     goToTop()
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 20) {
+        if (window.scrollY > 60) {
             setDropshadow(true);
         } else {
             setDropshadow(false);
@@ -95,7 +98,7 @@ const NavBar = ({ options, allPokemon }) => {
               </Link>
             </nav>
             <div className={styles.dropdownContainer}>
-               {DROPDOWN_COMPONENTS[dropdown]}
+               {!pokemon ? DROPDOWN_COMPONENTS[dropdown] : <h1>Back to List</h1>}
             </div>
          </div>
        </header>
