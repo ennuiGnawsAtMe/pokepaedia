@@ -28,8 +28,9 @@
 }
 
 .topDetails h3 {
-  font-size: 0.7em;
+  font-size: 1.2em;
   font-family: "Open Sans", sans-serif;
+  font-weight: 200;
   margin: 3px 3px;
   padding: 3px 3px;
   align-items: center;
@@ -65,7 +66,7 @@
 }
 
 .imageContainer {
-  min-height: 130px;
+  min-height: 133px;
   height: 100%;
   width: 100%;
   margin: 15px;

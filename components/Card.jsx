@@ -43,7 +43,7 @@ const Card = ({ pokemon }) => {
   }
 
   const getComponent = ({
-      blurb: <CardBlurb blurb={blurb} pokedex={pokedex} />,
+      blurb: <CardBlurb blurb={blurb} pokedex={pokedex} ratingOverall={ratingOverall} />,
       types: <CardTypes type={type} attack={attack} defense={defense} specialAttack={specialAttack} speed={speed} weight={weight} specialDefense={specialDefense} height={height} experience={experience} />,
       stats: <CardStats happiness={happiness} shape={shape} habitat={habitat} ability={ability} />
   })
@@ -51,7 +51,7 @@ const Card = ({ pokemon }) => {
   return (
     <div style={{border:`solid 5px ${backgroundColor}`}} className={styles.container} >
       <div className={styles.topDetails}>
-          <ReactStars key={ratingOverall} size={10} value={ratingOverall} edit={false} isHalf={true} />
+          <h3>1<sup>st</sup></h3>
         <div className={styles.imageText}>
           <h4>Stars:</h4><h3>{ratingOverall}</h3>
           <h4>Ratings:</h4><h3>{ratings.length}</h3>
@@ -75,15 +75,13 @@ const Card = ({ pokemon }) => {
       <div style={{backgroundColor:`${backgroundColor}`}} className={styles.footer}>
         <ul>
           <li style={{color:`${color}`, cursor:`pointer`}} onClick={flipHandler}>
-            &gt;Flip Card
-          </li>
-          <li style={{color:`${color}`, cursor:`pointer`}} >
-            <Link href={`/${name.toLowerCase()}`}>
-              <a>&gt;Pokémon Details</a>
-            </Link>
+            &gt; Flip
           </li>
            <li style={{color:`${color}`, cursor:`pointer`}} onClick={flipHandler}>
-            &gt;Leave Comment
+            &gt; Comment
+          </li>
+          <li style={{color:`${color}`, cursor:`pointer`}} onClick={flipHandler}>
+            &gt; Rate
           </li>
         </ul>
       </div>
