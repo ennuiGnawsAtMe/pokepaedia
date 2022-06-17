@@ -24,32 +24,14 @@ const seed = async () => {
         data: pokemonSeed        
       })
 
-      await prisma.rating.createMany({
-        data: ratings
-      })
+      // await prisma.rating.createMany({
+      //   data: ratings
+      // })
 
       await prisma.comment.createMany({
         data: comments        
       })
 
-      //this adds the many-many relations between pokemon and type/ability
-      // for (let i = 0; i < data.pokemon.length; i++) {
-
-      //   const types = data.pokemon[i].type.map(poke => ({ id: TYPEID[poke.type]}))
-      //   const abilities = data.pokemon[i].ability.map(poke => ({ id: ABILITYID[poke.ability]}))
-
-      //   await prisma.pokemon.update({
-      //   where: { pokedex: data.pokemon[i].pokedex },
-      //   data: {
-      //     type: {
-      //       connect: types,
-      //     },
-      //     ability: {
-      //       connect: abilities,
-      //     },
-      //   },
-      // })
-      // }
   } catch (e) {
       console.error(e)
       process.exit(1)
