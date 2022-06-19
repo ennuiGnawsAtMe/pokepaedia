@@ -1,9 +1,9 @@
 import axios from 'axios'
 import { useSWRConfig } from 'swr'
 import ReactStars from 'react-rating-stars-component'
-import styles from '../styles/CardBlurb.module.css'
+import styles from '../styles/CardRating.module.css'
 
-const CardBlurb = ({ blurb, pokedex }) => {
+const CardRating = ({ pokedex }) => {
   const { mutate } = useSWRConfig()
 
   const changeHandler = async (newRating) => {
@@ -21,15 +21,10 @@ const CardBlurb = ({ blurb, pokedex }) => {
   }
 
   return (
-    <>
-      <ReactStars size={20} value={0} onChange={newValue => changeHandler(newValue)} />
-      <div className={styles.details}>
-        <div className={styles.detailsTop}>
-          <p>{blurb}</p> 
-        </div>
-      </div> 
-    </>
+    <div className={styles.container}>
+     <ReactStars size={40} value={0} onChange={newValue => changeHandler(newValue)} />
+    </div>
   )
   }
 
-export default CardBlurb
+export default CardRating

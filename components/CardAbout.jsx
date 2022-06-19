@@ -3,7 +3,8 @@ import { useSWRConfig } from 'swr'
 import ReactStars from 'react-rating-stars-component'
 import styles from '../styles/CardBlurb.module.css'
 
-const CardBlurb = ({ blurb, pokedex, ratingOverall }) => {
+const CardAbout = ({ blurb, pokedex, ratingOverall }) => {
+  // const { pokemonDb, isLoading, isError } = useAllPokemon()
   const { mutate } = useSWRConfig()
 
   const changeHandler = async (newRating) => {
@@ -22,7 +23,6 @@ const CardBlurb = ({ blurb, pokedex, ratingOverall }) => {
 
   return (
     <>
-      {/* <ReactStars size={20} value={0} onChange={newValue => changeHandler(newValue)} /> */}
       <ReactStars key={ratingOverall} size={20} value={ratingOverall} edit={false} isHalf={true} />
       <div className={styles.details}>
         <div className={styles.detailsTop}>
@@ -33,4 +33,4 @@ const CardBlurb = ({ blurb, pokedex, ratingOverall }) => {
   )
   }
 
-export default CardBlurb
+export default CardAbout

@@ -55,6 +55,7 @@ const Types = (props) => {
             }
             p {
                 margin: 3px;
+                padding: 3px;
             }
           `}</style>
       </div>

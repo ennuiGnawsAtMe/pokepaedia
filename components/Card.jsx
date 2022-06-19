@@ -2,9 +2,11 @@ import { useState } from 'react'
 import Image from 'next/image'
 import { useAllPokemon } from '../lib/utils'
 import CardStats from './CardStats'
-import CardBlurb from './CardBlurb'
+import CardAbout from './CardAbout'
 import CardTypes from './CardTypes'
 import styles from '../styles/Card.module.css'
+import CardRating from './CardRating'
+import Link from 'next/link'
 
   const CARD_COLOURS = {
   'red': {backgroundColor: '#AB1E23', color: 'white'},
@@ -20,7 +22,7 @@ import styles from '../styles/Card.module.css'
   }
 
 const Card = ({ pokemon }) => {
-  const [isFlipped, setIsFlipped] = useState('blurb')
+  const [cardFaceState, setCardFaceState] = useState('rate')
   const { pokemonDb, isLoading, isError } = useAllPokemon()
 
   const { pokedex, hp, image, name, blurb, colour, happiness, ability, shape, habitat, attack, defense, specialAttack, speed, weight, specialDefense, height, experience, type } = pokemon
@@ -30,20 +32,16 @@ const Card = ({ pokemon }) => {
   const { ratingOverall, ratings, comments } = pokemonRatings
   
   
-  const flipHandler = () => {
-    if (isFlipped == 'blurb') {
-      setIsFlipped('types')
-    } else if (isFlipped == 'types') {
-      setIsFlipped('stats')
-    } else if (isFlipped =='stats') {
-      setIsFlipped('blurb')
-    }
+  const clickHandler = (component) => {
+      setCardFaceState(component)
   }
 
-  const getComponent = ({
-      blurb: <CardBlurb blurb={blurb} pokedex={pokedex} ratingOverall={ratingOverall} />,
+  const cardFaceComponent = ({
+      about: <CardAbout blurb={blurb} pokedex={pokedex} ratingOverall={ratingOverall} />,
       types: <CardTypes type={type} attack={attack} defense={defense} specialAttack={specialAttack} speed={speed} weight={weight} specialDefense={specialDefense} height={height} experience={experience} />,
-      stats: <CardStats happiness={happiness} shape={shape} habitat={habitat} ability={ability} />
+      ability: <CardStats happiness={happiness} shape={shape} habitat={habitat} ability={ability} />,
+      rate: <CardRating />,
+      // comment:
   })
 
   return (
@@ -58,36 +56,36 @@ const Card = ({ pokemon }) => {
         </div>
       </div>
       <div className={styles.imageContainer} style={{cursor:`pointer`}}>
-        <Image 
-          src={image} 
-          alt={name}
-          layout="fill" 
-          objectFit='contain'
-          onClick={flipHandler}
-        />
+       <Link href={`/${name.toLowerCase()}`} passHref >
+         <Image src={image} alt={name} layout="fill" objectFit='contain' />
+       </Link>
       </div>
       <div className={styles.nameContainer}>
           <h2>{name}</h2>
       </div>
-      {getComponent[isFlipped]}
+      {cardFaceComponent[cardFaceState]}
       <div style={{backgroundColor:`${backgroundColor}`}} className={styles.footer}>
         <ul>
-          <li style={{color:`${color}`, cursor:`pointer`}} onClick={flipHandler}>
-            &gt; Flip
+          <li style={{color:`${color}`, cursor:`pointer`}} onClick={() => clickHandler('about')}>
+            &gt; About
           </li>
-           <li style={{color:`${color}`, cursor:`pointer`}} onClick={flipHandler}>
-            &gt; Comment
+          <li style={{color:`${color}`, cursor:`pointer`}} onClick={() => clickHandler('types')}>
+            &gt; Type
           </li>
-          <li style={{color:`${color}`, cursor:`pointer`}} onClick={flipHandler}>
+          <li style={{color:`${color}`, cursor:`pointer`}} onClick={() => clickHandler('ability')}>
+            &gt; Ability
+          </li>
+           <li style={{color:`${color}`, cursor:`pointer`}} onClick={() => clickHandler('rate')}>
             &gt; Rate
+          </li>
+          <li style={{color:`${color}`, cursor:`pointer`}} onClick={() => clickHandler('comment')}>
+            &gt; Comment
           </li>
         </ul>
       </div>
     </div>
   )
   }
-
-  
 
 export default Card
   
