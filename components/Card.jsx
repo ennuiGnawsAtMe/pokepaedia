@@ -27,20 +27,11 @@ const Card = ({ pokemon }) => {
   const { pokedex, hp, image, name, blurb, colour, happiness, ability, shape, habitat, attack, defense, specialAttack, speed, weight, specialDefense, height, experience, type } = pokemon
   const { backgroundColor, color } = CARD_COLOURS[colour]
 
-  const getRankings = (propA, propB, arr) => {
-    const withRatings = arr.map(poke => ({ ...poke, totalRatings: poke.ratings.length }))
-    const rankings = withRatings.sort((a, b) => b[propA] - a[propA] || b.totalRatings - a.totalRatings || a.propB.localCompare(b.propB))
-    return rankings
-  }
-
   const pokemonRatings = pokemonDb.find(poke => poke.pokedex === pokedex)
   const { ratingOverall, ratings, comments } = pokemonRatings
-
-
-  console.log(getRankings('ratingOverall', 'name', pokemonDb))
   
   const clickHandler = (component) => {
-      setCardFace(component)
+      setCardFace(component) 
   }
 
   const cardFaceComponent = ({
