@@ -31,7 +31,7 @@ const Card = ({ pokemon }) => {
   const { ratingOverall, ratings, comments } = pokemonRatings
   
   const clickHandler = (component) => {
-      setCardFace(component)
+      setCardFace(component) 
   }
 
   const cardFaceComponent = ({
@@ -51,17 +51,16 @@ const Card = ({ pokemon }) => {
           <h4>Stars:</h4><h3>{ratingOverall}</h3>
           <h4>Ratings:</h4><h3>{ratings.length}</h3>
           <h4>Pokédex:</h4><h3>{pokedex}</h3>
-          <h4>hp:</h4><h3>{hp}</h3>
         </div>
       </div>
       {cardFaceComponent[cardFace]}
       <div style={{backgroundColor:`${backgroundColor}`}} className={styles.footer}>
         <ul>
-          <li style={{backgroundColor: `${backgroundColor}`, color:`${color}`, cursor:`pointer`}} onClick={() => clickHandler('about')}>
-            About
-          </li>
           <li style={{backgroundColor: `${backgroundColor}`, color:`${color}`, cursor:`pointer`}} onClick={() => clickHandler('image')}>
             Image
+          </li>
+          <li style={{backgroundColor: `${backgroundColor}`, color:`${color}`, cursor:`pointer`}} onClick={() => clickHandler('about')}>
+            About
           </li>
           <li style={{backgroundColor: `${backgroundColor}`, color:`${color}`, cursor:`pointer`}} onClick={() => clickHandler('types')}>
             Type
@@ -70,7 +69,7 @@ const Card = ({ pokemon }) => {
             Ability
           </li>
            <li style={{backgroundColor: `${backgroundColor}`, color:`${color}`, cursor:`pointer`}} onClick={() => clickHandler('rate')}>
-            Rate
+            Rating
           </li>
           <li style={{backgroundColor: `${backgroundColor}`, color:`${color}`, cursor:`pointer`}} >
             Comment
