@@ -47,20 +47,20 @@ const comments = [
     { comment: "This pokemons eyes are scary", pokedex: 654, userId: 1 }
 ]
 
-const ratings = [
-    { rating: 2, pokedex: 35, userId: 1 },
-    { rating: 3, pokedex: 444, userId: 2 },
-    { rating: 1, pokedex: 24, userId: 3 },
-    { rating: 5, pokedex: 154, userId: 4 },
-    { rating: 3, pokedex: 567, userId: 3 },
-    { rating: 4, pokedex: 12, userId: 2 },
-    { rating: 3, pokedex: 89, userId: 4 },
-    { rating: 4, pokedex: 189, userId: 1 }
-]
+// const ratings = [
+//     { rating: 2, pokedex: 35, userId: 1 },
+//     { rating: 3, pokedex: 444, userId: 2 },
+//     { rating: 1, pokedex: 24, userId: 3 },
+//     { rating: 5, pokedex: 154, userId: 4 },
+//     { rating: 3, pokedex: 567, userId: 3 },
+//     { rating: 4, pokedex: 12, userId: 2 },
+//     { rating: 3, pokedex: 89, userId: 4 },
+//     { rating: 4, pokedex: 189, userId: 1 }
+// ]
 
 module.exports = {
     getPokemonSeed,
     users,
-    ratings,
+    // ratings,
     comments
 }

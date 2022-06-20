@@ -1,28 +1,20 @@
-import axios from 'axios'
-import { useSWRConfig } from 'swr'
+import Image from 'next/image'
+import Link from 'next/link'
 import ReactStars from 'react-rating-stars-component'
-import styles from '../styles/CardBlurb.module.css'
+import styles from '../styles/CardAbout.module.css'
 
-const CardAbout = ({ blurb, pokedex, ratingOverall }) => {
-  // const { pokemonDb, isLoading, isError } = useAllPokemon()
-  const { mutate } = useSWRConfig()
-
-  const changeHandler = async (newRating) => {
-    const payload = {
-      pokedex: pokedex,
-      userId: 1,
-      rating: newRating
-    }
-    try {
-      const res = await axios.post('/api/ratings', payload)
-      mutate('/api/pokemon')
-    } catch (error) {
-      console.error(error)
-    }
-  }
+const CardAbout = ({ blurb, pokedex, ratingOverall, name, image }) => {
 
   return (
     <>
+    <div className={styles.imageContainer} style={{cursor:`pointer`}}>
+       <Link href={`/${name.toLowerCase()}`} >
+         <a><Image src={image} alt={name} layout="fill" objectFit='contain' /></a>
+       </Link>
+      </div>
+      <div className={styles.nameContainer}>
+        <h2>{name}</h2>
+      </div>
       <ReactStars key={ratingOverall} size={20} value={ratingOverall} edit={false} isHalf={true} />
       <div className={styles.details}>
         <div className={styles.detailsTop}>

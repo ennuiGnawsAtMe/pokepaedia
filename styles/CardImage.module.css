@@ -28,39 +28,8 @@
 }
 
 .imageContainer {
-  min-height: 133px;
   height: 100%;
   width: 100%;
-  margin: 15px;
+  margin: 10px 30px 30px 30px;
   position: relative;
-}
-
-.ratingContainer {
-  padding-bottom: 20px;
-  padding-top: 20px;
-}
-
-.overallRatingContainer {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 5px;
-  font-weight: 200;
-  font-family: "Open Sans", sans-serif;
-}
-
-.oneRatingContainer {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  justify-content: flex-end;
-  padding: 5px;
-  font-weight: 200;
-  font-family: "Open Sans", sans-serif;
-}
-
-.ratingText {
-  padding-right: 10px;
 }

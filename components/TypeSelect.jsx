@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 import Select from 'react-select'
-import pokemonCardsContext from '../context/pokemonCardsContext'
+import pokemonCardsContext from '../lib/context/pokemonCardsContext.js'
 
 
 const TypeSelect = ({ allPokemon, options }) => {

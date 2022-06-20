@@ -1,10 +1,20 @@
+import Image from 'next/image'
+import Link from 'next/link'
 import styles from '../styles/CardTypes.module.css'
 import Types from './Types'
 
-const CardTypes = ({ attack, defense, specialAttack, speed, weight, specialDefense, height, experience, type }) => {
+const CardTypes = ({ image, name, attack, defense, specialAttack, speed, weight, specialDefense, height, experience, type }) => {
 
   return (
       <>
+      <div className={styles.imageContainer} style={{cursor:`pointer`}}>
+       <Link href={`/${name.toLowerCase()}`} >
+         <a><Image src={image} alt={name} layout="fill" objectFit='contain' /></a>
+       </Link>
+      </div>
+      <div className={styles.nameContainer}>
+        <h2>{name}</h2>
+      </div>
         <div className={styles.details}>
         <div className={styles.detailsTop}>
             <span><h4>Attack</h4><h3>{attack}</h3></span>

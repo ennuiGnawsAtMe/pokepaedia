@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Detail from '../components/Detail'
-import { capitalise } from '../lib/utils'
+import { capitalise } from '../lib/funcs'
 import data from '../data/all.json'
 import Footer from '../components/Footer'
 import NavBar from '../components/NavBar'

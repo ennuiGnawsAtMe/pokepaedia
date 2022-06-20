@@ -29,38 +29,47 @@
 
 .imageContainer {
   min-height: 133px;
+  max-height: 133px;
   height: 100%;
   width: 100%;
   margin: 15px;
   position: relative;
 }
 
-.ratingContainer {
-  padding-bottom: 20px;
-  padding-top: 20px;
+.details {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+  margin: 0 0 10px 0;
+  padding: 0 10px 5px 10px;
+  text-align: center;
+  align-items: center;
+  overflow: scroll;
 }
 
-.overallRatingContainer {
+.detailsTop {
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 5px;
-  font-weight: 200;
-  font-family: "Open Sans", sans-serif;
 }
 
-.oneRatingContainer {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  justify-content: flex-end;
-  padding: 5px;
-  font-weight: 200;
-  font-family: "Open Sans", sans-serif;
+.detailsTop p {
+  margin: 0;
+  font-size: 16px;
 }
 
-.ratingText {
-  padding-right: 10px;
+.detailsTop h4 {
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.5rem;
+  padding: 3px;
+  margin: 0px;
+  border-bottom: solid 1px black;
+}
+
+.detailsTop h3 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 200;
+  font-size: 1rem;
+  margin: 0px;
 }
