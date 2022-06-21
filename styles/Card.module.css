@@ -36,10 +36,17 @@
   align-items: center;
 }
 
-.imageText h4 {
+.topDetails h4 {
   font-family: "Open Sans", sans-serif;
-  font-size: 0.5rem;
+  font-weight: 200;
+  font-size: 0.7rem;
   margin: 0px;
+}
+
+.rank {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .imageText h3 {

@@ -1,6 +1,8 @@
 import prisma from '../../lib/prisma'
+import { getOrdinalNumbers } from '../../lib/funcs'
 
-const handler = async (req, res) => {
+
+const allPokemonApiHandler = async (req, res) => {
   try {
     const allPokemon = await prisma.pokemon.findMany({
         select: {
@@ -24,11 +26,12 @@ const handler = async (req, res) => {
           }
         ],
     })
+    const withRankings = allPokemon.map(poke => ({ ...poke, ranking: getOrdinalNumbers(allPokemon.indexOf(poke) + 1) }))
     console.log(`/api/pokemon is delivering you the things you need!`)
-    return res.status(200).json(allPokemon)
+    return res.status(200).json(withRankings)
   } catch (error) {
     console.error(error)
   }  
 }
 
-export default handler
+export default allPokemonApiHandler

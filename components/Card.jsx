@@ -28,7 +28,7 @@ const Card = ({ pokemon }) => {
   const { backgroundColor, color } = CARD_COLOURS[colour]
 
   const pokemonRatings = pokemonDb.find(poke => poke.pokedex === pokedex)
-  const { ratingOverall, ratings, comments } = pokemonRatings
+  const { ratingOverall, ratings, ranking } = pokemonRatings
   
   const clickHandler = (component) => {
       setCardFace(component) 
@@ -46,7 +46,7 @@ const Card = ({ pokemon }) => {
   return (
     <div style={{border:`solid 5px ${backgroundColor}`}} className={styles.container} >
       <div className={styles.topDetails}>
-          <h3>1<sup>st</sup></h3>
+          <span className={styles.rank}><h4>Rank:</h4><h3>{ranking}</h3></span>
         <div className={styles.imageText}>
           <h4>Stars:</h4><h3>{ratingOverall}</h3>
           <h4>Ratings:</h4><h3>{ratings.length}</h3>
