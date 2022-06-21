@@ -1,6 +1,4 @@
 import { useContext } from 'react'
-import Image from 'next/image'
-import Link from 'next/link'
 import Select from 'react-select'
 import pokemonCardsContext from '../lib/context/pokemonCardsContext.js'
 
