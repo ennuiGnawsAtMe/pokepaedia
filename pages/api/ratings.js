@@ -1,6 +1,6 @@
 import prisma from '../../lib/prisma'
 
-const handler = async (req, res) => {
+const ratingsApiHandler = async (req, res) => {
     const { rating, pokedex, userId } = req.body
     
     const newRating = await prisma.rating.create({
@@ -43,4 +43,4 @@ const handler = async (req, res) => {
     return res.status(200).json(updatePokemon)
 }
 
-export default handler
+export default ratingsApiHandler

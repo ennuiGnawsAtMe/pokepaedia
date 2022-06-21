@@ -1,12 +1,12 @@
 import axios from 'axios'
-import { useSWRConfig } from 'swr'
+import { usePokemon } from '../lib/swr/usePokemon'
 import Image from 'next/image'
 import Link from 'next/link'
 import ReactStars from 'react-rating-stars-component'
 import styles from '../styles/CardRating.module.css'
 
 const CardRating = ({ pokedex, image, name, ratingOverall, ratings }) => {
-  const { mutate } = useSWRConfig()
+  const { data, mutate } = usePokemon()
 
   const changeHandler = async (newRating) => {
     const payload = {
@@ -16,7 +16,7 @@ const CardRating = ({ pokedex, image, name, ratingOverall, ratings }) => {
     }
     try {
       const res = await axios.post('/api/ratings', payload)
-      mutate('/api/pokemon')
+      mutate()
     } catch (error) {
       console.error(error)
     }
@@ -37,7 +37,7 @@ const CardRating = ({ pokedex, image, name, ratingOverall, ratings }) => {
         <span className={styles.ratingText}>{`Your rating:`}</span><ReactStars size={20} value={0} onChange={newValue => changeHandler(newValue)} />
       </div>
       <div className={styles.overallRatingContainer}>
-        <span className={styles.ratingText}>{`${ratingOverall} stars, ${ratings.length} ratings`}</span><ReactStars size={20} key={ratingOverall} value={ratingOverall} edit={false} isHalf={true} />
+        <span className={styles.ratingText}>{`${ratings.length} ratings, ${ratingOverall} stars`}</span><ReactStars size={20} key={ratingOverall} value={ratingOverall} edit={false} isHalf={true} />
       </div>
     </div>
     </>

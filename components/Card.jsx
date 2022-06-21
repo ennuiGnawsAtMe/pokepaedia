@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useAllPokemon } from '../lib/swr/useAllPokemon'
+import { usePokemon } from '../lib/swr/usePokemon'
 import CardStats from './CardStats'
 import CardAbout from './CardAbout'
 import CardTypes from './CardTypes'
@@ -22,13 +22,13 @@ const CARD_COLOURS = {
 
 const Card = ({ pokemon }) => {
   const [cardFace, setCardFace] = useState('image')
-  const { pokemonDb, isLoading, isError } = useAllPokemon()
+  const { pokemonDb, isLoading, isError } = usePokemon()
 
   const { pokedex, hp, image, name, blurb, colour, happiness, ability, shape, habitat, attack, defense, specialAttack, speed, weight, specialDefense, height, experience, type } = pokemon
   const { backgroundColor, color } = CARD_COLOURS[colour]
 
   const pokemonRatings = pokemonDb.find(poke => poke.pokedex === pokedex)
-  const { ratingOverall, ratings, comments } = pokemonRatings
+  const { ratingOverall, ratings, ranking } = pokemonRatings
   
   const clickHandler = (component) => {
       setCardFace(component) 
@@ -46,7 +46,7 @@ const Card = ({ pokemon }) => {
   return (
     <div style={{border:`solid 5px ${backgroundColor}`}} className={styles.container} >
       <div className={styles.topDetails}>
-          <h3>1<sup>st</sup></h3>
+          <span className={styles.rank}><h4>Rank:</h4><h3>{ranking}</h3></span>
         <div className={styles.imageText}>
           <h4>Stars:</h4><h3>{ratingOverall}</h3>
           <h4>Ratings:</h4><h3>{ratings.length}</h3>

@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 import Select from 'react-select'
-import pokemonCardsContext from '../lib/context/pokemonCardsContext'
+import pokemonCardsContext from '../context/pokemonCardsContext.js'
 
 const AbilitySelect = ({ allPokemon, options }) => {
   const [pokemonCards, setPokemonCards] = useContext(pokemonCardsContext)
