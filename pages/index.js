@@ -1,9 +1,9 @@
 import Head from 'next/head'
 import { useContext } from 'react'
-import { useAllPokemon } from '../lib/swr/useAllPokemon'
+import { usePokemon } from '../lib/swr/usePokemon.js'
 import RandomPokemon from '../components/RandomPokemon.jsx'
 import data from '../data/all.json'
-import pokemonCardsContext from '../lib/context/pokemonCardsContext.js'
+import pokemonCardsContext from '../context/pokemonCardsContext.js'
 import { getAbilityOptions, getNameOptions, getHabitatOptions, getColourOptions, getShapeOptions, getTypeOptions } from '../lib/funcs'
 import { statusOptions, types }from '../lib/vars'
 import NavBar from '../components/NavBar.jsx'
@@ -29,7 +29,7 @@ export const getStaticProps = async () => {
 
  const Home = ({ pokemonJson, options }) => {
     const [pokemonCards, setPokemonCards] = useContext(pokemonCardsContext)
-    const { pokemonDb, isLoading, isError } = useAllPokemon()
+    const { pokemonDb, isLoading, isError } = usePokemon()
 
     return (
        <>
@@ -39,9 +39,9 @@ export const getStaticProps = async () => {
           <link rel="icon" href="/images/favicon.ico" />
         </Head>
         <main>
-         {!isLoading && !isError && <NavBar options={options} allPokemon={pokemonJson} />}
-          {pokemonCards.length === 0 && !isLoading && !isError ? <RandomPokemon allPokemon={pokemonJson} /> : !isLoading && !isError && <SearchList />}
-          {!isLoading && !isError && <Footer />}
+         <NavBar options={options} allPokemon={pokemonJson} />
+         {pokemonCards.length === 0 ? <RandomPokemon allPokemon={pokemonJson} /> : <SearchList />}
+         <Footer />
         </main>
       </>
 

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import '../styles/globals.css'
-import pokemonCardsContext from '../lib/context/pokemonCardsContext.js'
+import pokemonCardsContext from '../context/pokemonCardsContext.js'
 
 function MyApp({ Component, pageProps }) {
   const [pokemonCards, setPokemonCards] = useState([])

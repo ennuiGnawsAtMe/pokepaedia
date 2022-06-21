@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useAllPokemon } from '../lib/swr/useAllPokemon'
+import { usePokemon } from '../lib/swr/usePokemon'
 import CardStats from './CardStats'
 import CardAbout from './CardAbout'
 import CardTypes from './CardTypes'
@@ -22,7 +22,7 @@ const CARD_COLOURS = {
 
 const Card = ({ pokemon }) => {
   const [cardFace, setCardFace] = useState('image')
-  const { pokemonDb, isLoading, isError } = useAllPokemon()
+  const { pokemonDb, isLoading, isError } = usePokemon()
 
   const { pokedex, hp, image, name, blurb, colour, happiness, ability, shape, habitat, attack, defense, specialAttack, speed, weight, specialDefense, height, experience, type } = pokemon
   const { backgroundColor, color } = CARD_COLOURS[colour]
