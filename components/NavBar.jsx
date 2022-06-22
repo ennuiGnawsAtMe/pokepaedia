@@ -13,7 +13,7 @@ import ColourSelect from './ColourSelect'
 import HabitatSelect from './HabitatSelect'
 import StatusSelect from './StatusSelect'
 import ShapeSelect from './ShapeSelect'
-
+import RankingSelect from './RankingSelect'
 
 const NavBar = ({ options, allPokemon }) => {
   const [dropshadow, setDropshadow] = useState(false)
@@ -30,11 +30,12 @@ const NavBar = ({ options, allPokemon }) => {
     'shape': <ShapeSelect options={options.shapeOptions} allPokemon={allPokemon}/>,
     'ability': <AbilitySelect options={options.abilityOptions} allPokemon={allPokemon}/>,
     'status': <StatusSelect options={options.statusOptions} allPokemon={allPokemon}/>,
+    'rank': <RankingSelect allPokemon={allPokemon} />
   }
 
   const clickHandler = (dropdown) => {
-    setDropdown(dropdown)
-    setPokemonCards([])
+      setDropdown(dropdown)
+      setPokemonCards([])
   }
 
   useEffect(() => {
@@ -74,25 +75,28 @@ const NavBar = ({ options, allPokemon }) => {
               <Link href="/">
                 <ul>
                   <li className={dropdown === "name" ? styles.active : undefined} onClick={() => clickHandler('name')}>
-                    &gt;&gt;Name
+                    &gt;Name
                   </li>
                   <li className={dropdown === "type" ? styles.active : undefined} onClick={() => clickHandler('type')}>
-                    &gt;&gt;Type
+                    &gt;Type
+                  </li>
+                  <li className={dropdown === "rank" ? styles.active : undefined} onClick={() => clickHandler('rank')}>
+                    &gt;Rank
                   </li>
                   <li className={dropdown === "habitat" ? styles.active : undefined} onClick={() => clickHandler('habitat')}>
-                    &gt;&gt;Habitat
+                    &gt;Habitat
                   </li>
                   <li className={dropdown === "colour" ? styles.active : undefined} onClick={() => clickHandler('colour')}>
-                    &gt;&gt;Colour
+                    &gt;Colour
                   </li>
                   <li className={dropdown === "shape" ? styles.active : undefined} onClick={() => clickHandler('shape')}>
-                    &gt;&gt;Shape
+                    &gt;Shape
                   </li>
                   <li className={dropdown === "evolution" ? styles.active : undefined} onClick={() => clickHandler('status')}>
-                    &gt;&gt;Status
+                    &gt;Status
                   </li>
                   <li className={dropdown === "ability" ? styles.active : undefined} onClick={() => clickHandler('ability')}>
-                    &gt;&gt;Ability
+                    &gt;Ability
                   </li>
                 </ul>
               </Link>

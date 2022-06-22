@@ -4,7 +4,7 @@ import pokemonCardsContext from '../context/pokemonCardsContext.js'
 
 const ShapeSelect = ({ allPokemon, options }) => {
   const [pokemonCards, setPokemonCards] = useContext(pokemonCardsContext)
-      
+    
   const changeHandler = (shapeName) => {
     const newSelection = allPokemon.filter(({ shape }) => shape == shapeName)
     setPokemonCards(newSelection)
