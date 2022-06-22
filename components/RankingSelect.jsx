@@ -19,20 +19,19 @@ const RankingSelect = ({ allPokemon }) => {
         const jsonPokemon = allPokemon.find(pokemon => pokemon.pokedex === poke.pokedex)
         return { ...poke, ...jsonPokemon}
     })
-    // const newSelection = allPokemon.filter(({ shape }) => shape == shapeName)
     setPokemonCards(fullPokemonData)
   }
 
 return (
-  <>
+<>
     <Select
-          placeholder={`Search Pokemon by Rank`}
-          maxMenuHeight={400}
-          options={RankOptions}
-          instanceId="rank-value-select"
-          onChange={event => changeHandler(event.value)}
+        placeholder={`Search Pokemon by Rank`}
+        maxMenuHeight={400}
+        options={RankOptions}
+        instanceId="rank-value-select"
+        onChange={event => changeHandler(event.value)}
         />
-  </>
+</>
 )
 }
 

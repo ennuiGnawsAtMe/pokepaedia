@@ -7,7 +7,7 @@
   margin: auto;
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 10;
   background-color: white;
   padding: 2vh 2.5vw 2vh 2.5vw;
 }
@@ -97,11 +97,19 @@
 }
 
 .dropdownContainer {
+  font-family: "Open Sans", sans-serif;
+
   width: 100%;
 }
 
-.dropdownContainer h3 {
+.dropdownContainer button {
+  float: right;
+  background-color: white;
+  border: none;
+  font-family: "Playfair Display", serif;
+  font-weight: 400;
   font-size: 21px;
   padding: 0;
   margin: 5px 0;
+  cursor: pointer;
 }

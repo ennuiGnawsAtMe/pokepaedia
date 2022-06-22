@@ -77,11 +77,11 @@ const NavBar = ({ options, allPokemon }) => {
                   <li className={dropdown === "name" ? styles.active : undefined} onClick={() => clickHandler('name')}>
                     &gt;Name
                   </li>
-                  <li className={dropdown === "type" ? styles.active : undefined} onClick={() => clickHandler('type')}>
-                    &gt;Type
-                  </li>
                   <li className={dropdown === "rank" ? styles.active : undefined} onClick={() => clickHandler('rank')}>
                     &gt;Rank
+                  </li>
+                  <li className={dropdown === "type" ? styles.active : undefined} onClick={() => clickHandler('type')}>
+                    &gt;Type
                   </li>
                   <li className={dropdown === "habitat" ? styles.active : undefined} onClick={() => clickHandler('habitat')}>
                     &gt;Habitat
@@ -102,7 +102,7 @@ const NavBar = ({ options, allPokemon }) => {
               </Link>
             </nav>
             <div className={styles.dropdownContainer}>
-               {!pokemon ? DROPDOWN_COMPONENTS[dropdown] : <h1>Back to List</h1>}
+               {!pokemon ? DROPDOWN_COMPONENTS[dropdown] : <button onClick={() => router.back()}>&larr;Back to List</button>}
             </div>
          </div>
        </header>
