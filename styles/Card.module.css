@@ -76,8 +76,8 @@
   font-weight: bolder;
   font-size: 11px;
   padding: 5px;
-  border-radius: 2px;
-  transition: transform 500ms;
+  width: 40px;
+  text-align: center;
 }
 
 .footer ul {
@@ -87,6 +87,9 @@
 }
 
 .footer li:hover {
-  transform: translateY(-5px);
-  text-decoration: underline;
+  text-decoration: overline;
+}
+
+.active {
+  text-decoration: overline;
 }
