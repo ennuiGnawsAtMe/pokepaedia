@@ -1,22 +1,42 @@
 import axios from 'axios'
-import { usePokemon } from '../lib/swr/usePokemon'
+import { useGetAllPokemonDb } from '../lib/swr/useGetAllPokemonDb'
+import { getOrdinalNumbers } from '../lib/funcs'
 import Image from 'next/image'
 import Link from 'next/link'
 import ReactStars from 'react-rating-stars-component'
 import styles from '../styles/CardRating.module.css'
 
 const CardRating = ({ pokedex, image, name, ratingOverall, ratings }) => {
-  const { data, mutate } = usePokemon()
+  const { allPokemonDb, mutateAllPokemonDb } = useGetAllPokemonDb()
 
   const changeHandler = async (newRating) => {
+    const optimisticNoRank = allPokemonDb.map(poke => {
+      if (poke.pokedex === pokedex) {
+        const newRatings = [...poke.ratings, {userId: 1, pokedex: poke.pokedex, rating: newRating}]
+        const newOverall = newRatings.reduce((total, current) => total + current.rating, 0) / newRatings.length
+        const newOverallRating = Number(newOverall.toFixed(1))
+        
+        return { 
+          ...poke,
+          ratings: newRatings,
+          ratingOverall: newOverallRating
+        }
+      }
+        return poke
+    })
+
+    const sortedRanking = optimisticNoRank.sort((a, b) => b.ratingOverall - a.ratingOverall || b.ratings.length - a.ratings.length || a.pokedex - b.pokedex)
+    const optimisticWithRank = sortedRanking.map(poke => ({ ...poke, ranking: getOrdinalNumbers(sortedRanking.indexOf(poke) + 1) }))
+
     const payload = {
       pokedex: pokedex,
       userId: 1,
       rating: newRating
     }
+
     try {
-      const res = await axios.post('/api/ratings', payload)
-      mutate()
+      const res =  await axios.post('/api/ratings', payload)
+      await mutateAllPokemonDb(optimisticWithRank)
     } catch (error) {
       console.error(error)
     }
