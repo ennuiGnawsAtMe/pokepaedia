@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { useContext } from 'react'
-import { usePokemon } from '../lib/swr/usePokemon.js'
+import { useGetAllPokemonDb } from '../lib/swr/useGetAllPokemonDb'
 import RandomPokemon from '../components/RandomPokemon.jsx'
 import data from '../data/all.json'
 import pokemonCardsContext from '../context/pokemonCardsContext.js'
@@ -29,7 +29,7 @@ export const getStaticProps = async () => {
 
  const Home = ({ pokemonJson, options }) => {
     const [pokemonCards, setPokemonCards] = useContext(pokemonCardsContext)
-    const { pokemonDb, isLoading, isError } = usePokemon()
+    const { allPokemonDb, isLoading, isError } = useGetAllPokemonDb()
 
     return (
        <>
