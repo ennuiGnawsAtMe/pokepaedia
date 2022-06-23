@@ -1,6 +1,7 @@
 import { useContext } from 'react'
 import Select from 'react-select'
 import pokemonCardsContext from '../context/pokemonCardsContext.js'
+import { goToTop } from '../lib/funcs.js'
 import { useGetAllPokemonDb } from '../lib/swr/useGetAllPokemonDb.js'
 import { RankOptions } from '../lib/vars'
 
@@ -14,6 +15,7 @@ const RankingSelect = ({ allPokemon }) => {
   }
       
   const changeHandler = (rankings) => {
+    goToTop()
     const slicedPokemonDb = findPokes(allPokemonDb, rankings)
     const fullPokemonData = slicedPokemonDb.map(poke => {
         const jsonPokemon = allPokemon.find(pokemon => pokemon.pokedex === poke.pokedex)

@@ -3,7 +3,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useContext, useEffect, useState } from 'react'
-import { goToTop } from '../lib/funcs'
 import pokemonImages from '../data/imgDictionary'
 import pokemonCardsContext from '../context/pokemonCardsContext.js'
 import NameSelect from './NameSelect'
@@ -14,10 +13,11 @@ import HabitatSelect from './HabitatSelect'
 import StatusSelect from './StatusSelect'
 import ShapeSelect from './ShapeSelect'
 import RankingSelect from './RankingSelect'
+import dropdownContext from '../context/dropdownContext'
 
 const NavBar = ({ options, allPokemon }) => {
   const [dropshadow, setDropshadow] = useState(false)
-  const [dropdown, setDropdown] = useState('name')
+  const [dropdown, setDropdown] = useContext(dropdownContext)
   const [pokemonCards, setPokemonCards] = useContext(pokemonCardsContext)
   const router = useRouter()
   const { pokemon } = router.query
@@ -39,7 +39,6 @@ const NavBar = ({ options, allPokemon }) => {
   }
 
   useEffect(() => {
-    goToTop()
     window.addEventListener('scroll', () => {
         if (window.scrollY > 60) {
             setDropshadow(true);
@@ -47,10 +46,10 @@ const NavBar = ({ options, allPokemon }) => {
             setDropshadow(false);
         }
     })
-  }, [pokemonCards])
+  })
 
   return (
-       <header className={`${styles.container} ${dropshadow && styles.dropShadow}`}>
+       <header className={`${styles.container} ${dropshadow ? styles.dropShadow : undefined}`}>
               <div className={styles.title}>
                 <span className={styles.logo} >
                     <Link href="/"><a>

@@ -1,11 +1,13 @@
 import { useContext } from 'react'
 import Select from 'react-select'
 import pokemonCardsContext from '../context/pokemonCardsContext.js'
+import { goToTop } from '../lib/funcs.js'
 
 const AbilitySelect = ({ allPokemon, options }) => {
   const [pokemonCards, setPokemonCards] = useContext(pokemonCardsContext)
 
   const changeHandler = (abilityName) => {
+    goToTop()
     const newSelection = []
       allPokemon.forEach(poke => {
         poke.ability.forEach(element => element.ability == abilityName && newSelection.push(poke))

@@ -1,11 +1,13 @@
 import Select from 'react-select'
 import { useContext } from 'react'
 import pokemonCardsContext from '../context/pokemonCardsContext.js'
+import { goToTop } from '../lib/funcs.js'
 
 const NameSelect = ({ allPokemon, options }) => {
   const [pokemonCards, setPokemonCards] = useContext(pokemonCardsContext)
 
   const changeHandler = (selection) => {
+      goToTop()
       const pokedexList = selection.map(element => element.value)
       const newSelection = []
       for (let i = 0; i < pokedexList.length; i++) {

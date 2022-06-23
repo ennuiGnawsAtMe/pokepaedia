@@ -1,11 +1,13 @@
 import { useContext } from 'react'
 import Select from 'react-select'
 import pokemonCardsContext from '../context/pokemonCardsContext.js'
+import { goToTop } from '../lib/funcs.js'
 
 const StatusSelect = ({allPokemon, options }) => {
   const [pokemonCards, setPokemonCards] = useContext(pokemonCardsContext)
 
   const changeHandler = (status) => {
+    goToTop()
     if (status === 'baby') {
       const newSelection = allPokemon.filter(({ isBaby }) => isBaby == true)
       setPokemonCards(newSelection)

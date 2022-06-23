@@ -56,19 +56,19 @@ const Card = ({ pokemon }) => {
       {cardFaceComponent[cardFace]}
       <div style={{backgroundColor:`${backgroundColor}`}} className={styles.footer}>
         <ul>
-          <li className={cardFace === 'image' && styles.active} style={{backgroundColor: `${backgroundColor}`, color:`${color}`, cursor:`pointer`}} onClick={() => clickHandler('image')}>
+          <li className={cardFace === 'image' ? styles.active : undefined} style={{backgroundColor: `${backgroundColor}`, color:`${color}`, cursor:`pointer`}} onClick={() => clickHandler('image')}>
             Image
           </li>
-          <li className={cardFace === 'about' && styles.active} style={{backgroundColor: `${backgroundColor}`, color:`${color}`, cursor:`pointer`}} onClick={() => clickHandler('about')}>
+          <li className={cardFace === 'about' ? styles.active : undefined} style={{backgroundColor: `${backgroundColor}`, color:`${color}`, cursor:`pointer`}} onClick={() => clickHandler('about')}>
             About
           </li>
-          <li className={cardFace === 'types' && styles.active} style={{backgroundColor: `${backgroundColor}`, color:`${color}`, cursor:`pointer`}} onClick={() => clickHandler('types')}>
+          <li className={cardFace === 'types' ? styles.active : undefined} style={{backgroundColor: `${backgroundColor}`, color:`${color}`, cursor:`pointer`}} onClick={() => clickHandler('types')}>
             Type
           </li>
-          <li className={cardFace === 'ability' && styles.active} style={{backgroundColor: `${backgroundColor}`, color:`${color}`, cursor:`pointer`}} onClick={() => clickHandler('ability')}>
+          <li className={cardFace === 'ability' ? styles.active : undefined} style={{backgroundColor: `${backgroundColor}`, color:`${color}`, cursor:`pointer`}} onClick={() => clickHandler('ability')}>
             Ability
           </li>
-           <li className={cardFace === 'rate' && styles.active} style={{backgroundColor: `${backgroundColor}`, color:`${color}`, cursor:`pointer`}} onClick={() => clickHandler('rate')}>
+           <li className={cardFace === 'rate' ? styles.active : undefined} style={{backgroundColor: `${backgroundColor}`, color:`${color}`, cursor:`pointer`}} onClick={() => clickHandler('rate')}>
             Rating
           </li>
           {/* <li style={{backgroundColor: `${backgroundColor}`, color:`${color}`, cursor:`pointer`}} >
