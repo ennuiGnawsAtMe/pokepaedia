@@ -36,30 +36,58 @@ const CardRating = ({ pokedex, image, name, ratingOverall, ratings }) => {
 
     try {
       const res =  await axios.post('/api/ratings', payload)
-      await mutateAllPokemonDb(optimisticWithRank)
+      const newRankings = await mutateAllPokemonDb(optimisticWithRank)
     } catch (error) {
       console.error(error)
     }
   }
 
+  // const findPokes = (array, end) => {
+  //   const start = end - 100
+  //   return array.slice(start, end)
+  // }
+      
+  // const changeHandler = (rankings) => {
+  //   const slicedPokemonDb = findPokes(allPokemonDb, rankings)
+  //   const fullPokemonData = slicedPokemonDb.map(poke => {
+  //       const jsonPokemon = allPokemon.find(pokemon => pokemon.pokedex === poke.pokedex)
+  //       return { ...poke, ...jsonPokemon}
+  //   })
+  //   setPokemonCards(fullPokemonData)
+  // }
+
+
   return (
     <>
-    <div className={styles.nameContainer}>
-      <h2>{name}</h2>
-    </div>
     <div className={styles.imageContainer} style={{cursor:`pointer`}}>
-      <Link href={`/${name.toLowerCase()}`} >
-        <a><Image src={image} alt={name} layout="fill" objectFit='contain' /></a>
-      </Link>
-    </div>
-    <div className={styles.ratingContainer}>
+       <Link href={`/${name.toLowerCase()}`} >
+         <a><Image src={image} alt={name} layout="fill" objectFit='contain' /></a>
+       </Link>
+      </div>
+      <div className={styles.nameContainer}>
+        <h2>{name}</h2>
+      </div>
+        <div className={styles.details}>
+        <div className={styles.detailsTop}>
+          <span className={styles.ratingText}>{`Your rating:`}</span><ReactStars size={20} value={0} onChange={newValue => changeHandler(newValue)} />
+          <form action="/api/ratings" method="post">
+            <label htmlFor="name">Name:</label>
+            <input type="text" id="name" name="name" />
+            <label htmlFor="comment">Comment:</label>
+            <input type="text" id="comment" name="comment" />
+            <button type="submit">Submit</button>
+          </form>
+          
+        </div>
+        </div> 
+    {/* <div className={styles.ratingContainer}>
       <div className={styles.oneRatingContainer}>
         <span className={styles.ratingText}>{`Your rating:`}</span><ReactStars size={20} value={0} onChange={newValue => changeHandler(newValue)} />
       </div>
       <div className={styles.overallRatingContainer}>
         <span className={styles.ratingText}>{`${ratings.length} ratings, ${ratingOverall} stars`}</span><ReactStars size={20} key={ratingOverall} value={ratingOverall} edit={false} isHalf={true} />
       </div>
-    </div>
+    </div> */}
     </>
   )
   }

@@ -70,12 +70,14 @@
 }
 
 .nav li:hover {
-  transform: translateY(-3px);
-  color: #ea9c78;
+  text-decoration: overline;
+  /* color: #ea9c78; */
 }
 
 .active {
   color: #ea9c78;
+  text-decoration: overline;
+  transform: translateY(-3px);
 }
 
 .login {

@@ -40,7 +40,7 @@ const NavBar = ({ options, allPokemon }) => {
 
   useEffect(() => {
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 60) {
+        if (window.scrollY > 30) {
             setDropshadow(true);
         } else {
             setDropshadow(false);
@@ -77,7 +77,7 @@ const NavBar = ({ options, allPokemon }) => {
                     &gt;Name
                   </li>
                   <li className={dropdown === "rank" ? styles.active : undefined} onClick={() => clickHandler('rank')}>
-                    &gt;Rank
+                    &gt;Ranking
                   </li>
                   <li className={dropdown === "type" ? styles.active : undefined} onClick={() => clickHandler('type')}>
                     &gt;Type
