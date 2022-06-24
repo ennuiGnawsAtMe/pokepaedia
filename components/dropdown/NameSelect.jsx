@@ -1,7 +1,7 @@
 import Select from 'react-select'
 import { useContext } from 'react'
-import pokemonCardsContext from '../context/pokemonCardsContext.js'
-import { goToTop } from '../lib/funcs.js'
+import pokemonCardsContext from '../../context/pokemonCardsContext.js'
+import { goToTop } from '../../lib/funcs.js'
 
 const NameSelect = ({ allPokemon, options }) => {
   const [pokemonCards, setPokemonCards] = useContext(pokemonCardsContext)

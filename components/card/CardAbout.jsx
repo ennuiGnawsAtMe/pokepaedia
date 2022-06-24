@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import ReactStars from 'react-rating-stars-component'
-import styles from '../styles/CardAbout.module.css'
+import styles from './CardAbout.module.css'
 
 const CardAbout = ({ blurb, pokedex, ratingOverall, name, image }) => {
 

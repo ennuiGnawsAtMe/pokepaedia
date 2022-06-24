@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import ReactStars from 'react-rating-stars-component'
-import styles from '../styles/CardImage.module.css'
+import styles from './CardImage.module.css'
 
 const CardImage = ({ name, image, ratingOverall }) => {
 

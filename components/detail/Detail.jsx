@@ -6,7 +6,7 @@ import DetailStats from './DetailStats'
 import DetailRanking from './DetailRanking'
 import DetailComments from './DetailComments'
 import DetailEvolution from './DetailEvolution'
-import styles from '../styles/Detail.module.css'
+import styles from './Detail.module.css'
 
 const Detail = ({ pokemon }) => {
   const [component, setComponent] = useState('about')

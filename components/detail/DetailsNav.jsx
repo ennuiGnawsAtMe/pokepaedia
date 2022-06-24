@@ -1,4 +1,4 @@
-import styles from '../styles/DetailsNav.module.css'
+import styles from './DetailsNav.module.css'
 
 const DetailsNav = ({ component, setComponent }) => {
 

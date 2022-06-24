@@ -1,11 +1,12 @@
 import { useState } from 'react'
-import { useGetAllPokemonDb } from '../lib/swr/useGetAllPokemonDb'
+import { useGetAllPokemonDb } from '../../lib/swr/useGetAllPokemonDb'
 import CardStats from './CardStats'
 import CardAbout from './CardAbout'
 import CardTypes from './CardTypes'
-import styles from '../styles/Card.module.css'
+import styles from './Card.module.css'
 import CardRating from './CardRating'
 import CardImage from './CardImage'
+import RatingModal from '../modal/ratingModal'
 
 const CARD_COLOURS = {
     'red': {backgroundColor: '#AB1E23', color: 'white'},
@@ -22,6 +23,7 @@ const CARD_COLOURS = {
 
 const Card = ({ pokemon }) => {
   const [cardFace, setCardFace] = useState('image')
+  const [isOpen, setIsOpen] = useState(false)
   const { allPokemonDb, isLoading, isError } = useGetAllPokemonDb()
 
   const { pokedex, hp, image, name, blurb, colour, happiness, ability, shape, habitat, attack, defense, specialAttack, speed, weight, specialDefense, height, experience, type } = pokemon
@@ -44,6 +46,7 @@ const Card = ({ pokemon }) => {
   })
 
   return (
+    <>
     <div style={{border:`solid 5px ${backgroundColor}`}} className={styles.container} >
       <div className={styles.topDetails}>
           <span className={styles.rank}><h4>Rank:</h4><h3>{ranking}</h3></span>
@@ -68,8 +71,8 @@ const Card = ({ pokemon }) => {
           <li className={cardFace === 'ability' ? styles.active : undefined} style={{backgroundColor: `${backgroundColor}`, color:`${color}`, cursor:`pointer`}} onClick={() => clickHandler('ability')}>
             Ability
           </li>
-           <li className={cardFace === 'rate' ? styles.active : undefined} style={{backgroundColor: `${backgroundColor}`, color:`${color}`, cursor:`pointer`}} onClick={() => clickHandler('rate')}>
-            Rating
+           <li className={cardFace === 'rate' ? styles.active : undefined} style={{backgroundColor: `${backgroundColor}`, color:`${color}`, cursor:`pointer`}} onClick={() => setIsOpen(true)}>
+            Rate
           </li>
           {/* <li style={{backgroundColor: `${backgroundColor}`, color:`${color}`, cursor:`pointer`}} >
             Comment
@@ -77,6 +80,10 @@ const Card = ({ pokemon }) => {
         </ul>
       </div>
     </div>
+    <RatingModal handleClose={() => setIsOpen(false)} isOpen={isOpen}>
+        This is Modal Content!
+      </RatingModal>
+      </>
   )
   }
 

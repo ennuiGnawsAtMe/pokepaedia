@@ -1,10 +1,10 @@
 import axios from 'axios'
-import { useGetAllPokemonDb } from '../lib/swr/useGetAllPokemonDb'
-import { getOrdinalNumbers } from '../lib/funcs'
+import { useGetAllPokemonDb } from '../../lib/swr/useGetAllPokemonDb'
+import { getOrdinalNumbers } from '../../lib/funcs'
 import Image from 'next/image'
 import Link from 'next/link'
 import ReactStars from 'react-rating-stars-component'
-import styles from '../styles/CardRating.module.css'
+import styles from './CardRating.module.css'
 
 const CardRating = ({ pokedex, image, name, ratingOverall, ratings }) => {
   const { allPokemonDb, mutateAllPokemonDb } = useGetAllPokemonDb()
@@ -69,7 +69,7 @@ const CardRating = ({ pokedex, image, name, ratingOverall, ratings }) => {
       </div>
         <div className={styles.details}>
         <div className={styles.detailsTop}>
-          <span className={styles.ratingText}>{`Your rating:`}</span><ReactStars size={20} value={0} onChange={newValue => changeHandler(newValue)} />
+          <ReactStars size={20} value={0} onChange={newValue => changeHandler(newValue)} />
           <form action="/api/ratings" method="post">
             <label htmlFor="name">Name:</label>
             <input type="text" id="name" name="name" />
@@ -77,7 +77,6 @@ const CardRating = ({ pokedex, image, name, ratingOverall, ratings }) => {
             <input type="text" id="comment" name="comment" />
             <button type="submit">Submit</button>
           </form>
-          
         </div>
         </div> 
     {/* <div className={styles.ratingContainer}>

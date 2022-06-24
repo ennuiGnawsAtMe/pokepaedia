@@ -1,9 +1,9 @@
 import { useContext } from 'react'
 import Select from 'react-select'
-import pokemonCardsContext from '../context/pokemonCardsContext.js'
-import { goToTop } from '../lib/funcs.js'
-import { useGetAllPokemonDb } from '../lib/swr/useGetAllPokemonDb.js'
-import { RankOptions } from '../lib/vars'
+import pokemonCardsContext from '../../context/pokemonCardsContext.js'
+import { goToTop } from '../../lib/funcs.js'
+import { useGetAllPokemonDb } from '../../lib/swr/useGetAllPokemonDb.js'
+import { RankOptions } from '../../lib/vars'
 
 const RankingSelect = ({ allPokemon }) => {
   const [pokemonCards, setPokemonCards] = useContext(pokemonCardsContext)

@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import styles from '../styles/CardStats.module.css'
+import styles from './CardStats.module.css'
 
 const CardStats = ({ hp, happiness, ability, shape, habitat, image, name }) => {
 

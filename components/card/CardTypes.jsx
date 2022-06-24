@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import styles from '../styles/CardTypes.module.css'
-import Types from './Types'
+import styles from './CardTypes.module.css'
+import Types from '../utils/Types'
 
 const CardTypes = ({ image, name, attack, defense, specialAttack, speed, weight, specialDefense, height, experience, type }) => {
 

@@ -1,9 +1,9 @@
 import Image from 'next/image'
 import { useState, useContext, useEffect } from 'react'
-import { getRandomPoke } from '../lib/funcs'
-import styles from '../styles/RandomPokemon.module.css'
+import { getRandomPoke } from '../../lib/funcs'
+import styles from './RandomPokemon.module.css'
 import Loading from './Loading'
-import pokemonCardsContext from '../context/pokemonCardsContext.js'
+import pokemonCardsContext from '../../context/pokemonCardsContext.js'
 
 const RandomPokemon = ({ allPokemon }) => {
   const [pokemon, setPokemon] = useState({})

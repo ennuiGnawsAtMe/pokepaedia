@@ -1,14 +1,14 @@
 import Head from 'next/head'
 import { useContext } from 'react'
 import { useGetAllPokemonDb } from '../lib/swr/useGetAllPokemonDb'
-import RandomPokemon from '../components/RandomPokemon.jsx'
+import RandomPokemon from '../components/utils/RandomPokemon.jsx'
 import data from '../data/all.json'
 import pokemonCardsContext from '../context/pokemonCardsContext.js'
 import { getAbilityOptions, getNameOptions, getHabitatOptions, getColourOptions, getShapeOptions, getTypeOptions } from '../lib/funcs'
 import { statusOptions, types }from '../lib/vars'
-import NavBar from '../components/NavBar.jsx'
-import Footer from '../components/Footer.jsx'
-import SearchList from '../components/SearchList.jsx'
+import NavBar from '../components/layout/NavBar.jsx'
+import Footer from '../components/layout/Footer.jsx'
+import SearchList from '../components/utils/SearchList.jsx'
 
 export const getStaticProps = async () => {
     const pokemonJson = data.pokemon

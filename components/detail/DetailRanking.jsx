@@ -1,4 +1,4 @@
-import styles from '../styles/DetailAbout.module.css'
+import styles from './DetailAbout.module.css'
 
 const DetailRanking = ({ pokemon }) => {
 
