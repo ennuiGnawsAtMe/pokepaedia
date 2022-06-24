@@ -6,7 +6,7 @@ import CardTypes from './CardTypes'
 import styles from './Card.module.css'
 import CardRating from './CardRating'
 import CardImage from './CardImage'
-import RatingModal from '../modal/ratingModal'
+import RatingModal from '../modal/Modal'
 
 const CARD_COLOURS = {
     'red': {backgroundColor: '#AB1E23', color: 'white'},
@@ -26,7 +26,28 @@ const Card = ({ pokemon }) => {
   const [isOpen, setIsOpen] = useState(false)
   const { allPokemonDb, isLoading, isError } = useGetAllPokemonDb()
 
-  const { pokedex, hp, image, name, blurb, colour, happiness, ability, shape, habitat, attack, defense, specialAttack, speed, weight, specialDefense, height, experience, type } = pokemon
+  const { 
+    pokedex, 
+    hp, 
+    image, 
+    name, 
+    blurb, 
+    colour, 
+    happiness, 
+    ability, 
+    shape, 
+    habitat, 
+    attack, 
+    defense, 
+    specialAttack, 
+    speed, 
+    weight, 
+    specialDefense, 
+    height, 
+    experience, 
+    type 
+  } = pokemon
+
   const { backgroundColor, color } = CARD_COLOURS[colour]
 
   const pokemonRatings = allPokemonDb.find(poke => poke.pokedex === pokedex)
@@ -37,12 +58,29 @@ const Card = ({ pokemon }) => {
   }
 
   const cardFaceComponent = ({
-      about: <CardAbout name={name} image={image} blurb={blurb} pokedex={pokedex} ratingOverall={ratingOverall} />,
-      types: <CardTypes name={name} image={image} type={type} attack={attack} defense={defense} specialAttack={specialAttack} speed={speed} weight={weight} specialDefense={specialDefense} height={height} experience={experience} />,
+      about: <CardAbout 
+               name={name} 
+               image={image} 
+               blurb={blurb} 
+               pokedex={pokedex} 
+               ratingOverall={ratingOverall} 
+              />,
+      types: <CardTypes 
+               name={name} 
+               image={image} 
+               type={type} 
+               attack={attack} 
+               defense={defense} 
+               specialAttack={specialAttack} 
+               speed={speed} 
+               weight={weight} 
+               specialDefense={specialDefense} 
+               height={height} 
+               experience={experience} 
+              />,
       ability: <CardStats name={name} image={image} hp={hp} happiness={happiness} shape={shape} habitat={habitat} ability={ability} />,
       rate: <CardRating name={name} image={image} ratingOverall={ratingOverall} ratings={ratings} pokedex={pokedex} />,
       image: <CardImage name={name} image={image} ratingOverall={ratingOverall} />,
-      // comment:
   })
 
   return (
@@ -59,31 +97,46 @@ const Card = ({ pokemon }) => {
       {cardFaceComponent[cardFace]}
       <div style={{backgroundColor:`${backgroundColor}`}} className={styles.footer}>
         <ul>
-          <li className={cardFace === 'image' ? styles.active : undefined} style={{backgroundColor: `${backgroundColor}`, color:`${color}`, cursor:`pointer`}} onClick={() => clickHandler('image')}>
+          <li 
+            className={cardFace === 'image' ? styles.active : undefined} 
+            style={{backgroundColor: `${backgroundColor}`, color:`${color}`, cursor:`pointer`}} 
+            onClick={() => clickHandler('image')}
+            >
             Image
           </li>
-          <li className={cardFace === 'about' ? styles.active : undefined} style={{backgroundColor: `${backgroundColor}`, color:`${color}`, cursor:`pointer`}} onClick={() => clickHandler('about')}>
+          <li 
+            className={cardFace === 'about' ? styles.active : undefined} 
+            style={{backgroundColor: `${backgroundColor}`, color:`${color}`, cursor:`pointer`}} 
+            onClick={() => clickHandler('about')}
+            >
             About
           </li>
-          <li className={cardFace === 'types' ? styles.active : undefined} style={{backgroundColor: `${backgroundColor}`, color:`${color}`, cursor:`pointer`}} onClick={() => clickHandler('types')}>
+          <li 
+            className={cardFace === 'types' ? styles.active : undefined} 
+            style={{backgroundColor: `${backgroundColor}`, color:`${color}`, cursor:`pointer`}} 
+            onClick={() => clickHandler('types')}
+            >
             Type
           </li>
-          <li className={cardFace === 'ability' ? styles.active : undefined} style={{backgroundColor: `${backgroundColor}`, color:`${color}`, cursor:`pointer`}} onClick={() => clickHandler('ability')}>
+          <li 
+            className={cardFace === 'ability' ? styles.active : undefined} 
+            style={{backgroundColor: `${backgroundColor}`, color:`${color}`, cursor:`pointer`}} 
+            onClick={() => clickHandler('ability')}
+            >
             Ability
           </li>
-           <li className={cardFace === 'rate' ? styles.active : undefined} style={{backgroundColor: `${backgroundColor}`, color:`${color}`, cursor:`pointer`}} onClick={() => setIsOpen(true)}>
+           <li 
+            className={cardFace === 'rate' ? styles.active : undefined} 
+            style={{backgroundColor: `${backgroundColor}`, color:`${color}`, cursor:`pointer`}} 
+            onClick={() => setIsOpen(true)}
+            >
             Rate
           </li>
-          {/* <li style={{backgroundColor: `${backgroundColor}`, color:`${color}`, cursor:`pointer`}} >
-            Comment
-          </li> */}
         </ul>
       </div>
     </div>
-    <RatingModal handleClose={() => setIsOpen(false)} isOpen={isOpen}>
-        This is Modal Content!
-      </RatingModal>
-      </>
+    <RatingModal handleClose={() => setIsOpen(false)} isOpen={isOpen} totalRatings={ratings.length} ratingOverall={ratingOverall} image={image} name={name} pokedex={pokedex} blurb={blurb} />
+  </>
   )
   }
 

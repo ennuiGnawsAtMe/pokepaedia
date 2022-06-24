@@ -1,9 +1,9 @@
 import Head from 'next/head'
-import Detail from '../components/Detail'
+import Detail from '../components/detail/Detail'
 import { capitalise } from '../lib/funcs'
 import data from '../data/all.json'
-import Footer from '../components/Footer'
-import NavBar from '../components/NavBar'
+import Footer from '../components/layout/Footer'
+import NavBar from '../components/layout/NavBar'
 
 export const getStaticPaths = async () => {
   const pokemonNames = data.pokemon.map(poke => poke.name)

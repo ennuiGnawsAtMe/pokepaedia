@@ -16,6 +16,13 @@
   transform: translateY(-10px);
 }
 
+.imageContainer {
+  height: 100%;
+  width: 100%;
+  margin: 10px 30px 30px 30px;
+  position: relative;
+}
+
 .topDetails {
   display: flex;
   flex-direction: row;
@@ -92,4 +99,23 @@
 
 .active {
   text-decoration: overline;
+}
+
+.modalContent {
+  display: flex;
+  flex-direction: row;
+}
+
+.modalContent h1 {
+  font-size: 33px;
+}
+
+.modalContent p {
+  font-size: 21px;
+}
+
+.modalImageContainer {
+  height: 100%;
+  width: 100%;
+  position: relative;
 }
