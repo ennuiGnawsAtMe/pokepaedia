@@ -39,7 +39,6 @@ const NavBar = ({ options, allPokemon }) => {
   }
 
   useEffect(() => {
-    const addDropshadow = event => {
       window.addEventListener('scroll', () => {
         if (window.scrollY > 30) {
             setDropshadow(true);
@@ -47,10 +46,7 @@ const NavBar = ({ options, allPokemon }) => {
             setDropshadow(false);
         }
       })
-    }
-
-    
-  })
+    })
 
   return (
        <header className={`${styles.container} ${dropshadow ? styles.dropShadow : undefined}`}>

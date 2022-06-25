@@ -6,15 +6,28 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  animation: fadein 0.5s;
+  transition: all 0.3s ease-in-out;
   overflow: hidden;
   z-index: 999;
-  padding: 40px 20px 20px;
+  padding: 20px 20px 20px;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.4);
+}
+
+.modalEnterDone {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
+.modalExit {
+  opacity: 0;
+  transform: scale(0.4);
 }
 
 .modalContent {
-  width: 70%;
-  height: 70%;
+  width: 90%;
+  height: 90%;
   background-color: white;
   color: black;
   display: flex;
@@ -50,7 +63,7 @@
 .imageContainer {
   height: 100%;
   width: 100%;
-  max-height: 35vh;
+  max-height: 50vh;
   margin: 5%;
   max-width: 50%;
   position: relative;
@@ -60,6 +73,7 @@
   display: flex;
   flex-direction: column;
   margin: 50px;
+  min-width: 50%;
 }
 
 .modal form {
@@ -84,7 +98,7 @@
   font-family: "Open Sans", sans-serif;
   font-weight: 200;
 }
-
+/* 
 @keyframes fadein {
   from {
     opacity: 0;
@@ -92,4 +106,4 @@
   to {
     opacity: 1;
   }
-}
+} */
