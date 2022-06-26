@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { motion } from "framer-motion"
 import { useGetAllPokemonDb } from '../../lib/swr/useGetAllPokemonDb'
 import CardStats from './CardStats'
 import CardAbout from './CardAbout'
@@ -86,6 +87,10 @@ const Card = ({ pokemon }) => {
   return (
     <>
     <div style={{border:`solid 5px ${backgroundColor}`}} className={styles.container} >
+      <motion.div 
+        animate={{ scale: 2 }} 
+        transition={{ duration: 0.5 }} 
+      />
       <div className={styles.topDetails}>
           <span className={styles.rank}><h4>Rank:</h4><h3>{ranking}</h3></span>
         <div className={styles.imageText}>
