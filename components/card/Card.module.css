@@ -4,7 +4,7 @@
   align-items: center;
   padding: 0px 10px;
   border: solid 5px #47a8bd;
-  height: 430px;
+  height: 450px;
   width: 280px;
   border-radius: 10px;
   margin: 10px 10px 15px 10px;
@@ -66,31 +66,18 @@
 .footer {
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  margin-top: 16px;
+  justify-content: space-around;
+  margin: 10px 0;
   width: 300px;
 }
 
-.footer li {
-  list-style-type: none;
+.footer button {
   font-family: "Open Sans", sans-serif;
   font-weight: bolder;
-  font-size: 11px;
+  font-size: 12px;
   padding: 5px;
-  width: 40px;
+  width: 120px;
+  border: none;
+  border-radius: 5px;
   text-align: center;
-}
-
-.footer ul {
-  margin: 0;
-  padding: 0;
-  display: flex;
-}
-
-.footer li:hover {
-  text-decoration: overline;
-}
-
-.active {
-  text-decoration: overline;
 }

@@ -25,6 +25,7 @@
 }
 
 .details button {
+  float: right;
   background-color: white;
   border: 0px;
   text-align: right;
