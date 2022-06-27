@@ -20,7 +20,9 @@ return (
           options={options}
           instanceId="shape-value-select"
           onChange={event => changeHandler(event.value)}
-        />
+          blurInputOnClear={true}
+          focusInputOnMenuOpen={false}
+    />
   </>
 )
 }

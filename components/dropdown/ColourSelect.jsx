@@ -20,6 +20,8 @@ return (
           options={options}
           instanceId="colour-value-select"
           onChange={event => changeHandler(event.value)}
+          blurInputOnClear={true}
+          focusInputOnMenuOpen={false}
         />
   </>
 )

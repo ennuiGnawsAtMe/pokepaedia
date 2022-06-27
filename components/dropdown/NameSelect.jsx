@@ -25,7 +25,9 @@ const NameSelect = ({ allPokemon, options }) => {
             options={options}
             instanceId="name-value-select"
             onChange={event => changeHandler(event)}
-            />
+            blurInputOnClear={true}
+            focusInputOnMenuOpen={false}
+      />
     </>
   )
 }

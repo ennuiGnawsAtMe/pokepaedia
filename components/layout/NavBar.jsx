@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useContext, useEffect, useState } from 'react'
+import { motion, useViewportScroll } from "framer-motion"
 import styles from './NavBar.module.css'
 import pokemonImages from '../../data/imgDictionary'
 import pokemonCardsContext from '../../context/pokemonCardsContext.js'
@@ -21,6 +22,7 @@ const NavBar = ({ options, allPokemon }) => {
   const [pokemonCards, setPokemonCards] = useContext(pokemonCardsContext)
   const router = useRouter()
   const { pokemon } = router.query
+  const { scrollYProgress } = useViewportScroll()
 
   const DROPDOWN_COMPONENTS = {
     'name': <NameSelect options={options.nameOptions} allPokemon={allPokemon}/>,
@@ -49,26 +51,32 @@ const NavBar = ({ options, allPokemon }) => {
     })
 
   return (
-       <header className={`${styles.container} ${dropshadow ? styles.dropShadow : undefined}`}>
-              <div className={styles.title}>
-                <span className={styles.logo} >
-                    <Link href="/"><a>
-                      <Image 
-                        src={pokemonImages.pichu}
-                        alt='The Pokemon Encyclopaedia'
-                        quality={100}
-                        height={100}
-                        width={100}
-                        priority
-                        onClick={() => clickHandler('name')}
-                      />
-                    </a></Link>
-                </span>
-                <div className={styles.titleText}>
-                <h1>PokéPaedia</h1>
-                <h3>An Encyclopaedia of Pokémon</h3>
-                </div>
-             </div>
+       <motion.header 
+         className={`${styles.container} `}
+        //  initial={{ y: -150 }}
+        //  animate={{ y: 0 }}
+        //  transition={{ delay: 0.2, type: 'tween' }}
+        //  scrollY={{ }}
+       >
+        <div className={styles.title}>
+          <span className={styles.logo} >
+              <Link href="/"><a>
+                <Image 
+                  src={pokemonImages.pichu}
+                  alt='The Pokemon Encyclopaedia'
+                  quality={100}
+                  height={100}
+                  width={100}
+                  priority
+                  onClick={() => clickHandler('name')}
+                />
+              </a></Link>
+          </span>
+          <div className={styles.titleText}>
+          <h1>PokéPaedia</h1>
+          <h3>An Encyclopaedia of Pokémon</h3>
+          </div>
+        </div>
           <div className={styles.navDropdown}>
             <nav className={styles.nav}>
               <Link href="/">
@@ -104,7 +112,7 @@ const NavBar = ({ options, allPokemon }) => {
                {!pokemon ? DROPDOWN_COMPONENTS[dropdown] : <button onClick={() => router.back()}>&larr;Back to List</button>}
             </div>
          </div>
-       </header>
+       </motion.header>
   )
   }
 

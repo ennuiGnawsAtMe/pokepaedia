@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { useState, useContext, useEffect } from 'react'
+import { motion } from 'framer-motion'
 import { getRandomPoke } from '../../lib/funcs'
 import styles from './RandomPokemon.module.css'
 import Loading from './Loading'
@@ -22,10 +23,19 @@ const RandomPokemon = ({ allPokemon }) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pokemonCards])
 
+  console.log('rerender')
+
   return (
     <>
     {!isLoading 
-      ? <div className={styles.container} onClick={clickHandler} style={{cursor:"pointer"}}>
+      ? <motion.div 
+          className={styles.container} 
+          onClick={clickHandler} 
+          style={{cursor:"pointer"}}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+        >
           <div className={styles.imageContainer}>
               <Image 
                   src={pokemon.image}
@@ -40,7 +50,7 @@ const RandomPokemon = ({ allPokemon }) => {
             <p>{pokemon.blurb}</p>
             <button style={{cursor:"pointer"}}>&gt;&gt;&gt; Next</button>
           </div>
-        </div>
+        </motion.div>
       : <Loading />
     }
     </>

@@ -6,14 +6,8 @@
   border: solid 5px #47a8bd;
   height: 430px;
   width: 280px;
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-  transition: transform 500ms;
   border-radius: 10px;
-  margin: 5px 5px 15px 5px;
-}
-
-.container:hover {
-  transform: translateY(-10px);
+  margin: 10px 10px 15px 10px;
 }
 
 .imageContainer {
@@ -99,23 +93,4 @@
 
 .active {
   text-decoration: overline;
-}
-
-.modalContent {
-  display: flex;
-  flex-direction: row;
-}
-
-.modalContent h1 {
-  font-size: 33px;
-}
-
-.modalContent p {
-  font-size: 21px;
-}
-
-.modalImageContainer {
-  height: 100%;
-  width: 100%;
-  position: relative;
 }

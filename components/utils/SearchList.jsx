@@ -8,7 +8,7 @@ const SearchList = () => {
 
   return (
     <div className={styles.container}>
-      {pokemonCards.map(poke => (<Card key={poke.pokedex} pokemon={poke} />))}  
+      {pokemonCards.map((poke, i) => (<Card key={poke.pokedex} pokemon={poke} delay={i * 0.1} />))}  
     </div>
   )
   }

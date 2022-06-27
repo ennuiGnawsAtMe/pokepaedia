@@ -22,32 +22,12 @@ const CARD_COLOURS = {
     'pink': {backgroundColor:'#A72B6E', color: 'white'}
     }
 
-const Card = ({ pokemon }) => {
+const Card = ({ pokemon, delay }) => {
   const [cardFace, setCardFace] = useState('image')
   const [isOpen, setIsOpen] = useState(false)
   const { allPokemonDb, isLoading, isError } = useGetAllPokemonDb()
 
-  const { 
-    pokedex, 
-    hp, 
-    image, 
-    name, 
-    blurb, 
-    colour, 
-    happiness, 
-    ability, 
-    shape, 
-    habitat, 
-    attack, 
-    defense, 
-    specialAttack, 
-    speed, 
-    weight, 
-    specialDefense, 
-    height, 
-    experience, 
-    type 
-  } = pokemon
+  const { pokedex, colour } = pokemon
 
   const { backgroundColor, color } = CARD_COLOURS[colour]
 
@@ -59,38 +39,34 @@ const Card = ({ pokemon }) => {
   }
 
   const cardFaceComponent = ({
-      about: <CardAbout 
-               name={name} 
-               image={image} 
-               blurb={blurb} 
-               pokedex={pokedex} 
-               ratingOverall={ratingOverall} 
-              />,
-      types: <CardTypes 
-               name={name} 
-               image={image} 
-               type={type} 
-               attack={attack} 
-               defense={defense} 
-               specialAttack={specialAttack} 
-               speed={speed} 
-               weight={weight} 
-               specialDefense={specialDefense} 
-               height={height} 
-               experience={experience} 
-              />,
-      ability: <CardStats name={name} image={image} hp={hp} happiness={happiness} shape={shape} habitat={habitat} ability={ability} />,
-      rate: <CardRating name={name} image={image} ratingOverall={ratingOverall} ratings={ratings} pokedex={pokedex} />,
-      image: <CardImage name={name} image={image} ratingOverall={ratingOverall} />,
+      about: <CardAbout {...pokemon} />,
+      types: <CardTypes {...pokemon} />,
+      ability: <CardStats {...pokemon} />,
+      rate: <CardRating {...pokemon} />,
+      image: <CardImage {...pokemon} />,
   })
 
   return (
     <>
-    <div style={{border:`solid 5px ${backgroundColor}`}} className={styles.container} >
       <motion.div 
-        animate={{ scale: 2 }} 
-        transition={{ duration: 0.5 }} 
-      />
+        style={{border:`solid 5px ${backgroundColor}`}} 
+        className={styles.container}
+        initial={{ 
+          opacity: 0, 
+          translateX: -50, 
+          boxShadow: `3px 3px 5px rgb(0, 0, 0, 0.4)`
+          
+        }}
+        animate={{ 
+          opacity: 1, 
+          translateX: -0,
+          transition: { duration: 0.8, delay: delay }
+        }} 
+        whileHover={{
+          boxShadow: `5px 5px 5px rgb(0, 0, 0, 0.5)`,
+          scale: 1.03,
+        }}
+        >
       <div className={styles.topDetails}>
           <span className={styles.rank}><h4>Rank:</h4><h3>{ranking}</h3></span>
         <div className={styles.imageText}>
@@ -130,17 +106,17 @@ const Card = ({ pokemon }) => {
             >
             Ability
           </li>
-           <li 
+           <motion.button 
             className={cardFace === 'rate' ? styles.active : undefined} 
             style={{backgroundColor: `${backgroundColor}`, color:`${color}`, cursor:`pointer`}} 
             onClick={() => setIsOpen(true)}
             >
             Rate
-          </li>
+          </motion.button>
         </ul>
       </div>
-    </div>
-    <RatingModal handleClose={() => setIsOpen(false)} isOpen={isOpen} totalRatings={ratings.length} ratingOverall={ratingOverall} image={image} name={name} pokedex={pokedex} blurb={blurb} />
+    </motion.div>
+    <RatingModal handleClose={() => setIsOpen(false)} isOpen={isOpen} {...pokemon} {...pokemonRatings} />
   </>
   )
   }

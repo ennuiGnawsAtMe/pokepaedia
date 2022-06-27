@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import { useContext } from 'react'
+import { motion } from 'framer-motion'
 import { useGetAllPokemonDb } from '../lib/swr/useGetAllPokemonDb'
 import RandomPokemon from '../components/utils/RandomPokemon.jsx'
 import data from '../data/all.json'
@@ -38,11 +39,15 @@ export const getStaticProps = async () => {
           <meta name="description" content="An Encyclopaedia of Pokemon" />
           <link rel="icon" href="/images/favicon.ico" />
         </Head>
-        <main>
+        <motion.main
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+        >
          <NavBar options={options} allPokemon={pokemonJson} />
          {pokemonCards.length === 0 ? <RandomPokemon allPokemon={pokemonJson} /> : <SearchList />}
          <Footer />
-        </main>
+        </motion.main>
       </>
 
     )

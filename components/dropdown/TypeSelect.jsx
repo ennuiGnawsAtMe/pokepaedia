@@ -24,7 +24,9 @@ return (
           options={options}
           instanceId="type-value-select"
           onChange={event => changeHandler(event.value)}
-        />
+          blurInputOnClear={true}
+          focusInputOnMenuOpen={false}
+    />
   </>
 )
 }

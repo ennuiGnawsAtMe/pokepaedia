@@ -69,14 +69,7 @@ const CardRating = ({ pokedex, image, name, ratingOverall, ratings }) => {
       </div>
         <div className={styles.details}>
         <div className={styles.detailsTop}>
-          <ReactStars size={20} value={0} onChange={newValue => changeHandler(newValue)} />
-          <form action="/api/ratings" method="post">
-            <label htmlFor="name">Name:</label>
-            <input type="text" id="name" name="name" />
-            <label htmlFor="comment">Comment:</label>
-            <input type="text" id="comment" name="comment" />
-            <button type="submit">Submit</button>
-          </form>
+
         </div>
         </div> 
     {/* <div className={styles.ratingContainer}>

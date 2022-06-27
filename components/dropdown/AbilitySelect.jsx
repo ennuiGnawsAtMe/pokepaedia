@@ -23,6 +23,8 @@ return (
           options={options}
           instanceId="ability-value-select"
           onChange={event => changeHandler(event.value)}
+          blurInputOnClear={true}
+          focusInputOnMenuOpen={false}
         />
   </>
 )

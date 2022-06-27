@@ -32,7 +32,9 @@ return (
         options={RankOptions}
         instanceId="rank-value-select"
         onChange={event => changeHandler(event.value)}
-        />
+        blurInputOnClear={true}
+        focusInputOnMenuOpen={false}
+    />
 </>
 )
 }
