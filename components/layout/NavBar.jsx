@@ -42,7 +42,7 @@ const NavBar = ({ options, allPokemon }) => {
 
   useEffect(() => {
       window.addEventListener('scroll', () => {
-        if (window.scrollY > 30) {
+        if (window.scrollY > 60) {
             setDropshadow(true);
         } else {
             setDropshadow(false);
@@ -52,11 +52,10 @@ const NavBar = ({ options, allPokemon }) => {
 
   return (
        <motion.header 
-         className={`${styles.container} `}
-        //  initial={{ y: -150 }}
-        //  animate={{ y: 0 }}
-        //  transition={{ delay: 0.2, type: 'tween' }}
-        //  scrollY={{ }}
+         className={`${styles.container} ${dropshadow ? styles.dropShadow : undefined }`}
+         initial={{ y: -150 }}
+         animate={{ y: 0 }}
+         transition={{ delay: 0.2 }}
        >
         <div className={styles.title}>
           <span className={styles.logo} >

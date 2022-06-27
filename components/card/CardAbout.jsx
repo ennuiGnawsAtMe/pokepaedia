@@ -1,9 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import ReactStars from 'react-rating-stars-component'
 import styles from './CardAbout.module.css'
 
-const CardAbout = ({ blurb, pokedex, ratingOverall, name, image }) => {
+const CardAbout = ({ blurb, name, image }) => {
 
   return (
     <>
@@ -15,7 +14,6 @@ const CardAbout = ({ blurb, pokedex, ratingOverall, name, image }) => {
       <div className={styles.nameContainer}>
         <h2>{name}</h2>
       </div>
-      <ReactStars key={ratingOverall} size={20} value={ratingOverall} edit={false} isHalf={true} />
       <div className={styles.details}>
         <div className={styles.detailsTop}>
           <p>{blurb}</p> 

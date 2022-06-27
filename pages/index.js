@@ -36,13 +36,15 @@ export const getStaticProps = async () => {
        <>
         <Head>
           <title>PokéPaedia | A Pokémon Encyclopaedia</title>
-          <meta name="description" content="An Encyclopaedia of Pokemon" />
+          <meta name="description" content="Come explore Pokepaedia, an encyclopaedia of Pokemon from Pikachu and Snorlax to Flapple and Dreepy, we got them all!" />
           <link rel="icon" href="/images/favicon.ico" />
         </Head>
         <motion.main
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
+          animate={{ 
+            opacity: 1,
+            transition: { duration: 0.5 } 
+          }}
         >
          <NavBar options={options} allPokemon={pokemonJson} />
          {pokemonCards.length === 0 ? <RandomPokemon allPokemon={pokemonJson} /> : <SearchList />}
