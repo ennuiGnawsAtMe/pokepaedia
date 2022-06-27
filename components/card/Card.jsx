@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { motion, AnimatePresence } from "framer-motion"
+import { motion } from "framer-motion"
 import { useGetAllPokemonDb } from '../../lib/swr/useGetAllPokemonDb'
 import CardStats from './CardStats'
 import CardAbout from './CardAbout'
@@ -27,6 +27,13 @@ const Card = ({ pokemon, delay }) => {
   const [isOpen, setIsOpen] = useState(false)
   const { allPokemonDb, isLoading, isError } = useGetAllPokemonDb()
 
+  const { pokedex, colour } = pokemon
+
+  const { backgroundColor, color } = CARD_COLOURS[colour]
+
+  const pokemonRatings = allPokemonDb.find(poke => poke.pokedex === pokedex)
+  const { ratingOverall, ratings, ranking } = pokemonRatings
+
   const cardVariants = {
       hidden: {
         opacity: 0, 
@@ -51,25 +58,24 @@ const Card = ({ pokemon, delay }) => {
 
   const buttonVariants = {
     visible: {
-      boxShadow: `3px 3px 5px rgb(0, 0, 0, 0.3)`
+      backgroundColor: backgroundColor,
+      color: color,
+      border: `solid 2px ${backgroundColor}`,
+      borderBottom: "none"
+      
     },
     hover: {
-        scale: 1.05,
-        boxShadow: `5px 5px 5px rgb(0, 0, 0, 0.5)`,
-        transition: { duration: 0.3 }
+        backgroundColor: "white",
+        border: `solid 2px ${backgroundColor}`,
+        borderBottom: "none",
+        transition: { duration: 0.3 },
+        color: "black",
       },
-      tap: {
-        scale: 0.95,
-        transition: { duration: 0.01 }
-      }
+    tap: {
+      scale: 0.95,
+      transition: { duration: 0.01 }
+    }
   }
-
-  const { pokedex, colour } = pokemon
-
-  const { backgroundColor, color } = CARD_COLOURS[colour]
-
-  const pokemonRatings = allPokemonDb.find(poke => poke.pokedex === pokedex)
-  const { ratingOverall, ratings, ranking } = pokemonRatings
   
   const clickHandler = () => {
       if (cardFace === 'image') {
@@ -112,34 +118,33 @@ const Card = ({ pokemon, delay }) => {
       { cardFaceComponent[cardFace] }
       <div className={ styles.footer }>
           <motion.button 
-            className={ cardFace === 'rate' ? styles.active : undefined } 
-            style={{
-              backgroundColor: `${ backgroundColor }`, 
-              color:`${ color }`, 
-              cursor:`pointer`
-            }} 
+            style={{ cursor:`pointer` }} 
+            variants={buttonVariants}
+            animate="visible"
+            whileHover="hover"
+            whileTap="tap"
+            >
+            - Details -
+          </motion.button>
+          <motion.button 
+            style={{ cursor:`pointer` }} 
             onClick={ () => clickHandler() }
             variants={buttonVariants}
             animate="visible"
             whileHover="hover"
             whileTap="tap"
             >
-            Flip
+            - Flip -
           </motion.button>
-           <motion.button 
-            className={cardFace === 'rate' ? styles.active : undefined} 
-            style={{
-              backgroundColor: `${backgroundColor}`, 
-              color:`${color}`, 
-              cursor:`pointer`
-            }} 
+          <motion.button 
+            style={{ cursor:`pointer` }} 
             onClick={() => setIsOpen(true)}
             variants={buttonVariants}
             animate="visible"
             whileHover="hover"
             whileTap="tap"
             >
-            Rate
+            - Rate -
           </motion.button>
       </div>
     </motion.div>
