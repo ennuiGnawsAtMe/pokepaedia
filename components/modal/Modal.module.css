@@ -1,0 +1,100 @@
+.modal {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+  z-index: 999;
+  padding: 20px 20px 20px;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.4);
+}
+
+.modalEnterDone {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
+.modalExit {
+  opacity: 0;
+  transform: scale(0.4);
+}
+
+.modalContent {
+  width: 90%;
+  height: 90%;
+  background-color: white;
+  color: black;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  border-radius: 25px;
+}
+
+.modalContent h1 {
+  font-size: 33px;
+  margin: 0;
+}
+
+.modalContent h4 {
+  font-size: 16px;
+  font-weight: 100;
+  margin: 0;
+}
+
+.modalContent p {
+  font-size: 18px;
+}
+
+.modal button {
+  background-color: #47a8bd;
+  color: white;
+  padding: 5px;
+  float: right;
+}
+
+.imageContainer {
+  height: 100%;
+  width: 100%;
+  max-height: 50vh;
+  margin: 5%;
+  max-width: 50%;
+  position: relative;
+}
+
+.detailsWrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 50px;
+  min-width: 50%;
+}
+
+.modal form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.modal label {
+  padding: 3px;
+  font-size: 0.6em;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 200;
+}
+
+.modal input {
+  padding: 10px;
+  background-color: aliceblue;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.6em;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 200;
+}
