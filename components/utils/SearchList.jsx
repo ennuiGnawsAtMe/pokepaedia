@@ -10,7 +10,7 @@ const SearchList = () => {
   return (
       <div className={styles.container}>
         <AnimatePresence exitBeforeEnter>
-          {pokemonCards.map((poke, i) => (<Card key={poke.pokedex} pokemon={poke} delay={i * 0.1} />))}  
+          {pokemonCards.map(poke => (<Card key={poke.pokedex} pokemon={poke} />))}  
         </AnimatePresence>
       </div>
   )
