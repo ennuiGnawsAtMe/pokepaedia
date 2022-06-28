@@ -10,6 +10,7 @@ import { statusOptions, types }from '../lib/vars'
 import NavBar from '../components/layout/NavBar.jsx'
 import Footer from '../components/layout/Footer.jsx'
 import SearchList from '../components/utils/SearchList.jsx'
+import Modal from '../components/modal/Modal'
 
 export const getStaticProps = async () => {
     const pokemonJson = data.pokemon

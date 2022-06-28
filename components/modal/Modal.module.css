@@ -1,35 +1,35 @@
-.modal {
+.backdrop {
   position: fixed;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
+
+.modal {
+  width: 70%;
+  height: 70%;
+  max-height: 750px;
+  max-width: 1280px;
+  background: white;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s ease-in-out;
-  overflow: hidden;
-  z-index: 999;
-  padding: 20px 20px 20px;
-  opacity: 0;
-  pointer-events: none;
-  transform: scale(0.4);
-}
-
-.modalEnterDone {
-  opacity: 1;
-  pointer-events: auto;
-  transform: scale(1);
-}
-.modalExit {
-  opacity: 0;
-  transform: scale(0.4);
+  padding: 40px 20px;
+  margin: 0 auto;
+  border-radius: 10px;
+  text-align: center;
 }
 
 .modalContent {
   width: 90%;
   height: 90%;
-  background-color: white;
-  color: black;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -38,42 +38,97 @@
   border-radius: 25px;
 }
 
+.imageWrapper {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  margin-right: 50px;
+}
+
+.detailsContainer {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: left;
+  padding: 20px;
+  border-radius: 25px;
+  background-color: #47a7bd18;
+  margin: 0 auto;
+}
+
+.pokemonDetails {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.overallStars {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  margin: 0 auto;
+  padding-top: 10px;
+}
+
+.nameContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.blurbWrapper {
+  padding: 10px 0;
+}
+
+.rankingContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 10px;
+  border-left: solid 1px black;
+}
+
+.nameWrapper {
+  padding-right: 10px;
+}
+
+.userRatingContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  margin: 0 auto;
+}
+
 .modalContent h1 {
   font-size: 33px;
   margin: 0;
 }
 
-.modalContent h4 {
+.modalContent h2 {
+  font-size: 21px;
+  margin: 0;
+}
+
+.modalContent h3 {
   font-size: 16px;
+  margin: 0;
+}
+
+.modalContent h4 {
+  font-size: 14px;
   font-weight: 100;
   margin: 0;
 }
 
 .modalContent p {
-  font-size: 18px;
-}
-
-.modal button {
-  background-color: #47a8bd;
-  color: white;
-  padding: 5px;
-  float: right;
-}
-
-.imageContainer {
-  height: 100%;
-  width: 100%;
-  max-height: 50vh;
-  margin: 5%;
-  max-width: 50%;
-  position: relative;
-}
-
-.detailsWrapper {
-  display: flex;
-  flex-direction: column;
-  margin: 50px;
-  min-width: 50%;
+  font-size: 16px;
+  margin: 0;
 }
 
 .modal form {
@@ -82,19 +137,38 @@
   width: 100%;
 }
 
-.modal label {
-  padding: 3px;
-  font-size: 0.6em;
-  font-family: "Open Sans", sans-serif;
-  font-weight: 200;
+.formWrapper {
+  align-items: center;
+}
+
+.formWrapper button {
+  background-color: #47a8bd;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  padding: 5px;
+  width: 100%;
+  margin: 20px 0;
 }
 
 .modal input {
+  width: 100%;
   padding: 10px;
-  background-color: aliceblue;
-  border: none;
+  background-color: white;
+  border: solid black 1px;
   border-radius: 10px;
-  font-size: 0.6em;
+  font-size: 14px;
   font-family: "Open Sans", sans-serif;
-  font-weight: 200;
+}
+
+.modal textarea {
+  margin-top: 20px;
+  width: 100%;
+  height: 50px;
+  padding: 10px;
+  background-color: white;
+  border: solid black 1px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: "Open Sans", sans-serif;
 }

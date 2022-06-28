@@ -1,61 +1,118 @@
-import { useEffect, useRef } from "react"
-import { CSSTransition } from "react-transition-group"
 import Image from "next/image"
-import ReactPortal from "../utils/ReactPortal"
+import { motion, AnimatePresence } from 'framer-motion'
 import styles from './Modal.module.css'
 import ReactStars from "react-rating-stars-component"
 
-const Modal = ({ ratingOverall, totalRatings, name, pokedex, blurb, image, isOpen, handleClose}) => {
-  const nodeRef = useRef(null)
+const backdropVariants = {
+  visible: { opacity: 1 },
+  hidden: { opacity: 0 },
+  }  
+  
+const buttonVariants = {
+  hover: { backgroundColor: "orange" },
+  tap: { scale: 1 }
+}
 
-  useEffect(() => {
-    const closeOnEscapeKey = e => e.key === "Escape" ? handleClose() : null
-    document.body.addEventListener("keydown", closeOnEscapeKey)
-    return () => {
-      document.body.removeEventListener("keydown", closeOnEscapeKey)
+const Modal = ({ showModal, setShowModal, ratingOverall, ratings, name, pokedex, blurb, image, ranking }) => {
+
+  const parentClickHandler = event => {
+    event.preventDefault()
+
+    if (event.target === event.currentTarget) {
+      setShowModal(false)
     }
-  }, [handleClose])
+  }
 
-  // if (!isOpen) return null
+  const childClickHandler = event => {
+    event.stopPropagation()
+    // logic goes here
+  }
 
   return (
-    <ReactPortal wrapperId="react-portal-modal-container">
-      <CSSTransition
-        in={isOpen}
-        timeout={{ entry: 0, exit: 300 }}
-        unmountOnExit
-        classNames={{
-          enterDone: styles.modalEnterDone,
-          exit: styles.modalExit
-        }}
-        nodeRef={nodeRef}
-      >
-      <div className={styles.modal} ref={nodeRef}>
-        <button onClick={() => handleClose()} className={styles.closeBtn}>
-                Close
-              </button>
-        <div className={styles.modalContent}>
-            <div className={styles.imageContainer}>
+    <AnimatePresence exitBeforeEnter>
+      {showModal &&  (
+        <motion.div className={styles.backdrop}
+          variants={backdropVariants}
+          initial="hidden"
+          animate="visible"
+          exit="hidden"
+          onClick={parentClickHandler}
+        >  
+  
+          <motion.div className={styles.modal} onClick={childClickHandler} >
+          {/* <button onClick={() => handleClose()} className={styles.closeBtn}>
+            Close
+          </button> */}
+          <div className={styles.modalContent}>
+            
+            <div className={styles.imageWrapper}>
               <Image src={image} alt={name} layout="fill" objectFit='contain' />
             </div>
-          <div className={styles.detailsWrapper}>
-              <h1>{name}</h1>
-              <ReactStars size={20} value={ratingOverall} edit={false} isHalf={true} />
-              <h4>{ratingOverall} stars from {totalRatings} ratings</h4>
-              <p>{blurb}</p>
-              <ReactStars size={50} value={0} onChange={newValue => changeHandler(newValue)} />
-            <form action="/api/ratings" method="post">
-              <label htmlFor="name">Name:</label>
-              <input type="text" id="name" name="name" />
-              <label htmlFor="comment">Comment:</label>
-              <input type="text" id="comment" name="comment" />
-              <button type="submit">Submit</button>
-            </form>
-          </div> 
-        </div>
-      </div>
-      </CSSTransition>
-    </ReactPortal>
+            <div className={styles.detailsContainer}>
+              <div className={styles.pokemonDetails}>
+                <div className={styles.nameContainer}>
+                  <div className={styles.nameWrapper}>
+                    <h1>{name}</h1>
+                  </div>
+                  <div className={styles.rankingContainer}>
+                    <p>Ranked</p>
+                    <h2>{ranking}</h2>
+                  </div>
+                </div>
+                <div className={styles.overallStars}>
+                <ReactStars 
+                  size={20} 
+                  value={ratingOverall} 
+                  edit={false} 
+                  isHalf={true} 
+                />
+                </div>
+                <h4>{ratingOverall} stars from {ratings.length} ratings</h4>
+                <div className={styles.blurbWrapper}>
+                  <p>{blurb}</p>
+                </div>
+              </div>
+              
+              <div className={styles.userRatingContainer}>
+                <h3>Your Rating</h3>
+                <ReactStars 
+                  className={styles.starsWrapper} 
+                  size={50} 
+                  value={0} 
+                  onChange={newValue => changeHandler(newValue)} 
+                />
+              <form className={styles.formWrapper} action="/api/ratings" method="post">
+                <input 
+                  placeholder="Name"
+                  type="text" 
+                  id="name" 
+                  name="name"
+                  required
+                  maxLength="30" 
+                  />
+                <textarea 
+                  placeholder="Comment"
+                  type="text" 
+                  id="comment" 
+                  name="comment"
+                  required
+                  minLength="5"
+                   />
+                <motion.button
+                   type="submit"
+                   variants={buttonVariants}
+                   whileHover="hover"
+                   whileTap="tap"
+                   >Submit
+                </motion.button>
+              </form>
+            </div> 
+            </div>
+          </div>
+        </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   )
 }
 export default Modal

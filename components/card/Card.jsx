@@ -5,9 +5,10 @@ import CardStats from './CardStats'
 import CardAbout from './CardAbout'
 import CardTypes from './CardTypes'
 import styles from './Card.module.css'
-import CardRating from './CardRating'
 import CardImage from './CardImage'
 import RatingModal from '../modal/Modal'
+import Link from 'next/link'
+import Modal from '../modal/Modal'
 
 const CARD_COLOURS = {
     'red': {backgroundColor: '#AB1E23', color: 'white'},
@@ -22,9 +23,9 @@ const CARD_COLOURS = {
     'pink': {backgroundColor:'#A72B6E', color: 'white'}
     }
 
-const Card = ({ pokemon, delay }) => {
+const Card = ({ pokemon }) => {
   const [cardFace, setCardFace] = useState('image')
-  const [isOpen, setIsOpen] = useState(false)
+  const [showModal, setShowModal] = useState(false)
   const { allPokemonDb, isLoading, isError } = useGetAllPokemonDb()
 
   const { pokedex, colour } = pokemon
@@ -43,11 +44,11 @@ const Card = ({ pokemon, delay }) => {
       visible: {
         opacity: 1, 
         translateX: 0,
-        transition: { duration: 0.3, delay: delay }
+        transition: { duration: 0.3 }
       },
       hover: {
         boxShadow: `5px 5px 5px rgb(0, 0, 0, 0.5)`,
-        scale: 1.03,
+        translateY: -8,
       },
       exit: {
         opacity: 0,
@@ -117,15 +118,17 @@ const Card = ({ pokemon, delay }) => {
       </div>
       { cardFaceComponent[cardFace] }
       <div className={ styles.footer }>
-          <motion.button 
-            style={{ cursor:`pointer` }} 
-            variants={buttonVariants}
-            animate="visible"
-            whileHover="hover"
-            whileTap="tap"
-            >
-            - Details -
-          </motion.button>
+          <Link href={`/${pokemon.name.toLowerCase()}`}>
+            <motion.button
+              style={{ cursor:`pointer` }} 
+              variants={buttonVariants}
+              animate="visible"
+              whileHover="hover"
+              whileTap="tap"
+              >
+              - Details -
+            </motion.button>
+          </Link>
           <motion.button 
             style={{ cursor:`pointer` }} 
             onClick={ () => clickHandler() }
@@ -138,7 +141,7 @@ const Card = ({ pokemon, delay }) => {
           </motion.button>
           <motion.button 
             style={{ cursor:`pointer` }} 
-            onClick={() => setIsOpen(true)}
+            onClick={() => setShowModal(true)}
             variants={buttonVariants}
             animate="visible"
             whileHover="hover"
@@ -148,7 +151,8 @@ const Card = ({ pokemon, delay }) => {
           </motion.button>
       </div>
     </motion.div>
-    <RatingModal handleClose={() => setIsOpen(false)} isOpen={isOpen} {...pokemon} {...pokemonRatings} />
+    {/* <RatingModal handleClose={() => setIsOpen(false)} isOpen={isOpen} {...pokemon} {...pokemonRatings} /> */}
+    <Modal showModal={showModal} setShowModal={setShowModal} {...pokemon} {...pokemonRatings} />
   </>  
   )
   }
