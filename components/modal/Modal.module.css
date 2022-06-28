@@ -55,12 +55,24 @@
   padding: 20px;
   border-radius: 25px;
   background-color: #47a7bd18;
+  margin: 0 auto;
 }
 
 .pokemonDetails {
   display: flex;
+  justify-content: center;
   flex-direction: column;
   text-align: center;
+  margin: 0 auto;
+}
+
+.overallStars {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  margin: 0 auto;
+  padding-top: 10px;
 }
 
 .nameContainer {
@@ -69,7 +81,11 @@
   justify-content: center;
 }
 
-.ratingContainer {
+.blurbWrapper {
+  padding: 10px 0;
+}
+
+.rankingContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -94,6 +110,11 @@
   margin: 0;
 }
 
+.modalContent h2 {
+  font-size: 21px;
+  margin: 0;
+}
+
 .modalContent h3 {
   font-size: 16px;
   margin: 0;
@@ -107,6 +128,7 @@
 
 .modalContent p {
   font-size: 16px;
+  margin: 0;
 }
 
 .modal form {
@@ -125,19 +147,12 @@
   border-radius: 10px;
   border: none;
   padding: 5px;
-  width: 95%;
+  width: 100%;
   margin: 20px 0;
 }
 
-.modal label {
-  width: 95%;
-  font-size: 14px;
-  font-family: "Open Sans", sans-serif;
-  padding: 10px 0;
-}
-
 .modal input {
-  width: 90%;
+  width: 100%;
   padding: 10px;
   background-color: white;
   border: solid black 1px;
@@ -148,7 +163,7 @@
 
 .modal textarea {
   margin-top: 20px;
-  width: 90%;
+  width: 100%;
   height: 50px;
   padding: 10px;
   background-color: white;

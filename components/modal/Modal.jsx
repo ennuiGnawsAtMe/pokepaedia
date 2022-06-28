@@ -54,19 +54,34 @@ const Modal = ({ showModal, setShowModal, ratingOverall, ratings, name, pokedex,
                   <div className={styles.nameWrapper}>
                     <h1>{name}</h1>
                   </div>
-                  <div className={styles.ratingContainer}>
-                    <ReactStars size={20} value={ratingOverall} edit={false} isHalf={true} />
-                    <h4>{ratingOverall} stars from {ratings.length} ratings</h4>
+                  <div className={styles.rankingContainer}>
+                    <p>Ranked</p>
+                    <h2>{ranking}</h2>
                   </div>
                 </div>
-                
-                <p>{blurb}</p>
+                <div className={styles.overallStars}>
+                <ReactStars 
+                  size={20} 
+                  value={ratingOverall} 
+                  edit={false} 
+                  isHalf={true} 
+                />
+                </div>
+                <h4>{ratingOverall} stars from {ratings.length} ratings</h4>
+                <div className={styles.blurbWrapper}>
+                  <p>{blurb}</p>
+                </div>
               </div>
+              
               <div className={styles.userRatingContainer}>
-                <h3>Your Rating</h3><ReactStars className={styles.starsWrapper} size={50} value={0} onChange={newValue => changeHandler(newValue)} />
-              </div>
+                <h3>Your Rating</h3>
+                <ReactStars 
+                  className={styles.starsWrapper} 
+                  size={50} 
+                  value={0} 
+                  onChange={newValue => changeHandler(newValue)} 
+                />
               <form className={styles.formWrapper} action="/api/ratings" method="post">
-                {/* <label htmlFor="name">Name:</label> */}
                 <input 
                   placeholder="Name"
                   type="text" 
@@ -75,7 +90,6 @@ const Modal = ({ showModal, setShowModal, ratingOverall, ratings, name, pokedex,
                   required
                   maxLength="30" 
                   />
-                {/* <label htmlFor="comment">Comment:</label> */}
                 <textarea 
                   placeholder="Comment"
                   type="text" 
@@ -93,6 +107,7 @@ const Modal = ({ showModal, setShowModal, ratingOverall, ratings, name, pokedex,
                 </motion.button>
               </form>
             </div> 
+            </div>
           </div>
         </motion.div>
         </motion.div>
