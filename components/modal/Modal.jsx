@@ -1,4 +1,5 @@
 import Image from "next/image"
+import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import styles from './Modal.module.css'
 import ReactStars from "react-rating-stars-component"
@@ -9,11 +10,21 @@ const backdropVariants = {
   }  
   
 const buttonVariants = {
-  hover: { backgroundColor: "orange" },
+  hover: { 
+    backgroundColor: "#FFA500",
+    transition: { duration: 0.1 }
+  },
   tap: { scale: 1 }
 }
 
+const initialData = {
+  rating: 0,
+  name: '',
+  comment: ''
+ }
+
 const Modal = ({ showModal, setShowModal, ratingOverall, ratings, name, pokedex, blurb, image, ranking }) => {
+  const [formData, setFormData] = useState(initialData)
 
   const parentClickHandler = event => {
     event.preventDefault()
@@ -28,6 +39,27 @@ const Modal = ({ showModal, setShowModal, ratingOverall, ratings, name, pokedex,
     // logic goes here
   }
 
+  const changeHandler = (e) => {
+    if (typeof e === 'number') {
+      setFormData({
+        ...formData,
+        rating: e
+      })
+    } else {
+    const { name, value } = e.target
+    setFormData({
+      ...formData, 
+      [name]: value 
+    })
+  }
+  }
+
+  //TODO complete post request of the form data to database
+  const formSubmitHandler = (e) => {
+    e.preventDefault()
+    console.log(formData)
+  }
+
   return (
     <AnimatePresence exitBeforeEnter>
       {showModal &&  (
@@ -37,14 +69,9 @@ const Modal = ({ showModal, setShowModal, ratingOverall, ratings, name, pokedex,
           animate="visible"
           exit="hidden"
           onClick={parentClickHandler}
-        >  
-  
+        >   
           <motion.div className={styles.modal} onClick={childClickHandler} >
-          {/* <button onClick={() => handleClose()} className={styles.closeBtn}>
-            Close
-          </button> */}
           <div className={styles.modalContent}>
-            
             <div className={styles.imageWrapper}>
               <Image src={image} alt={name} layout="fill" objectFit='contain' />
             </div>
@@ -74,35 +101,37 @@ const Modal = ({ showModal, setShowModal, ratingOverall, ratings, name, pokedex,
               </div>
               
               <div className={styles.userRatingContainer}>
-                <h3>Your Rating</h3>
-                <ReactStars 
-                  className={styles.starsWrapper} 
-                  size={50} 
-                  value={0} 
-                  onChange={newValue => changeHandler(newValue)} 
-                />
+                {!formData.rating ? <h3>Your Rating</h3> : <h3>You gave {name} {formData.rating} {formData.rating === 1 ? "star!" : "stars!"} </h3>}
+                <div className={styles.starsWrapper}>
+                  <ReactStars 
+                    size={40} 
+                    value={0} 
+                    onChange={e => changeHandler(e)} 
+                  />
+                </div>
               <form className={styles.formWrapper} action="/api/ratings" method="post">
                 <input 
+                  type="text"
                   placeholder="Name"
-                  type="text" 
-                  id="name" 
                   name="name"
+                  value={formData.name}
                   required
-                  maxLength="30" 
+                  onChange={(e => changeHandler(e))}
                   />
                 <textarea 
-                  placeholder="Comment"
                   type="text" 
-                  id="comment" 
+                  placeholder="Comment"
                   name="comment"
+                  value={formData.comment}
                   required
-                  minLength="5"
+                  onChange={(e => changeHandler(e))}
                    />
                 <motion.button
                    type="submit"
                    variants={buttonVariants}
                    whileHover="hover"
                    whileTap="tap"
+                   onClick={formSubmitHandler}
                    >Submit
                 </motion.button>
               </form>

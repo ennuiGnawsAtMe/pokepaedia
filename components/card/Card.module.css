@@ -50,9 +50,12 @@
   align-items: center;
 }
 
+.rank h3 {
+  font-family: "Playfair Display", serif;
+}
+
 .imageText h3 {
-  font-family: "Open Sans", sans-serif;
-  font-size: 1rem;
+  font-family: "Playfair Display", serif;
   margin: 0px;
 }
 

@@ -94,7 +94,7 @@ const Card = ({ pokemon }) => {
       about: <CardAbout {...pokemon} />,
       types: <CardTypes {...pokemon} />,
       ability: <CardStats {...pokemon} />,
-      image: <CardImage {...pokemon} />,
+      image: <CardImage {...pokemon} {...pokemonRatings} />,
   })
 
   return (
@@ -109,12 +109,10 @@ const Card = ({ pokemon }) => {
         exit="exit"
       >
       <div className={styles.topDetails}>
-          <span className={styles.rank}><h4>Rank:</h4><h3>{ranking}</h3></span>
         <div className={styles.imageText}>
-          <h4>Stars:</h4><h3>{ratingOverall}</h3>
-          <h4>Ratings:</h4><h3>{ratings.length}</h3>
-          <h4>Pokédex:</h4><h3>{pokedex}</h3>
+          <h4>Pokédex</h4><h3>{pokedex}</h3>
         </div>
+        <span className={styles.rank}><h4>Ranked</h4><h3>{ranking}</h3></span>
       </div>
       { cardFaceComponent[cardFace] }
       <div className={ styles.footer }>
