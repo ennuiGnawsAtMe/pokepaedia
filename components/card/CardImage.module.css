@@ -14,11 +14,18 @@
   margin: 0;
 }
 
-.nameContainer h4 {
-  font-family: "Open Sans", sans-serif;
-  font-size: 0.5rem;
-  margin: 0;
-  padding-right: 3px;
+.starsWrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.overallRatings h3 {
+  font-size: 12px;
+  font-weight: 100;
+  margin: 0 0 10px 0;
 }
 
 .nameContainer h3 {
