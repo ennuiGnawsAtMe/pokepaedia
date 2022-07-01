@@ -25,16 +25,15 @@ const CardTypes = ({ image, name, attack, defense, specialAttack, speed, weight,
             <span><h4>Sp Defence</h4><h3>{specialDefense}</h3></span>
         </div>
         <div className={styles.detailsMiddle}>
-            <span><h4>Height</h4><h3>{height}ft</h3></span>
-            <span><h4>Weight</h4><h3>{weight}lbs</h3></span>
-            <span><h4>Speed</h4><h3>{speed}mph</h3></span>
-            <span><h4>Experience</h4><h3>{experience}yrs</h3></span>
+            <span><h4>Height</h4><h3>{height}</h3></span>
+            <span><h4>Weight</h4><h3>{weight}</h3></span>
+            <span><h4>Speed</h4><h3>{speed}</h3></span>
+            <span><h4>Experience</h4><h3>{experience}</h3></span>
         </div>
         <div className={styles.types}>
           {type.map(type => <Types key={type.url} type={type.type}/>)}
           </div>
           </div> 
-          
       </>
   )
   }
