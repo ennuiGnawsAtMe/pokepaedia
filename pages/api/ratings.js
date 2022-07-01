@@ -2,8 +2,6 @@ import prisma from '../../lib/prisma'
 
 const ratingsApiHandler = async (req, res) => {
     const { rating, pokedex, name, comment } = req.body
-
-    console.log(req.body)
     
     const newRating = await prisma.rating.create({
         data: {

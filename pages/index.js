@@ -32,7 +32,9 @@ export const getStaticProps = async () => {
  const Home = ({ pokemonJson, options }) => {
     const [pokemonCards, setPokemonCards] = useContext(pokemonCardsContext)
     const { allPokemonDb, isLoading, isError } = useGetAllPokemonDb()
-
+    
+    if (isError) return <div>OUCH... Something went wrong!</div>
+    if (isLoading) return <div>Fetching Pokémon...</div>
     return (
        <>
         <Head>

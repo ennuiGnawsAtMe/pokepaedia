@@ -61,7 +61,6 @@ const Modal = ({ showModal, setShowModal, ratingOverall, ratings, name, pokedex,
   //TODO complete post request of the form data to database
   const handleFormSubmit = async (e) => {
     e.preventDefault()
-    console.log(formData)
 
     const optimisticNoRank = allPokemonDb.map(poke => {
       if (poke.pokedex === pokedex) {
@@ -88,6 +87,7 @@ const Modal = ({ showModal, setShowModal, ratingOverall, ratings, name, pokedex,
         || b.ratings.length - a.ratings.length 
         || a.pokedex - b.pokedex
     })
+
     const optimisticWithRank = sortedRanking.map(poke => ({
        ...poke, 
        ranking: getOrdinalNumbers(sortedRanking.indexOf(poke) + 1) 
@@ -102,8 +102,9 @@ const Modal = ({ showModal, setShowModal, ratingOverall, ratings, name, pokedex,
     }
 
     try {
+      await mutateAllPokemonDb()
       await axios.post('/api/ratings', payload)
-      await mutateAllPokemonDb(optimisticWithRank)
+      
     } catch (error) {
       console.error(error)
     }
@@ -143,6 +144,7 @@ const Modal = ({ showModal, setShowModal, ratingOverall, ratings, name, pokedex,
                 <div className={styles.overallStars}>
                 <ReactStars 
                   size={20} 
+                  key={ratings.length}
                   value={ratingOverall} 
                   edit={false} 
                   isHalf={true} 
@@ -151,6 +153,7 @@ const Modal = ({ showModal, setShowModal, ratingOverall, ratings, name, pokedex,
                 <h4>{ratingOverall} stars from {ratings.length} ratings</h4>
                 <div className={styles.blurbWrapper}>
                   <p>{blurb}</p>
+                  <h1>{}</h1>
                 </div>
               </div>
               
