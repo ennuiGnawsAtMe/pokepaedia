@@ -6,10 +6,12 @@ const CardStats = ({ hp, happiness, ability, shape, habitat, image, name }) => {
 
   return (
     <>
-    <div className={styles.imageContainer} style={{cursor:`pointer`}}>
-       <Link href={`/${name.toLowerCase()}`} >
-         <a><Image src={image} alt={name} layout="fill" objectFit='contain' /></a>
-       </Link>
+    <div className={styles.imageContainer} >
+       {/* <Link href={`/${name.toLowerCase()}`} >
+         <a> */}
+          <Image src={image} alt={name} layout="fill" objectFit='contain' />
+          {/* </a>
+       </Link> */}
       </div>
       <div className={styles.nameContainer}>
         <h2>{name}</h2>

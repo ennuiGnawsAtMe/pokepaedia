@@ -11,37 +11,19 @@ datasource db {
 }
 
 model Pokemon {
-  pokedex       Int       @id @unique
+  pokedex       Int      @id @unique
   name          String
   ratings       Rating[]
-  ratingOverall Float?    @map("rating_overall")
-  comments      Comment[]
-}
-
-model User {
-  id           Int       @id @unique @default(autoincrement())
-  name         String
-  email        String?
-  passwordHash String?   @map("password_hash")
-  comments     Comment[]
-  ratings      Rating[]
+  ratingOverall Float?   @map("rating_overall")
 }
 
 model Rating {
-  id      Int     @id @unique @default(autoincrement())
-  rating  Int
-  pokemon Pokemon @relation(fields: [pokedex], references: [pokedex])
-  pokedex Int
-  user    User    @relation(fields: [userId], references: [id])
-  userId  Int
-}
-
-model Comment {
   id        Int      @id @unique @default(autoincrement())
-  comment   String
-  createdAt DateTime @default(now()) @map("created_at")
+  rating    Int
   pokemon   Pokemon  @relation(fields: [pokedex], references: [pokedex])
   pokedex   Int
-  user      User     @relation(fields: [userId], references: [id])
-  userId    Int
+  name      String
+  comment   String
+  createdAt DateTime @default(now()) @map("created_at")
+
 }

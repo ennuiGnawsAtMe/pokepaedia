@@ -11,14 +11,12 @@ const seed = async () => {
 
       // this deletes contents of models before seeding & resets autoincrement ID to 1
       await prisma.$queryRaw`TRUNCATE TABLE "Pokemon" RESTART IDENTITY CASCADE`
-      await prisma.$queryRaw`TRUNCATE TABLE "Comment" RESTART IDENTITY CASCADE`
-      await prisma.$queryRaw`TRUNCATE TABLE "User" RESTART IDENTITY CASCADE`
       await prisma.$queryRaw`TRUNCATE TABLE "Rating" RESTART IDENTITY CASCADE`
 
       // this seeds the models
-      await prisma.user.createMany({
-        data: users
-      })
+      // await prisma.user.createMany({
+      //   data: users
+      // })
 
       await prisma.pokemon.createMany({
         data: pokemonSeed        
@@ -28,9 +26,9 @@ const seed = async () => {
       //   data: ratings
       // })
 
-      await prisma.comment.createMany({
-        data: comments        
-      })
+      // await prisma.comment.createMany({
+      //   data: comments        
+      // })
 
   } catch (e) {
       console.error(e)

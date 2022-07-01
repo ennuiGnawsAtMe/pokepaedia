@@ -21,10 +21,12 @@ const CardImage = ({ name, image, ratingOverall, ratings }) => {
         </div>
         <h3>{ratingOverall} stars from {ratings.length} ratings</h3>
       </div>
-      <div className={styles.imageContainer} style={{cursor:`pointer`}}>
-       <Link href={`/${name.toLowerCase()}`} >
-         <a><Image src={image} alt={name} layout="fill" objectFit='contain' /></a>
-       </Link>
+      <div className={styles.imageContainer}>
+       {/* <Link href={`/${name.toLowerCase()}`} > */}
+         {/* <a> */}
+          <Image src={image} alt={name} layout="fill" objectFit='contain' />
+          {/* </a> */}
+       {/* </Link> */}
       </div>
     </>
   )

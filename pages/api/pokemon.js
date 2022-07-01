@@ -10,7 +10,6 @@ const allPokemonApiHandler = async (req, res) => {
             pokedex: true,
             ratingOverall: true, 
             ratings: true,
-            comments: true
         },
         orderBy: [
           {

@@ -116,7 +116,7 @@ const Card = ({ pokemon }) => {
       </div>
       { cardFaceComponent[cardFace] }
       <div className={ styles.footer }>
-          <Link href={`/${pokemon.name.toLowerCase()}`}>
+          {/* <Link href={`/${pokemon.name.toLowerCase()}`}>
             <motion.button
               style={{ cursor:`pointer` }} 
               variants={buttonVariants}
@@ -126,7 +126,7 @@ const Card = ({ pokemon }) => {
               >
               - Details -
             </motion.button>
-          </Link>
+          </Link> */}
           <motion.button 
             style={{ cursor:`pointer` }} 
             onClick={ () => clickHandler() }
