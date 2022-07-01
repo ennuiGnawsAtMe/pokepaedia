@@ -6,7 +6,6 @@ import CardAbout from './CardAbout'
 import CardTypes from './CardTypes'
 import styles from './Card.module.css'
 import CardImage from './CardImage'
-import RatingModal from '../modal/Modal'
 import Link from 'next/link'
 import Modal from '../modal/Modal'
 

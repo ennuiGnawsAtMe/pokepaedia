@@ -58,9 +58,9 @@ const Modal = ({ showModal, setShowModal, ratingOverall, ratings, name, pokedex,
   }
   }
 
-  //TODO complete post request of the form data to database
   const handleFormSubmit = async (e) => {
     e.preventDefault()
+    setFormData(initialData)
 
     const optimisticNoRank = allPokemonDb.map(poke => {
       if (poke.pokedex === pokedex) {
@@ -98,20 +98,18 @@ const Modal = ({ showModal, setShowModal, ratingOverall, ratings, name, pokedex,
       name: formData.name,
       comment: formData.comment,
       rating: formData.rating,
-
     }
 
     try {
-      await mutateAllPokemonDb()
-      await axios.post('/api/ratings', payload)
-      
+      const apiRes = await axios.post('/api/ratings', payload)
+      const updatedPokemon = await mutateAllPokemonDb(optimisticWithRank)            
     } catch (error) {
       console.error(error)
     }
   }
 
   return (
-    <AnimatePresence exitBeforeEnter>
+    <AnimatePresence >
       {showModal &&  (
         <motion.div className={styles.backdrop}
           variants={backdropVariants}
@@ -167,35 +165,42 @@ const Modal = ({ showModal, setShowModal, ratingOverall, ratings, name, pokedex,
                 <div className={styles.starsWrapper}>
                   <ReactStars 
                     size={40} 
-                    value={0} 
+                    value={formData.rating}
+                    key={ratings.length} 
                     onChange={e => handleFormChange(e)} 
                   />
                 </div>
-              <form className={styles.formWrapper} action="/api/ratings" method="post">
-                <input 
-                  type="text"
-                  placeholder="Name"
-                  name="name"
-                  value={formData.name}
-                  required
-                  onChange={(e => handleFormChange(e))}
-                  />
-                <textarea 
-                  type="text" 
-                  placeholder="Comment"
-                  name="comment"
-                  value={formData.comment}
-                  required
-                  onChange={(e => handleFormChange(e))}
-                   />
-                <motion.button
-                   type="submit"
-                   variants={buttonVariants}
-                   whileHover="hover"
-                   whileTap="tap"
-                   onClick={handleFormSubmit}
-                   >Submit
-                </motion.button>
+              <form 
+                className={styles.formWrapper} 
+                action="/api/ratings" 
+                method="post"
+                onSubmit={e => e.preventDefault()}
+              >
+                  <input 
+                    type="text"
+                    placeholder="Name"
+                    name="name"
+                    value={formData.name}
+                    autoFocus
+                    required
+                    onChange={(e => handleFormChange(e))}
+                    />
+                  <textarea 
+                    type="text" 
+                    placeholder="Comment"
+                    name="comment"
+                    value={formData.comment}
+                    required
+                    onChange={(e => handleFormChange(e))}
+                    />
+                  <motion.button
+                    type="submit"
+                    variants={buttonVariants}
+                    whileHover="hover"
+                    whileTap="tap"
+                    onClick={handleFormSubmit}
+                    >Submit
+                  </motion.button>
               </form>
             </div> 
             </div>
