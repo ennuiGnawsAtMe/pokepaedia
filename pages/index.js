@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { useContext } from 'react'
 import { motion } from 'framer-motion'
-import { useGetAllPokemonDb } from '../lib/swr/useGetAllPokemonDb'
+import { useGetAllPokemonDb } from '../lib/swr'
 import RandomPokemon from '../components/utils/RandomPokemon.jsx'
 import data from '../data/all.json'
 import pokemonCardsContext from '../context/pokemonCardsContext.js'

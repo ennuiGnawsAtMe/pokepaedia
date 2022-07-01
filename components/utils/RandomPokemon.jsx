@@ -41,8 +41,6 @@ const RandomPokemon = ({ allPokemon }) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pokemonCards])
 
-  console.log('renderandom')
-
   return (
     <AnimatePresence exitBeforeEnter>
     {!isLoading 

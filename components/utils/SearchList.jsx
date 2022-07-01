@@ -9,7 +9,7 @@ const SearchList = () => {
 
   return (
       <div className={styles.container}>
-        <AnimatePresence exitBeforeEnter>
+        <AnimatePresence >
           {pokemonCards.map(poke => (<Card key={poke.pokedex} pokemon={poke} />))}  
         </AnimatePresence>
       </div>

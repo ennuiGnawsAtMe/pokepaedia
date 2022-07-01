@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import axios from 'axios'
 import { getOrdinalNumbers } from "../../lib/funcs"
-import { useGetAllPokemonDb } from "../../lib/swr/useGetAllPokemonDb"
+import { useGetAllPokemonDb } from "../../lib/swr"
 import styles from './Modal.module.css'
 import ReactStars from "react-rating-stars-component"
 
@@ -28,6 +28,7 @@ const initialData = {
 
 const Modal = ({ showModal, setShowModal, ratingOverall, ratings, name, pokedex, blurb, image, ranking }) => {
   const [formData, setFormData] = useState(initialData)
+  const [starsKey, setStarsKey] = useState(true)
   const { allPokemonDb, mutateAllPokemonDb } = useGetAllPokemonDb()
 
   const handleParentClick = event => {
@@ -61,6 +62,7 @@ const Modal = ({ showModal, setShowModal, ratingOverall, ratings, name, pokedex,
   const handleFormSubmit = async (e) => {
     e.preventDefault()
     setFormData(initialData)
+    setStarsKey(!starsKey)
 
     const optimisticNoRank = allPokemonDb.map(poke => {
       if (poke.pokedex === pokedex) {
@@ -82,11 +84,7 @@ const Modal = ({ showModal, setShowModal, ratingOverall, ratings, name, pokedex,
         return poke
     })
 
-    const sortedRanking = optimisticNoRank.sort((a, b) => {
-      b.ratingOverall - a.ratingOverall 
-        || b.ratings.length - a.ratings.length 
-        || a.pokedex - b.pokedex
-    })
+    const sortedRanking = optimisticNoRank.sort((a, b) => b.ratingOverall - a.ratingOverall || b.ratings.length - a.ratings.length || a.pokedex - b.pokedex)
 
     const optimisticWithRank = sortedRanking.map(poke => ({
        ...poke, 
@@ -101,8 +99,9 @@ const Modal = ({ showModal, setShowModal, ratingOverall, ratings, name, pokedex,
     }
 
     try {
-      const apiRes = await axios.post('/api/ratings', payload)
-      const updatedPokemon = await mutateAllPokemonDb(optimisticWithRank)            
+      await mutateAllPokemonDb(() => optimisticWithRank, false)
+      await axios.post('/api/ratings', payload)
+                  
     } catch (error) {
       console.error(error)
     }
@@ -166,7 +165,7 @@ const Modal = ({ showModal, setShowModal, ratingOverall, ratings, name, pokedex,
                   <ReactStars 
                     size={40} 
                     value={formData.rating}
-                    key={ratings.length} 
+                    key={starsKey} 
                     onChange={e => handleFormChange(e)} 
                   />
                 </div>
