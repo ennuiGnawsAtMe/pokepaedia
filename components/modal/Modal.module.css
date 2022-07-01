@@ -158,7 +158,8 @@
   width: 100%;
   padding: 10px;
   background-color: white;
-  border: solid black 1px;
+  border: 0;
+  box-shadow: 3px 3px 5px rgb(0, 0, 0, 0.2);
   border-radius: 10px;
   font-size: 14px;
   font-family: "Open Sans", sans-serif;
@@ -170,7 +171,8 @@
   height: 50px;
   padding: 10px;
   background-color: white;
-  border: solid black 1px;
+  border: 0;
+  box-shadow: 3px 3px 5px rgb(0, 0, 0, 0.2);
   border-radius: 10px;
   font-size: 14px;
   font-family: "Open Sans", sans-serif;

@@ -59,27 +59,20 @@ const CardRating = ({ pokedex, image, name, ratingOverall, ratings }) => {
 
   return (
     <>
-    <div className={styles.imageContainer} style={{cursor:`pointer`}}>
-       <Link href={`/${name.toLowerCase()}`} >
-         <a><Image src={image} alt={name} layout="fill" objectFit='contain' /></a>
-       </Link>
+    <div className={styles.imageContainer} >
+       {/* <Link href={`/${name.toLowerCase()}`} >
+         <a> */}
+          <Image src={image} alt={name} layout="fill" objectFit='contain' />
+          {/* </a>
+       </Link> */}
       </div>
       <div className={styles.nameContainer}>
         <h2>{name}</h2>
       </div>
         <div className={styles.details}>
         <div className={styles.detailsTop}>
-
         </div>
         </div> 
-    {/* <div className={styles.ratingContainer}>
-      <div className={styles.oneRatingContainer}>
-        <span className={styles.ratingText}>{`Your rating:`}</span><ReactStars size={20} value={0} onChange={newValue => changeHandler(newValue)} />
-      </div>
-      <div className={styles.overallRatingContainer}>
-        <span className={styles.ratingText}>{`${ratings.length} ratings, ${ratingOverall} stars`}</span><ReactStars size={20} key={ratingOverall} value={ratingOverall} edit={false} isHalf={true} />
-      </div>
-    </div> */}
     </>
   )
   }
