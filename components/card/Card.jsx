@@ -1,26 +1,25 @@
 import { useState } from 'react'
 import { motion } from "framer-motion"
-import { useGetAllPokemonDb } from '../../lib/swr/useGetAllPokemonDb'
+import { useGetAllPokemonDb, useGetOnePokemonDb } from '../../lib/swr'
 import CardStats from './CardStats'
 import CardAbout from './CardAbout'
 import CardTypes from './CardTypes'
 import styles from './Card.module.css'
 import CardImage from './CardImage'
-import RatingModal from '../modal/Modal'
 import Link from 'next/link'
 import Modal from '../modal/Modal'
 
 const CARD_COLOURS = {
-    'red': {backgroundColor: '#AB1E23', color: 'white'},
-    'blue': {backgroundColor:'#1452E2', color: 'white'},
-    'yellow': {backgroundColor:'#E3E32A', color: 'black'},
-    'green': {backgroundColor:'#147B3E', color: 'white'},
-    'black':{backgroundColor:'#313639', color: 'white'},
-    'brown': {backgroundColor:'#994022', color: 'white'},
-    'purple': {backgroundColor:'#5E2E87', color: 'white'},
-    'gray': {backgroundColor:'#D1D1E0', color: 'black'},
-    'white': {backgroundColor:'#f5f5f5', color: 'black'},
-    'pink': {backgroundColor:'#A72B6E', color: 'white'}
+    'red': {backgroundColor: '#AB1E23', color: '#ffffff'},
+    'blue': {backgroundColor:'#1452E2', color: '#ffffff'},
+    'yellow': {backgroundColor:'#E3E32A', color: '#000000'},
+    'green': {backgroundColor:'#147B3E', color: '#ffffff'},
+    'black':{backgroundColor:'#313639', color: '#ffffff'},
+    'brown': {backgroundColor:'#994022', color: '#ffffff'},
+    'purple': {backgroundColor:'#5E2E87', color: '#ffffff'},
+    'gray': {backgroundColor:'#D1D1E0', color: '#000000'},
+    'white': {backgroundColor:'#f5f5f5', color: '#000000'},
+    'pink': {backgroundColor:'#A72B6E', color: '#ffffff'}
     }
 
 const Card = ({ pokemon }) => {
@@ -62,15 +61,15 @@ const Card = ({ pokemon }) => {
       backgroundColor: backgroundColor,
       color: color,
       border: `solid 2px ${backgroundColor}`,
-      borderBottom: "none"
+      // TODO add to CSS => borderBottom: "none"
       
     },
     hover: {
-        backgroundColor: "white",
+        backgroundColor: "#ffffff",
         border: `solid 2px ${backgroundColor}`,
-        borderBottom: "none",
+        // TODO add to CSS => borderBottom: "none"
         transition: { duration: 0.3 },
-        color: "black",
+        color: "#000000",
       },
     tap: {
       scale: 0.95,
@@ -149,7 +148,6 @@ const Card = ({ pokemon }) => {
           </motion.button>
       </div>
     </motion.div>
-    {/* <RatingModal handleClose={() => setIsOpen(false)} isOpen={isOpen} {...pokemon} {...pokemonRatings} /> */}
     <Modal showModal={showModal} setShowModal={setShowModal} {...pokemon} {...pokemonRatings} />
   </>  
   )
