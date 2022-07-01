@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion } from "framer-motion"
-import { useGetAllPokemonDb, useGetOnePokemonDb } from '../../lib/swr'
+import { useGetAllPokemonDb } from '../../lib/swr'
 import CardStats from './CardStats'
 import CardAbout from './CardAbout'
 import CardTypes from './CardTypes'
@@ -149,7 +149,7 @@ const Card = ({ pokemon }) => {
       </div>
     </motion.div>
     <Modal showModal={showModal} setShowModal={setShowModal} {...pokemon} {...pokemonRatings} />
-  </>  
+  </> 
   )
   }
 
