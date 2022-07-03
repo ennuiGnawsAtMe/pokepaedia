@@ -9,8 +9,8 @@ import ReactStars from "react-rating-stars-component"
 
 const backdropVariants = {
   visible: { opacity: 1 },
-  hidden: { opacity: 0 },
-  }  
+  hidden: { opacity: 0 }
+}
   
 const buttonVariants = {
   hover: { 
@@ -110,14 +110,15 @@ const Modal = ({ showModal, setShowModal, ratingOverall, ratings, name, pokedex,
   return (
     <AnimatePresence >
       {showModal &&  (
-        <motion.div className={styles.backdrop}
+        <motion.div 
+          className={styles.backdrop}
           variants={backdropVariants}
           initial="hidden"
           animate="visible"
           exit="hidden"
           onClick={handleParentClick}
         >   
-          <motion.div className={styles.modal} onClick={handleChildClick} >
+          <div className={styles.modal} onClick={handleChildClick} >
           <div className={styles.modalContent}>
             <div className={styles.imageWrapper}>
               <Image 
@@ -128,7 +129,14 @@ const Modal = ({ showModal, setShowModal, ratingOverall, ratings, name, pokedex,
               />
             </div>
             <div className={styles.detailsContainer}>
-              <div className={styles.pokemonDetails}>
+              <motion.div 
+                className={styles.pokemonDetails}
+                variants={backdropVariants}
+                key={ratings.length}
+                initial="hidden"
+                animate="visible"
+                exit="hidden"
+              >
                 <div className={styles.nameContainer}>
                   <div className={styles.nameWrapper}>
                     <h1>{name}</h1>
@@ -150,10 +158,8 @@ const Modal = ({ showModal, setShowModal, ratingOverall, ratings, name, pokedex,
                 <h4>{ratingOverall} stars from {ratings.length} ratings</h4>
                 <div className={styles.blurbWrapper}>
                   <p>{blurb}</p>
-                  <h1>{}</h1>
                 </div>
-              </div>
-              
+              </motion.div>
               <div className={styles.userRatingContainer}>
                 {!formData.rating 
                   ? <h3>Your Rating</h3> 
@@ -204,7 +210,7 @@ const Modal = ({ showModal, setShowModal, ratingOverall, ratings, name, pokedex,
             </div> 
             </div>
           </div>
-        </motion.div>
+        </div>
         </motion.div>
       )}
     </AnimatePresence>
