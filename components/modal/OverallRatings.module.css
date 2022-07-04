@@ -1,0 +1,63 @@
+.container {
+  position: relative;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.starsWrapper {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  margin: 0 auto;
+  padding-top: 10px;
+}
+
+.titleContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.blurbWrapper {
+  padding: 20px 0;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.rankingWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 10px;
+  border-left: solid 1px black;
+}
+
+.nameWrapper {
+  padding-right: 10px;
+}
+
+.container h1 {
+  font-size: 33px;
+  margin: 0;
+}
+
+.container h2 {
+  font-size: 21px;
+  margin: 0;
+}
+
+.container h4 {
+  font-size: 14px;
+  font-weight: 100;
+  margin: 0;
+}
+
+.container p {
+  font-size: 16px;
+  margin: 0;
+}
