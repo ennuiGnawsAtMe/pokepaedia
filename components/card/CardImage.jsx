@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import Link from 'next/link'
 import ReactStars from 'react-rating-stars-component'
 import styles from './CardImage.module.css'
 
@@ -22,11 +21,7 @@ const CardImage = ({ name, image, ratingOverall, ratings }) => {
         <h3>{ratingOverall} stars from {ratings.length} ratings</h3>
       </div>
       <div className={styles.imageContainer}>
-       {/* <Link href={`/${name.toLowerCase()}`} > */}
-         {/* <a> */}
           <Image src={image} alt={name} layout="fill" objectFit='contain' />
-          {/* </a> */}
-       {/* </Link> */}
       </div>
     </>
   )
