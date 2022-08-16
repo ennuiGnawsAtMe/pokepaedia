@@ -6,7 +6,6 @@ import CardAbout from './CardAbout'
 import CardTypes from './CardTypes'
 import styles from './Card.module.css'
 import CardImage from './CardImage'
-import Link from 'next/link'
 import Modal from '../modal/Modal'
 
 const CARD_COLOURS = {
@@ -32,7 +31,7 @@ const Card = ({ pokemon }) => {
   const { backgroundColor, color } = CARD_COLOURS[colour]
 
   const pokemonRatings = allPokemonDb.find(poke => poke.pokedex === pokedex)
-  const { ratingOverall, ratings, ranking } = pokemonRatings
+  const { ranking } = pokemonRatings
 
   const cardVariants = {
       hidden: {
