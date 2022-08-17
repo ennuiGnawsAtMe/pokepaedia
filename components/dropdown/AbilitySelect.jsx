@@ -1,10 +1,12 @@
 import { useContext } from 'react'
 import Select from 'react-select'
 import pokemonCardsContext from '../../context/pokemonCardsContext.js'
-import { goToTop } from '../../lib/funcs.js'
+import { goToTop, sortByRating } from '../../lib/funcs.js'
+import { useGetAllPokemonDb } from '../../lib/swr.js'
 
 const AbilitySelect = ({ allPokemon, options }) => {
   const [pokemonCards, setPokemonCards] = useContext(pokemonCardsContext)
+  const { allPokemonDb } = useGetAllPokemonDb()
 
   const changeHandler = (abilityName) => {
     goToTop()
@@ -12,7 +14,8 @@ const AbilitySelect = ({ allPokemon, options }) => {
       allPokemon.forEach(poke => {
         poke.ability.forEach(element => element.ability == abilityName && newSelection.push(poke))
       })
-    setPokemonCards(newSelection)
+    const sortedSelection = sortByRating(newSelection, allPokemonDb)
+    setPokemonCards(sortedSelection)
   }
 
 return (
