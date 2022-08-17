@@ -1,15 +1,18 @@
 import { useContext } from 'react'
 import Select from 'react-select'
 import pokemonCardsContext from '../../context/pokemonCardsContext.js'
-import { goToTop } from '../../lib/funcs.js'
+import { goToTop, sortByRating } from '../../lib/funcs.js'
+import { useGetAllPokemonDb } from '../../lib/swr.js'
 
 const ShapeSelect = ({ allPokemon, options }) => {
   const [pokemonCards, setPokemonCards] = useContext(pokemonCardsContext)
+  const { allPokemonDb } = useGetAllPokemonDb()
     
   const changeHandler = (shapeName) => {
     goToTop()
     const newSelection = allPokemon.filter(({ shape }) => shape == shapeName)
-    setPokemonCards(newSelection)
+    const sortedSelection = sortByRating(newSelection, allPokemonDb)
+    setPokemonCards(sortedSelection)
   }
 
 return (

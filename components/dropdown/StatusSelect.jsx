@@ -1,23 +1,25 @@
 import { useContext } from 'react'
 import Select from 'react-select'
 import pokemonCardsContext from '../../context/pokemonCardsContext.js'
-import { goToTop } from '../../lib/funcs.js'
+import { goToTop, sortByRating } from '../../lib/funcs.js'
+import { useGetAllPokemonDb } from '../../lib/swr.js'
 
 const StatusSelect = ({allPokemon, options }) => {
   const [pokemonCards, setPokemonCards] = useContext(pokemonCardsContext)
+  const { allPokemonDb } = useGetAllPokemonDb()
 
   const changeHandler = (status) => {
     goToTop()
+    const newSelection = []
     if (status === 'baby') {
-      const newSelection = allPokemon.filter(({ isBaby }) => isBaby == true)
-      setPokemonCards(newSelection)
+      newSelection = allPokemon.filter(({ isBaby }) => isBaby == true)
     } else if (status === 'mythical') {
-      const newSelection = allPokemon.filter(({ isMythical }) => isMythical == true)
-      setPokemonCards(newSelection)
+      newSelection = allPokemon.filter(({ isMythical }) => isMythical == true)
     } else if (status === 'legendary') {
-      const newSelection = allPokemon.filter(({ isLegendary }) => isLegendary == true)
-      setPokemonCards(newSelection)
+      newSelection = allPokemon.filter(({ isLegendary }) => isLegendary == true)
     }
+    const sortedSelection = sortByRating(newSelection, allPokemonDb)
+    setPokemonCards(sortedSelection)
   }
 
 return (
