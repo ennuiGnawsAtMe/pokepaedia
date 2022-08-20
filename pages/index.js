@@ -10,7 +10,7 @@ import { statusOptions, types }from '../lib/vars'
 import NavBar from '../components/layout/NavBar.jsx'
 import Footer from '../components/layout/Footer.jsx'
 import SearchList from '../components/utils/SearchList.jsx'
-import Modal from '../components/modal/Modal'
+import Loading from '../components/utils/Loading'
 
 export const getStaticProps = async () => {
     const pokemonJson = data.pokemon
@@ -34,7 +34,8 @@ export const getStaticProps = async () => {
     const { allPokemonDb, isLoading, isError } = useGetAllPokemonDb()
     
     if (isError) return <div>OUCH... Something went wrong!</div>
-    if (isLoading) return <div>Fetching Pokémon...</div>
+    if (isLoading) return <Loading />
+
     return (
        <>
         <Head>
