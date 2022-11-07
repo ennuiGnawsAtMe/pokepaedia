@@ -1,4 +1,4 @@
-import prisma from '../../lib/prisma'
+import prisma from '../../db/prisma'
 
 const ratingsApiHandler = async (req, res) => {
     const { rating, pokedex, name, comment } = req.body

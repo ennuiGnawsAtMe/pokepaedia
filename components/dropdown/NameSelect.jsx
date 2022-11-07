@@ -1,3 +1,5 @@
+'use client';
+
 import Select from 'react-select'
 import { useContext } from 'react'
 import pokemonCardsContext from '../../context/pokemonCardsContext.js'

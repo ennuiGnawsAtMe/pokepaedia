@@ -1,3 +1,5 @@
+'use client';
+
 import Image from "next/image";
 import ReactStars from 'react-rating-stars-component'
 import styles from './CardImage.module.css'

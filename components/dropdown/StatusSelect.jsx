@@ -1,3 +1,5 @@
+'use client';
+
 import { useContext } from 'react'
 import Select from 'react-select'
 import pokemonCardsContext from '../../context/pokemonCardsContext.js'
@@ -10,7 +12,9 @@ const StatusSelect = ({allPokemon, options }) => {
 
   const changeHandler = (status) => {
     goToTop()
-    const newSelection = []
+
+    let newSelection = []
+
     if (status === 'baby') {
       newSelection = allPokemon.filter(({ isBaby }) => isBaby == true)
     } else if (status === 'mythical') {

@@ -1,3 +1,5 @@
+'use client';
+
 import { useContext } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import Card from '../card/Card'
