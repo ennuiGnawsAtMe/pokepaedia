@@ -1,4 +1,4 @@
-import Image from "next/image"
+import Image from "next/legacy/image";
 import loadingGif from '../../public/images/loading.gif'
 import styles from './Loading.module.css'
 

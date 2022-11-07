@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import Image from "next/legacy/image";
 import styles from './CardAbout.module.css'
 
 const CardAbout = ({ blurb, name, image }) => {

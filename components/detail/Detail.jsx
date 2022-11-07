@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import Image from 'next/image'
+import Image from "next/legacy/image";
 import DetailsNav from './DetailsNav'
 import DetailAbout from './DetailAbout'
 import DetailStats from './DetailStats'

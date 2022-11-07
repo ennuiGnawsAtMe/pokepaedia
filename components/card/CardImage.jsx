@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import Image from "next/legacy/image";
 import ReactStars from 'react-rating-stars-component'
 import styles from './CardImage.module.css'
 
