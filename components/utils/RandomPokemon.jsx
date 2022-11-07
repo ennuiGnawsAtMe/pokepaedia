@@ -6,6 +6,8 @@ import styles from './RandomPokemon.module.css'
 import Loading from './Loading'
 import pokemonCardsContext from '../../context/pokemonCardsContext.js'
 
+import loadingGif from '/Users/lumirari/dev/pokepaedia/public/images/loading.gif'
+
 const containerVariants = {
   hidden: {
     opacity: 0,
@@ -32,19 +34,17 @@ const RandomPokemon = ({ allPokemon }) => {
   const clickHandler = () => {
     setIsLoading(true)
     setPokemon(getRandomPoke(allPokemon))
-    setIsLoading(false)
   }
+
 
   useEffect(() => {
     setPokemon(getRandomPoke(allPokemon))
-    setIsLoading(false)
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pokemonCards])
 
   return (
     <AnimatePresence exitBeforeEnter>
-    {!isLoading 
-      ? <motion.div 
+      <motion.div 
           className={styles.container} 
           variants={containerVariants}
           initial="hidden"
@@ -58,6 +58,7 @@ const RandomPokemon = ({ allPokemon }) => {
                 layout='fill'
                 objectFit='contain'
                 priority
+                onLoadingComplete={() => setIsLoading(false)}
             />
           </div>
           <div className={styles.details}>
@@ -71,8 +72,6 @@ const RandomPokemon = ({ allPokemon }) => {
             <p>{pokemon.blurb}</p>
           </div>
         </motion.div>
-      : <Loading />
-    }
     </AnimatePresence>
   )
 }

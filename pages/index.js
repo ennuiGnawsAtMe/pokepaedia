@@ -39,7 +39,7 @@ export const getStaticProps = async () => {
     return (
        <>
         <Head>
-          <title>PokéPaedia | A Pokémon Encyclopaedia</title>
+          <title>PokéPaedia | The Unofficial Pokémon Rankings</title>
           <meta name="description" content="Come explore Pokepaedia, an encyclopaedia of Pokemon from Pikachu and Snorlax to Flapple and Dreepy, we got them all!" />
           <link rel="icon" href="/images/favicon.ico" />
         </Head>
@@ -51,7 +51,7 @@ export const getStaticProps = async () => {
           }}
         >
          <NavBar options={options} allPokemon={pokemonJson} />
-         {pokemonCards.length === 0 ? <RandomPokemon allPokemon={pokemonJson} /> : <SearchList />}
+         <SearchList />
          <Footer />
         </motion.main>
       </>
