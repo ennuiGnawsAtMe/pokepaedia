@@ -1,4 +1,4 @@
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { useState, useContext, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { getRandomPoke } from '../../lib/funcs'
@@ -52,14 +52,16 @@ const RandomPokemon = ({ allPokemon }) => {
           exit="exit"
         >
           <div className={styles.imageContainer}>
-            <Image 
-                src={pokemon.image}
-                alt={pokemon.name}
-                layout='fill'
-                objectFit='contain'
-                priority
-                onLoadingComplete={() => setIsLoading(false)}
-            />
+            <Image
+              src={pokemon.image}
+              alt={pokemon.name}
+              priority
+              onLoadingComplete={() => setIsLoading(false)}
+              fill
+              sizes="100vw"
+              style={{
+                objectFit: "contain"
+              }} />
           </div>
           <div className={styles.details}>
             <button 
@@ -73,7 +75,7 @@ const RandomPokemon = ({ allPokemon }) => {
           </div>
         </motion.div>
     </AnimatePresence>
-  )
+  );
 }
 
 export default RandomPokemon

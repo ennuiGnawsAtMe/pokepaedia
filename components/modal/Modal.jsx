@@ -1,4 +1,4 @@
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import styles from './Modal.module.css'
@@ -41,12 +41,14 @@ const Modal = ({ showModal, setShowModal, ratingOverall, ratings, name, pokedex,
           <div className={styles.modal} onClick={handleChildClick} >
             <div className={styles.modalContent}>
               <div className={styles.imageWrapper}>
-                <Image 
-                  src={image} 
-                  alt={name} 
-                  layout="fill" 
-                  objectFit='contain' 
-                />
+                <Image
+                  src={image}
+                  alt={name}
+                  fill
+                  sizes="100vw"
+                  style={{
+                    objectFit: "contain"
+                  }} />
               </div>
               <div className={styles.detailsContainer}>
                 <OverallRatings name={name} ratings={ratings} ratingOverall={ratingOverall} ranking={ranking} blurb={blurb} />
@@ -60,6 +62,6 @@ const Modal = ({ showModal, setShowModal, ratingOverall, ratings, name, pokedex,
         </motion.div>
       )}
     </AnimatePresence>
-  )
+  );
 }
 export default Modal

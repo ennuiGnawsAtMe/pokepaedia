@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import Image from "next/legacy/image";
+import Image from "next/image";
 import DetailsNav from './DetailsNav'
 import DetailAbout from './DetailAbout'
 import DetailStats from './DetailStats'
@@ -22,17 +22,19 @@ const Detail = ({ pokemon }) => {
   return (
     <div className={styles.container}>
       <div className={styles.imageContainer}>
-          <Image 
-            src={pokemon.image} 
+          <Image
+            src={pokemon.image}
             alt={pokemon.name}
-            layout="fill" 
-            objectFit='contain'
-            />
+            fill
+            sizes="100vw"
+            style={{
+              objectFit: "contain"
+            }} />
       </div>
       <h1>{pokemon.name}</h1>
       <DetailsNav component={component} setComponent={setComponent}/>
       {COMPONENTS[component]}
     </div>
-        )}
+  );}
 
 export default Detail
