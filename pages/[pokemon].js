@@ -18,14 +18,14 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps = async ({ params }) => {
-    const onePokemon = data.pokemon.find(poke => poke.name === capitalise(params.pokemon))
+  const onePokemon = data.pokemon.find(poke => poke.name === capitalise(params.pokemon))
 
-    return {
-      props : { onePokemon }
-    }
+  return {
+    props : { onePokemon }
+  }
 }
 
- const PokemonDetail = ({ onePokemon }) => {
+const PokemonDetail = ({ onePokemon }) => {
 
   return (
     <>

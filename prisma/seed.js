@@ -9,32 +9,32 @@ const seed = async () => {
     // this builds the seeds from `data/all.json`
     const pokemonSeed = getPokemonSeed(data)
 
-      // this deletes contents of models before seeding & resets autoincrement ID to 1
-      await prisma.$queryRaw`TRUNCATE TABLE "Pokemon" RESTART IDENTITY CASCADE`
-      await prisma.$queryRaw`TRUNCATE TABLE "Rating" RESTART IDENTITY CASCADE`
+    // this deletes contents of models before seeding & resets autoincrement ID to 1
+    await prisma.$queryRaw`TRUNCATE TABLE "Pokemon" RESTART IDENTITY CASCADE`
+    await prisma.$queryRaw`TRUNCATE TABLE "Rating" RESTART IDENTITY CASCADE`
 
-      // this seeds the models
-      // await prisma.user.createMany({
-      //   data: users
-      // })
+    // this seeds the models
+    // await prisma.user.createMany({
+    //   data: users
+    // })
 
-      await prisma.pokemon.createMany({
-        data: pokemonSeed        
-      })
+    await prisma.pokemon.createMany({
+      data: pokemonSeed        
+    })
 
-      // await prisma.rating.createMany({
-      //   data: ratings
-      // })
+    // await prisma.rating.createMany({
+    //   data: ratings
+    // })
 
-      // await prisma.comment.createMany({
-      //   data: comments        
-      // })
+    // await prisma.comment.createMany({
+    //   data: comments        
+    // })
 
   } catch (e) {
-      console.error(e)
-      process.exit(1)
+    console.error(e)
+    process.exit(1)
   } finally {
-      await prisma.$disconnect()
+    await prisma.$disconnect()
   }
 }
 

@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import '../styles/globals.css'
 import pokemonCardsContext from '../context/pokemonCardsContext.js'
 import dropdownContext from '../context/dropdownContext'
 

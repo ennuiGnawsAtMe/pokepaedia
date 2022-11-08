@@ -1,9 +1,8 @@
-import HomePage from './HomePage'
+import Home from './Home'
 import getPokemon from '../db/getPokemon'
 
 export default async function Page() {
   const pokemon = await getPokemon()
-  console.log(pokemon)
 
-  return <HomePage pokemon={pokemon}/>
+  return <Home pokemon={pokemon}/>
 }
