@@ -1,6 +1,6 @@
 const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient()
-const data = require('../data/all.json')
+const data = require('../../data/all.json')
 const { getPokemonSeed, users, ratings, comments } = require('./seedData')
 
 // Seed can be run anytime with `npm run seed`//
@@ -19,7 +19,7 @@ const seed = async () => {
     // })
 
     await prisma.pokemon.createMany({
-      data: pokemonSeed        
+      data: pokemonSeed,
     })
 
     // await prisma.rating.createMany({
@@ -27,9 +27,8 @@ const seed = async () => {
     // })
 
     // await prisma.comment.createMany({
-    //   data: comments        
+    //   data: comments
     // })
-
   } catch (e) {
     console.error(e)
     process.exit(1)

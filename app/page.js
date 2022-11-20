@@ -1,8 +1,8 @@
 import Home from './Home'
-import getPokemon from '../db/getPokemon'
+import { getPokemon } from '../prisma/api/getPokemon'
 
 export default async function Page() {
   const pokemon = await getPokemon()
 
-  return <Home pokemon={pokemon}/>
+  return <Home />
 }

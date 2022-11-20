@@ -1,27 +1,58 @@
-import Image from "next/image"
+'use client'
+
+import { useState } from 'react'
+import Image from 'next/image'
 import pichu from '../public/images/pokemon/pichu.png'
+import NameInput from './NameInput'
 
-const Home = ({ pokemon }) => {
+const Home = () => {
+  const [name, setName] = useState('')
+
+  const changeHandler = e => {
+    setName(e)
+    console.log(name)
+  }
   return (
-    <div className='flex flex-row justify-center items-center h-screen'>
-      <div className='w-1/3'>
-        <Image
-          src={pichu}
-          alt={'Pichu!'}
-          priority
-        // fill
-        // sizes="35vw"
-        // style={{
-        //   objectFit: "contain"
-        // }} 
-        />
-
+    <div className="flex h-screen flex-row items-center justify-center">
+      <div className="w-1/3">
+        <Image src={pichu} alt={'Pichu!'} priority />
       </div>
-      <div className='w-1/3 blinking-cursor'>
-        <h1>
-          Hey Trainer! <br/> What is your name?
-        </h1>
-      </div>      
+      <div className="flex w-1/3 flex-col space-y-10">
+        <div className="text-right">
+          <h1 className="font-primary text-7xl hover:font-sans">
+            Hey Trainer!
+          </h1>
+          <h2 className="font-mono text-3xl">What is your name?</h2>
+        </div>
+        <div className="flex flex-row items-center justify-end">
+          <form className="h-20">
+            <input
+              autoFocus={true}
+              maxLength={20}
+              className="h-full w-full rounded-md border-black p-4 text-right text-3xl focus:outline-none"
+              type="text"
+              value={name}
+              onChange={e => changeHandler(e.target.value)}
+            />
+          </form>
+          <p
+            className={`${
+              name != '' ? '-translate-x-6' : ''
+            } pl-6 text-6xl duration-75 ease-in-out will-change-transform  hover:cursor-pointer`}
+          >
+            &larr;
+          </p>
+        </div>
+        <div className="flex justify-end">
+          <button
+            className={`${
+              !name ? 'hidden' : ''
+            } duration-50 absolute w-[15vw] rounded-md bg-slate-400 p-2 text-center text-white shadow-md shadow-slate-400 outline-slate-800 ease-in-out hover:scale-105 hover:bg-slate-300 hover:text-black hover:shadow-xl active:scale-100	`}
+          >
+            Submit
+          </button>
+        </div>
+      </div>
     </div>
   )
 }

@@ -1,4 +1,3 @@
-/** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
   images: {
@@ -8,6 +7,6 @@ const nextConfig = {
     scrollRestoration: true,
     appDir: true,
   },
-};
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig
