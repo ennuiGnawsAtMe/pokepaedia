@@ -47,35 +47,35 @@ const RandomPokemon = ({ allPokemon }) => {
   return (
     <AnimatePresence exitBeforeEnter>
       <motion.div 
-          className={styles.container} 
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-          exit="exit"
-        >
-          <div className={styles.imageContainer}>
-            <Image
-              src={pokemon.image}
-              alt={pokemon.name}
-              priority
-              onLoadingComplete={() => setIsLoading(false)}
-              fill
-              sizes="100vw"
-              style={{
-                objectFit: "contain"
-              }} />
-          </div>
-          <div className={styles.details}>
-            <button 
-              style={{ cursor:"pointer" }}
-              onClick={clickHandler}
-            >
-              &gt;&gt;&gt; Next Pokémon
-            </button>
-            <h1>{pokemon.name}</h1>
-            <p>{pokemon.blurb}</p>
-          </div>
-        </motion.div>
+        className={styles.container} 
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        exit="exit"
+      >
+        <div className={styles.imageContainer}>
+          <Image
+            src={pokemon.image}
+            alt={pokemon.name}
+            priority
+            onLoadingComplete={() => setIsLoading(false)}
+            fill
+            sizes="100vw"
+            style={{
+              objectFit: "contain"
+            }} />
+        </div>
+        <div className={styles.details}>
+          <button 
+            style={{ cursor:"pointer" }}
+            onClick={clickHandler}
+          >
+            &gt;&gt;&gt; Next Pokémon
+          </button>
+          <h1>{pokemon.name}</h1>
+          <p>{pokemon.blurb}</p>
+        </div>
+      </motion.div>
     </AnimatePresence>
   );
 }

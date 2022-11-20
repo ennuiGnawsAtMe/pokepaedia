@@ -2,11 +2,5 @@
   "extends": [
     "next",
     "prettier"
-  ],
-  "rules": {
-    "indent": [
-      "warn",
-      2
-    ]
-  }
+  ]
 }
