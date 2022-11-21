@@ -13,17 +13,15 @@ const Home = () => {
   }
   return (
     <div className="flex h-screen flex-row items-center justify-center">
-      <div className="w-1/3">
+      <div className="flex w-1/3 flex-col items-end">
         <Image src={pichu} alt={'Pichu!'} priority />
       </div>
-      <div className="flex w-1/3 flex-col space-y-10">
-        <div className="text-right">
-          <h1 className="font-primary text-7xl hover:font-sans">
-            Hey Trainer!
-          </h1>
+      <div className="flex w-1/3 flex-col items-start space-y-10">
+        <div className="flex flex-col text-right">
+          <h1 className="text-7xl">Hey Trainer!</h1>
           <h2 className="font-mono text-3xl">What is your name?</h2>
         </div>
-        <div className="flex flex-row items-center justify-end">
+        <div className=" flex flex-row items-center">
           <form className="h-20">
             <input
               autoFocus={true}
@@ -42,7 +40,7 @@ const Home = () => {
             &larr;
           </p>
         </div>
-        <div className="flex justify-end">
+        <div className="absolute">
           <button
             className={`${
               !name ? 'hidden' : ''
