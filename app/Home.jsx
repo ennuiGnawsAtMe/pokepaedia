@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import pichu from '../public/images/pokemon/pichu.png'
-import NameInput from './NameInput'
 
 const Home = () => {
   const [name, setName] = useState('')
@@ -38,7 +37,7 @@ const Home = () => {
           <p
             className={`${
               name != '' ? '-translate-x-6' : ''
-            } pl-6 text-6xl duration-75 ease-in-out will-change-transform  hover:cursor-pointer`}
+            } pl-6 text-6xl duration-75 ease-in-out will-change-transform`}
           >
             &larr;
           </p>
@@ -47,7 +46,7 @@ const Home = () => {
           <button
             className={`${
               !name ? 'hidden' : ''
-            } duration-50 absolute w-[15vw] rounded-md bg-slate-400 p-2 text-center text-white shadow-md shadow-slate-400 outline-slate-800 ease-in-out hover:scale-105 hover:bg-slate-300 hover:text-black hover:shadow-xl active:scale-100	`}
+            } duration-50 absolute w-[15vw] rounded-md bg-teal-500 p-2 text-center text-xl text-white shadow-md shadow-slate-400 ease-in-out hover:bg-teal-400  hover:shadow-xl active:scale-95	`}
           >
             Submit
           </button>
