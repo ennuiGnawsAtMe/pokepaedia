@@ -1,11 +1,11 @@
-'use client';
+'use client'
 
 import { useContext } from 'react'
 import Select from 'react-select'
 import pokemonCardsContext from '../../context/pokemonCardsContext.js'
-import { goToTop } from '../../lib/funcs.js'
-import { useGetAllPokemonDb } from '../../lib/swr'
-import { RankOptions } from '../../lib/vars'
+import { goToTop } from '../../utils/helpers.js'
+import { useGetAllPokemonDb } from '../../utils/swr'
+import { RankOptions } from '../../utils/constants'
 
 const RankingSelect = ({ allPokemon }) => {
   const [pokemonCards, setPokemonCards] = useContext(pokemonCardsContext)
@@ -15,20 +15,22 @@ const RankingSelect = ({ allPokemon }) => {
     const start = end - 100
     return array.slice(start, end)
   }
-      
-  const changeHandler = (rankings) => {
+
+  const changeHandler = rankings => {
     goToTop()
     const slicedPokemonDb = findPokes(allPokemonDb, rankings)
     const fullPokemonData = slicedPokemonDb.map(poke => {
-        const jsonPokemon = allPokemon.find(pokemon => pokemon.pokedex === poke.pokedex)
-        return { ...poke, ...jsonPokemon}
+      const jsonPokemon = allPokemon.find(
+        pokemon => pokemon.pokedex === poke.pokedex
+      )
+      return { ...poke, ...jsonPokemon }
     })
     setPokemonCards(fullPokemonData)
   }
 
-return (
-<>
-    <Select
+  return (
+    <>
+      <Select
         placeholder={`Search Pokemon by Rank`}
         maxMenuHeight={400}
         options={RankOptions}
@@ -36,9 +38,9 @@ return (
         onChange={event => changeHandler(event.value)}
         blurInputOnClear={true}
         focusInputOnMenuOpen={false}
-    />
-</>
-)
+      />
+    </>
+  )
 }
 
 export default RankingSelect

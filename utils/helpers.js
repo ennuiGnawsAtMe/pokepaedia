@@ -112,7 +112,7 @@ export const sortByRating = (selectionArr, ratingsArr) => {
   return sorted
 }
 
-export const getRandomImage = object => {
-  const keys = Object.keys(object)
-  return keys[Math.floor(Math.random() * keys.length)]
+export const getRandomValue = object => {
+  const values = Object.values(object)
+  return values[Math.floor(Math.random() * values.length)]
 }

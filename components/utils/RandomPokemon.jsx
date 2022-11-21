@@ -1,9 +1,9 @@
-'use client';
+'use client'
 
-import Image from "next/image";
+import Image from 'next/image'
 import { useState, useContext, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { getRandomPoke } from '../../lib/funcs'
+import { getRandomPoke } from '../../utils/helpers'
 import styles from './RandomPokemon.module.css'
 import Loading from './Loading'
 import pokemonCardsContext from '../../context/pokemonCardsContext.js'
@@ -14,18 +14,18 @@ const containerVariants = {
   hidden: {
     opacity: 0,
     translateX: -50,
-    transition: { duration: 0.5, delay: 0.2 }
+    transition: { duration: 0.5, delay: 0.2 },
   },
   visible: {
     opacity: 1,
     translateX: 0,
-    transition: { duration: 0.5, delay: 0.2 } 
+    transition: { duration: 0.5, delay: 0.2 },
   },
   exit: {
     opacity: 0,
     translateX: 50,
-    transition: { duration: 0.3 }
-  }
+    transition: { duration: 0.3 },
+  },
 }
 
 const RandomPokemon = ({ allPokemon }) => {
@@ -38,16 +38,15 @@ const RandomPokemon = ({ allPokemon }) => {
     setPokemon(getRandomPoke(allPokemon))
   }
 
-
   useEffect(() => {
     setPokemon(getRandomPoke(allPokemon))
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pokemonCards])
 
   return (
     <AnimatePresence exitBeforeEnter>
-      <motion.div 
-        className={styles.container} 
+      <motion.div
+        className={styles.container}
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -62,14 +61,12 @@ const RandomPokemon = ({ allPokemon }) => {
             fill
             sizes="100vw"
             style={{
-              objectFit: "contain"
-            }} />
+              objectFit: 'contain',
+            }}
+          />
         </div>
         <div className={styles.details}>
-          <button 
-            style={{ cursor:"pointer" }}
-            onClick={clickHandler}
-          >
+          <button style={{ cursor: 'pointer' }} onClick={clickHandler}>
             &gt;&gt;&gt; Next Pokémon
           </button>
           <h1>{pokemon.name}</h1>
@@ -77,7 +74,7 @@ const RandomPokemon = ({ allPokemon }) => {
         </div>
       </motion.div>
     </AnimatePresence>
-  );
+  )
 }
 
 export default RandomPokemon
