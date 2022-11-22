@@ -73,7 +73,7 @@ export const getNameOptions = allPokemon => {
   return options
 }
 
-export const getRandomPoke = pokemonArr => {
+export const getRandomPokemon = pokemonArr => {
   const randomInt = getRandomId()
   const randomPokemon = pokemonArr.find(poke => poke.pokedex === randomInt)
   return randomPokemon

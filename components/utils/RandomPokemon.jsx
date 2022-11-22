@@ -3,12 +3,10 @@
 import Image from 'next/image'
 import { useState, useContext, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { getRandomPoke } from '../../utils/helpers'
+import { getRandomPokemon } from '../../utils/helpers'
 import styles from './RandomPokemon.module.css'
 import Loading from './Loading'
 import pokemonCardsContext from '../../context/pokemonCardsContext.js'
-
-import loadingGif from '/Users/lumirari/dev/pokepaedia/public/images/loading.gif'
 
 const containerVariants = {
   hidden: {
@@ -35,11 +33,11 @@ const RandomPokemon = ({ allPokemon }) => {
 
   const clickHandler = () => {
     setIsLoading(true)
-    setPokemon(getRandomPoke(allPokemon))
+    setPokemon(getRandomPokemon(allPokemon))
   }
 
   useEffect(() => {
-    setPokemon(getRandomPoke(allPokemon))
+    setPokemon(getRandomPokemon(allPokemon))
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pokemonCards])
 
