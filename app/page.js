@@ -1,11 +1,11 @@
 import PokemonCarousel from './PokemonCarousel'
-import NameForm from './NameForm'
+import EnterButton from './EnterButton'
 
 export default async function Page() {
   return (
-    <div className="flex h-screen flex-col items-center justify-center">
+    <div className="flex min-h-screen flex-col items-center justify-center">
       <PokemonCarousel />
-      <div className=""></div>
+      <EnterButton />
     </div>
   )
 }
