@@ -10,6 +10,8 @@ module.exports = {
     extend: {
       fontFamily: {
         serif: ['var(--font-ibarra)', ...fontFamily.serif],
+        mono: ['var(--font-fira)', ...fontFamily.mono],
+        sans: ['var(--font-sono)', ...fontFamily.sans],
       },
     },
   },

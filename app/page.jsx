@@ -1,15 +1,15 @@
 import Blurb from './Blurb'
-import NameForm from './NameForm'
 import { getRandomPokemon } from '../utils/helpers'
 import data from '../data/all.json'
+import Banner from './Banner'
 
 export default async function Page() {
   const randomPokemon = getRandomPokemon(data.pokemon)
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-start space-y-28">
-      <NameForm {...randomPokemon} />
+    <main className="flex min-h-screen flex-col items-center justify-start space-y-28">
+      <Banner {...randomPokemon} />
       <Blurb {...randomPokemon} />
-    </div>
+    </main>
   )
 }
