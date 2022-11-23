@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import pokemonCardsContext from '../context/pokemonCardsContext.js'
 import dropdownContext from '../context/dropdownContext'
-import { Syne_Mono } from '@next/font/google'
+import { Ibarra_Real_Nova } from '@next/font/google'
 
-const sono = Syne_Mono({
-  weight: '400',
+const ibarraRealNova = Ibarra_Real_Nova({
   subsets: ['latin'],
+  variable: '--font-ibarra',
 })
 
 function MyApp({ Component, pageProps }) {
@@ -15,14 +15,9 @@ function MyApp({ Component, pageProps }) {
   return (
     <dropdownContext.Provider value={[dropdown, setDropdown]}>
       <pokemonCardsContext.Provider value={[pokemonCards, setPokemonCards]}>
-        <style jsx global>
-          {`
-            :root {
-              ----font-sono: ${sono.style.fontFamily};
-            }
-          `}
-        </style>
-        <Component {...pageProps} />
+        <main className={`${ibarraRealNova.variable} font-serif`}>
+          <Component {...pageProps} />
+        </main>
       </pokemonCardsContext.Provider>
     </dropdownContext.Provider>
   )

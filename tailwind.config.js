@@ -9,7 +9,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        primary: ['var(--font-sono)', ...fontFamily.sans],
+        serif: ['var(--font-ibarra)', ...fontFamily.serif],
       },
     },
   },

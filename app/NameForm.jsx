@@ -1,9 +1,12 @@
 'use client'
 
+import Image from 'next/image'
 import { useState } from 'react'
+import { pokemonImages } from '../data/imgDictionary'
 
-const NameForm = () => {
+const NameForm = randomPokemon => {
   const [name, setName] = useState('')
+  const { imageLocal } = randomPokemon
 
   const changeHandler = e => {
     setName(e)
@@ -16,30 +19,34 @@ const NameForm = () => {
   }
 
   return (
-    <div className="flex flex-col">
+    <div className="mt-48 flex h-48 w-screen flex-row items-center justify-center space-x-10 bg-gradient-to-r from-cyan-500 to-blue-500 shadow-lg shadow-red-500">
       <form
-        className="flex h-24 flex-col items-center justify-start"
+        className="flex h-24 flex-col space-y-4"
         onSubmit={event => handleSubmit(event.target.value)}
       >
         <input
           autoFocus={true}
           maxLength={20}
           placeholder="Enter Name"
-          className="mb-6 h-full w-full rounded-lg p-4 text-center font-mono text-5xl focus:outline-none"
+          className=" rounded-lg p-4 text-left font-mono text-3xl shadow-xl shadow-slate-500 focus:outline-none"
           type="text"
           value={name}
           onChange={event => changeHandler(event.target.value)}
         />
-        <div className={`flex flex-row ${!name ? 'hidden' : ''}`}>
+        <div className={`flex flex-row justify-end ${!name ? 'hidden' : ''}`}>
           <button
+            type="submit"
             className={`${
               !name ? 'hidden' : ''
-            }  w-[250px]  bg-teal-900 p-2 text-center text-xl  text-white  hover:translate-y-px hover:translate-x-px`}
+            } text-right text-xl font-extrabold text-white `}
           >
-            Submit
+            &gt; Enter Pokepaedia
           </button>
         </div>
       </form>
+      <div className="flex">
+        <Image src={imageLocal} alt={'I Choose You!'} priority />
+      </div>
     </div>
   )
 }
