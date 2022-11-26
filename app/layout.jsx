@@ -1,4 +1,5 @@
 import '../styles/globals.css'
+import ContextProvider from './Context'
 import { Ibarra_Real_Nova, Fira_Code, Sono } from '@next/font/google'
 
 const ibarraRealNova = Ibarra_Real_Nova({
@@ -22,7 +23,9 @@ export default function RootLayout({ children }) {
       className={`${ibarraRealNova.variable} ${firaCode.variable} ${sono.variable}`}
       lang="en"
     >
-      <body className="w-screen">{children}</body>
+      <body className="w-screen">
+        <ContextProvider>{children}</ContextProvider>
+      </body>
     </html>
   )
 }

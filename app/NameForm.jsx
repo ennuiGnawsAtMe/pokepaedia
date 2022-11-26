@@ -1,25 +1,28 @@
 'use client'
 
+import { useContext } from 'react'
 import { useState } from 'react'
+import userContext from '../context/userContext'
+import { useRouter } from 'next/navigation'
 
 const NameForm = randomPokemon => {
   const [name, setName] = useState('')
+  const [user, setUser] = useContext(userContext)
+  const router = useRouter()
 
   const changeHandler = e => {
     setName(e)
     console.log(name)
   }
 
-  const submitHandler = event => {
-    console.log(event)
-    event.preventDefault()
+  const submitHandler = e => {
+    e.preventDefault()
+    setUser(name)
+    router.push('/search')
   }
 
   return (
-    <form
-      className="flex h-24 flex-col space-y-4"
-      onSubmit={event => handleSubmit(event.target.value)}
-    >
+    <form className="flex h-24 flex-col space-y-4" onSubmit={submitHandler}>
       <input
         autoFocus={true}
         maxLength={20}
