@@ -1,12 +1,13 @@
-'use client'
-
-import { useContext } from 'react'
-import userContext from '../../context/userContext'
+import Nav from './Nav'
+import Welcome from './Welcome'
 
 const Page = () => {
-  const [user, setUser] = useContext(userContext)
-
-  return <h1 className="text-lg">{user}</h1>
+  return (
+    <div className="space-between flex flex-row">
+      <Nav />
+      <Welcome />
+    </div>
+  )
 }
 
 export default Page

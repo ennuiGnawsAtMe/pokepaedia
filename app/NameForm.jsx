@@ -26,7 +26,7 @@ const NameForm = randomPokemon => {
       <input
         autoFocus={true}
         maxLength={20}
-        placeholder="Enter Name"
+        placeholder="Enter Your Name"
         className=" rounded-lg p-4 text-left font-mono text-3xl shadow-xl shadow-slate-500 focus:outline-none"
         type="text"
         value={name}
