@@ -1,4 +1,4 @@
-import prisma from '../../db/prisma'
+import prisma from '../../prisma/client'
 import { getOrdinalNumbers } from '../../utils/helpers'
 
 const handler = async (req, res) => {

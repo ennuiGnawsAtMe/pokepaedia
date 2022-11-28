@@ -1,11 +1,11 @@
-import prisma from '../../lib/prisma'
+import prisma from '../../prisma/client'
 
 const handler = async (req, res) => {
   try {
     const { pokedex } = req.query
     const avgRating = await prisma.pokemon.findUnique({
       where: {
-        pokedex: Number(pokedex)
+        pokedex: Number(pokedex),
       },
       select: {
         pokedex: true,
@@ -13,7 +13,7 @@ const handler = async (req, res) => {
         ratingOverall: true,
         ratings: true,
         comments: true,
-      }
+      },
     })
     console.log(`One Pokemon has been refetched by SWR!`)
     return res.status(200).json(avgRating)
