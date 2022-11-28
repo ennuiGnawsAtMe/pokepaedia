@@ -33,9 +33,7 @@ const NameForm = randomPokemon => {
         onChange={event => changeHandler(event.target.value)}
       />
       <div className={`flex flex-row justify-end ${!name ? 'hidden' : ''}`}>
-        <p className="pr-4 font-sans text-xl text-white duration-200 ease-in-out">
-          &gt;&gt;&gt;
-        </p>
+        <p className="pr-4 font-sans text-xl text-white">&gt;&gt;&gt;</p>
         <button
           type="submit"
           className={`${
