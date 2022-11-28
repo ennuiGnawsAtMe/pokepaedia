@@ -2,14 +2,18 @@ import Blurb from './Blurb'
 import { getRandomPokemon } from '../utils/helpers'
 import data from '../public/data/all.json'
 import Banner from './Banner'
+import Footer from './Footer'
 
 export default async function Page() {
   const randomPokemon = getRandomPokemon(data.pokemon)
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-start space-y-10">
-      <Banner {...randomPokemon} />
-      <Blurb {...randomPokemon} />
+    <main className="flex min-h-screen flex-col items-center justify-between space-y-10">
+      <span className="space-y-10">
+        <Banner {...randomPokemon} />
+        <Blurb {...randomPokemon} />
+      </span>
+      <Footer />
     </main>
   )
 }

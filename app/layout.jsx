@@ -20,10 +20,10 @@ const sono = Sono({
 export default function RootLayout({ children }) {
   return (
     <html
-      className={`${ibarraRealNova.variable} ${firaCode.variable} ${sono.variable}`}
+      className={` ${ibarraRealNova.variable} ${firaCode.variable} ${sono.variable}`}
       lang="en"
     >
-      <body className="flex w-screen flex-col">
+      <body className="">
         <ContextProvider>{children}</ContextProvider>
       </body>
     </html>
