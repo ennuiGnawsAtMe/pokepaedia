@@ -1,7 +1,7 @@
 const Nav = () => {
   return (
     <nav className="flex">
-      <ul className="flex cursor-pointer list-none flex-row p-4  font-sans text-lg text-white ">
+      <ul className="flex cursor-pointer list-none flex-row p-2  font-sans text-base text-white ">
         <li className="p-4 hover:text-lime-400 hover:overline">Name</li>
         <li className=" p-4 hover:text-lime-400 hover:overline">Type</li>
         <li className="p-4 hover:text-lime-400 hover:overline">Colour</li>

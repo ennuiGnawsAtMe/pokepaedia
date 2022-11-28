@@ -23,7 +23,7 @@ export default function RootLayout({ children }) {
       className={`${ibarraRealNova.variable} ${firaCode.variable} ${sono.variable}`}
       lang="en"
     >
-      <body className="w-screen">
+      <body className="flex w-screen flex-col">
         <ContextProvider>{children}</ContextProvider>
       </body>
     </html>
