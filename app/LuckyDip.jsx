@@ -8,10 +8,10 @@ const LuckyDip = () => {
   return (
     <div className="flex flex-row justify-start">
       <button
-        className="rounded-md  bg-lime-500 p-2 text-right font-mono text-base text-white shadow-lg shadow-slate-400 hover:scale-95 active:scale-90"
+        className="rounded-md border-2 bg-slate-50 p-2 text-right font-mono text-sm text-black duration-200 ease-in-out hover:scale-95 hover:bg-slate-100 active:scale-90"
         onClick={() => router.refresh()}
       >
-        Lucky Dip!
+        Next Pokemon &gt;&gt;&gt;
       </button>
     </div>
   )

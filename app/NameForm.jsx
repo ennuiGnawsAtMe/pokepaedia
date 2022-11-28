@@ -27,7 +27,7 @@ const NameForm = randomPokemon => {
         autoFocus={true}
         maxLength={20}
         placeholder="Enter Your Name"
-        className="min-w-[35vw] rounded-lg p-4 text-left font-mono text-3xl shadow-xl shadow-slate-500 focus:outline-none"
+        className="min-w-[35vw] rounded-lg p-4 text-left font-mono text-3xl shadow-md shadow-red-500 focus:outline-none"
         type="text"
         value={name}
         onChange={event => changeHandler(event.target.value)}
