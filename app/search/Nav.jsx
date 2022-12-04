@@ -11,49 +11,49 @@ const Nav = () => {
       <nav className="flex w-[50vw]">
         <ul className="flex w-full cursor-pointer list-none flex-row justify-between  p-2 font-sans text-base text-white">
           <li
-            onClick={() => setDropdown('Name')}
+            onClick={() => setDropdown('Search by Name')}
             className="p-2 hover:text-lime-400 hover:overline"
           >
             Name
           </li>
           <li
-            onClick={() => setDropdown('Type')}
+            onClick={() => setDropdown('Search by Type')}
             className=" p-2 hover:text-lime-400 hover:overline"
           >
             Type
           </li>
           <li
-            onClick={() => setDropdown('Colour')}
+            onClick={() => setDropdown('Search by Colour')}
             className="p-2 hover:text-lime-400 hover:overline"
           >
             Colour
           </li>
           <li
-            onClick={() => setDropdown('Ability')}
+            onClick={() => setDropdown('Search by Ability')}
             className="p-2 hover:text-lime-400 hover:overline"
           >
             Ability
           </li>
           <li
-            onClick={() => setDropdown('Ranking')}
+            onClick={() => setDropdown('Search by Ranking')}
             className="p-2 hover:text-lime-400 hover:overline"
           >
             Ranking
           </li>
           <li
-            onClick={() => setDropdown('Status')}
+            onClick={() => setDropdown('Search by Status')}
             className="p-2 hover:text-lime-400 hover:overline"
           >
             Status
           </li>
           <li
-            onClick={() => setDropdown('Shape')}
+            onClick={() => setDropdown('Search by Shape')}
             className="p-2 hover:text-lime-400 hover:overline"
           >
             Shape
           </li>
           <li
-            onClick={() => setDropdown('Habitat')}
+            onClick={() => setDropdown('Search by Habitat')}
             className="p-2 hover:text-lime-400 hover:overline"
           >
             Habitat
