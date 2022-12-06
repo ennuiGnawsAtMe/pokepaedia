@@ -8,7 +8,7 @@ import { useContext, useEffect } from 'react'
 import { capitalise } from '../../utils/helpers'
 import { statusOptions } from '../../utils/constants'
 
-const Dropdown = () => {
+const InputDropdown = () => {
   const [dropdown, setDropdown] = useContext(dropdownContext)
   const [selected, setSelected] = useState('')
   const [query, setQuery] = useState('')
@@ -100,4 +100,4 @@ const Dropdown = () => {
   )
 }
 
-export default Dropdown
+export default InputDropdown

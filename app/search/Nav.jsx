@@ -6,10 +6,19 @@ import dropdownContext from '../../context/dropdownContext'
 const Nav = () => {
   const [dropdown, setDropdown] = useContext(dropdownContext)
 
+  // TODO useReducer to change dropdownContext object so it includes the values for
+  // the dropdown and the category
+
   return (
     <>
       <nav className="flex w-[50vw]">
         <ul className="flex w-full cursor-pointer list-none flex-row justify-between  p-2 font-sans text-base text-white">
+          <li
+            onClick={() => setDropdown('Search by Ranking')}
+            className="p-2 hover:text-lime-400 hover:overline"
+          >
+            Ranking
+          </li>
           <li
             onClick={() => setDropdown('Search by Name')}
             className="p-2 hover:text-lime-400 hover:overline"
@@ -34,12 +43,7 @@ const Nav = () => {
           >
             Ability
           </li>
-          <li
-            onClick={() => setDropdown('Search by Ranking')}
-            className="p-2 hover:text-lime-400 hover:overline"
-          >
-            Ranking
-          </li>
+
           <li
             onClick={() => setDropdown('Search by Status')}
             className="p-2 hover:text-lime-400 hover:overline"
