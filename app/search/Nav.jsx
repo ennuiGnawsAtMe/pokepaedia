@@ -2,6 +2,7 @@
 
 import { useContext } from 'react'
 import dropdownContext from '../../context/dropdownContext'
+import { typeOptions, statusOptions } from '../../utils/constants'
 
 const Nav = () => {
   const [dropdown, setDropdown] = useContext(dropdownContext)
@@ -26,7 +27,9 @@ const Nav = () => {
             Name
           </li>
           <li
-            onClick={() => setDropdown('Search by Type')}
+            onClick={() =>
+              setDropdown({ searchBy: 'Search by Type', options: typeOptions })
+            }
             className=" p-2 hover:text-lime-400 hover:overline"
           >
             Type
@@ -45,7 +48,12 @@ const Nav = () => {
           </li>
 
           <li
-            onClick={() => setDropdown('Search by Status')}
+            onClick={() =>
+              setDropdown({
+                searchBy: 'Search by Status',
+                options: statusOptions,
+              })
+            }
             className="p-2 hover:text-lime-400 hover:overline"
           >
             Status

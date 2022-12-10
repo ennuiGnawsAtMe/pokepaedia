@@ -1,27 +1,21 @@
 'use client'
 
-import { Fragment, useState } from 'react'
+import { Fragment, useState, useContext } from 'react'
 import { Listbox, Transition } from '@headlessui/react'
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
-
-const people = [
-  { name: 'Wade Cooper' },
-  { name: 'Arlene Mccoy' },
-  { name: 'Devon Webb' },
-  { name: 'Tom Cook' },
-  { name: 'Tanya Fox' },
-  { name: 'Hellen Schmidt' },
-]
+import dropdownContext from '../../context/dropdownContext'
 
 const SelectDropdown = () => {
-  const [selected, setSelected] = useState(people[0])
+  const [dropdown, setDropdown] = useContext(dropdownContext)
+  const [selected, setSelected] = useState('')
 
+  console.log(dropdown, selected)
   return (
     <div className="m-2 mb-4 flex h-14 w-full">
       <Listbox value={selected} onChange={setSelected}>
         <div className="flex w-full">
           <Listbox.Button className="relative w-full cursor-default rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
-            <span className="block truncate">{selected.name}</span>
+            <span className="block truncate">{dropdown.searchBy}</span>
             <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
               <ChevronUpDownIcon
                 className="h-5 w-5 text-gray-400"
@@ -36,15 +30,15 @@ const SelectDropdown = () => {
             leaveTo="opacity-0"
           >
             <Listbox.Options className="absolute mt-1 max-h-60 w-[50vw] overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-              {people.map((person, personIdx) => (
+              {dropdown.options.map((opt, index) => (
                 <Listbox.Option
-                  key={personIdx}
+                  key={index}
                   className={({ active }) =>
                     `relative cursor-default select-none py-2 pl-10 pr-4 ${
                       active ? 'text-blue-900-900 bg-blue-200' : 'text-gray-900'
                     }`
                   }
-                  value={person}
+                  value={opt}
                 >
                   {({ selected }) => (
                     <>
@@ -53,7 +47,7 @@ const SelectDropdown = () => {
                           selected ? 'font-medium' : 'font-normal'
                         }`}
                       >
-                        {person.name}
+                        {opt.option}
                       </span>
                       {selected ? (
                         <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-amber-600">

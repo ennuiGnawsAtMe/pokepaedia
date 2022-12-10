@@ -6,12 +6,13 @@ import dropdownContext from '../context/dropdownContext'
 import userContext from '../context/userContext'
 
 const dropdownObject = {
-  category: '',
+  searchBy: 'Choose a category to search by...',
+  options: [],
 }
 
 const ContextProvider = ({ children }) => {
   const [pokemonCards, setPokemonCards] = useState([])
-  const [dropdown, setDropdown] = useState('Search by Name')
+  const [dropdown, setDropdown] = useState(dropdownObject)
   const [user, setUser] = useState('')
 
   return (

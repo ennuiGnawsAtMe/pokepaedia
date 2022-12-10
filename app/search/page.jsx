@@ -1,7 +1,7 @@
 import Nav from './Nav'
 import Welcome from './Welcome'
 import SearchList from '../../components/utils/SearchList'
-import InputDRopdown from './InputDropdown'
+import InputDropdown from './InputDropdown'
 import SelectDropdown from './SelectDropdown'
 
 const Page = () => {
