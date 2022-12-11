@@ -6,7 +6,7 @@ import dropdownContext from '../context/dropdownContext'
 import userContext from '../context/userContext'
 
 const dropdownObject = {
-  searchBy: 'Choose a category to search by...',
+  selected: 'Choose a category to search by...',
   options: [],
 }
 

@@ -2,46 +2,71 @@
 
 import { useContext } from 'react'
 import dropdownContext from '../../context/dropdownContext'
-import { typeOptions, statusOptions } from '../../utils/constants'
+import {
+  typeOptions,
+  statusOptions,
+  nameOptions,
+  rankOptions,
+} from '../../utils/constants'
 
 const Nav = () => {
   const [dropdown, setDropdown] = useContext(dropdownContext)
-
-  // TODO useReducer to change dropdownContext object so it includes the values for
-  // the dropdown and the category
 
   return (
     <>
       <nav className="flex w-[50vw]">
         <ul className="flex w-full cursor-pointer list-none flex-row justify-between  p-2 font-sans text-base text-white">
           <li
-            onClick={() => setDropdown('Search by Ranking')}
+            onClick={() =>
+              setDropdown({
+                selected: 'Search by Ranking...',
+                options: rankOptions,
+              })
+            }
             className="p-2 hover:text-lime-400 hover:overline"
           >
             Ranking
           </li>
           <li
-            onClick={() => setDropdown('Search by Name')}
+            onClick={() =>
+              setDropdown({
+                selected: 'Search by Name...',
+                options: nameOptions,
+              })
+            }
             className="p-2 hover:text-lime-400 hover:overline"
           >
             Name
           </li>
           <li
             onClick={() =>
-              setDropdown({ searchBy: 'Search by Type', options: typeOptions })
+              setDropdown({
+                selected: 'Search by Type',
+                options: typeOptions,
+              })
             }
             className=" p-2 hover:text-lime-400 hover:overline"
           >
             Type
           </li>
           <li
-            onClick={() => setDropdown('Search by Colour')}
+            onClick={() =>
+              setDropdown({
+                selected: 'Search by Colour...',
+                options: typeOptions,
+              })
+            }
             className="p-2 hover:text-lime-400 hover:overline"
           >
             Colour
           </li>
           <li
-            onClick={() => setDropdown('Search by Ability')}
+            onClick={() =>
+              setDropdown({
+                selected: 'Search by Ability...',
+                options: typeOptions,
+              })
+            }
             className="p-2 hover:text-lime-400 hover:overline"
           >
             Ability
@@ -50,7 +75,7 @@ const Nav = () => {
           <li
             onClick={() =>
               setDropdown({
-                searchBy: 'Search by Status',
+                selected: 'Search by Status...',
                 options: statusOptions,
               })
             }
@@ -59,13 +84,23 @@ const Nav = () => {
             Status
           </li>
           <li
-            onClick={() => setDropdown('Search by Shape')}
+            onClick={() =>
+              setDropdown({
+                selected: 'Search by Shape...',
+                options: typeOptions,
+              })
+            }
             className="p-2 hover:text-lime-400 hover:overline"
           >
             Shape
           </li>
           <li
-            onClick={() => setDropdown('Search by Habitat')}
+            onClick={() =>
+              setDropdown({
+                selected: 'Search by Habitat...',
+                options: typeOptions,
+              })
+            }
             className="p-2 hover:text-lime-400 hover:overline"
           >
             Habitat
