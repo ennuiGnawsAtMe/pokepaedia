@@ -1,6 +1,6 @@
 import Blurb from './Blurb'
 import { getRandomPokemon } from '../utils/helpers'
-import data from '../public/data/all.json'
+import data from '../data/all.json'
 import Banner from './Banner'
 import Footer from './Footer'
 

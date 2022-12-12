@@ -3,19 +3,19 @@
 import { useContext } from 'react'
 import Select from 'react-select'
 import pokemonCardsContext from '../../context/pokemonCardsContext.js'
-import { goToTop, sortByRating } from '../../utils/helpers.js'
+import { goToTop, sortByRating } from '../../utils/helpers'
 import { useGetAllPokemonDb } from '../../utils/swr.js'
 
-const AbilitySelect = ({ allPokemon, options }) => {
+const TypeSelect = ({ allPokemon, options }) => {
   const [pokemonCards, setPokemonCards] = useContext(pokemonCardsContext)
   const { allPokemonDb } = useGetAllPokemonDb()
 
-  const changeHandler = abilityName => {
+  const changeHandler = typeName => {
     goToTop()
     const newSelection = []
     allPokemon.forEach(poke => {
-      poke.ability.forEach(
-        element => element.ability == abilityName && newSelection.push(poke)
+      poke.type.forEach(
+        element => element.type == typeName && newSelection.push(poke)
       )
     })
     const sortedSelection = sortByRating(newSelection, allPokemonDb)
@@ -25,10 +25,10 @@ const AbilitySelect = ({ allPokemon, options }) => {
   return (
     <>
       <Select
-        placeholder={`Search Pokemon by Ability`}
+        placeholder={`Search Pokémon by Type...`}
         maxMenuHeight={400}
         options={options}
-        instanceId="ability-value-select"
+        instanceId="type-value-select"
         onChange={event => changeHandler(event.value)}
         blurInputOnClear={true}
         focusInputOnMenuOpen={false}
@@ -37,4 +37,4 @@ const AbilitySelect = ({ allPokemon, options }) => {
   )
 }
 
-export default AbilitySelect
+export default TypeSelect

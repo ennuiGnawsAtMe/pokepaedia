@@ -6,13 +6,15 @@ import pokemonCardsContext from '../../context/pokemonCardsContext.js'
 import { goToTop, sortByRating } from '../../utils/helpers.js'
 import { useGetAllPokemonDb } from '../../utils/swr.js'
 
-const ShapeSelect = ({ allPokemon, options }) => {
+const HabitatSelect = ({ allPokemon, options }) => {
   const [pokemonCards, setPokemonCards] = useContext(pokemonCardsContext)
   const { allPokemonDb } = useGetAllPokemonDb()
 
-  const changeHandler = shapeName => {
+  const changeHandler = habitatID => {
     goToTop()
-    const newSelection = allPokemon.filter(({ shape }) => shape == shapeName)
+    const newSelection = allPokemon.filter(
+      ({ habitat }) => habitat == habitatID
+    )
     const sortedSelection = sortByRating(newSelection, allPokemonDb)
     setPokemonCards(sortedSelection)
   }
@@ -20,10 +22,10 @@ const ShapeSelect = ({ allPokemon, options }) => {
   return (
     <>
       <Select
-        placeholder={`Search Pokemon by Shape`}
+        placeholder={`Search Pokémon by Habitat...`}
         maxMenuHeight={400}
         options={options}
-        instanceId="shape-value-select"
+        instanceId="habitat-value-select"
         onChange={event => changeHandler(event.value)}
         blurInputOnClear={true}
         focusInputOnMenuOpen={false}
@@ -32,4 +34,4 @@ const ShapeSelect = ({ allPokemon, options }) => {
   )
 }
 
-export default ShapeSelect
+export default HabitatSelect

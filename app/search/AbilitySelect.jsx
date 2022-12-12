@@ -6,15 +6,18 @@ import pokemonCardsContext from '../../context/pokemonCardsContext.js'
 import { goToTop, sortByRating } from '../../utils/helpers.js'
 import { useGetAllPokemonDb } from '../../utils/swr.js'
 
-const HabitatSelect = ({ allPokemon, options }) => {
+const AbilitySelect = ({ allPokemon, options }) => {
   const [pokemonCards, setPokemonCards] = useContext(pokemonCardsContext)
   const { allPokemonDb } = useGetAllPokemonDb()
 
-  const changeHandler = habitatID => {
+  const changeHandler = abilityName => {
     goToTop()
-    const newSelection = allPokemon.filter(
-      ({ habitat }) => habitat == habitatID
-    )
+    const newSelection = []
+    allPokemon.forEach(poke => {
+      poke.ability.forEach(
+        element => element.ability == abilityName && newSelection.push(poke)
+      )
+    })
     const sortedSelection = sortByRating(newSelection, allPokemonDb)
     setPokemonCards(sortedSelection)
   }
@@ -22,10 +25,10 @@ const HabitatSelect = ({ allPokemon, options }) => {
   return (
     <>
       <Select
-        placeholder={`Search Pokemon by Habitat`}
+        placeholder={`Search Pokémon by Ability...`}
         maxMenuHeight={400}
         options={options}
-        instanceId="habitat-value-select"
+        instanceId="ability-value-select"
         onChange={event => changeHandler(event.value)}
         blurInputOnClear={true}
         focusInputOnMenuOpen={false}
@@ -34,4 +37,4 @@ const HabitatSelect = ({ allPokemon, options }) => {
   )
 }
 
-export default HabitatSelect
+export default AbilitySelect

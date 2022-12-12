@@ -3,21 +3,16 @@
 import { useContext } from 'react'
 import Select from 'react-select'
 import pokemonCardsContext from '../../context/pokemonCardsContext.js'
-import { goToTop, sortByRating } from '../../utils/helpers'
+import { goToTop, sortByRating } from '../../utils/helpers.js'
 import { useGetAllPokemonDb } from '../../utils/swr.js'
 
-const TypeSelect = ({ allPokemon, options }) => {
+const ShapeSelect = ({ allPokemon, options }) => {
   const [pokemonCards, setPokemonCards] = useContext(pokemonCardsContext)
   const { allPokemonDb } = useGetAllPokemonDb()
 
-  const changeHandler = typeName => {
+  const changeHandler = shapeName => {
     goToTop()
-    const newSelection = []
-    allPokemon.forEach(poke => {
-      poke.type.forEach(
-        element => element.type == typeName && newSelection.push(poke)
-      )
-    })
+    const newSelection = allPokemon.filter(({ shape }) => shape == shapeName)
     const sortedSelection = sortByRating(newSelection, allPokemonDb)
     setPokemonCards(sortedSelection)
   }
@@ -25,10 +20,10 @@ const TypeSelect = ({ allPokemon, options }) => {
   return (
     <>
       <Select
-        placeholder={`Search Pokemon by Type`}
+        placeholder={`Search Pokémon by Shape...`}
         maxMenuHeight={400}
         options={options}
-        instanceId="type-value-select"
+        instanceId="shape-value-select"
         onChange={event => changeHandler(event.value)}
         blurInputOnClear={true}
         focusInputOnMenuOpen={false}
@@ -37,4 +32,4 @@ const TypeSelect = ({ allPokemon, options }) => {
   )
 }
 
-export default TypeSelect
+export default ShapeSelect

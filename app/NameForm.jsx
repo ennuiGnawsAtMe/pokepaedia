@@ -37,7 +37,7 @@ const NameForm = randomPokemon => {
           type="submit"
           className={`${
             !name ? 'hidden' : ''
-          } text-right font-sans text-xl  text-white hover:text-lime-400`}
+          } text-right font-sans text-xl  text-white hover:text-lime-400 active:scale-95`}
         >
           ENTER POKEPAEDIA
         </button>

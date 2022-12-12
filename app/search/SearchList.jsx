@@ -2,7 +2,7 @@
 
 import { useContext } from 'react'
 import { AnimatePresence } from 'framer-motion'
-import Card from '../card/Card'
+import Card from '../../components/card/Card'
 import pokemonCardsContext from '../../context/pokemonCardsContext.js'
 
 const SearchList = () => {

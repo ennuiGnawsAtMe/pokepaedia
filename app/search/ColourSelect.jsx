@@ -6,22 +6,13 @@ import pokemonCardsContext from '../../context/pokemonCardsContext.js'
 import { goToTop, sortByRating } from '../../utils/helpers.js'
 import { useGetAllPokemonDb } from '../../utils/swr.js'
 
-const StatusSelect = ({ allPokemon, options }) => {
+const ColourSelect = ({ allPokemon, options }) => {
   const [pokemonCards, setPokemonCards] = useContext(pokemonCardsContext)
   const { allPokemonDb } = useGetAllPokemonDb()
 
-  const changeHandler = status => {
+  const changeHandler = colourID => {
     goToTop()
-
-    let newSelection = []
-
-    if (status === 'baby') {
-      newSelection = allPokemon.filter(({ isBaby }) => isBaby == true)
-    } else if (status === 'mythical') {
-      newSelection = allPokemon.filter(({ isMythical }) => isMythical == true)
-    } else if (status === 'legendary') {
-      newSelection = allPokemon.filter(({ isLegendary }) => isLegendary == true)
-    }
+    const newSelection = allPokemon.filter(({ colour }) => colour == colourID)
     const sortedSelection = sortByRating(newSelection, allPokemonDb)
     setPokemonCards(sortedSelection)
   }
@@ -29,10 +20,10 @@ const StatusSelect = ({ allPokemon, options }) => {
   return (
     <>
       <Select
-        placeholder={`Search Pokemon by Status`}
+        placeholder={`Search Pokémon by Colour...`}
         maxMenuHeight={400}
         options={options}
-        instanceId="status-value-select"
+        instanceId="colour-value-select"
         onChange={event => changeHandler(event.value)}
         blurInputOnClear={true}
         focusInputOnMenuOpen={false}
@@ -41,4 +32,4 @@ const StatusSelect = ({ allPokemon, options }) => {
   )
 }
 
-export default StatusSelect
+export default ColourSelect
