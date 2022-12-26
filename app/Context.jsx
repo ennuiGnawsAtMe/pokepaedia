@@ -4,11 +4,13 @@ import { useState } from 'react'
 import pokemonCardsContext from '../context/pokemonCardsContext.js'
 import dropdownContext from '../context/dropdownContext'
 import userContext from '../context/userContext'
+import { useGetAllPokemonDb } from '../data/swr.js'
 
 const ContextProvider = ({ children }) => {
   const [pokemonCards, setPokemonCards] = useState([])
   const [dropdown, setDropdown] = useState('')
   const [user, setUser] = useState('')
+  const { allPokemonDb, isLoading, isError } = useGetAllPokemonDb()
 
   return (
     <userContext.Provider value={[user, setUser]}>

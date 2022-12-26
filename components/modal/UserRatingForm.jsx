@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import axios from 'axios'
 import { getOrdinalNumbers } from '../../utils/helpers'
-import { useGetAllPokemonDb } from '../../utils/swr'
+import { useGetAllPokemonDb } from '../../data/swr'
 import styles from './UserRatingForm.module.css'
 import ReactStars from 'react-rating-stars-component'
 

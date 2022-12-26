@@ -1,4 +1,4 @@
-import data from '../data/all.json'
+import data from './all.json'
 
 const getNameOptions = () => {
   return data.pokemon.map(poke => ({ option: poke.name }))

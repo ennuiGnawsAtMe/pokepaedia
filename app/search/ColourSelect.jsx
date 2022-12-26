@@ -4,7 +4,7 @@ import { useContext } from 'react'
 import Select from 'react-select'
 import pokemonCardsContext from '../../context/pokemonCardsContext.js'
 import { goToTop, sortByRating } from '../../utils/helpers.js'
-import { useGetAllPokemonDb } from '../../utils/swr.js'
+import { useGetAllPokemonDb } from '../../data/swr.js'
 
 const ColourSelect = ({ allPokemon, options }) => {
   const [pokemonCards, setPokemonCards] = useContext(pokemonCardsContext)

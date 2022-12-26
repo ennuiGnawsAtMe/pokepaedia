@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { useGetAllPokemonDb } from '../../utils/swr'
+import { useGetAllPokemonDb } from '../../data/swr'
 import CardStats from './CardStats'
 import CardAbout from './CardAbout'
 import CardTypes from './CardTypes'

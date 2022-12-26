@@ -1,4 +1,4 @@
-import { pokemonImages } from '../utils/imgDictionary'
+import { pokemonImages } from '../data/imgDictionary'
 import Image from 'next/image'
 
 const Footer = () => {
@@ -7,11 +7,11 @@ const Footer = () => {
 
   return (
     <div className=" flex w-fit flex-row overflow-x-hidden pt-10">
-      {selected.map(pokemon => (
+      {selected.map((pokemon, index) => (
         <Image
           className="-mx-20"
           alt="Gotta catch em all!"
-          key={pokemon}
+          key={index}
           src={pokemon}
           placeholder="blur"
         />
