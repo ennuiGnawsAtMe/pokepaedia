@@ -15,7 +15,7 @@ const NameSelect = () => {
   const changeHandler = selection => {
     goToTop()
     const pokedexList = selection.map(element => element.value)
-    const newSelection = []
+    let newSelection = []
     pokedexList.forEach(pokeDex => {
       newSelection.push(data.pokemon.find(({ pokedex }) => pokedex === pokeDex))
     })

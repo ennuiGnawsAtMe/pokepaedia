@@ -4,7 +4,7 @@ import Image from 'next/image'
 import ReactStars from 'react-rating-stars-component'
 import styles from './CardImage.module.css'
 
-const CardImage = ({ name, image, ratingOverall, ratings }) => {
+const CardImage = ({ name, imageLocal, ratingOverall, ratings }) => {
   return (
     <>
       <div className={styles.nameContainer}>
@@ -26,8 +26,9 @@ const CardImage = ({ name, image, ratingOverall, ratings }) => {
       </div>
       <div className={styles.imageContainer}>
         <Image
-          src={image}
+          src={imageLocal}
           alt={name}
+          placeholder="blur"
           fill
           sizes="100vw"
           style={{
