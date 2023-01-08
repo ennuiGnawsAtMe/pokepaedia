@@ -1,7 +1,6 @@
 'use client'
 
 import Image from 'next/image'
-import Link from 'next/link'
 import styles from './CardTypes.module.css'
 import Types from '../utils/Types'
 
