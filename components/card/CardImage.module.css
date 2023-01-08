@@ -10,7 +10,7 @@
 
 .nameContainer h2 {
   font-size: 1.6rem;
-  font-family: "Playfair Display", serif;
+  font-family: 'Playfair Display', serif;
   margin: 0;
 }
 
@@ -29,7 +29,7 @@
 }
 
 .nameContainer h3 {
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 1rem;
   margin: 0 auto;
 }
@@ -37,6 +37,5 @@
 .imageContainer {
   height: 100%;
   width: 100%;
-  margin: 10px 30px 30px 30px;
   position: relative;
 }
