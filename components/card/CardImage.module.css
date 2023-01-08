@@ -5,12 +5,14 @@
   align-items: center;
   text-align: center;
   width: 100%;
-  padding: 2px 10px 5px 10px;
+  /* padding: 2px 10px 5px 10px; */
 }
 
 .nameContainer h2 {
   font-size: 1.6rem;
   font-family: 'Playfair Display', serif;
+  font-weight: bold;
+  color: #313639;
   margin: 0;
 }
 
@@ -24,14 +26,14 @@
 
 .overallRatings h3 {
   font-size: 12px;
-  font-weight: 100;
-  margin: 0 0 10px 0;
+  color: #313639;
 }
 
 .nameContainer h3 {
-  font-family: 'Open Sans', sans-serif;
+  /* font-family: 'Open Sans', sans-serif; */
   font-size: 1rem;
   margin: 0 auto;
+  color: #313639;
 }
 
 .imageContainer {

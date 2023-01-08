@@ -11,6 +11,9 @@ const CardImage = ({ name, imageLocal, ratingOverall, ratings }) => {
         <h2>{name}</h2>
       </div>
       <div className={styles.overallRatings}>
+        <h3>
+          {ratingOverall} stars from {ratings.length} ratings
+        </h3>
         <div className={styles.starsWrapper}>
           <ReactStars
             key={ratingOverall}
@@ -20,9 +23,6 @@ const CardImage = ({ name, imageLocal, ratingOverall, ratings }) => {
             isHalf={true}
           />
         </div>
-        <h3>
-          {ratingOverall} stars from {ratings.length} ratings
-        </h3>
       </div>
       <div className={styles.imageContainer}>
         <Image

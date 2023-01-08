@@ -30,7 +30,7 @@
 
 .topDetails h3 {
   font-size: 1.2em;
-  font-family: "Open Sans", sans-serif;
+  /* font-family: "Open Sans", sans-serif; */
   font-weight: 200;
   margin: 3px 3px;
   padding: 3px 3px;
@@ -38,7 +38,7 @@
 }
 
 .topDetails h4 {
-  font-family: "Open Sans", sans-serif;
+  /* font-family: 'Open Sans', sans-serif; */
   font-weight: 200;
   font-size: 0.7rem;
   margin: 0px;
@@ -51,12 +51,12 @@
 }
 
 .rank h3 {
-  font-family: "Playfair Display", serif;
+  font-family: 'Playfair Display', serif;
   font-size: 21px;
 }
 
 .imageText h3 {
-  font-family: "Playfair Display", serif;
+  font-family: 'Playfair Display', serif;
   font-size: 21px;
   margin: 0px;
 }
@@ -77,7 +77,7 @@
 }
 
 .footer button {
-  font-family: "Open Sans", sans-serif;
+  /* font-family: 'Open Sans', sans-serif; */
   font-weight: bolder;
   font-size: 10px;
   padding: 3px;
