@@ -13,7 +13,7 @@ if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
 }
 
 const getRandomPokemon = async () => {
-  console.log(apiURL)
+  console.log(apiURL, process.env.NODE_ENV)
   const res = await fetch(apiURL, {
     cache: 'no-store',
   })
