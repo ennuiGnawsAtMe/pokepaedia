@@ -3,6 +3,7 @@ import Banner from './Banner'
 import Footer from './Footer'
 
 let apiURL
+
 if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
   apiURL = 'http://localhost:3000/api/randomPokemon'
 } else if (process.env.NODE_ENV === 'staging') {
