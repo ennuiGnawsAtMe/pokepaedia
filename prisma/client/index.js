@@ -2,10 +2,7 @@ import { PrismaClient } from '@prisma/client'
 
 let prisma
 
-if (
-  process.env.NODE_ENV === 'production' ||
-  process.env.NODE_ENV === 'staging'
-) {
+if (process.env.NODE_ENV != 'development') {
   prisma = new PrismaClient()
 } else {
   if (!global.prisma) {
