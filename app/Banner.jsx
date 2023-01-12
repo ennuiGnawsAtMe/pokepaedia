@@ -1,3 +1,5 @@
+'use client'
+
 import NameForm from './NameForm'
 import { pokemonImages } from '../data/imgDictionary'
 import Image from 'next/image'

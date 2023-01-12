@@ -1,3 +1,5 @@
+'use client'
+
 import Blurb from './Blurb'
 import { getRandomPokemon } from '../utils/helpers'
 import data from '../data/all.json'
