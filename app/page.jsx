@@ -4,16 +4,16 @@ import Footer from './Footer'
 
 let apiURL
 
-if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
+if (!process.env.VERCEL_ENV || process.env.VERCEL_ENV === 'development') {
   apiURL = 'http://localhost:3000/api/randomPokemon'
-} else if (process.env.NODE_ENV === 'staging') {
+} else if (process.env.VERCEL_ENV === 'preview') {
   apiURL = 'https://staging.pokepaedia.com/api/randomPokemon'
 } else {
   apiURL = 'https://www.pokepaedia.com/api/randomPokemon'
 }
 
 const getRandomPokemon = async () => {
-  console.log(apiURL, process.env.NODE_ENV)
+  console.log(apiURL, process.env.VERCEL_ENV)
   const res = await fetch(apiURL, {
     cache: 'no-store',
   })
