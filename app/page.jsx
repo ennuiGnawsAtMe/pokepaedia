@@ -1,13 +1,30 @@
-'use client'
-
 import Blurb from './Blurb'
-import { getRandomPokemon } from '../utils/helpers'
-import data from '../data/all.json'
 import Banner from './Banner'
 import Footer from './Footer'
 
+let apiURL
+if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
+  apiURL = 'http://localhost:3000/api/randomPokemon'
+} else if (process.env.NODE_ENV === 'staging') {
+  apiURL = 'http://staging.pokepaedia.com/api/randomPokemon'
+} else {
+  apiURL = 'http://www.pokepaedia.com/api/randomPokemon'
+}
+
+const getRandomPokemon = async () => {
+  const res = await fetch(apiURL, {
+    cache: 'no-store',
+  })
+
+  if (!res.ok) {
+    throw new Error('Failed to fetch data')
+  }
+
+  return await res.json()
+}
+
 export default async function Page() {
-  const randomPokemon = getRandomPokemon(data.pokemon)
+  const randomPokemon = await getRandomPokemon()
 
   return (
     <main className="flex h-screen flex-col items-center justify-between space-y-10">

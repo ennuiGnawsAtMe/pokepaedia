@@ -1,5 +1,3 @@
-'use client'
-
 import { pokemonImages } from '../data/imgDictionary'
 import Image from 'next/image'
 
