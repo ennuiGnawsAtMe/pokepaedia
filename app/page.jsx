@@ -7,9 +7,9 @@ let apiURL
 if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
   apiURL = 'http://localhost:3000/api/randomPokemon'
 } else if (process.env.NODE_ENV === 'staging') {
-  apiURL = 'http://staging.pokepaedia.com/api/randomPokemon'
+  apiURL = 'https://staging.pokepaedia.com/api/randomPokemon'
 } else {
-  apiURL = 'http://www.pokepaedia.com/api/randomPokemon'
+  apiURL = 'https://www.pokepaedia.com/api/randomPokemon'
 }
 
 const getRandomPokemon = async () => {
