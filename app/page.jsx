@@ -13,7 +13,6 @@ if (!process.env.VERCEL_ENV || process.env.VERCEL_ENV === 'development') {
 }
 
 const getRandomPokemon = async () => {
-  console.log(apiURL, process.env.VERCEL_ENV)
   const res = await fetch(apiURL, {
     cache: 'no-store',
   })

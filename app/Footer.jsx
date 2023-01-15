@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 const Footer = () => {
   const shuffled = Object.values(pokemonImages).sort(() => 0.5 - Math.random())
-  const selected = shuffled.slice(0, 15)
+  const selected = shuffled.slice(0, 10)
 
   return (
     <div className="flex flex-row overflow-hidden pt-10">
