@@ -10397,7 +10397,14 @@
             "isBaby": false,
             "isLegendary": false,
             "isMythical": false,
-            "imageLocal": null
+            "imageLocal": {
+                "src": "/_next/static/media/unown-a.ef63fba0.png",
+                "height": 475,
+                "width": 475,
+                "blurDataURL": "/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Funown-a.ef63fba0.png&w=8&q=70",
+                "blurWidth": 8,
+                "blurHeight": 8
+            }
         },
         {
             "pokedex": 202,
@@ -21130,7 +21137,14 @@
             "isBaby": false,
             "isLegendary": false,
             "isMythical": false,
-            "imageLocal": null
+            "imageLocal": {
+                "src": "/_next/static/media/burmy-plant.d56150ff.png",
+                "height": 475,
+                "width": 475,
+                "blurDataURL": "/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fburmy-plant.d56150ff.png&w=8&q=70",
+                "blurWidth": 8,
+                "blurHeight": 8
+            }
         },
         {
             "pokedex": 413,
@@ -21227,7 +21241,14 @@
             "isBaby": false,
             "isLegendary": false,
             "isMythical": false,
-            "imageLocal": null
+            "imageLocal": {
+                "src": "/_next/static/media/mothim-plant.08f27ea9.png",
+                "height": 475,
+                "width": 475,
+                "blurDataURL": "/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fmothim-plant.08f27ea9.png&w=8&q=70",
+                "blurWidth": 8,
+                "blurHeight": 8
+            }
         },
         {
             "pokedex": 415,
@@ -21607,7 +21628,14 @@
             "isBaby": false,
             "isLegendary": false,
             "isMythical": false,
-            "imageLocal": null
+            "imageLocal": {
+                "src": "/_next/static/media/shellos-west.d53f2989.png",
+                "height": 475,
+                "width": 475,
+                "blurDataURL": "/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fshellos-west.d53f2989.png&w=8&q=70",
+                "blurWidth": 8,
+                "blurHeight": 8
+            }
         },
         {
             "pokedex": 423,
@@ -29965,7 +29993,14 @@
             "isBaby": false,
             "isLegendary": false,
             "isMythical": false,
-            "imageLocal": null
+            "imageLocal": {
+                "src": "/_next/static/media/deerling-spring.ac401a66.png",
+                "height": 475,
+                "width": 475,
+                "blurDataURL": "/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fdeerling-spring.ac401a66.png&w=8&q=70",
+                "blurWidth": 8,
+                "blurHeight": 8
+            }
         },
         {
             "pokedex": 586,
@@ -30014,7 +30049,14 @@
             "isBaby": false,
             "isLegendary": false,
             "isMythical": false,
-            "imageLocal": null
+            "imageLocal": {
+                "src": "/_next/static/media/sawsbuck-spring.a3a5aa81.png",
+                "height": 475,
+                "width": 475,
+                "blurDataURL": "/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fsawsbuck-spring.a3a5aa81.png&w=8&q=70",
+                "blurWidth": 8,
+                "blurHeight": 8
+            }
         },
         {
             "pokedex": 587,
@@ -33982,7 +34024,14 @@
             "isBaby": false,
             "isLegendary": false,
             "isMythical": false,
-            "imageLocal": null
+            "imageLocal": {
+                "src": "/_next/static/media/scatterbug-icy-snow.a2c50700.png",
+                "height": 475,
+                "width": 475,
+                "blurDataURL": "/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fscatterbug-icy-snow.a2c50700.png&w=8&q=70",
+                "blurWidth": 8,
+                "blurHeight": 8
+            }
         },
         {
             "pokedex": 665,
@@ -34023,7 +34072,14 @@
             "isBaby": false,
             "isLegendary": false,
             "isMythical": false,
-            "imageLocal": null
+            "imageLocal": {
+                "src": "/_next/static/media/spewpa.ea1c3081.png",
+                "height": 475,
+                "width": 475,
+                "blurDataURL": "/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fspewpa.ea1c3081.png&w=8&q=70",
+                "blurWidth": 8,
+                "blurHeight": 8
+            }
         },
         {
             "pokedex": 666,
@@ -34072,7 +34128,14 @@
             "isBaby": false,
             "isLegendary": false,
             "isMythical": false,
-            "imageLocal": null
+            "imageLocal": {
+                "src": "/_next/static/media/vivillon-meadow.e8b9ace8.png",
+                "height": 475,
+                "width": 475,
+                "blurDataURL": "/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fvivillon-meadow.e8b9ace8.png&w=8&q=70",
+                "blurWidth": 8,
+                "blurHeight": 8
+            }
         },
         {
             "pokedex": 667,
@@ -36725,7 +36788,14 @@
             "isBaby": false,
             "isLegendary": true,
             "isMythical": false,
-            "imageLocal": null
+            "imageLocal": {
+                "src": "/_next/static/media/zygarde.8e2fa557.png",
+                "height": 475,
+                "width": 475,
+                "blurDataURL": "/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fzygarde.8e2fa557.png&w=8&q=70",
+                "blurWidth": 8,
+                "blurHeight": 8
+            }
         },
         {
             "pokedex": 719,
@@ -39505,7 +39575,14 @@
             "isBaby": false,
             "isLegendary": false,
             "isMythical": false,
-            "imageLocal": null
+            "imageLocal": {
+                "src": "/_next/static/media/silvally-normal.abd4314b.png",
+                "height": 475,
+                "width": 475,
+                "blurDataURL": "/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fsilvally-normal.abd4314b.png&w=8&q=70",
+                "blurWidth": 8,
+                "blurHeight": 8
+            }
         },
         {
             "pokedex": 774,
@@ -39734,7 +39811,14 @@
             "shape": "squiggle",
             "blurb": "Its actual appearance is unknown. A scholar\nwho saw what was under its rag was\noverwhelmed by terror and died from the shock.",
             "image": "https://spguvrptstnzyxfptgxn.supabase.co/storage/v1/object/public/pokemon/mimikyu.png",
-            "imageLocal": null,
+            "imageLocal": {
+                "src": "/_next/static/media/mimikyu-disguised.26cb0991.png",
+                "height": 475,
+                "width": 475,
+                "blurDataURL": "/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fmimikyu-disguised.26cb0991.png&w=8&q=70",
+                "blurWidth": 8,
+                "blurHeight": 8
+            },
             "isBaby": false,
             "isLegendary": false,
             "isMythical": false
@@ -43509,7 +43593,14 @@
             "isBaby": false,
             "isLegendary": false,
             "isMythical": false,
-            "imageLocal": null
+            "imageLocal": {
+                "src": "/_next/static/media/sinistea-phony.4f4c5172.png",
+                "height": 475,
+                "width": 475,
+                "blurDataURL": "/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fsinistea-phony.4f4c5172.png&w=8&q=70",
+                "blurWidth": 8,
+                "blurHeight": 8
+            }
         },
         {
             "pokedex": 855,
@@ -43550,7 +43641,14 @@
             "isBaby": false,
             "isLegendary": false,
             "isMythical": false,
-            "imageLocal": null
+            "imageLocal": {
+                "src": "/_next/static/media/polteageist-phony.4223e9a4.png",
+                "height": 475,
+                "width": 475,
+                "blurDataURL": "/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fpolteageist-phony.4223e9a4.png&w=8&q=70",
+                "blurWidth": 8,
+                "blurHeight": 8
+            }
         },
         {
             "pokedex": 856,
@@ -45237,7 +45335,14 @@
             "isBaby": false,
             "isLegendary": true,
             "isMythical": false,
-            "imageLocal": null
+            "imageLocal": {
+                "src": "/_next/static/media/zacian-hero.5be1b8a0.png",
+                "height": 475,
+                "width": 475,
+                "blurDataURL": "/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fzacian-hero.5be1b8a0.png&w=8&q=70",
+                "blurWidth": 8,
+                "blurHeight": 8
+            }
         },
         {
             "pokedex": 889,
@@ -45273,7 +45378,14 @@
             "isBaby": false,
             "isLegendary": true,
             "isMythical": false,
-            "imageLocal": null
+            "imageLocal": {
+                "src": "/_next/static/media/zamazenta-hero.54e05031.png",
+                "height": 475,
+                "width": 475,
+                "blurDataURL": "/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fzamazenta-hero.54e05031.png&w=8&q=70",
+                "blurWidth": 8,
+                "blurHeight": 8
+            }
         },
         {
             "pokedex": 890,

@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import ReactStars from 'react-rating-stars-component'
 import styles from './CardImage.module.css'
+import loading from '../../public/images/loading.gif'
 
 const CardImage = ({ name, imageLocal, ratingOverall, ratings }) => {
   return (
@@ -26,9 +27,9 @@ const CardImage = ({ name, imageLocal, ratingOverall, ratings }) => {
       </div>
       <div className={styles.imageContainer}>
         <Image
-          src={imageLocal}
+          src={imageLocal ? imageLocal : loading}
           alt={name}
-          placeholder="blur"
+          placeholder={imageLocal ? 'blur' : 'empty'}
           fill
           sizes="100vw"
           style={{

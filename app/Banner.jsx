@@ -14,11 +14,11 @@ const Banner = ({ name, imageLocal }) => {
           <NameForm />
         </div>
 
-        <div className="flex">
+        <div className="flex shrink-0">
           <Image
             className="relative rounded-2xl"
             src={imageLocal}
-            alt={'I Choose You!'}
+            alt={name}
             priority
             placeholder="blur"
           />

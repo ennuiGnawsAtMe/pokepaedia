@@ -9,7 +9,7 @@ const SearchList = () => {
   const [pokemonCards, setPokemonCards] = useContext(pokemonCardsContext)
 
   return (
-    <div className="m-auto mt-[5vh] mb-[15vh] flex max-w-[1920px] flex-row flex-wrap justify-center px-[3vw]">
+    <div className="z-0 m-auto mt-[5vh] mb-[15vh] flex max-w-[1920px] flex-row flex-wrap justify-center px-[3vw]">
       <AnimatePresence>
         {pokemonCards.map(poke => (
           <Card key={poke.pokedex} pokemon={poke} />

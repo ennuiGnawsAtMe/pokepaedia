@@ -6,7 +6,7 @@ const Footer = () => {
   const selected = shuffled.slice(0, 10)
 
   return (
-    <div className="flex flex-row overflow-hidden pt-10">
+    <div className="flex shrink-0 flex-row overflow-hidden pt-10">
       {selected.map((pokemon, index) => (
         <Image
           className="-mx-20 -mb-20"

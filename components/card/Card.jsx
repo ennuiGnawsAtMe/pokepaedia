@@ -107,7 +107,7 @@ const Card = ({ pokemon }) => {
         whileHover="hover"
         exit="exit"
       >
-        <div className={styles.topDetails}>
+        <div className={[styles.topDetails]}>
           <div className={styles.imageText}>
             <h4>Pokédex</h4>
             <h3>{pokedex}</h3>
