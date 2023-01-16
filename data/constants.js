@@ -13,16 +13,16 @@ export const statusOptions = [
 ]
 
 export const rankOptions = [
-  { option: 'Top 10' },
-  { option: '10 - 100' },
-  { option: '101 - 200' },
-  { option: '201 - 300' },
-  { option: '301 - 400' },
-  { option: '401 - 500' },
-  { option: '501 - 600' },
-  { option: '601 - 700' },
-  { option: '701 - 800' },
-  { option: '801 - 898' },
+  // { value: 10, label: 'Top 10' },
+  { value: 100, label: '1 - 100' },
+  { value: 200, label: '101 - 200' },
+  { value: 300, label: '201 - 300' },
+  { value: 400, label: '301 - 400' },
+  { value: 500, label: '401 - 500' },
+  { value: 600, label: '501 - 600' },
+  { value: 700, label: '601 - 700' },
+  { value: 800, label: '701 - 800' },
+  { value: 899, label: '801 - 899' },
 ]
 
 export const typeOptions = [

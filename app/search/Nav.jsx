@@ -37,7 +37,7 @@ const Nav = () => {
         return <AbilitySelect />
       case 'status':
         return <StatusSelect />
-      case 'rank':
+      case 'ranking':
         return <RankingSelect />
       default:
         null

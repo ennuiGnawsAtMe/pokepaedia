@@ -39,21 +39,15 @@ const Card = ({ pokemon }) => {
     hidden: {
       opacity: 0,
       translateX: -50,
-      boxShadow: `3px 3px 5px rgb(0, 0, 0, 0.4)`,
     },
     visible: {
       opacity: 1,
       translateX: 0,
-      transition: { duration: 0.3 },
+      transition: { duration: 0.5 },
     },
     hover: {
       boxShadow: `5px 5px 5px rgb(0, 0, 0, 0.5)`,
       translateY: -8,
-    },
-    exit: {
-      opacity: 0,
-      translateY: 500,
-      transition: { duration: 0.3 },
     },
   }
 
@@ -105,7 +99,6 @@ const Card = ({ pokemon }) => {
         initial="hidden"
         animate="visible"
         whileHover="hover"
-        exit="exit"
       >
         <div className={[styles.topDetails]}>
           <div className={styles.imageText}>

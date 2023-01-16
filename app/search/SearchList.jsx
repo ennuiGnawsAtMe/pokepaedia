@@ -10,7 +10,7 @@ const SearchList = () => {
 
   return (
     <div className="z-0 m-auto mt-[5vh] mb-[15vh] flex max-w-[1920px] flex-row flex-wrap justify-center px-[3vw]">
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         {pokemonCards.map(poke => (
           <Card key={poke.pokedex} pokemon={poke} />
         ))}
