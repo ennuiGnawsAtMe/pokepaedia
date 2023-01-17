@@ -28,7 +28,7 @@ export default async function Page() {
   const randomPokemon = await getRandomPokemon()
 
   return (
-    <main className="flex h-screen flex-col items-center justify-between space-y-10">
+    <main className="flex h-screen max-h-screen flex-col items-center justify-between space-y-10">
       <span className="space-y-10">
         <Banner {...randomPokemon} />
         <Blurb {...randomPokemon} />

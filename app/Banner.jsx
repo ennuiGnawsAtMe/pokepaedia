@@ -1,12 +1,10 @@
 import NameForm from './NameForm'
-import { pokemonImages } from '../data/imgDictionary'
 import Image from 'next/image'
 
 const Banner = ({ name, imageLocal }) => {
-  // pokemonImages[name.toLowerCase()]
   return (
-    <div className="mt-[18vh] flex h-52 w-screen flex-row justify-center space-x-10 bg-gradient-to-r from-blue-900 to-blue-300 shadow-lg shadow-red-500">
-      <div className="flex w-[75vw] flex-row items-center justify-between">
+    <div className="mt-[5vh] flex h-52 w-screen flex-row justify-center space-x-10 bg-gradient-to-r from-blue-900 to-blue-300 shadow-lg shadow-red-500">
+      <div className="flex w-[85vw] flex-row items-center justify-between">
         <div className="flex flex-col space-y-4">
           <p className="font-sans text-lg text-white">
             Welcome Trainer! What is your name?
@@ -14,7 +12,7 @@ const Banner = ({ name, imageLocal }) => {
           <NameForm />
         </div>
 
-        <div className="flex shrink-0">
+        <div className="mt-40 flex shrink-0">
           <Image
             className="relative rounded-2xl"
             src={imageLocal}
