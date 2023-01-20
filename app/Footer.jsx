@@ -1,6 +1,5 @@
 import FooterPokemon from './FooterPokemon'
 import { pokemonImages } from '../data/imgDictionary'
-import { capitalise } from '../utils/helpers'
 
 const Footer = () => {
   const shuffled = Object.entries(pokemonImages).sort(() => 0.5 - Math.random())

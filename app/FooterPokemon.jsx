@@ -7,8 +7,6 @@ const FooterPokemon = pokemon => {
     poke => poke.name.toLowerCase() === pokemon[0]
   )
 
-  console.log(pokedex)
-
   return (
     <div className="group -ml-[2vw] flex w-[15vw] flex-col duration-200 ease-in-out hover:-translate-y-4 active:-translate-y-2">
       <h2 className="invisible text-base group-hover:visible">#{pokedex}</h2>
