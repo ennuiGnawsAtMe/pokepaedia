@@ -8,9 +8,9 @@ const FooterPokemon = pokemon => {
   )
 
   return (
-    <div className="group -ml-[2vw] flex w-[15vw] flex-col duration-200 ease-in-out hover:-translate-y-4 active:-translate-y-2">
-      <h2 className="invisible text-base group-hover:visible">#{pokedex}</h2>
-      <h3 className="invisible text-lg group-hover:visible">
+    <div className="group -ml-[2vw] flex w-[15vw] flex-col rounded-md from-red-900 to-red-300 pt-2 text-center font-sans text-white duration-200 ease-in-out hover:-translate-y-4 hover:bg-gradient-to-b hover:shadow-lg hover:shadow-blue-500 active:-translate-y-2">
+      <h2 className="invisible text-lg group-hover:visible">#{pokedex}</h2>
+      <h3 className="invisible text-xl group-hover:visible">
         {capitalise(pokemon[0])}
       </h3>
       <Image
