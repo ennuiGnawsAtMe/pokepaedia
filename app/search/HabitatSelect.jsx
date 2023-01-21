@@ -5,16 +5,17 @@ import Select from 'react-select'
 import pokemonCardsContext from '../../context/pokemonCardsContext.js'
 import { goToTop, sortByRating } from '../../utils/helpers.js'
 import { useGetAllPokemonDb } from '../../data/swr.js'
+import data from '../../data/all.json'
+import { habitatOptions } from '../../data/constants.js'
 
-const HabitatSelect = ({ allPokemon, options }) => {
+const HabitatSelect = () => {
   const [pokemonCards, setPokemonCards] = useContext(pokemonCardsContext)
   const { allPokemonDb } = useGetAllPokemonDb()
+  const { pokemon } = data
 
   const changeHandler = habitatID => {
     goToTop()
-    const newSelection = allPokemon.filter(
-      ({ habitat }) => habitat == habitatID
-    )
+    const newSelection = pokemon.filter(({ habitat }) => habitat == habitatID)
     const sortedSelection = sortByRating(newSelection, allPokemonDb)
     setPokemonCards(sortedSelection)
   }
@@ -24,7 +25,7 @@ const HabitatSelect = ({ allPokemon, options }) => {
       <Select
         placeholder={`Search Pokémon by Habitat...`}
         maxMenuHeight={400}
-        options={options}
+        options={habitatOptions}
         instanceId="habitat-value-select"
         onChange={event => changeHandler(event.value)}
         blurInputOnClear={true}

@@ -3,13 +3,13 @@
 import Select from 'react-select'
 import { useContext } from 'react'
 import pokemonCardsContext from '../../context/pokemonCardsContext.js'
-import { goToTop, getNameOptions } from '../../utils/helpers.js'
+import { goToTop } from '../../utils/helpers.js'
 import data from '../../data/all.json'
 import { useGetAllPokemonDb } from '../../data/swr.js'
+import { nameOptions } from '../../data/constants'
 
 const NameSelect = () => {
   const [pokemonCards, setPokemonCards] = useContext(pokemonCardsContext)
-  const nameOptions = getNameOptions(data.pokemon)
   const { allPokemonDb } = useGetAllPokemonDb()
 
   const changeHandler = selection => {

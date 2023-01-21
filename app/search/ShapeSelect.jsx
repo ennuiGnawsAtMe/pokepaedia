@@ -5,14 +5,17 @@ import Select from 'react-select'
 import pokemonCardsContext from '../../context/pokemonCardsContext.js'
 import { goToTop, sortByRating } from '../../utils/helpers.js'
 import { useGetAllPokemonDb } from '../../data/swr.js'
+import data from '../../data/all.json'
+import { shapeOptions } from '../../data/constants.js'
 
-const ShapeSelect = ({ allPokemon, options }) => {
+const ShapeSelect = () => {
   const [pokemonCards, setPokemonCards] = useContext(pokemonCardsContext)
   const { allPokemonDb } = useGetAllPokemonDb()
+  const { pokemon } = data
 
   const changeHandler = shapeName => {
     goToTop()
-    const newSelection = allPokemon.filter(({ shape }) => shape == shapeName)
+    const newSelection = pokemon.filter(({ shape }) => shape == shapeName)
     const sortedSelection = sortByRating(newSelection, allPokemonDb)
     setPokemonCards(sortedSelection)
   }
@@ -22,7 +25,7 @@ const ShapeSelect = ({ allPokemon, options }) => {
       <Select
         placeholder={`Search Pokémon by Shape...`}
         maxMenuHeight={400}
-        options={options}
+        options={shapeOptions}
         instanceId="shape-value-select"
         onChange={event => changeHandler(event.value)}
         blurInputOnClear={true}

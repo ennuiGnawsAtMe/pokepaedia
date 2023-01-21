@@ -5,14 +5,17 @@ import Select from 'react-select'
 import pokemonCardsContext from '../../context/pokemonCardsContext.js'
 import { goToTop, sortByRating } from '../../utils/helpers.js'
 import { useGetAllPokemonDb } from '../../data/swr.js'
+import { colourOptions } from '../../data/constants.js'
+import data from '../../data/all.json'
 
-const ColourSelect = ({ allPokemon, options }) => {
+const ColourSelect = () => {
   const [pokemonCards, setPokemonCards] = useContext(pokemonCardsContext)
   const { allPokemonDb } = useGetAllPokemonDb()
+  const { pokemon } = data
 
   const changeHandler = colourID => {
     goToTop()
-    const newSelection = allPokemon.filter(({ colour }) => colour == colourID)
+    const newSelection = pokemon.filter(({ colour }) => colour == colourID)
     const sortedSelection = sortByRating(newSelection, allPokemonDb)
     setPokemonCards(sortedSelection)
   }
@@ -22,7 +25,7 @@ const ColourSelect = ({ allPokemon, options }) => {
       <Select
         placeholder={`Search Pokémon by Colour...`}
         maxMenuHeight={400}
-        options={options}
+        options={colourOptions}
         instanceId="colour-value-select"
         onChange={event => changeHandler(event.value)}
         blurInputOnClear={true}

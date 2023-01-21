@@ -40,6 +40,7 @@ export const getShapeOptions = pokemon => {
     value: value,
     label: capitalise(value),
   }))
+  console.log(options)
   return options
 }
 

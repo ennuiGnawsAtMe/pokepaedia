@@ -5,10 +5,13 @@ import Select from 'react-select'
 import pokemonCardsContext from '../../context/pokemonCardsContext.js'
 import { goToTop, sortByRating } from '../../utils/helpers.js'
 import { useGetAllPokemonDb } from '../../data/swr.js'
+import { statusOptions } from '../../data/constants.js'
+import data from '../../data/all.json'
 
-const StatusSelect = ({ allPokemon, options }) => {
+const StatusSelect = () => {
   const [pokemonCards, setPokemonCards] = useContext(pokemonCardsContext)
   const { allPokemonDb } = useGetAllPokemonDb()
+  const { pokemon } = data
 
   const changeHandler = status => {
     goToTop()
@@ -16,11 +19,11 @@ const StatusSelect = ({ allPokemon, options }) => {
     let newSelection = []
 
     if (status === 'baby') {
-      newSelection = allPokemon.filter(({ isBaby }) => isBaby == true)
+      newSelection = pokemon.filter(({ isBaby }) => isBaby == true)
     } else if (status === 'mythical') {
-      newSelection = allPokemon.filter(({ isMythical }) => isMythical == true)
+      newSelection = pokemon.filter(({ isMythical }) => isMythical == true)
     } else if (status === 'legendary') {
-      newSelection = allPokemon.filter(({ isLegendary }) => isLegendary == true)
+      newSelection = pokemon.filter(({ isLegendary }) => isLegendary == true)
     }
     const sortedSelection = sortByRating(newSelection, allPokemonDb)
     setPokemonCards(sortedSelection)
@@ -31,7 +34,7 @@ const StatusSelect = ({ allPokemon, options }) => {
       <Select
         placeholder={`Search Pokémon by Status...`}
         maxMenuHeight={400}
-        options={options}
+        options={statusOptions}
         instanceId="status-value-select"
         onChange={event => changeHandler(event.value)}
         blurInputOnClear={true}
