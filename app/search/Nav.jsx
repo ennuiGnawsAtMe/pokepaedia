@@ -47,7 +47,7 @@ const Nav = () => {
   return (
     <>
       <nav className="flex min-h-[130px] w-[50vw] flex-col">
-        <ul className="flex w-full cursor-pointer list-none flex-row justify-between  p-2 font-sans text-base text-white">
+        <ul className="flex w-full cursor-pointer list-none flex-row justify-between p-2 font-sans text-base text-white">
           <li
             onClick={() => clickHandler('name')}
             className={`${

@@ -9,6 +9,7 @@ import CardTypes from './CardTypes'
 import styles from './Card.module.css'
 import CardImage from './CardImage'
 import Modal from '../modal/Modal'
+import { ChevronRightIcon, ChevronLeftIcon } from '@heroicons/react/24/solid'
 
 const CARD_COLOURS = {
   red: { backgroundColor: '#AB1E23', color: '#ffffff' },
@@ -56,12 +57,10 @@ const Card = ({ pokemon }) => {
       backgroundColor: backgroundColor,
       color: color,
       border: `solid 2px ${backgroundColor}`,
-      // TODO add to CSS => borderBottom: "none"
     },
     hover: {
       backgroundColor: '#ffffff',
       border: `solid 2px ${backgroundColor}`,
-      // TODO add to CSS => borderBottom: "none"
       transition: { duration: 0.3 },
       color: '#000000',
     },
@@ -71,7 +70,7 @@ const Card = ({ pokemon }) => {
     },
   }
 
-  const clickHandler = () => {
+  const clickHandlerRight = () => {
     if (cardFace === 'image') {
       setCardFace('about')
     } else if (cardFace === 'about') {
@@ -80,6 +79,23 @@ const Card = ({ pokemon }) => {
       setCardFace('ability')
     } else if (cardFace === 'ability') {
       setCardFace('image')
+    }
+  }
+
+  const clickHandlerLeft = () => {
+    switch (cardFace) {
+      case 'image':
+        setCardFace('ability')
+        break
+      case 'ability':
+        setCardFace('types')
+        break
+      case 'types':
+        setCardFace('about')
+        break
+      case 'about':
+        setCardFace('image')
+        break
     }
   }
 
@@ -111,19 +127,26 @@ const Card = ({ pokemon }) => {
           </span>
         </div>
         {cardFaceComponent[cardFace]}
-        <div className={styles.footer}>
-          {/* <Link href={`/${pokemon.name.toLowerCase()}`}>
-            <motion.button
-              style={{ cursor:`pointer` }} 
-              variants={buttonVariants}
-              animate="visible"
-              whileHover="hover"
-              whileTap="tap"
-              >
-              - Details -
-            </motion.button>
-          </Link> */}
-          <motion.button
+        <div className="relative -top-3/4 flex w-full flex-row justify-between">
+          <div className="w-6 cursor-pointer duration-200 ease-in-out hover:-translate-x-1">
+            <ChevronLeftIcon
+              fill="currentColor"
+              stroke="currentColor"
+              style={{ color: 'grey' }}
+              onClick={() => clickHandlerLeft()}
+            />
+          </div>
+          <div className="w-6 cursor-pointer duration-200  ease-in-out hover:translate-x-1">
+            <ChevronRightIcon
+              fill="currentColor"
+              stroke="currentColor"
+              style={{ color: 'grey' }}
+              onClick={() => clickHandlerRight()}
+            />
+          </div>
+        </div>
+        {/* <div className={styles.footer}> */}
+        {/* <motion.button
             style={{ cursor: `pointer` }}
             onClick={() => clickHandler()}
             variants={buttonVariants}
@@ -142,8 +165,8 @@ const Card = ({ pokemon }) => {
             whileTap="tap"
           >
             - Rate -
-          </motion.button>
-        </div>
+          </motion.button> */}
+        {/* </div> */}
       </motion.div>
       <Modal
         showModal={showModal}
