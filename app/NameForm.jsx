@@ -29,6 +29,7 @@ const NameForm = randomPokemon => {
         className="min-w-[35vw] rounded-lg p-4 text-left font-mono text-3xl text-blue-900 shadow-md shadow-red-500 focus:outline-none"
         type="text"
         value={name}
+        placeholder="Enter Name"
         onChange={event => changeHandler(event.target.value)}
       />
       <div className={`flex flex-row justify-end ${!name ? 'hidden' : ''}`}>
