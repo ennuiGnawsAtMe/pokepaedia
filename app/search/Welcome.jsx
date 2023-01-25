@@ -8,7 +8,7 @@ const Welcome = () => {
 
   return (
     <div className="flex flex-col justify-center p-4 text-right">
-      <h2 className="rounded-md bg-black p-2 font-sans text-5xl text-lime-400">
+      <h2 className="rounded-md bg-black p-2 font-sans text-5xl text-white">
         Hi {user || 'Trainer'}!
       </h2>
     </div>

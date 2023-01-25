@@ -1,6 +1,7 @@
 import Nav from './Nav'
 import Welcome from './Welcome'
 import SearchList from './SearchList'
+import Control from './Control'
 
 const Page = () => {
   return (
@@ -9,7 +10,10 @@ const Page = () => {
         <div className="ml-4 flex min-w-[50vw] flex-col">
           <Nav />
         </div>
-        <Welcome />
+        <div className="flex flex-col">
+          <Welcome />
+          <Control />
+        </div>
       </div>
       <SearchList />
     </>

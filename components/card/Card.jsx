@@ -128,22 +128,18 @@ const Card = ({ pokemon }) => {
         </div>
         {cardFaceComponent[cardFace]}
         <div className="relative -top-3/4 flex w-full flex-row justify-between">
-          <div className="w-6 cursor-pointer duration-200 ease-in-out hover:-translate-x-1">
-            <ChevronLeftIcon
-              fill="currentColor"
-              stroke="currentColor"
-              style={{ color: 'grey' }}
-              onClick={() => clickHandlerLeft()}
-            />
-          </div>
-          <div className="w-6 cursor-pointer duration-200  ease-in-out hover:translate-x-1">
-            <ChevronRightIcon
-              fill="currentColor"
-              stroke="currentColor"
-              style={{ color: 'grey' }}
-              onClick={() => clickHandlerRight()}
-            />
-          </div>
+          <ChevronLeftIcon
+            fill="currentColor"
+            stroke="currentColor"
+            onClick={() => clickHandlerLeft()}
+            className="w-8 cursor-pointer rounded-full p-1 text-gray-500 duration-200 ease-in-out hover:-translate-x-1 hover:bg-lime-400 hover:text-white"
+          />
+          <ChevronRightIcon
+            fill="currentColor"
+            stroke="currentColor"
+            className="w-8 cursor-pointer rounded-full p-1 text-gray-500 duration-200 ease-in-out hover:translate-x-1 hover:bg-lime-400 hover:text-white"
+            onClick={() => clickHandlerRight()}
+          />
         </div>
         {/* <div className={styles.footer}> */}
         {/* <motion.button
