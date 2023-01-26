@@ -46,45 +46,45 @@ const Nav = () => {
 
   return (
     <>
-      <nav className="flex min-h-[130px] w-[50vw] flex-col">
-        <ul className="flex w-full cursor-pointer list-none flex-row justify-between p-2 font-sans text-base text-white">
+      <nav className="flex min-h-[150px] w-full flex-col pt-4">
+        <ul className="flex w-full cursor-pointer list-none flex-row justify-start pl-4 font-sans text-base text-white md:space-x-4 lg:space-x-2 lg:text-lg xl:space-x-2 xl:text-lg">
           <li
             onClick={() => clickHandler('name')}
             className={`${
-              dropdown === 'name' ? 'text-lime-400 overline' : null
-            } p-2 hover:text-lime-400 hover:overline`}
+              dropdown === 'name' ? 'font-semibold overline' : null
+            } p-2 hover:font-semibold hover:overline`}
           >
             Name
           </li>
           <li
             onClick={() => clickHandler('ranking')}
             className={`${
-              dropdown === 'ranking' ? 'text-lime-400 overline' : null
-            } p-2 hover:text-lime-400 hover:overline`}
+              dropdown === 'ranking' ? 'font-semibold overline' : null
+            } p-2 hover:font-semibold hover:overline`}
           >
             Ranking
           </li>
           <li
             onClick={() => clickHandler('type')}
             className={`${
-              dropdown === 'type' ? 'text-lime-400 overline' : null
-            } p-2 hover:text-lime-400 hover:overline`}
+              dropdown === 'type' ? 'font-semibold overline' : null
+            } p-2 hover:font-semibold hover:overline`}
           >
             Type
           </li>
           <li
             onClick={() => clickHandler('colour')}
             className={`${
-              dropdown === 'colour' ? 'text-lime-400 overline' : null
-            } p-2 hover:text-lime-400 hover:overline`}
+              dropdown === 'colour' ? 'font-semibold overline' : null
+            } p-2 hover:font-semibold hover:overline`}
           >
             Colour
           </li>
           <li
             onClick={() => clickHandler('ability')}
             className={`${
-              dropdown === 'ability' ? 'text-lime-400 overline' : null
-            } p-2 hover:text-lime-400 hover:overline`}
+              dropdown === 'ability' ? 'font-semibold overline' : null
+            } p-2 hover:font-semibold hover:overline`}
           >
             Ability
           </li>
@@ -92,37 +92,29 @@ const Nav = () => {
           <li
             onClick={() => clickHandler('status')}
             className={`${
-              dropdown === 'status' ? 'text-lime-400 overline' : null
-            } p-2 hover:text-lime-400 hover:overline`}
+              dropdown === 'status' ? 'font-semibold overline' : null
+            } p-2 hover:font-semibold hover:overline`}
           >
             Status
           </li>
           <li
             onClick={() => clickHandler('shape')}
             className={`${
-              dropdown === 'shape' ? 'text-lime-400 overline' : null
-            } p-2 hover:text-lime-400 hover:overline`}
+              dropdown === 'shape' ? 'font-semibold overline' : null
+            } p-2 hover:font-semibold hover:overline`}
           >
             Shape
           </li>
           <li
             onClick={() => clickHandler('habitat')}
             className={`${
-              dropdown === 'habitat' ? 'text-lime-400 overline' : null
-            } p-2 hover:text-lime-400 hover:overline`}
+              dropdown === 'habitat' ? 'font-semibold overline' : null
+            } p-2 hover:font-semibold hover:overline`}
           >
             Habitat
           </li>
         </ul>
-        <div className="mx-4 mt-2 mb-4">
-          {dropdown != '' ? (
-            getDropdown()
-          ) : (
-            <h3 className=" text-2xl text-lime-400">
-              Choose a categegory to search by...
-            </h3>
-          )}
-        </div>
+        <div className=" mx-4 mt-2 mb-4">{getDropdown()}</div>
       </nav>
     </>
   )

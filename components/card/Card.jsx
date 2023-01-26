@@ -132,12 +132,12 @@ const Card = ({ pokemon }) => {
             fill="currentColor"
             stroke="currentColor"
             onClick={() => clickHandlerLeft()}
-            className="w-8 cursor-pointer rounded-full p-1 text-gray-500 duration-200 ease-in-out hover:-translate-x-1 hover:bg-lime-400 hover:text-white"
+            className="w-8 cursor-pointer rounded-full p-1 text-gray-500 duration-200 ease-in-out hover:-translate-x-1 hover:bg-blue-400 hover:text-white"
           />
           <ChevronRightIcon
             fill="currentColor"
             stroke="currentColor"
-            className="w-8 cursor-pointer rounded-full p-1 text-gray-500 duration-200 ease-in-out hover:translate-x-1 hover:bg-lime-400 hover:text-white"
+            className="w-8 cursor-pointer rounded-full p-1 text-gray-500 duration-200 ease-in-out hover:translate-x-1 hover:bg-blue-400 hover:text-white"
             onClick={() => clickHandlerRight()}
           />
         </div>

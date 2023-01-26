@@ -8,13 +8,15 @@ const FooterPokemon = pokemon => {
   )
 
   return (
-    <div className="group -ml-[2vw] flex w-[15vw] cursor-pointer flex-col bg-gradient-to-b pt-2  text-center font-sans text-white duration-200 ease-in-out hover:-translate-y-4 hover:rounded-b-full hover:from-blue-900 hover:via-red-900 hover:to-white active:-translate-y-2">
-      <h2 className="invisible text-lg group-hover:visible">#{pokedex}</h2>
-      <h3 className="invisible text-xl group-hover:visible">
-        {capitalise(pokemon[0])}
-      </h3>
+    <div className="group -ml-[2vw] flex w-[15vw] cursor-pointer flex-col rounded-b-md text-center font-sans duration-500 ease-in-out hover:-translate-y-20 hover:bg-white hover:shadow-2xl hover:shadow-slate-900">
+      <div className="mb-4 flex flex-col items-center justify-center rounded-md bg-gradient-to-b  p-2 text-center text-white group-hover:scale-125 group-hover:from-blue-900 group-hover:via-lime-400 group-hover:to-red-900 group-hover:shadow-xl group-hover:shadow-slate-900">
+        <h3 className="invisible text-lg group-hover:visible">#{pokedex}</h3>
+        <h2 className="invisible font-semibold group-hover:visible md:text-base lg:text-lg xl:text-2xl">
+          {capitalise(pokemon[0])}
+        </h2>
+      </div>
       <Image
-        className=""
+        className="group-hover:p-4"
         alt="Gotta catch em all!"
         src={pokemon[1]}
         placeholder="blur"

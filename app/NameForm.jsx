@@ -22,14 +22,17 @@ const NameForm = randomPokemon => {
   }
 
   return (
-    <form className="flex h-24 flex-col space-y-4" onSubmit={submitHandler}>
+    <form
+      className="flex h-1/2 flex-col space-y-4 xl:w-2/3"
+      onSubmit={submitHandler}
+    >
       <input
         autoFocus={true}
         maxLength={20}
-        className="min-w-[35vw] rounded-lg p-4 text-left font-mono text-3xl text-blue-900 shadow-md shadow-red-500 focus:outline-none"
+        className=" min-w-[35vw] rounded-lg p-4 text-left font-mono text-3xl shadow-2xl shadow-slate-900 focus:outline-none md:text-4xl xl:text-6xl"
         type="text"
         value={name}
-        placeholder="Enter Name"
+        placeholder="ENTER NAME"
         onChange={event => changeHandler(event.target.value)}
       />
       <div className={`flex flex-row justify-end ${!name ? 'hidden' : ''}`}>
@@ -38,7 +41,7 @@ const NameForm = randomPokemon => {
           type="submit"
           className={`${
             !name ? 'hidden' : ''
-          } text-right font-sans text-xl  text-white hover:text-lime-400 active:scale-95`}
+          } text-right font-sans text-xl text-white  hover:font-semibold active:text-lime-400 lg:text-2xl xl:text-4xl`}
         >
           ENTER POKEPAEDIA
         </button>
