@@ -26,7 +26,7 @@ export default function RootLayout({ children }) {
       className={` ${ibarraRealNova.variable} ${firaCode.variable} ${sono.variable}`}
       lang="en"
     >
-      <body className="">
+      <body>
         <ContextProvider>{children}</ContextProvider>
       </body>
     </html>
