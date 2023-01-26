@@ -110,7 +110,7 @@ const Card = ({ pokemon }) => {
     <>
       <motion.div
         style={{ border: `solid 5px ${backgroundColor}` }}
-        className={styles.container}
+        className={['group', styles.container].join(' ')}
         variants={cardVariants}
         initial="hidden"
         animate="visible"
@@ -127,17 +127,17 @@ const Card = ({ pokemon }) => {
           </span>
         </div>
         {cardFaceComponent[cardFace]}
-        <div className="relative -top-3/4 flex w-full flex-row justify-between">
+        <div className="invisible relative -top-3/4 flex w-full flex-row justify-between group-hover:visible">
           <ChevronLeftIcon
             fill="currentColor"
             stroke="currentColor"
             onClick={() => clickHandlerLeft()}
-            className="w-8 cursor-pointer rounded-full p-1 text-gray-500 duration-100 ease-in-out  hover:bg-gray-300 hover:text-white"
+            className=" w-8 cursor-pointer rounded-full bg-gray-100 p-2 text-gray-600 shadow-slate-500 drop-shadow-md duration-100 ease-in  hover:scale-105 hover:drop-shadow-lg"
           />
           <ChevronRightIcon
             fill="currentColor"
             stroke="currentColor"
-            className="w-8 cursor-pointer rounded-full p-1 text-gray-500 duration-100 ease-in-out hover:bg-gray-300 hover:text-white"
+            className="w-8 cursor-pointer rounded-full bg-gray-100 p-2 text-gray-600 shadow-slate-500 drop-shadow-md duration-100 ease-in hover:scale-105 hover:drop-shadow-lg"
             onClick={() => clickHandlerRight()}
           />
         </div>
