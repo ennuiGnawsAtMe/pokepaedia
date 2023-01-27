@@ -18,7 +18,9 @@ const SearchList = () => {
 
   return (
     <>
-      {showModal && <Modal setShowModal={setShowModal} {...pokemon} />}
+      <AnimatePresence>
+        {showModal && <Modal setShowModal={setShowModal} {...pokemon} />}
+      </AnimatePresence>
       <div className="z-0 m-auto mt-10 mb-[15vh] flex max-w-[1920px] flex-row flex-wrap justify-center">
         <AnimatePresence mode="wait">
           {pokemonCards.map(poke => (

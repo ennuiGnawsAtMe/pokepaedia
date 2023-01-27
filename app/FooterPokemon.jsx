@@ -8,8 +8,8 @@ const FooterPokemon = pokemon => {
   )
 
   return (
-    <div className="group -mt-24 -ml-[2vw] flex w-[15vw] cursor-pointer flex-col rounded-b-md text-center font-sans transition-all duration-300 ease-out hover:-translate-y-20 hover:bg-white hover:shadow-2xl hover:shadow-slate-900 hover:transition-transform hover:duration-500 hover:ease-in">
-      <div className="mb-4 flex flex-col items-center justify-center rounded-md bg-gradient-to-r  p-2 text-center text-white group-hover:scale-125 group-hover:from-blue-900 group-hover:via-lime-400 group-hover:to-red-900 group-hover:shadow-md">
+    <div className="group -mt-24 -ml-[2vw] flex w-[15vw] cursor-pointer flex-col rounded-b-md text-center font-sans hover:duration-500 hover:ease-in">
+      <div className=" flex flex-col items-center justify-center rounded-md p-2 text-center group-hover:bg-gray-50  group-hover:drop-shadow-md">
         <h3 className="invisible text-lg group-hover:visible">#{pokedex}</h3>
         <h2 className="invisible font-semibold group-hover:visible md:text-sm lg:text-base xl:text-xl">
           {capitalise(pokemon[0])}
