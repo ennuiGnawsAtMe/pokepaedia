@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import OverallRatings from './OverallRatings'
 import UserRatingForm from './UserRatingForm'
 import ThankYou from './ThankYou'
@@ -39,45 +39,55 @@ const Modal = ({
 
   return (
     <motion.div
-      className="fixed top-0 left-0 z-30 flex h-screen w-full flex-col items-center justify-center bg-black bg-opacity-80"
+      className="fixed top-0 left-0 z-30 flex h-screen w-screen flex-col items-center justify-center bg-black bg-opacity-80"
       variants={backdropVariants}
       initial="hidden"
       animate="visible"
       exit="hidden"
       onClick={handleParentClick}
     >
-      <div className="flex h-4/5 max-h-[750px] min-h-[650px] w-4/5 max-w-[1280px] flex-row justify-center rounded-md bg-white text-center align-middle">
-        <div className="flex h-full w-1/2 flex-col items-center justify-start p-10">
-          <Image
-            src={imageLocal}
-            alt={name}
-            placeholder={imageLocal ? 'blur' : 'empty'}
-            sizes="100vw"
-            style={{
-              objectFit: 'contain',
-            }}
-            className="h-1/2"
-          />
-          <OverallRatings
-            name={name}
-            ratings={ratings}
-            ratingOverall={ratingOverall}
-            ranking={ranking}
-            blurb={blurb}
-          />
-        </div>
-        <div className="flex w-1/2 flex-col justify-center rounded-md text-center">
-          {!ratingComplete ? (
-            <UserRatingForm
-              name={name}
-              pokedex={pokedex}
-              formData={formData}
-              setFormData={setFormData}
-              setRatingComplete={setRatingComplete}
+      <div className=" fixed flex h-4/5 max-h-[750px] min-h-[650px] w-4/5 max-w-[1280px] flex-col justify-center rounded-md bg-white text-center align-middle">
+        <button
+          className="absolute top-4 right-4 flex flex-row items-center justify-center"
+          onClick={() => {
+            setShowModal(false)
+          }}
+        >
+          <XMarkIcon className=" w-6" />
+        </button>
+        <div className="flex h-full flex-row">
+          <div className="flex h-full w-1/2 flex-col items-center justify-start p-6">
+            <Image
+              src={imageLocal}
+              alt={name}
+              placeholder={imageLocal ? 'blur' : 'empty'}
+              sizes="100vw"
+              style={{
+                objectFit: 'contain',
+              }}
+              className="h-1/2"
             />
-          ) : (
-            <ThankYou name={name} {...formData} />
-          )}
+            <OverallRatings
+              name={name}
+              ratings={ratings}
+              ratingOverall={ratingOverall}
+              ranking={ranking}
+              blurb={blurb}
+            />
+          </div>
+          <div className="flex w-1/2 flex-col justify-center rounded-md text-center">
+            {!ratingComplete ? (
+              <UserRatingForm
+                name={name}
+                pokedex={pokedex}
+                formData={formData}
+                setFormData={setFormData}
+                setRatingComplete={setRatingComplete}
+              />
+            ) : (
+              <ThankYou name={name} {...formData} />
+            )}
+          </div>
         </div>
       </div>
     </motion.div>
