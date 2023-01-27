@@ -13,15 +13,22 @@ const backdropVariants = {
   hidden: { opacity: 0 },
 }
 
-const Modal = (setShowModal, pokemon, pokemonRatings) => {
+const Modal = ({
+  ratingOverall,
+  ratings,
+  ranking,
+  name,
+  pokedex,
+  blurb,
+  imageLocal,
+  setShowModal,
+}) => {
   const [ratingComplete, setRatingComplete] = useState(false)
   const [formData, setFormData] = useState({
     rating: 0,
     userName: '',
     comment: '',
   })
-  const { ratingOverall, ratings, ranking } = pokemonRatings
-  const { name, pokedex, blurb, imageLocal } = pokemon
 
   const handleParentClick = event => {
     event.preventDefault()
@@ -40,7 +47,7 @@ const Modal = (setShowModal, pokemon, pokemonRatings) => {
         exit="hidden"
         onClick={handleParentClick}
       >
-        <div className="flex h-4/5 max-h-[750px] w-4/5 max-w-[1280px] flex-row justify-center rounded-md bg-white text-center align-middle">
+        <div className="flex h-4/5 max-h-[750px] min-h-[650px] w-4/5 max-w-[1280px] flex-row justify-center rounded-md bg-white text-center align-middle">
           <div className="flex h-full w-1/2 flex-col items-center justify-start p-10">
             <Image
               src={imageLocal}

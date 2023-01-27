@@ -5,7 +5,8 @@ import ReactStars from 'react-rating-stars-component'
 import styles from './CardImage.module.css'
 import loading from '../../public/images/loading.gif'
 
-const CardImage = ({ name, imageLocal, ratingOverall, ratings }) => {
+const CardImage = ({ name, ratingOverall, imageLocal, ratings }) => {
+  // console.log(pokemon)
   return (
     <>
       <div className={styles.nameContainer}>

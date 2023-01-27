@@ -3,10 +3,10 @@
 import Image from 'next/image'
 import styles from './CardAbout.module.css'
 
-const CardAbout = ({ blurb, name, imageLocal }, clickHandler) => {
+const CardAbout = ({ blurb, name, imageLocal }) => {
   return (
     <>
-      <div className={styles.imageContainer} onCLick={clickHandler}>
+      <div className={styles.imageContainer}>
         <Image
           src={imageLocal}
           alt={name}

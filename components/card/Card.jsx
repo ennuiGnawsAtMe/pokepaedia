@@ -8,7 +8,6 @@ import CardAbout from './CardAbout'
 import CardTypes from './CardTypes'
 import styles from './Card.module.css'
 import CardImage from './CardImage'
-import Modal from '../modal/Modal'
 import cardFacesContext from '../../context/cardFacesContext'
 import { ChevronRightIcon, ChevronLeftIcon } from '@heroicons/react/24/solid'
 
@@ -25,10 +24,9 @@ const CARD_COLOURS = {
   pink: { backgroundColor: '#A72B6E', color: '#ffffff' },
 }
 
-const Card = props => {
+const Card = ({ pokemon, setShowModal, setPokemon }) => {
   const [cardFaces, setCardFaces] = useContext(cardFacesContext)
   const [currentFace, setCurrentFace] = useState('image')
-  // const [showModal, setShowModal] = useState(false)
   const { allPokemonDb, isLoading, isError } = useGetAllPokemonDb()
 
   const { pokedex, colour } = pokemon
@@ -116,10 +114,8 @@ const Card = props => {
   }
 
   const clickHandlerModal = () => {
-    console.log(props)
-    setModalPokemon(pokemon)
-    setModalPokemonRatings(pokemonRatings)
     setShowModal(true)
+    setPokemon({ ...pokemon, ...pokemonRatings })
   }
 
   useEffect(() => {
@@ -163,12 +159,6 @@ const Card = props => {
           />
         </div>
       </motion.div>
-      {/* <Modal
-        showModal={showModal}
-        setShowModal={setShowModal}
-        {...pokemon}
-        {...pokemonRatings}
-      /> */}
     </>
   )
 }

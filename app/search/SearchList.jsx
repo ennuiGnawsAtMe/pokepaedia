@@ -9,34 +9,28 @@ import Modal from '../../components/modal/Modal'
 
 const SearchList = () => {
   const [pokemonCards, setPokemonCards] = useContext(pokemonCardsContext)
-  // const [cardFaces, setCardFaces] = useContext(cardFacesContext)
-  const [modalPokemon, setModalPokemon] = useState({})
-  const [modalPokemonRatings, setModalPokemonRatings] = useState({})
   const [showModal, setShowModal] = useState(false)
+  const [pokemon, setPokemon] = useState({})
+
+  useEffect(() => {
+    console.log(pokemon)
+  }, [pokemon])
 
   return (
     <>
+      {showModal && <Modal setShowModal={setShowModal} {...pokemon} />}
       <div className="z-0 m-auto mt-10 mb-[15vh] flex max-w-[1920px] flex-row flex-wrap justify-center">
         <AnimatePresence mode="wait">
           {pokemonCards.map(poke => (
             <Card
               key={poke.pokedex}
               pokemon={poke}
-              setShowModal={setShowModal()}
-              setModalPokemon={setModalPokemon()}
-              setModalPokemonRatings={setModalPokemonRatings()}
+              setShowModal={setShowModal}
+              setPokemon={setPokemon}
             />
           ))}
         </AnimatePresence>
       </div>
-      {showModal && (
-        <Modal
-          showModal={showModal}
-          setShowModal={setShowModal}
-          pokemon={modalPokemon}
-          pokemonRatings={modalPokemonRatings}
-        />
-      )}
     </>
   )
 }
