@@ -30,7 +30,6 @@ const CardImage = ({ name, imageLocal, ratingOverall, ratings }) => {
           src={imageLocal ? imageLocal : loading}
           alt={name}
           placeholder={imageLocal ? 'blur' : 'empty'}
-          fill
           sizes="100vw"
           style={{
             objectFit: 'contain',

@@ -11,40 +11,6 @@
   z-index: 30;
 }
 
-.modal {
-  width: 85%;
-  height: 85%;
-  max-height: 750px;
-  max-width: 1280px;
-  background: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 40px 20px;
-  margin: 0 auto;
-  border-radius: 10px;
-  text-align: center;
-}
-
-.modalContent {
-  width: 90%;
-  height: 90%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  border-radius: 25px;
-}
-
-.imageWrapper {
-  height: 100%;
-  width: 100%;
-  position: relative;
-  margin-right: 50px;
-}
-
 .detailsContainer {
   height: 100%;
   width: 100%;
