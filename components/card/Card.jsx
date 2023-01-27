@@ -27,7 +27,6 @@ const CARD_COLOURS = {
 
 const Card = ({ pokemon }) => {
   const [cardFaces, setCardFaces] = useContext(cardFacesContext)
-  const [cardFace, setCardFace] = useState('image')
   const [currentFace, setCurrentFace] = useState('image')
   const [showModal, setShowModal] = useState(false)
   const { allPokemonDb, isLoading, isError } = useGetAllPokemonDb()
@@ -73,7 +72,8 @@ const Card = ({ pokemon }) => {
     },
   }
 
-  const clickHandlerRight = () => {
+  const clickHandlerRight = e => {
+    e.stopPropagation()
     switch (currentFace) {
       case 'image':
         setCurrentFace('about')
@@ -90,7 +90,8 @@ const Card = ({ pokemon }) => {
     }
   }
 
-  const clickHandlerLeft = () => {
+  const clickHandlerLeft = e => {
+    e.stopPropagation()
     switch (currentFace) {
       case 'image':
         setCurrentFace('ability')
@@ -122,11 +123,14 @@ const Card = ({ pokemon }) => {
     <>
       <motion.div
         style={{ border: `solid 5px ${backgroundColor}` }}
-        className={['group', styles.container].join(' ')}
+        className={['group cursor-zoom-in', styles.container].join(' ')}
         variants={cardVariants}
         initial="hidden"
         animate="visible"
         whileHover="hover"
+        onClick={() => {
+          setShowModal(true)
+        }}
       >
         <div className={[styles.topDetails]}>
           <div className={styles.imageText}>
@@ -143,38 +147,16 @@ const Card = ({ pokemon }) => {
           <ChevronLeftIcon
             fill="currentColor"
             stroke="currentColor"
-            onClick={() => clickHandlerLeft()}
+            onClick={clickHandlerLeft}
             className=" w-8 cursor-pointer rounded-full bg-gray-100 p-2 text-gray-600 shadow-slate-500 drop-shadow-md duration-100 ease-in  hover:scale-105 hover:drop-shadow-lg active:drop-shadow-md"
           />
           <ChevronRightIcon
             fill="currentColor"
             stroke="currentColor"
             className="w-8 cursor-pointer rounded-full bg-gray-100 p-2 text-gray-600 shadow-slate-500 drop-shadow-md duration-100 ease-in hover:scale-105 hover:drop-shadow-lg active:drop-shadow-md"
-            onClick={() => clickHandlerRight()}
+            onClick={clickHandlerRight}
           />
         </div>
-        {/* <div className={styles.footer}> */}
-        {/* <motion.button
-            style={{ cursor: `pointer` }}
-            onClick={() => clickHandler()}
-            variants={buttonVariants}
-            animate="visible"
-            whileHover="hover"
-            whileTap="tap"
-          >
-            - Flip -
-          </motion.button>
-          <motion.button
-            style={{ cursor: `pointer` }}
-            onClick={() => setShowModal(true)}
-            variants={buttonVariants}
-            animate="visible"
-            whileHover="hover"
-            whileTap="tap"
-          >
-            - Rate -
-          </motion.button> */}
-        {/* </div> */}
       </motion.div>
       <Modal
         showModal={showModal}
