@@ -3,7 +3,6 @@
 import Image from 'next/image'
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import styles from './Modal.module.css'
 import OverallRatings from './OverallRatings'
 import UserRatingForm from './UserRatingForm'
 import ThankYou from './ThankYou'
@@ -39,31 +38,19 @@ const Modal = ({
     }
   }
 
-  // .detailsContainer {
-  //   height: 100%;
-  //   width: 100%;
-  //   display: flex;
-  //   flex-direction: column;
-  //   justify-content: center;
-  //   text-align: left;
-  //   padding: 20px;
-  //   border-radius: 25px;
-  //   margin: 0 auto;
-  // }
-
   return (
     <AnimatePresence>
       {showModal && (
         <motion.div
-          className="fixed top-0 left-0 z-30 flex h-full w-full flex-col items-center justify-center bg-gray-400  opacity-70"
+          className="fixed top-0 left-0 z-30 flex h-screen w-full flex-col items-center justify-center bg-black bg-opacity-80"
           variants={backdropVariants}
           initial="hidden"
           animate="visible"
           exit="hidden"
           onClick={handleParentClick}
         >
-          <div className=" flex h-4/5 max-h-[750px] w-4/5 max-w-[1280px] flex-row justify-center rounded-md bg-white text-center align-middle">
-            <div className="flex h-full w-1/2 flex-col items-center justify-between">
+          <div className="flex h-4/5 max-h-[750px] w-4/5 max-w-[1280px] flex-row justify-center rounded-md bg-white text-center align-middle">
+            <div className="flex h-full w-1/2 flex-col items-center justify-start p-10">
               <Image
                 src={imageLocal ? imageLocal : loading}
                 alt={name}
@@ -72,6 +59,7 @@ const Modal = ({
                 style={{
                   objectFit: 'contain',
                 }}
+                className="h-1/2"
               />
               <OverallRatings
                 name={name}
