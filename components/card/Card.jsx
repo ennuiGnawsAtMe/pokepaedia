@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { useGetAllPokemonDb } from '../../data/swr'
 import CardStats from './CardStats'
@@ -9,6 +9,7 @@ import CardTypes from './CardTypes'
 import styles from './Card.module.css'
 import CardImage from './CardImage'
 import Modal from '../modal/Modal'
+import cardFacesContext from '../../context/cardFacesContext'
 import { ChevronRightIcon, ChevronLeftIcon } from '@heroicons/react/24/solid'
 
 const CARD_COLOURS = {
@@ -25,7 +26,9 @@ const CARD_COLOURS = {
 }
 
 const Card = ({ pokemon }) => {
+  const [cardFaces, setCardFaces] = useContext(cardFacesContext)
   const [cardFace, setCardFace] = useState('image')
+  const [currentFace, setCurrentFace] = useState('image')
   const [showModal, setShowModal] = useState(false)
   const { allPokemonDb, isLoading, isError } = useGetAllPokemonDb()
 
@@ -71,30 +74,35 @@ const Card = ({ pokemon }) => {
   }
 
   const clickHandlerRight = () => {
-    if (cardFace === 'image') {
-      setCardFace('about')
-    } else if (cardFace === 'about') {
-      setCardFace('types')
-    } else if (cardFace === 'types') {
-      setCardFace('ability')
-    } else if (cardFace === 'ability') {
-      setCardFace('image')
+    switch (currentFace) {
+      case 'image':
+        setCurrentFace('about')
+        break
+      case 'ability':
+        setCurrentFace('image')
+        break
+      case 'types':
+        setCurrentFace('ability')
+        break
+      case 'about':
+        setCurrentFace('types')
+        break
     }
   }
 
   const clickHandlerLeft = () => {
-    switch (cardFace) {
+    switch (currentFace) {
       case 'image':
-        setCardFace('ability')
+        setCurrentFace('ability')
         break
       case 'ability':
-        setCardFace('types')
+        setCurrentFace('types')
         break
       case 'types':
-        setCardFace('about')
+        setCurrentFace('about')
         break
       case 'about':
-        setCardFace('image')
+        setCurrentFace('image')
         break
     }
   }
@@ -105,6 +113,10 @@ const Card = ({ pokemon }) => {
     ability: <CardStats {...pokemon} />,
     image: <CardImage {...pokemon} {...pokemonRatings} />,
   }
+
+  useEffect(() => {
+    setCurrentFace(cardFaces)
+  }, [cardFaces])
 
   return (
     <>
@@ -126,18 +138,18 @@ const Card = ({ pokemon }) => {
             <h3>{ranking}</h3>
           </span>
         </div>
-        {cardFaceComponent[cardFace]}
+        {cardFaceComponent[currentFace]}
         <div className="invisible relative -top-3/4 flex w-full flex-row justify-between group-hover:visible">
           <ChevronLeftIcon
             fill="currentColor"
             stroke="currentColor"
             onClick={() => clickHandlerLeft()}
-            className=" w-8 cursor-pointer rounded-full bg-gray-100 p-2 text-gray-600 shadow-slate-500 drop-shadow-md duration-100 ease-in  hover:scale-105 hover:drop-shadow-lg"
+            className=" w-8 cursor-pointer rounded-full bg-gray-100 p-2 text-gray-600 shadow-slate-500 drop-shadow-md duration-100 ease-in  hover:scale-105 hover:drop-shadow-lg active:drop-shadow-md"
           />
           <ChevronRightIcon
             fill="currentColor"
             stroke="currentColor"
-            className="w-8 cursor-pointer rounded-full bg-gray-100 p-2 text-gray-600 shadow-slate-500 drop-shadow-md duration-100 ease-in hover:scale-105 hover:drop-shadow-lg"
+            className="w-8 cursor-pointer rounded-full bg-gray-100 p-2 text-gray-600 shadow-slate-500 drop-shadow-md duration-100 ease-in hover:scale-105 hover:drop-shadow-lg active:drop-shadow-md"
             onClick={() => clickHandlerRight()}
           />
         </div>
