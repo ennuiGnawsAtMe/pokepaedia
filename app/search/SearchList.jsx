@@ -5,23 +5,39 @@ import { AnimatePresence } from 'framer-motion'
 import Card from '../../components/card/Card'
 import pokemonCardsContext from '../../context/pokemonCardsContext.js'
 import cardFacesContext from '../../context/cardFacesContext'
+import Modal from '../../components/modal/Modal'
 
 const SearchList = () => {
   const [pokemonCards, setPokemonCards] = useContext(pokemonCardsContext)
-  const [cardFaces, setCardFaces] = useContext(cardFacesContext)
-
-  // useEffect(() => {
-  //   console.log(pokemonCards)
-  // }, [pokemonCards])
+  // const [cardFaces, setCardFaces] = useContext(cardFacesContext)
+  const [modalPokemon, setModalPokemon] = useState({})
+  const [modalPokemonRatings, setModalPokemonRatings] = useState({})
+  const [showModal, setShowModal] = useState(false)
 
   return (
-    <div className="z-0 m-auto mt-10 mb-[15vh] flex max-w-[1920px] flex-row flex-wrap justify-center ">
-      <AnimatePresence mode="wait">
-        {pokemonCards.map(poke => (
-          <Card key={poke.pokedex} pokemon={poke} />
-        ))}
-      </AnimatePresence>
-    </div>
+    <>
+      <div className="z-0 m-auto mt-10 mb-[15vh] flex max-w-[1920px] flex-row flex-wrap justify-center">
+        <AnimatePresence mode="wait">
+          {pokemonCards.map(poke => (
+            <Card
+              key={poke.pokedex}
+              pokemon={poke}
+              setShowModal={setShowModal()}
+              setModalPokemon={setModalPokemon()}
+              setModalPokemonRatings={setModalPokemonRatings()}
+            />
+          ))}
+        </AnimatePresence>
+      </div>
+      {showModal && (
+        <Modal
+          showModal={showModal}
+          setShowModal={setShowModal}
+          pokemon={modalPokemon}
+          pokemonRatings={modalPokemonRatings}
+        />
+      )}
+    </>
   )
 }
 

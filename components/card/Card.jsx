@@ -25,10 +25,10 @@ const CARD_COLOURS = {
   pink: { backgroundColor: '#A72B6E', color: '#ffffff' },
 }
 
-const Card = ({ pokemon }) => {
+const Card = props => {
   const [cardFaces, setCardFaces] = useContext(cardFacesContext)
   const [currentFace, setCurrentFace] = useState('image')
-  const [showModal, setShowModal] = useState(false)
+  // const [showModal, setShowModal] = useState(false)
   const { allPokemonDb, isLoading, isError } = useGetAllPokemonDb()
 
   const { pokedex, colour } = pokemon
@@ -115,6 +115,13 @@ const Card = ({ pokemon }) => {
     image: <CardImage {...pokemon} {...pokemonRatings} />,
   }
 
+  const clickHandlerModal = () => {
+    console.log(props)
+    setModalPokemon(pokemon)
+    setModalPokemonRatings(pokemonRatings)
+    setShowModal(true)
+  }
+
   useEffect(() => {
     setCurrentFace(cardFaces)
   }, [cardFaces])
@@ -128,9 +135,7 @@ const Card = ({ pokemon }) => {
         initial="hidden"
         animate="visible"
         whileHover="hover"
-        onClick={() => {
-          setShowModal(true)
-        }}
+        onClick={clickHandlerModal}
       >
         <div className={[styles.topDetails]}>
           <div className={styles.imageText}>
@@ -158,12 +163,12 @@ const Card = ({ pokemon }) => {
           />
         </div>
       </motion.div>
-      <Modal
+      {/* <Modal
         showModal={showModal}
         setShowModal={setShowModal}
         {...pokemon}
         {...pokemonRatings}
-      />
+      /> */}
     </>
   )
 }
