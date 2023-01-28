@@ -45,28 +45,11 @@ const Card = ({ pokemon, setShowModal, setPokemon }) => {
       opacity: 1,
       translateX: 0,
       transition: { duration: 0.5 },
-    },
-    hover: {
       boxShadow: `5px 5px 5px rgb(0, 0, 0, 0.5)`,
-      translateY: -8,
-    },
-  }
-
-  const buttonVariants = {
-    visible: {
-      backgroundColor: backgroundColor,
-      color: color,
-      border: `solid 2px ${backgroundColor}`,
     },
     hover: {
-      backgroundColor: '#ffffff',
-      border: `solid 2px ${backgroundColor}`,
-      transition: { duration: 0.3 },
-      color: '#000000',
-    },
-    tap: {
-      scale: 0.95,
-      transition: { duration: 0.01 },
+      translateY: -8,
+      boxShadow: `none`,
     },
   }
 
@@ -126,7 +109,7 @@ const Card = ({ pokemon, setShowModal, setPokemon }) => {
     <>
       <motion.div
         style={{ border: `solid 5px ${backgroundColor}` }}
-        className={['group cursor-zoom-in', styles.container].join(' ')}
+        className="group m-[10px] flex h-[450px] w-[320px] cursor-zoom-in flex-col items-center rounded-md border-4 border-[#47a8bd] p-4 "
         variants={cardVariants}
         initial="hidden"
         animate="visible"
@@ -144,7 +127,7 @@ const Card = ({ pokemon, setShowModal, setPokemon }) => {
           </span>
         </div>
         {cardFaceComponent[currentFace]}
-        <div className="invisible relative -top-3/4 flex w-full flex-row justify-between group-hover:visible">
+        <div className="invisible absolute top-1/3 flex w-full flex-row justify-between px-4 group-hover:visible">
           <ChevronLeftIcon
             fill="currentColor"
             stroke="currentColor"
