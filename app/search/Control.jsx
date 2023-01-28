@@ -45,10 +45,10 @@ const Control = () => {
     <div
       className={`${
         pokemonCards.length ? 'flex' : 'hidden'
-      } w-full cursor-pointer flex-row justify-start space-x-8 pl-6 text-sm text-white`}
+      } w-full flex-row justify-start space-x-8 pl-6 text-sm text-white`}
     >
       <span
-        className="flex flex-row hover:text-lime-400 active:text-white"
+        className=" flex cursor-pointer flex-row hover:text-lime-400 active:text-white"
         onClick={() => flip(cardFaces)}
       >
         <ArrowUturnLeftIcon className="mr-1 w-4" />
@@ -56,13 +56,13 @@ const Control = () => {
       </span>
       <span
         onClick={() => shuffle()}
-        className="flex flex-row hover:text-lime-400 active:text-white"
+        className="flex cursor-pointer flex-row hover:text-lime-400 active:text-white"
       >
         <ArrowPathIcon className="mr-1 w-4" />
         <button>SHUFFLE</button>
       </span>
       <span
-        className="flex flex-row hover:text-lime-400 active:text-white"
+        className="flex cursor-pointer flex-row hover:text-lime-400 active:text-white"
         onClick={() => clear()}
       >
         <XMarkIcon className="mr-1 w-4" />
