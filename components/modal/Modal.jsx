@@ -76,17 +76,13 @@ const Modal = ({
             />
           </div>
           <div className="flex w-1/2 flex-col justify-center rounded-md text-center">
-            {!ratingComplete ? (
-              <UserRatingForm
-                name={name}
-                pokedex={pokedex}
-                formData={formData}
-                setFormData={setFormData}
-                setRatingComplete={setRatingComplete}
-              />
-            ) : (
-              <ThankYou name={name} {...formData} />
-            )}
+            <UserRatingForm
+              name={name}
+              pokedex={pokedex}
+              formData={formData}
+              setFormData={setFormData}
+              setRatingComplete={setRatingComplete}
+            />
           </div>
         </div>
       </div>

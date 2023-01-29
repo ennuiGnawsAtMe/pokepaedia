@@ -127,7 +127,7 @@ const Card = ({ pokemon, setShowModal, setPokemon }) => {
           </span>
         </div>
         {cardFaceComponent[currentFace]}
-        <div className="invisible absolute top-1/3 flex w-full flex-row justify-between px-4 group-hover:visible">
+        <div className="absolute top-1/3 flex w-full flex-row justify-between px-4 group-hover:visible md:invisible lg:invisible xl:invisible 2xl:invisible">
           <ChevronLeftIcon
             fill="currentColor"
             stroke="currentColor"
