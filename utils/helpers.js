@@ -121,3 +121,11 @@ export const getRandomValue = object => {
   const values = Object.values(object)
   return values[Math.floor(Math.random() * values.length)]
 }
+
+export const getPokemonImage = (allPokemon, pokemon) => {
+  const imageArr = Object.entries(allPokemon).filter(
+    entry => capitalise(entry[0]) === pokemon
+  )
+
+  return imageArr[0][1]
+}

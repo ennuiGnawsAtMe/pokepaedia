@@ -1,3 +1,6 @@
+import { getPokemonImage } from '../utils/helpers'
+import { pokemonImages } from '../data/imgDictionary'
+
 const Blurb = ({ pokemonArray }) => {
   const { pokedex, name, blurb } = pokemonArray[0]
 

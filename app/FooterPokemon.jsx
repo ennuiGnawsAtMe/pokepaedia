@@ -3,10 +3,13 @@
 import Image from 'next/image'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import { getPokemonImage } from '../utils/helpers'
+import { pokemonImages } from '../data/imgDictionary'
 
 const FooterPokemon = ({ pokemon, footerHover, setFooterHover }) => {
   const [isHover, setIsHover] = useState(false)
   const { pokedex, name, imageLocal } = pokemon
+  const image = getPokemonImage(pokemonImages, name)
 
   const footerMonVariants = {
     hidden: {
@@ -40,7 +43,7 @@ const FooterPokemon = ({ pokemon, footerHover, setFooterHover }) => {
         mouseHandler(false)
       }}
     >
-      <div className="absolute -top-16 left-4 hidden w-full flex-col rounded-md bg-white p-2 drop-shadow-md group-hover:flex">
+      <div className="absolute -top-16 hidden w-full flex-col rounded-md bg-white p-2 pl-4 group-hover:flex">
         <h3 className=" text-lg ">#{pokedex}</h3>
         <h2 className=" font-semibold  md:text-sm lg:text-base xl:text-xl">
           {name}
@@ -49,7 +52,7 @@ const FooterPokemon = ({ pokemon, footerHover, setFooterHover }) => {
       <Image
         className=""
         alt="Gotta catch em all!"
-        src={imageLocal}
+        src={image}
         placeholder="blur"
       />
     </motion.div>
