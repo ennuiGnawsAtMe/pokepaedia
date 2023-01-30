@@ -1,13 +1,21 @@
 'use client'
 
 import Image from 'next/image'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { motion } from 'framer-motion'
+import bannerPokemonContext from '../context/bannerPokemonContext'
 import { getPokemonImage } from '../utils/helpers'
 import { pokemonImages } from '../data/imgDictionary'
 
-const FooterPokemon = ({ pokemon, footerHover, setFooterHover }) => {
+const FooterPokemon = ({
+  pokemon,
+  footerHover,
+  setFooterHover,
+  setSelectedPokemon,
+}) => {
+  const [bannerPokemon, setBannerPokemon] = useContext(bannerPokemonContext)
   const [isHover, setIsHover] = useState(false)
+  // const [thisPokemon, setThisPokemon] = useState(pokemon)
   const { pokedex, name, imageLocal } = pokemon
   const image = getPokemonImage(pokemonImages, name)
 
@@ -28,6 +36,10 @@ const FooterPokemon = ({ pokemon, footerHover, setFooterHover }) => {
     setIsHover(bool)
   }
 
+  const clickHandler = () => {
+    setSelectedPokemon(pokemon)
+  }
+
   return (
     <motion.div
       className={`${
@@ -42,6 +54,7 @@ const FooterPokemon = ({ pokemon, footerHover, setFooterHover }) => {
       onMouseLeave={() => {
         mouseHandler(false)
       }}
+      onClick={clickHandler}
     >
       <div className="absolute -top-16 hidden w-full flex-col rounded-md bg-white p-2 pl-4 group-hover:flex">
         <h3 className=" text-lg ">#{pokedex}</h3>

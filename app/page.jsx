@@ -1,6 +1,6 @@
-import Blurb from './Blurb'
-import Banner from './Banner'
+import Banner from './PageContent'
 import Footer from './Footer'
+import PageContent from './PageContent'
 
 let apiURL
 
@@ -29,9 +29,7 @@ export default async function Page() {
 
   return (
     <main className="flex h-screen max-h-screen flex-col items-center justify-between space-y-10">
-      <Banner pokemonArray={pokemonArray} />
-      <Blurb pokemonArray={pokemonArray} />
-      <Footer pokemonArray={pokemonArray} />
+      <PageContent pokemonArray={pokemonArray} />
     </main>
   )
 }

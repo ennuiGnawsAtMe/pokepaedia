@@ -5,6 +5,7 @@ import pokemonCardsContext from '../context/pokemonCardsContext.js'
 import dropdownContext from '../context/dropdownContext'
 import userContext from '../context/userContext'
 import cardFacesContext from '../context/cardFacesContext.js'
+import bannerPokemonContext from '../context/bannerPokemonContext.js'
 import { useGetAllPokemonDb } from '../data/swr.js'
 
 const ContextProvider = ({ children }) => {
@@ -12,6 +13,7 @@ const ContextProvider = ({ children }) => {
   const [dropdown, setDropdown] = useState('name')
   const [user, setUser] = useState('')
   const [cardFaces, setCardFaces] = useState('image')
+  const [bannerPokemon, setBannerPokemon] = useState([])
   const { allPokemonDb, isLoading, isError } = useGetAllPokemonDb()
 
   return (
@@ -19,7 +21,11 @@ const ContextProvider = ({ children }) => {
       <dropdownContext.Provider value={[dropdown, setDropdown]}>
         <pokemonCardsContext.Provider value={[pokemonCards, setPokemonCards]}>
           <cardFacesContext.Provider value={[cardFaces, setCardFaces]}>
-            {children}
+            <bannerPokemonContext.Provider
+              value={[bannerPokemon, setBannerPokemon]}
+            >
+              {children}
+            </bannerPokemonContext.Provider>
           </cardFacesContext.Provider>
         </pokemonCardsContext.Provider>
       </dropdownContext.Provider>

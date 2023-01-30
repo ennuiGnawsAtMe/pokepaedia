@@ -3,9 +3,10 @@
 import { AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
 import FooterPokemon from './FooterPokemon'
-// import { pokemonImages } from '../data/imgDictionary'
+import bannerPokemonContext from '../context/bannerPokemonContext'
 
-const Footer = ({ pokemonArray }) => {
+const Footer = ({ pokemonArray, selectedPokemon, setSelectedPokemon }) => {
+  // const [bannerPokemon, setBannerPokemon] = useContext(bannerPokemonContext)
   const [footerHover, setFooterHover] = useState(false)
   const footerMon = pokemonArray.slice(1)
 
@@ -18,6 +19,8 @@ const Footer = ({ pokemonArray }) => {
             pokemon={pokemon}
             footerHover={footerHover}
             setFooterHover={setFooterHover}
+            selectedPokemon={selectedPokemon}
+            setSelectedPokemon={setSelectedPokemon}
           />
         ))}
       </div>
