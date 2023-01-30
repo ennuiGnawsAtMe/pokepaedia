@@ -1,4 +1,6 @@
-const Blurb = ({ blurb, pokedex, name }) => {
+const Blurb = ({ pokemonArray }) => {
+  const { pokedex, name, blurb } = pokemonArray[0]
+
   return (
     <div className="m-auto flex w-[85vw]  max-w-[1920px] flex-col">
       <div className="flex flex-col space-y-4 font-sans">

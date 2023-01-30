@@ -75,9 +75,13 @@ export const getNameOptions = allPokemon => {
 }
 
 export const getRandomPokemon = pokemonArr => {
-  const randomInt = getRandomId()
-  const randomPokemon = pokemonArr.find(poke => poke.pokedex === randomInt)
-  return randomPokemon
+  let randomPokemonArr = []
+  for (let i = 0; i < 8; i++) {
+    const randomInt = getRandomId()
+    const randomPokemon = pokemonArr.find(poke => poke.pokedex === randomInt)
+    randomPokemonArr.push(randomPokemon)
+  }
+  return randomPokemonArr
 }
 
 export const goToTop = () => {

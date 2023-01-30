@@ -1,29 +1,58 @@
-import Image from 'next/image'
-import { capitalise } from '../utils/helpers'
-import data from '../data/all.json'
+'use client'
 
-const FooterPokemon = ({ pokemon }) => {
-  const [{ pokedex }] = data.pokemon.filter(
-    poke => poke.name.toLowerCase() === pokemon[0]
-  )
+import Image from 'next/image'
+import { useState } from 'react'
+import { motion } from 'framer-motion'
+
+const FooterPokemon = ({ pokemon, footerHover, setFooterHover }) => {
+  const [isHover, setIsHover] = useState(false)
+  const { pokedex, name, imageLocal } = pokemon
+
+  const footerMonVariants = {
+    hidden: {
+      opacity: 0,
+      translateY: 100,
+    },
+    visible: {
+      opacity: 1,
+      translateY: 0,
+      transition: { duration: 0.2 },
+    },
+  }
+
+  const mouseHandler = bool => {
+    setFooterHover(bool)
+    setIsHover(bool)
+  }
 
   return (
-    <div
-      className={`group -mt-24 flex w-[15vw] cursor-pointer flex-col rounded-b-md text-center font-sans opacity-30  hover:opacity-100`}
+    <motion.div
+      className={`${
+        footerHover && !isHover ? '!opacity-30' : ''
+      } group relative flex w-[15vw] cursor-pointer flex-col rounded-b-md font-sans duration-200  `}
+      variants={footerMonVariants}
+      initial="hidden"
+      animate="visible"
+      onMouseEnter={() => {
+        mouseHandler(true)
+      }}
+      onMouseLeave={() => {
+        mouseHandler(false)
+      }}
     >
-      <div className=" flex flex-col items-center justify-center rounded-md p-2 text-center group-hover:bg-gray-50  group-hover:drop-shadow-md">
-        <h3 className="invisible text-lg group-hover:visible">#{pokedex}</h3>
-        <h2 className="invisible font-semibold group-hover:visible md:text-sm lg:text-base xl:text-xl">
-          {capitalise(pokemon[0])}
+      <div className="absolute -top-16 left-4 hidden w-full flex-col rounded-md bg-white p-2 drop-shadow-md group-hover:flex">
+        <h3 className=" text-lg ">#{pokedex}</h3>
+        <h2 className=" font-semibold  md:text-sm lg:text-base xl:text-xl">
+          {name}
         </h2>
       </div>
       <Image
         className=""
         alt="Gotta catch em all!"
-        src={pokemon[1]}
+        src={imageLocal}
         placeholder="blur"
       />
-    </div>
+    </motion.div>
   )
 }
 

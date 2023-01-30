@@ -25,13 +25,13 @@ const getRandomPokemon = async () => {
 }
 
 export default async function Page() {
-  const randomPokemon = await getRandomPokemon()
+  const pokemonArray = await getRandomPokemon()
 
   return (
     <main className="flex h-screen max-h-screen flex-col items-center justify-between space-y-10">
-      <Banner {...randomPokemon} />
-      <Blurb {...randomPokemon} />
-      <Footer />
+      <Banner pokemonArray={pokemonArray} />
+      <Blurb pokemonArray={pokemonArray} />
+      <Footer pokemonArray={pokemonArray} />
     </main>
   )
 }

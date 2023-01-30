@@ -1,7 +1,9 @@
 import NameForm from './NameForm'
 import Image from 'next/image'
 
-const Banner = ({ name, imageLocal }) => {
+const Banner = ({ pokemonArray }) => {
+  const { imageLocal, name } = pokemonArray[0]
+
   return (
     <div className="flex h-[25vh] w-screen flex-row justify-center space-x-10 bg-gradient-to-r from-blue-900 via-lime-400 to-red-900 shadow-2xl shadow-slate-900">
       <div className="flex w-[85vw] max-w-[1920px] flex-row items-center justify-between">
