@@ -12,22 +12,21 @@ const FooterPokemon = ({
   footerHover,
   setFooterHover,
   setSelectedPokemon,
+  setFooterArray,
+  footerArray,
+  selectedPokemon,
 }) => {
-  const [bannerPokemon, setBannerPokemon] = useContext(bannerPokemonContext)
   const [isHover, setIsHover] = useState(false)
-  // const [thisPokemon, setThisPokemon] = useState(pokemon)
   const { pokedex, name, imageLocal } = pokemon
   const image = getPokemonImage(pokemonImages, name)
 
   const footerMonVariants = {
     hidden: {
       opacity: 0,
-      translateY: 100,
     },
     visible: {
       opacity: 1,
-      translateY: 0,
-      transition: { duration: 0.2 },
+      transition: { duration: 0.2, delay: 0.1 },
     },
   }
 
@@ -36,7 +35,17 @@ const FooterPokemon = ({
     setIsHover(bool)
   }
 
+  const newFooterArray = () => {
+    console.log(selectedPokemon)
+    const toReplace = footerArray.map(poke =>
+      poke.pokedex === pokedex ? { ...selectedPokemon } : poke
+    )
+    console.log(toReplace)
+    setFooterArray(toReplace)
+  }
+
   const clickHandler = () => {
+    newFooterArray()
     setSelectedPokemon(pokemon)
   }
 
@@ -44,29 +53,33 @@ const FooterPokemon = ({
     <motion.div
       className={`${
         footerHover && !isHover ? '!opacity-30' : ''
-      } group relative flex w-[15vw] cursor-pointer flex-col rounded-b-md font-sans duration-200  `}
+      } relative flex w-[15vw] flex-col rounded-b-md font-sans duration-200  `}
       variants={footerMonVariants}
       initial="hidden"
       animate="visible"
-      onMouseEnter={() => {
-        mouseHandler(true)
-      }}
-      onMouseLeave={() => {
-        mouseHandler(false)
-      }}
-      onClick={clickHandler}
     >
-      <div className="absolute -top-16 hidden w-full flex-col rounded-md bg-white p-2 pl-4 group-hover:flex">
+      <div
+        className={`absolute -top-20  w-full flex-col rounded-md bg-white p-2 pl-4 ${
+          footerHover && isHover ? 'flex' : 'hidden'
+        }`}
+      >
         <h3 className=" text-lg ">#{pokedex}</h3>
         <h2 className=" font-semibold  md:text-sm lg:text-base xl:text-xl">
           {name}
         </h2>
       </div>
       <Image
-        className=""
+        className=" cursor-pointer"
         alt="Gotta catch em all!"
         src={image}
         placeholder="blur"
+        onMouseEnter={() => {
+          mouseHandler(true)
+        }}
+        onMouseLeave={() => {
+          mouseHandler(false)
+        }}
+        onClick={clickHandler}
       />
     </motion.div>
   )

@@ -1,12 +1,6 @@
 'use client'
 
-import { useContext } from 'react'
-import bannerPokemonContext from '../context/bannerPokemonContext'
-
 const BannerBlurb = ({ selectedPokemon }) => {
-  // const [bannerPokemon, setBannerPokemon] = useContext(bannerPokemonContext)
-  // const { pokedex, name, blurb } = bannerPokemon
-
   return (
     <div className="m-auto flex w-[85vw]  max-w-[1920px] flex-col">
       <div className="flex flex-col space-y-4 font-sans">

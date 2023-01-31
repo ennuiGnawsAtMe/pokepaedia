@@ -10,13 +10,8 @@ import { pokemonImages } from '../data/imgDictionary'
 import Footer from './Footer'
 
 const PageContent = ({ pokemonArray }) => {
-  // const [bannerPokemon, setBannerPokemon] = useContext(bannerPokemonContext)
   const [selectedPokemon, setSelectedPokemon] = useState(pokemonArray[0])
   const image = getPokemonImage(pokemonImages, selectedPokemon.name)
-
-  // useEffect(() => {
-  //   setThisPokemon()
-  // }, [])
 
   return (
     <>

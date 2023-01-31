@@ -6,14 +6,14 @@ import FooterPokemon from './FooterPokemon'
 import bannerPokemonContext from '../context/bannerPokemonContext'
 
 const Footer = ({ pokemonArray, selectedPokemon, setSelectedPokemon }) => {
-  // const [bannerPokemon, setBannerPokemon] = useContext(bannerPokemonContext)
   const [footerHover, setFooterHover] = useState(false)
   const footerMon = pokemonArray.slice(1)
+  const [footerArray, setFooterArray] = useState(footerMon)
 
   return (
     <AnimatePresence>
       <div className="flex w-[100vw] max-w-[1920px] shrink-0 flex-row justify-center ">
-        {footerMon.map((pokemon, index) => (
+        {footerArray.map((pokemon, index) => (
           <FooterPokemon
             key={pokemon.pokedex}
             pokemon={pokemon}
@@ -21,6 +21,8 @@ const Footer = ({ pokemonArray, selectedPokemon, setSelectedPokemon }) => {
             setFooterHover={setFooterHover}
             selectedPokemon={selectedPokemon}
             setSelectedPokemon={setSelectedPokemon}
+            setFooterArray={setFooterArray}
+            footerArray={footerArray}
           />
         ))}
       </div>
