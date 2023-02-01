@@ -24,7 +24,7 @@ const CARD_COLOURS = {
   pink: { backgroundColor: '#A72B6E', color: '#ffffff' },
 }
 
-const Card = ({ pokemon, setShowModal, setPokemon }) => {
+const Card = ({ pokemon, setShowModal, setPokemon, variants }) => {
   const [cardFaces, setCardFaces] = useContext(cardFacesContext)
   const [currentFace, setCurrentFace] = useState('image')
   const { allPokemonDb, isLoading, isError } = useGetAllPokemonDb()
@@ -35,23 +35,6 @@ const Card = ({ pokemon, setShowModal, setPokemon }) => {
 
   const pokemonRatings = allPokemonDb.find(poke => poke.pokedex === pokedex)
   const { ranking } = pokemonRatings
-
-  const cardVariants = {
-    hidden: {
-      opacity: 0,
-      translateX: -50,
-    },
-    visible: {
-      opacity: 1,
-      translateX: 0,
-      transition: { duration: 0.5 },
-      boxShadow: `5px 5px 5px rgb(0, 0, 0, 0.5)`,
-    },
-    hover: {
-      translateY: -8,
-      boxShadow: `none`,
-    },
-  }
 
   const clickHandlerRight = e => {
     e.stopPropagation()
@@ -110,7 +93,7 @@ const Card = ({ pokemon, setShowModal, setPokemon }) => {
       <motion.div
         style={{ border: `solid 5px ${backgroundColor}` }}
         className="group m-[10px] flex h-[450px] w-[320px] cursor-zoom-in flex-col items-center rounded-md border-4 border-[#47a8bd] p-4 "
-        variants={cardVariants}
+        variants={variants}
         initial="hidden"
         animate="visible"
         whileHover="hover"
