@@ -23,10 +23,10 @@ const sono = Sono({
 export default function RootLayout({ children }) {
   return (
     <html
-      className={` ${ibarraRealNova.variable} ${firaCode.variable} ${sono.variable}`}
+      className={` ${ibarraRealNova.variable} ${firaCode.variable} ${sono.variable}  `}
       lang="en"
     >
-      <body>
+      <body className="overflow-x-hidden">
         <ContextProvider>{children}</ContextProvider>
       </body>
     </html>
