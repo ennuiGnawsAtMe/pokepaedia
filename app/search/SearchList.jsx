@@ -1,6 +1,6 @@
 'use client'
 
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import Card from '../../components/card/Card'
 import pokemonCardsContext from '../../context/pokemonCardsContext.js'
@@ -22,7 +22,8 @@ const SearchList = () => {
       x: 0,
       boxShadow: `5px 5px 5px rgb(0, 0, 0, 0.5)`,
       transition: {
-        delay: 0.3,
+        duration: 0.8,
+        delay: 0.2,
         ease: [0, 0.71, 0.2, 1.01],
       },
     },
@@ -31,10 +32,6 @@ const SearchList = () => {
       boxShadow: `none`,
     },
   }
-
-  useEffect(() => {
-    console.log(pokemon)
-  }, [pokemon])
 
   return (
     <>
