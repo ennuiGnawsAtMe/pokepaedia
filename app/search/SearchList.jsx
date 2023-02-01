@@ -22,11 +22,12 @@ const SearchList = () => {
       x: 0,
       boxShadow: `5px 5px 5px rgb(0, 0, 0, 0.5)`,
       transition: {
-        duration: 1,
+        delay: 0.3,
+        ease: [0, 0.71, 0.2, 1.01],
       },
     },
     hover: {
-      y: -8,
+      y: -10,
       boxShadow: `none`,
     },
   }
@@ -40,8 +41,8 @@ const SearchList = () => {
       <AnimatePresence>
         {showModal && <Modal setShowModal={setShowModal} {...pokemon} />}
       </AnimatePresence>
-      <div className="z-0 m-auto mt-10 mb-[15vh] flex max-w-[1920px] flex-row flex-wrap justify-center overflow-hidden ">
-        <AnimatePresence>
+      <AnimatePresence>
+        <div className="z-0 m-auto mt-10 mb-[15vh] flex max-w-[1920px] flex-row flex-wrap justify-center overflow-hidden ">
           {pokemonCards.map(poke => (
             <Card
               key={poke.pokedex}
@@ -51,8 +52,8 @@ const SearchList = () => {
               variants={cardVariants}
             />
           ))}
-        </AnimatePresence>
-      </div>
+        </div>
+      </AnimatePresence>
     </>
   )
 }
