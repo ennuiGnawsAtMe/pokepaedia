@@ -1,12 +1,18 @@
 'use client'
 
 import Image from 'next/image'
+import { motion } from 'framer-motion'
 import styles from './CardAbout.module.css'
 
-const CardAbout = ({ blurb, name, imageLocal }) => {
+const CardAbout = ({ blurb, name, imageLocal, faceVariants }) => {
   return (
-    <>
-      <div className={styles.imageContainer}>
+    <motion.div
+      className="flex h-full w-full flex-col justify-start pt-4"
+      variants={faceVariants}
+      initial="hidden"
+      animate="visible"
+    >
+      <div className="relative flex h-full w-full">
         <Image
           src={imageLocal}
           alt={name}
@@ -26,7 +32,7 @@ const CardAbout = ({ blurb, name, imageLocal }) => {
           <p>{blurb}</p>
         </div>
       </div>
-    </>
+    </motion.div>
   )
 }
 

@@ -72,11 +72,24 @@ const Card = ({ pokemon, setShowModal, setPokemon, variants }) => {
     }
   }
 
+  const faceVariants = {
+    hidden: {
+      opacity: 0,
+      scale: 1.3,
+    },
+    visible: {
+      opacity: 1,
+      scale: 1,
+    },
+  }
+
   const cardFaceComponent = {
-    about: <CardAbout {...pokemon} />,
-    types: <CardTypes {...pokemon} />,
-    ability: <CardStats {...pokemon} />,
-    image: <CardImage {...pokemon} {...pokemonRatings} />,
+    about: <CardAbout {...pokemon} faceVariants={faceVariants} />,
+    types: <CardTypes {...pokemon} faceVariants={faceVariants} />,
+    ability: <CardStats {...pokemon} faceVariants={faceVariants} />,
+    image: (
+      <CardImage {...pokemon} {...pokemonRatings} faceVariants={faceVariants} />
+    ),
   }
 
   const clickHandlerModal = () => {
@@ -92,24 +105,27 @@ const Card = ({ pokemon, setShowModal, setPokemon, variants }) => {
     <>
       <motion.div
         style={{ border: `solid 5px ${backgroundColor}` }}
-        className="group m-[10px] flex h-[450px] w-[320px] cursor-zoom-in flex-col items-center rounded-md border-4 border-[#47a8bd] p-4 "
+        className="group relative m-[10px] flex h-[450px] w-[320px] cursor-zoom-in flex-col items-center rounded-md border-4 border-[#47a8bd] p-4"
         variants={variants}
         initial="hidden"
         animate="visible"
         whileHover="hover"
         onClick={clickHandlerModal}
       >
-        <div className={[styles.topDetails]}>
-          <div className={styles.imageText}>
-            <h4>Pokédex</h4>
-            <h3>{pokedex}</h3>
-          </div>
-          <span className={styles.rank}>
-            <h4>Ranked</h4>
-            <h3>{ranking}</h3>
+        <div className="absolute top-2 flex min-h-[8%] w-full flex-row justify-around">
+          <span className="flex flex-row items-center justify-between ">
+            <h4 className="p-1 font-mono text-xs">Pokédex</h4>
+            <h3 className="p-1 font-mono text-xl">{pokedex}</h3>
+          </span>
+          <span className="flex flex-row items-center justify-between ">
+            <h4 className="p-1 font-mono text-xs font-extralight">Ranked</h4>
+            <h3 className="p-1 font-mono text-xl">{ranking}</h3>
           </span>
         </div>
-        {cardFaceComponent[currentFace]}
+        <div className="absolute top-10 flex h-full max-h-[380px] w-full flex-col justify-start px-4">
+          {cardFaceComponent[currentFace]}
+        </div>
+
         <div className="absolute top-1/3 flex w-full flex-row justify-between px-4 group-hover:visible md:invisible lg:invisible xl:invisible 2xl:invisible">
           <ChevronLeftIcon
             fill="currentColor"

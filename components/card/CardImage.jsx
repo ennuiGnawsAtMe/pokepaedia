@@ -1,14 +1,25 @@
 'use client'
 
 import Image from 'next/image'
+import { motion } from 'framer-motion'
 import ReactStars from 'react-rating-stars-component'
 import styles from './CardImage.module.css'
 import loading from '../../public/images/loading.gif'
 
-const CardImage = ({ name, ratingOverall, imageLocal, ratings }) => {
-  // console.log(pokemon)
+const CardImage = ({
+  name,
+  ratingOverall,
+  imageLocal,
+  ratings,
+  faceVariants,
+}) => {
   return (
-    <>
+    <motion.div
+      variants={faceVariants}
+      initial={false}
+      animate="visible"
+      className="flex h-full w-full flex-col justify-start text-center"
+    >
       <div className={styles.nameContainer}>
         <h2>{name}</h2>
       </div>
@@ -26,7 +37,7 @@ const CardImage = ({ name, ratingOverall, imageLocal, ratings }) => {
           />
         </div>
       </div>
-      <div className={styles.imageContainer}>
+      <div className="relative flex h-full w-full">
         <Image
           src={imageLocal ? imageLocal : loading}
           alt={name}
@@ -37,7 +48,7 @@ const CardImage = ({ name, ratingOverall, imageLocal, ratings }) => {
           }}
         />
       </div>
-    </>
+    </motion.div>
   )
 }
 

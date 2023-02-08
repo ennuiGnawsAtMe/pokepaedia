@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import { motion } from 'framer-motion'
 import styles from './CardTypes.module.css'
 import Types from '../utils/Types'
 
@@ -16,12 +17,16 @@ const CardTypes = ({
   height,
   experience,
   type,
+  faceVariants,
 }) => {
   return (
-    <>
-      <div className={styles.imageContainer}>
-        {/* <Link href={`/${name.toLowerCase()}`} >
-     <a> */}
+    <motion.div
+      variants={faceVariants}
+      initial="hidden"
+      animate="visible"
+      className="flex h-full w-full flex-col justify-start pt-4 text-center"
+    >
+      <div className="relative flex h-full w-full">
         <Image
           src={imageLocal}
           alt={name}
@@ -31,8 +36,6 @@ const CardTypes = ({
             objectFit: 'contain',
           }}
         />
-        {/* </a>
-   </Link> */}
       </div>
       <div className={styles.nameContainer}>
         <h2>{name}</h2>
@@ -80,7 +83,7 @@ const CardTypes = ({
           ))}
         </div>
       </div>
-    </>
+    </motion.div>
   )
 }
 

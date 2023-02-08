@@ -1,5 +1,6 @@
 'use client'
 
+import { motion } from 'framer-motion'
 import Image from 'next/image'
 import styles from './CardStats.module.css'
 
@@ -11,12 +12,16 @@ const CardStats = ({
   habitat,
   imageLocal,
   name,
+  faceVariants,
 }) => {
   return (
-    <>
-      <div className={styles.imageContainer}>
-        {/* <Link href={`/${name.toLowerCase()}`} >
-       <a> */}
+    <motion.div
+      variants={faceVariants}
+      initial="hidden"
+      animate="visible"
+      className="flex h-full w-full flex-col justify-start pt-4 text-center"
+    >
+      <div className="relative flex h-full w-full">
         <Image
           src={imageLocal}
           alt={name}
@@ -26,8 +31,6 @@ const CardStats = ({
             objectFit: 'contain',
           }}
         />
-        {/* </a>
-     </Link> */}
       </div>
       <div className={styles.nameContainer}>
         <h2>{name}</h2>
@@ -52,7 +55,7 @@ const CardStats = ({
           </span>
         </div>
       </div>
-    </>
+    </motion.div>
   )
 }
 

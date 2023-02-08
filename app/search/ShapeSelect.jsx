@@ -2,6 +2,7 @@
 
 import { useContext } from 'react'
 import Select from 'react-select'
+import cardFacesContext from '../../context/cardFacesContext.js'
 import pokemonCardsContext from '../../context/pokemonCardsContext.js'
 import { goToTop, sortByRating } from '../../utils/helpers.js'
 import { useGetAllPokemonDb } from '../../data/swr.js'
@@ -10,11 +11,13 @@ import { shapeOptions } from '../../data/constants.js'
 
 const ShapeSelect = () => {
   const [pokemonCards, setPokemonCards] = useContext(pokemonCardsContext)
+  const [cardFaces, setCardFaces] = useContext(cardFacesContext)
   const { allPokemonDb } = useGetAllPokemonDb()
   const { pokemon } = data
 
   const changeHandler = shapeName => {
     goToTop()
+    setCardFaces('image')
     const newSelection = pokemon.filter(({ shape }) => shape == shapeName)
     const sortedSelection = sortByRating(newSelection, allPokemonDb)
     setPokemonCards(sortedSelection)
