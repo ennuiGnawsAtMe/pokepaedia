@@ -1,7 +1,15 @@
 import styles from './OverallRatings.module.css'
 import ReactStars from 'react-rating-stars-component'
+import { useGetAllPokemonDb } from '../../data/swr'
 
-const OverallRatings = ({ name, ranking, ratingOverall, ratings, blurb }) => {
+const OverallRatings = ({ name, blurb, pokedex }) => {
+  const { allPokemonDb, mutateAllPokemonDb } = useGetAllPokemonDb()
+
+  const pokemon = allPokemonDb.find(poke => (poke.pokedex = pokedex))
+
+  const { ranking, ratingOverall, ratings } = pokemon
+  console.log(ranking, ratingOverall, ratings)
+
   return (
     <div className={styles.container}>
       <div className={styles.titleContainer}>

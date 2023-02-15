@@ -76,10 +76,13 @@ export const getNameOptions = allPokemon => {
 
 export const getRandomPokemon = pokemonArr => {
   let randomPokemonArr = []
-  for (let i = 0; i < 8; i++) {
+
+  while (randomPokemonArr.length < 8) {
     const randomInt = getRandomId()
     const randomPokemon = pokemonArr.find(poke => poke.pokedex === randomInt)
-    randomPokemonArr.push(randomPokemon)
+    randomPokemonArr.find(poke => poke === randomPokemon.pokedex)
+      ? null
+      : randomPokemonArr.push(randomPokemon)
   }
   return randomPokemonArr
 }

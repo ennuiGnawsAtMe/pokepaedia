@@ -1,11 +1,11 @@
 'use client'
 
-import { useState } from 'react'
+import { useContext } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import axios from 'axios'
+import userContext from '../../context/userContext'
 import { getOrdinalNumbers } from '../../utils/helpers'
 import { useGetAllPokemonDb } from '../../data/swr'
-import styles from './UserRatingForm.module.css'
 import ReactStars from 'react-rating-stars-component'
 
 const buttonVariants = {
@@ -16,18 +16,16 @@ const buttonVariants = {
   tap: { scale: 1 },
 }
 
-const containerVariants = {
-  hidden: {},
-  visible: {},
-}
-
 const UserRatingForm = ({
   pokedex,
   formData,
   setFormData,
   setRatingComplete,
 }) => {
+  const [user, setUser] = useContext(userContext)
   const { allPokemonDb, mutateAllPokemonDb } = useGetAllPokemonDb()
+
+  console.log(user)
 
   const handleFormChange = e => {
     if (typeof e === 'number') {
@@ -46,8 +44,10 @@ const UserRatingForm = ({
 
   const handleFormSubmit = async e => {
     e.preventDefault()
-    if (!formData.userName || !formData.comment) {
-      alert('Make sure you enter your name and comment!')
+    if (!formData.comment) {
+      alert(
+        "Whoa, holdup! You haven't told us how you feel about this pokemon!"
+      )
     } else {
       setRatingComplete(true)
 
@@ -56,7 +56,7 @@ const UserRatingForm = ({
           const newRatings = [
             ...poke.ratings,
             {
-              name: formData.userName,
+              name: user,
               comment: formData.comment,
               pokedex: poke.pokedex,
               rating: formData.rating,
@@ -90,7 +90,7 @@ const UserRatingForm = ({
 
       const payload = {
         pokedex: pokedex,
-        name: formData.userName,
+        name: user,
         comment: formData.comment,
         rating: formData.rating,
       }
@@ -99,45 +99,35 @@ const UserRatingForm = ({
         await mutateAllPokemonDb(() => optimisticWithRank, false)
         await axios.post('/api/ratings', payload)
       } catch (error) {
-        console.error(error)
+        throw new Error(error)
       }
     }
   }
 
   return (
     <AnimatePresence exitBeforeEnter>
-      <motion.div
-        className={styles.container}
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        <div className={styles.starsWrapper}>
-          <ReactStars
-            size={40}
-            value={formData.rating}
-            color="gray"
-            onChange={e => handleFormChange(e)}
-          />
+      <div className="flex h-full flex-col justify-center rounded-lg p-20 text-center">
+        <div className="flex flex-row items-center justify-center space-x-2">
+          <h3 className="text-base">Your Rating:</h3>
+          <div className="flex flex-col justify-center align-middle">
+            <ReactStars
+              size={30}
+              value={formData.rating}
+              color="gray"
+              onChange={e => handleFormChange(e)}
+            />
+          </div>
         </div>
         <form
-          className={styles.formWrapper}
+          className="align-middle"
           action="/api/ratings"
           method="post"
           onSubmit={e => e.preventDefault()}
         >
-          <input
-            type="text"
-            placeholder="Name"
-            name="userName"
-            value={formData.userName}
-            autoFocus
-            required
-            onChange={e => handleFormChange(e)}
-          />
           <textarea
             type="text"
-            placeholder="Comment"
+            placeholder="Your Comment..."
+            className="mt-4 h-[200px] w-full rounded-lg p-4 font-mono text-lg drop-shadow-lg"
             name="comment"
             value={formData.comment}
             required
@@ -146,7 +136,7 @@ const UserRatingForm = ({
           <motion.button
             type="submit"
             variants={buttonVariants}
-            style={{ backgroundColor: '#47a8bd' }}
+            className="mt-4 w-full rounded-lg bg-[#47a8bd] p-2 text-xl text-white"
             whileHover="hover"
             whileTap="tap"
             onClick={handleFormSubmit}
@@ -154,7 +144,7 @@ const UserRatingForm = ({
             Submit
           </motion.button>
         </form>
-      </motion.div>
+      </div>
     </AnimatePresence>
   )
 }

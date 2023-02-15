@@ -12,7 +12,6 @@ const NameForm = randomPokemon => {
 
   const changeHandler = e => {
     setName(e)
-    console.log(name)
   }
 
   const submitHandler = e => {

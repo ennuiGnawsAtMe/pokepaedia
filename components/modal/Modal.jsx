@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { motion } from 'framer-motion'
 import OverallRatings from './OverallRatings'
 import UserRatingForm from './UserRatingForm'
@@ -26,7 +26,6 @@ const Modal = ({
   const [ratingComplete, setRatingComplete] = useState(false)
   const [formData, setFormData] = useState({
     rating: 0,
-    userName: '',
     comment: '',
   })
 
@@ -67,22 +66,20 @@ const Modal = ({
               }}
               className="h-1/2"
             />
-            <OverallRatings
-              name={name}
-              ratings={ratings}
-              ratingOverall={ratingOverall}
-              ranking={ranking}
-              blurb={blurb}
-            />
+            <OverallRatings name={name} blurb={blurb} pokedex={pokedex} />
           </div>
-          <div className="flex w-1/2 flex-col justify-center rounded-md text-center">
-            <UserRatingForm
-              name={name}
-              pokedex={pokedex}
-              formData={formData}
-              setFormData={setFormData}
-              setRatingComplete={setRatingComplete}
-            />
+          <div className="flex w-1/2 flex-col items-center justify-center rounded-md bg-[#47a7bd18] text-center">
+            {!ratingComplete ? (
+              <UserRatingForm
+                name={name}
+                pokedex={pokedex}
+                formData={formData}
+                setFormData={setFormData}
+                setRatingComplete={setRatingComplete}
+              />
+            ) : (
+              <ThankYou {...formData} />
+            )}
           </div>
         </div>
       </div>

@@ -1,43 +1,43 @@
-import { motion, AnimatePresence, animate } from 'framer-motion'
-import styles from './ThankYou.module.css'
+import { motion, AnimatePresence } from 'framer-motion'
+import { useContext } from 'react'
+import userContext from '../../context/userContext'
 import ReactStars from 'react-rating-stars-component'
 
 const bubbleVariants = {
-  hidden: { 
-    translateY: 50,
-    opacity: 0
+  hidden: {
+    translateY: 200,
+    opacity: 0,
   },
-  visible: { 
+  visible: {
     translateY: 0,
-    opacity: 1, 
-    transition: { duration: 0.5 } 
-  }
+    opacity: 1,
+    transition: { duration: 0.5 },
+  },
 }
 
-const ThankYou = ({ rating, comment, userName }) => {
+const ThankYou = ({ rating, comment }) => {
+  const [user, setUser] = useContext(userContext)
 
   return (
     <AnimatePresence>
-        <motion.div 
-          className={styles.container}
-          variants={bubbleVariants}
-          initial="hidden"
-          animate="visible"
-        >    
-            <div className={styles.speechBubble}>
-              <h4>{userName}</h4>
-              <h3>{comment}</h3>
-              <div className={styles.starsWrapper}>
-              <ReactStars 
-                size={20} 
-                value={rating} 
-                edit={false} 
-                isHalf={true} 
-                color="white"
-              />
-              </div>
-            </div>
-        </motion.div>
+      <motion.div
+        className="flex w-2/3 flex-col items-center justify-between space-y-4 break-all rounded-lg bg-white p-4"
+        variants={bubbleVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        <div className="flex">
+          <ReactStars
+            size={40}
+            value={rating}
+            edit={false}
+            isHalf={true}
+            color="gray"
+          />
+        </div>
+        <h3 className="text-xl text-[#1e1e1e]">{comment}</h3>
+        <h4 className="text-sm text-[#1e1e1e]">{user || 'Anonymous'}</h4>
+      </motion.div>
     </AnimatePresence>
   )
 }

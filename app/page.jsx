@@ -1,5 +1,3 @@
-import Banner from './PageContent'
-import Footer from './Footer'
 import PageContent from './PageContent'
 
 let apiURL
@@ -24,7 +22,7 @@ const getRandomPokemon = async () => {
   return await res.json()
 }
 
-export default async function Page() {
+const Page = async () => {
   const pokemonArray = await getRandomPokemon()
 
   return (
@@ -33,3 +31,5 @@ export default async function Page() {
     </main>
   )
 }
+
+export default Page
