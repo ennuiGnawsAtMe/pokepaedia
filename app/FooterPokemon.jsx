@@ -1,9 +1,8 @@
 'use client'
 
 import Image from 'next/image'
-import { useState, useContext } from 'react'
+import { useState } from 'react'
 import { motion } from 'framer-motion'
-import bannerPokemonContext from '../context/bannerPokemonContext'
 import { getPokemonImage } from '../utils/helpers'
 import { pokemonImages } from '../data/imgDictionary'
 
@@ -17,7 +16,7 @@ const FooterPokemon = ({
   selectedPokemon,
 }) => {
   const [isHover, setIsHover] = useState(false)
-  const { pokedex, name, imageLocal } = pokemon
+  const { pokedex, name } = pokemon
   const image = getPokemonImage(pokemonImages, name)
 
   const footerMonVariants = {
@@ -36,11 +35,9 @@ const FooterPokemon = ({
   }
 
   const newFooterArray = () => {
-    console.log(selectedPokemon)
     const toReplace = footerArray.map(poke =>
       poke.pokedex === pokedex ? { ...selectedPokemon } : poke
     )
-    console.log(toReplace)
     setFooterArray(toReplace)
   }
 

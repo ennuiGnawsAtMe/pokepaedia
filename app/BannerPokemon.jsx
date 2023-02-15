@@ -3,7 +3,7 @@
 import NameForm from './NameForm'
 import Image from 'next/image'
 import bannerPokemonContext from '../context/bannerPokemonContext'
-import { useContext, useEffect, useState } from 'react'
+import { useContext } from 'react'
 
 const BannerPokemon = ({ pokemonArray, selectedPokemon, image }) => {
   const [bannerPokemon, setBannerPokemon] = useContext(bannerPokemonContext)

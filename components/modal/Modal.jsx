@@ -66,7 +66,14 @@ const Modal = ({
               }}
               className="h-1/2"
             />
-            <OverallRatings name={name} blurb={blurb} pokedex={pokedex} />
+            <OverallRatings
+              name={name}
+              blurb={blurb}
+              pokedex={pokedex}
+              ranking={ranking}
+              ratingOverall={ratingOverall}
+              ratings={ratings}
+            />
           </div>
           <div className="flex w-1/2 flex-col items-center justify-center rounded-md bg-[#47a7bd18] text-center">
             {!ratingComplete ? (

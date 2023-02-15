@@ -1,8 +1,7 @@
 'use client'
 
-import { useContext, useEffect, useState } from 'react'
+import { useState } from 'react'
 import NameForm from './NameForm'
-import bannerPokemonContext from '../context/bannerPokemonContext'
 import BannerPokemon from './BannerPokemon'
 import BannerBlurb from './BannerBlurb'
 import { getPokemonImage } from '../utils/helpers'

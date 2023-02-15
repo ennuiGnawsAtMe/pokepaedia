@@ -1,3 +1,5 @@
+'use client'
+
 import { motion, AnimatePresence } from 'framer-motion'
 import { useContext } from 'react'
 import userContext from '../../context/userContext'

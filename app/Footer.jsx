@@ -3,7 +3,6 @@
 import { AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
 import FooterPokemon from './FooterPokemon'
-import bannerPokemonContext from '../context/bannerPokemonContext'
 
 const Footer = ({ pokemonArray, selectedPokemon, setSelectedPokemon }) => {
   const [footerHover, setFooterHover] = useState(false)

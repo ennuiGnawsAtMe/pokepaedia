@@ -25,8 +25,6 @@ const UserRatingForm = ({
   const [user, setUser] = useContext(userContext)
   const { allPokemonDb, mutateAllPokemonDb } = useGetAllPokemonDb()
 
-  console.log(user)
-
   const handleFormChange = e => {
     if (typeof e === 'number') {
       setFormData({

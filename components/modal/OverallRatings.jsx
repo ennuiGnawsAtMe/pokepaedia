@@ -1,14 +1,23 @@
+'use client'
+
 import styles from './OverallRatings.module.css'
 import ReactStars from 'react-rating-stars-component'
 import { useGetAllPokemonDb } from '../../data/swr'
 
-const OverallRatings = ({ name, blurb, pokedex }) => {
+const OverallRatings = ({
+  name,
+  blurb,
+  pokedex,
+  ranking,
+  ratingOverall,
+  ratings,
+}) => {
   const { allPokemonDb, mutateAllPokemonDb } = useGetAllPokemonDb()
 
-  const pokemon = allPokemonDb.find(poke => (poke.pokedex = pokedex))
+  // const pokemon = allPokemonDb.find(poke => (poke.pokedex = pokedex))
 
-  const { ranking, ratingOverall, ratings } = pokemon
-  console.log(ranking, ratingOverall, ratings)
+  // const { ranking, ratingOverall, ratings } = pokemon
+  // console.log(ranking, ratingOverall, ratings)
 
   return (
     <div className={styles.container}>
