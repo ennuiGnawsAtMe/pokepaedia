@@ -1,11 +1,11 @@
 'use client'
 
 import Image from 'next/image'
-import { useState, useContext } from 'react'
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import OverallRatings from './OverallRatings'
 import UserRatingForm from './UserRatingForm'
-import ThankYou from './ThankYou'
+import Comments from './Comments'
 import { XMarkIcon } from '@heroicons/react/24/solid'
 
 const backdropVariants = {
@@ -85,7 +85,7 @@ const Modal = ({
                 setRatingComplete={setRatingComplete}
               />
             ) : (
-              <ThankYou {...formData} />
+              <Comments {...formData} />
             )}
           </div>
         </div>
