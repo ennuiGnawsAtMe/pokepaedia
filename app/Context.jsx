@@ -11,7 +11,7 @@ import { useGetAllPokemonDb } from '../data/swr.js'
 const ContextProvider = ({ children }) => {
   const [pokemonCards, setPokemonCards] = useState([])
   const [dropdown, setDropdown] = useState('name')
-  const [user, setUser] = useState('')
+  const [user, setUser] = useState('Anonymous')
   const [cardFaces, setCardFaces] = useState('image')
   const [bannerPokemon, setBannerPokemon] = useState([])
   const { allPokemonDb, isLoading, isError } = useGetAllPokemonDb()
