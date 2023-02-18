@@ -74,11 +74,9 @@ const Card = ({ pokemon, setShowModal, setPokemon, variants }) => {
   const faceVariants = {
     hidden: {
       opacity: 0,
-      scale: 1.3,
     },
     visible: {
       opacity: 1,
-      scale: 1,
     },
   }
 

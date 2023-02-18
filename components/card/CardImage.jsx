@@ -16,7 +16,7 @@ const CardImage = ({
   return (
     <motion.div
       variants={faceVariants}
-      initial={false}
+      initial="hidden"
       animate="visible"
       className="flex h-full w-full flex-col justify-start text-center"
     >
