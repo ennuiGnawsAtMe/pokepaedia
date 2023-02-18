@@ -85,7 +85,7 @@ const Modal = ({
                 setRatingComplete={setRatingComplete}
               />
             ) : (
-              <Comments {...formData} ratings={ratings} />
+              <Comments pokedex={pokedex} />
             )}
           </div>
         </div>
