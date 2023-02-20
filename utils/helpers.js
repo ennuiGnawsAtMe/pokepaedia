@@ -80,9 +80,12 @@ export const getRandomPokemon = pokemonArr => {
   while (randomPokemonArr.length < 8) {
     const randomInt = getRandomId()
     const randomPokemon = pokemonArr.find(poke => poke.pokedex === randomInt)
-    randomPokemonArr.find(poke => poke === randomPokemon.pokedex)
-      ? null
-      : randomPokemonArr.push(randomPokemon)
+
+    if (
+      !randomPokemonArr.find(poke => poke.pokedex === randomPokemon.pokedex)
+    ) {
+      randomPokemonArr.push(randomPokemon)
+    }
   }
   return randomPokemonArr
 }
