@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import ReactStars from 'react-rating-stars-component'
+import { DateTime } from 'luxon'
 
 const bubbleVariants = {
   hidden: {
@@ -13,7 +14,7 @@ const bubbleVariants = {
   },
 }
 
-const Comment = ({ rating, comment, name }) => {
+const Comment = ({ rating, comment, name, date }) => {
   return (
     <motion.div
       className="flex max-h-[80%] w-full flex-col items-center justify-between space-y-4 overflow-scroll whitespace-normal rounded-lg bg-white p-4"
@@ -21,6 +22,7 @@ const Comment = ({ rating, comment, name }) => {
       initial="hidden"
       animate="visible"
     >
+      <p>{DateTime.fromISO(date)}</p>
       <div className="flex">
         <ReactStars
           size={40}
@@ -31,9 +33,7 @@ const Comment = ({ rating, comment, name }) => {
         />
       </div>
       <p className="w-full break-words text-xl text-[#1e1e1e]">{comment}</p>
-      <p className=" w-full break-words text-sm text-[#1e1e1e]">
-        {name || 'Anonymous'}
-      </p>
+      <p className=" w-full break-words text-sm text-[#1e1e1e]">{name}</p>
     </motion.div>
   )
 }

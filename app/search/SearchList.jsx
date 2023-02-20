@@ -1,10 +1,9 @@
 'use client'
 
 import { useContext, useState } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence } from 'framer-motion'
 import Card from '../../components/card/Card'
 import pokemonCardsContext from '../../context/pokemonCardsContext.js'
-import cardFacesContext from '../../context/cardFacesContext'
 import Modal from '../../components/modal/Modal'
 
 const SearchList = () => {

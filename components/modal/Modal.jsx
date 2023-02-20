@@ -76,7 +76,7 @@ const Modal = ({
             />
           </div>
           <div className="flex w-1/2 flex-col items-center justify-center rounded-md bg-[#47a7bd18] text-center">
-            {!ratingComplete ? (
+            {/* {!ratingComplete ? (
               <UserRatingForm
                 name={name}
                 pokedex={pokedex}
@@ -84,9 +84,9 @@ const Modal = ({
                 setFormData={setFormData}
                 setRatingComplete={setRatingComplete}
               />
-            ) : (
-              <Comments pokedex={pokedex} />
-            )}
+            ) : ( */}
+            <Comments pokedex={pokedex} />
+            {/* )} */}
           </div>
         </div>
       </div>

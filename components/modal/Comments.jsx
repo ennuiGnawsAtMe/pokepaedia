@@ -11,22 +11,22 @@ const Comments = ({ pokedex }) => {
   const { allPokemonDb } = useGetAllPokemonDb()
 
   const pokemon = allPokemonDb.find(poke => poke.pokedex === pokedex)
-  const ratings = [...pokemon.ratings].reverse()
+  const ratings = [...pokemon.ratings]
+    .reverse()
+    .filter(rating => rating.comment.length !== 0)
 
   const clickHandlerRight = () => {
     setComment(comment === ratings.length - 1 ? 0 : comment + 1)
-    console.log(comment)
   }
 
   const clickHandlerLeft = () => {
     setComment(comment === 0 ? ratings.length - 1 : comment - 1)
-    console.log(comment)
   }
 
   return (
     <div className="flex h-full w-full flex-row items-center justify-between space-x-4 px-10">
       <ChevronLeftIcon
-        className="w-10 rounded-full bg-white p-2 drop-shadow-xl hover:scale-105 active:scale-95"
+        className="w-10 cursor-pointer rounded-full bg-white p-2 drop-shadow-xl hover:scale-105 active:scale-95"
         onClick={clickHandlerLeft}
       />
       <AnimatePresence>
@@ -34,10 +34,11 @@ const Comments = ({ pokedex }) => {
           comment={ratings[comment].comment}
           name={ratings[comment].name}
           rating={ratings[comment].rating}
+          date={ratings[comment].createdAt}
         />
       </AnimatePresence>
       <ChevronRightIcon
-        className="w-10 rounded-full bg-white p-2 drop-shadow-xl hover:scale-105 active:scale-95"
+        className="w-10 cursor-pointer rounded-full bg-white p-2 drop-shadow-xl hover:scale-105 active:scale-95"
         onClick={clickHandlerRight}
       />
     </div>
