@@ -15,14 +15,18 @@ const bubbleVariants = {
 }
 
 const Comment = ({ rating, comment, name, date }) => {
+  const dateCreated = date
+    ? DateTime.fromISO(date).toFormat('DDD')
+    : DateTime.now().toFormat('DDD')
+
   return (
     <motion.div
-      className="flex max-h-[80%] w-full flex-col items-center justify-between space-y-4 overflow-scroll whitespace-normal rounded-lg bg-white p-4"
+      className="flex w-full flex-col items-center justify-between space-y-1 overflow-scroll whitespace-normal rounded-lg bg-white p-4"
       variants={bubbleVariants}
       initial="hidden"
       animate="visible"
     >
-      <p>{DateTime.fromISO(date)}</p>
+      <p className="text-xs">{dateCreated}</p>
       <div className="flex">
         <ReactStars
           size={40}
@@ -32,8 +36,10 @@ const Comment = ({ rating, comment, name, date }) => {
           color="gray"
         />
       </div>
-      <p className="w-full break-words text-xl text-[#1e1e1e]">{comment}</p>
-      <p className=" w-full break-words text-sm text-[#1e1e1e]">{name}</p>
+      <p className="w-full break-words text-base text-[#1e1e1e]">
+        &quot;{comment}&quot;
+      </p>
+      <p className="w-full break-words pt-2 text-xs text-[#1e1e1e]">{name}</p>
     </motion.div>
   )
 }

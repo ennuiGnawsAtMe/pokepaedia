@@ -13,6 +13,14 @@ const backdropVariants = {
   hidden: { opacity: 0, transition: { duration: 0.3 } },
 }
 
+const buttonVariants = {
+  hover: {
+    backgroundColor: '#FFA500',
+    transition: { duration: 0.1 },
+  },
+  tap: { scale: 1 },
+}
+
 const Modal = ({
   ratingOverall,
   ratings,
@@ -23,7 +31,7 @@ const Modal = ({
   imageLocal,
   setShowModal,
 }) => {
-  const [ratingComplete, setRatingComplete] = useState(false)
+  const [showRatingForm, setShowRatingForm] = useState(false)
   const [formData, setFormData] = useState({
     rating: 0,
     comment: '',
@@ -34,6 +42,10 @@ const Modal = ({
     if (event.target === event.currentTarget) {
       setShowModal(false)
     }
+  }
+
+  const toggleRatingForm = () => {
+    setShowRatingForm(!showRatingForm)
   }
 
   return (
@@ -76,17 +88,28 @@ const Modal = ({
             />
           </div>
           <div className="flex w-1/2 flex-col items-center justify-center rounded-md bg-[#47a7bd18] text-center">
-            {/* {!ratingComplete ? (
+            {showRatingForm ? (
               <UserRatingForm
                 name={name}
                 pokedex={pokedex}
                 formData={formData}
                 setFormData={setFormData}
-                setRatingComplete={setRatingComplete}
+                setShowRatingForm={setShowRatingForm}
               />
-            ) : ( */}
-            <Comments pokedex={pokedex} />
-            {/* )} */}
+            ) : (
+              <div className="flex w-full flex-col items-center justify-center px-4">
+                <Comments pokedex={pokedex} />
+                <motion.button
+                  variants={buttonVariants}
+                  className="mt-4 flex w-2/3 justify-center rounded-lg bg-[#47a8bd] p-2 text-xl text-white"
+                  whileHover="hover"
+                  whileTap="tap"
+                  onClick={toggleRatingForm}
+                >
+                  + Add Rating
+                </motion.button>
+              </div>
+            )}
           </div>
         </div>
       </div>

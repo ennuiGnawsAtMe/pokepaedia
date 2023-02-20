@@ -20,7 +20,7 @@ const UserRatingForm = ({
   pokedex,
   formData,
   setFormData,
-  setRatingComplete,
+  setShowRatingForm,
 }) => {
   const [user, setUser] = useContext(userContext)
   const { allPokemonDb, mutateAllPokemonDb } = useGetAllPokemonDb()
@@ -47,7 +47,7 @@ const UserRatingForm = ({
         "Whoa, holdup! You haven't told us how you feel about this pokemon!"
       )
     } else {
-      setRatingComplete(true)
+      setShowRatingForm(false)
 
       const optimisticNoRank = allPokemonDb.map(poke => {
         if (poke.pokedex === pokedex) {
@@ -102,9 +102,13 @@ const UserRatingForm = ({
     }
   }
 
+  const removeForm = () => {
+    setShowRatingForm(false)
+  }
+
   return (
-    <AnimatePresence exitBeforeEnter>
-      <div className="flex h-full flex-col justify-center rounded-lg p-20 text-center">
+    <AnimatePresence mode="wait">
+      <div className="flex h-full w-full flex-col justify-center rounded-lg px-10 text-center">
         <div className="flex flex-row items-center justify-center space-x-2">
           <h3 className="text-base">Your Rating:</h3>
           <div className="flex flex-col justify-center align-middle">
@@ -143,6 +147,12 @@ const UserRatingForm = ({
           </motion.button>
         </form>
       </div>
+      <p
+        className="cursor-pointer p-4 text-xs hover:font-semibold"
+        onClick={removeForm}
+      >
+        &larr; Back to comments...
+      </p>
     </AnimatePresence>
   )
 }
