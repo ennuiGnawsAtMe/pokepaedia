@@ -5,7 +5,7 @@
   padding: 0px 10px;
   border: solid 5px #47a8bd;
   height: 450px;
-  width: 280px;
+  width: 320px;
   border-radius: 10px;
   margin: 10px 10px 15px 10px;
 }
@@ -17,33 +17,6 @@
   position: relative;
 }
 
-.topDetails {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  width: 100%;
-  min-height: 8%;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-}
-
-.topDetails h3 {
-  font-size: 1.2em;
-  font-family: "Open Sans", sans-serif;
-  font-weight: 200;
-  margin: 3px 3px;
-  padding: 3px 3px;
-  align-items: center;
-}
-
-.topDetails h4 {
-  font-family: "Open Sans", sans-serif;
-  font-weight: 200;
-  font-size: 0.7rem;
-  margin: 0px;
-}
-
 .rank {
   display: flex;
   flex-direction: row;
@@ -51,21 +24,8 @@
 }
 
 .rank h3 {
-  font-family: "Playfair Display", serif;
+  font-family: 'Playfair Display', serif;
   font-size: 21px;
-}
-
-.imageText h3 {
-  font-family: "Playfair Display", serif;
-  font-size: 21px;
-  margin: 0px;
-}
-
-.imageText {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .footer {
@@ -77,7 +37,7 @@
 }
 
 .footer button {
-  font-family: "Open Sans", sans-serif;
+  /* font-family: 'Open Sans', sans-serif; */
   font-weight: bolder;
   font-size: 10px;
   padding: 3px;

@@ -1,29 +1,31 @@
-import { useState } from 'react'
-import { motion } from "framer-motion"
-import { useGetAllPokemonDb } from '../../lib/swr'
+'use client'
+
+import { useContext, useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
+import { useGetAllPokemonDb } from '../../data/swr'
 import CardStats from './CardStats'
 import CardAbout from './CardAbout'
 import CardTypes from './CardTypes'
-import styles from './Card.module.css'
 import CardImage from './CardImage'
-import Modal from '../modal/Modal'
+import cardFacesContext from '../../context/cardFacesContext'
+import { ChevronRightIcon, ChevronLeftIcon } from '@heroicons/react/24/solid'
 
 const CARD_COLOURS = {
-    'red': {backgroundColor: '#AB1E23', color: '#ffffff'},
-    'blue': {backgroundColor:'#1452E2', color: '#ffffff'},
-    'yellow': {backgroundColor:'#E3E32A', color: '#000000'},
-    'green': {backgroundColor:'#147B3E', color: '#ffffff'},
-    'black':{backgroundColor:'#313639', color: '#ffffff'},
-    'brown': {backgroundColor:'#994022', color: '#ffffff'},
-    'purple': {backgroundColor:'#5E2E87', color: '#ffffff'},
-    'gray': {backgroundColor:'#D1D1E0', color: '#000000'},
-    'white': {backgroundColor:'#f5f5f5', color: '#000000'},
-    'pink': {backgroundColor:'#A72B6E', color: '#ffffff'}
-    }
+  red: { backgroundColor: '#AB1E23', color: '#ffffff' },
+  blue: { backgroundColor: '#1452E2', color: '#ffffff' },
+  yellow: { backgroundColor: '#E3E32A', color: '#000000' },
+  green: { backgroundColor: '#147B3E', color: '#ffffff' },
+  black: { backgroundColor: '#313639', color: '#ffffff' },
+  brown: { backgroundColor: '#994022', color: '#ffffff' },
+  purple: { backgroundColor: '#5E2E87', color: '#ffffff' },
+  gray: { backgroundColor: '#D1D1E0', color: '#000000' },
+  white: { backgroundColor: '#f5f5f5', color: '#000000' },
+  pink: { backgroundColor: '#A72B6E', color: '#ffffff' },
+}
 
-const Card = ({ pokemon }) => {
-  const [cardFace, setCardFace] = useState('image')
-  const [showModal, setShowModal] = useState(false)
+const Card = ({ pokemon, setShowModal, setPokemon, variants }) => {
+  const [cardFaces, setCardFaces] = useContext(cardFacesContext)
+  const [currentFace, setCurrentFace] = useState('image')
   const { allPokemonDb, isLoading, isError } = useGetAllPokemonDb()
 
   const { pokedex, colour } = pokemon
@@ -33,124 +35,111 @@ const Card = ({ pokemon }) => {
   const pokemonRatings = allPokemonDb.find(poke => poke.pokedex === pokedex)
   const { ranking } = pokemonRatings
 
-  const cardVariants = {
-      hidden: {
-        opacity: 0, 
-        translateX: -50, 
-        boxShadow: `3px 3px 5px rgb(0, 0, 0, 0.4)`
-      },
-      visible: {
-        opacity: 1, 
-        translateX: 0,
-        transition: { duration: 0.3 }
-      },
-      hover: {
-        boxShadow: `5px 5px 5px rgb(0, 0, 0, 0.5)`,
-        translateY: -8,
-      },
-      exit: {
-        opacity: 0,
-        translateY: 500,
-        transition: { duration: 0.3 }
-      }
+  const clickHandlerRight = e => {
+    e.stopPropagation()
+    switch (currentFace) {
+      case 'image':
+        setCurrentFace('about')
+        break
+      case 'ability':
+        setCurrentFace('image')
+        break
+      case 'types':
+        setCurrentFace('ability')
+        break
+      case 'about':
+        setCurrentFace('types')
+        break
     }
+  }
 
-  const buttonVariants = {
-    visible: {
-      backgroundColor: backgroundColor,
-      color: color,
-      border: `solid 2px ${backgroundColor}`,
-      // TODO add to CSS => borderBottom: "none"
-      
+  const clickHandlerLeft = e => {
+    e.stopPropagation()
+    switch (currentFace) {
+      case 'image':
+        setCurrentFace('ability')
+        break
+      case 'ability':
+        setCurrentFace('types')
+        break
+      case 'types':
+        setCurrentFace('about')
+        break
+      case 'about':
+        setCurrentFace('image')
+        break
+    }
+  }
+
+  const faceVariants = {
+    hidden: {
+      opacity: 0,
     },
-    hover: {
-        backgroundColor: "#ffffff",
-        border: `solid 2px ${backgroundColor}`,
-        // TODO add to CSS => borderBottom: "none"
-        transition: { duration: 0.3 },
-        color: "#000000",
-      },
-    tap: {
-      scale: 0.95,
-      transition: { duration: 0.01 }
-    }
-  }
-  
-  const clickHandler = () => {
-      if (cardFace === 'image') {
-        setCardFace("about")
-      } else if (cardFace === "about") {
-        setCardFace("types")
-      } else if (cardFace === "types") {
-        setCardFace("ability")
-      } else if (cardFace === "ability") {
-        setCardFace("image")
-      }
+    visible: {
+      opacity: 1,
+    },
   }
 
-  const cardFaceComponent = ({
-      about: <CardAbout {...pokemon} />,
-      types: <CardTypes {...pokemon} />,
-      ability: <CardStats {...pokemon} />,
-      image: <CardImage {...pokemon} {...pokemonRatings} />,
-  })
+  const cardFaceComponent = {
+    about: <CardAbout {...pokemon} faceVariants={faceVariants} />,
+    types: <CardTypes {...pokemon} faceVariants={faceVariants} />,
+    ability: <CardStats {...pokemon} faceVariants={faceVariants} />,
+    image: (
+      <CardImage {...pokemon} {...pokemonRatings} faceVariants={faceVariants} />
+    ),
+  }
+
+  const clickHandlerModal = () => {
+    setShowModal(true)
+    setPokemon({ ...pokemon, ...pokemonRatings })
+  }
+
+  useEffect(() => {
+    setCurrentFace(cardFaces)
+  }, [cardFaces])
 
   return (
     <>
-      <motion.div 
-        style={{border:`solid 5px ${backgroundColor}`}} 
-        className={styles.container}
-        variants={cardVariants}
+      <motion.div
+        style={{ border: `solid 5px ${backgroundColor}` }}
+        className="group relative m-[10px] flex h-[450px] w-[320px] cursor-zoom-in flex-col items-center rounded-md border-4 border-[#47a8bd] p-4"
+        variants={variants}
         initial="hidden"
         animate="visible"
         whileHover="hover"
-        exit="exit"
+        onClick={clickHandlerModal}
       >
-      <div className={styles.topDetails}>
-        <div className={styles.imageText}>
-          <h4>Pokédex</h4><h3>{pokedex}</h3>
+        <div className="absolute top-2 flex min-h-[8%] w-full flex-row justify-around">
+          <span className="flex flex-row items-center justify-between ">
+            <h4 className="p-1 font-mono text-xs">Pokédex</h4>
+            <h3 className="p-1 font-mono text-xl">{pokedex}</h3>
+          </span>
+          <span className="flex flex-row items-center justify-between ">
+            <h4 className="p-1 font-mono text-xs font-extralight">Ranked</h4>
+            <h3 className="p-1 font-mono text-xl">{ranking}</h3>
+          </span>
         </div>
-        <span className={styles.rank}><h4>Ranked</h4><h3>{ranking}</h3></span>
-      </div>
-      { cardFaceComponent[cardFace] }
-      <div className={ styles.footer }>
-          {/* <Link href={`/${pokemon.name.toLowerCase()}`}>
-            <motion.button
-              style={{ cursor:`pointer` }} 
-              variants={buttonVariants}
-              animate="visible"
-              whileHover="hover"
-              whileTap="tap"
-              >
-              - Details -
-            </motion.button>
-          </Link> */}
-          <motion.button 
-            style={{ cursor:`pointer` }} 
-            onClick={ () => clickHandler() }
-            variants={buttonVariants}
-            animate="visible"
-            whileHover="hover"
-            whileTap="tap"
-            >
-            - Flip -
-          </motion.button>
-          <motion.button 
-            style={{ cursor:`pointer` }} 
-            onClick={() => setShowModal(true)}
-            variants={buttonVariants}
-            animate="visible"
-            whileHover="hover"
-            whileTap="tap"
-            >
-            - Rate -
-          </motion.button>
-      </div>
-    </motion.div>
-    <Modal showModal={showModal} setShowModal={setShowModal} {...pokemon} {...pokemonRatings} />
-  </> 
+        <div className="absolute top-10 flex h-full max-h-[380px] w-full flex-col justify-start px-4">
+          {cardFaceComponent[currentFace]}
+        </div>
+
+        <div className="absolute top-1/3 flex w-full flex-row justify-between px-4 group-hover:visible md:invisible lg:invisible xl:invisible 2xl:invisible">
+          <ChevronLeftIcon
+            fill="currentColor"
+            stroke="currentColor"
+            onClick={clickHandlerLeft}
+            className=" w-8 cursor-pointer rounded-full bg-gray-100 p-2 text-gray-600 shadow-slate-500 drop-shadow-md duration-100 ease-in  hover:scale-105 hover:drop-shadow-lg active:drop-shadow-md"
+          />
+          <ChevronRightIcon
+            fill="currentColor"
+            stroke="currentColor"
+            className="w-8 cursor-pointer rounded-full bg-gray-100 p-2 text-gray-600 shadow-slate-500 drop-shadow-md duration-100 ease-in hover:scale-105 hover:drop-shadow-lg active:drop-shadow-md"
+            onClick={clickHandlerRight}
+          />
+        </div>
+      </motion.div>
+    </>
   )
-  }
+}
 
 export default Card
-  
