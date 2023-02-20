@@ -27,21 +27,25 @@ const Comments = ({ pokedex }) => {
     <div className="flex h-full w-full flex-row items-center justify-between  space-x-2">
       <ChevronLeftIcon
         className={`${
-          comment === 0 ? 'invisible' : ''
+          !ratings.length || comment === 0 ? 'invisible' : ''
         } w-10 cursor-pointer rounded-full bg-white p-2 drop-shadow-xl hover:scale-105 active:scale-95`}
         onClick={clickHandlerLeft}
       />
       <AnimatePresence>
-        <Comment
-          comment={ratings[comment].comment}
-          name={ratings[comment].name}
-          rating={ratings[comment].rating}
-          date={ratings[comment].createdAt}
-        />
+        {ratings.length ? (
+          <Comment
+            comment={ratings[comment].comment}
+            name={ratings[comment].name}
+            rating={ratings[comment].rating}
+            date={ratings[comment].createdAt}
+          />
+        ) : (
+          <p>No Comments...</p>
+        )}
       </AnimatePresence>
       <ChevronRightIcon
         className={`${
-          comment === ratings.length - 1 ? 'invisible' : ''
+          !ratings.length || comment === ratings.length - 1 ? 'invisible' : ''
         } w-10 cursor-pointer rounded-full bg-white p-2 drop-shadow-xl hover:scale-105 active:scale-95`}
         onClick={clickHandlerRight}
       />

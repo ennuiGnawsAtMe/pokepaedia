@@ -106,7 +106,7 @@ const Modal = ({
                   whileTap="tap"
                   onClick={toggleRatingForm}
                 >
-                  + Add Rating
+                  + Add Comment
                 </motion.button>
               </div>
             )}
